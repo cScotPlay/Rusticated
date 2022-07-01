@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "elixiremporium",
+  "version": "${version}",
+
+  "name": "Scott's Elixir Emporium",
+  "description": "This is an example description! Tell everyone what your mod is about!",
+  "authors": [
+    "Me!"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "MIT",
+  "icon": "assets/elixiremporium/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.mcs3.elixiremporium.ElixirEmporium"
+    ]
+  },
+  "mixins": [
+    "elixiremporium.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.14.6",
+    "fabric": "*",
+    "minecraft": "~1.18.2",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
