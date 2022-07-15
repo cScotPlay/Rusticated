@@ -1,0 +1,8 @@
+{
+  "name": "book.elixiremporium.title",
+  "landing_text": "book.elixiremporium.landingtext",
+  "subtitle": "book.elixiremporium.subtitle",
+  "model": "elixiremporium:catalog",
+  "custom_book_item": "elixiremporium:catalog",
+  "show_progress": false
+}
