@@ -6,7 +6,7 @@
   "mixins": [
   ],
   "client": [
-    "ExampleMixin"
+    "ElixirEmporiumMixin"
   ],
   "injectors": {
     "defaultRequire": 1

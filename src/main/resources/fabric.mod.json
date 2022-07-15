@@ -20,6 +20,12 @@
   "entrypoints": {
     "main": [
       "net.mcs3.elixiremporium.ElixirEmporium"
+    ],
+    "client": [
+      "net.mcs3.elixiremporium.ElixirEmporiumClient"
+    ],
+    "fabric-datagen": [
+      "net.mcs3.elixiremporium.data.DataGenerators"
     ]
   },
   "mixins": [
