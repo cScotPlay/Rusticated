@@ -17,6 +17,5 @@ public class DataGenerators implements DataGeneratorEntrypoint
         dataGenerator.addProvider(BlockStateGenerator::new);
         dataGenerator.addProvider(LootTableGenerator::new);
         dataGenerator.addProvider(BlockTagGenerator::new);
-
     }
 }
