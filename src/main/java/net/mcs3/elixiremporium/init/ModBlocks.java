@@ -3,6 +3,8 @@ package net.mcs3.elixiremporium.init;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
 import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelBlock;
+import net.mcs3.elixiremporium.world.level.block.storage.jar.FiredJarBlock;
+import net.mcs3.elixiremporium.world.level.block.storage.jar.GlazedJarBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.liquid_barrel.LiquidBarrelBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -14,6 +16,7 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.WeatheringCopper;
 import net.minecraft.world.level.block.state.BlockBehaviour.*;
+import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 
 import java.util.HashMap;
@@ -110,6 +113,10 @@ public class ModBlocks
     public static final BarrelBlock BARREL = new BarrelBlock();
     public static final Block LIQUID_BARREL = new LiquidBarrelBlock();
 
+    public static final Block UNFIRED_JAR = new ModBlock(Properties.of(Material.CLAY).instabreak().noOcclusion());
+    public static final Block FIRED_JAR = new FiredJarBlock();
+    public static final Block GLAZED_JAR = new GlazedJarBlock();
+
     public static void init()
     {
         register("painted_planks_white", PAINTED_PLANKS_WHITE, DECORATION_TAB);
@@ -195,6 +202,10 @@ public class ModBlocks
 
         register("barrel", BARREL, DECORATION_TAB);
         registerSpecial("liquid_barrel", LIQUID_BARREL, ModBlockItems.LIQUID_BARREL_ITEM, DECORATION_TAB);
+
+        register("unfired_jar", UNFIRED_JAR, DECORATION_TAB);
+        registerSpecial("fired_jar", FIRED_JAR , ModBlockItems.FIRED_JAR_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_jar", GLAZED_JAR , ModBlockItems.GLAZED_JAR_ITEM, DECORATION_TAB);
 
     }
 

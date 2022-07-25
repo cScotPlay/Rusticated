@@ -9,6 +9,7 @@ import net.mcs3.elixiremporium.util.CopperStateMap;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
+import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.HoneycombItem;
@@ -110,6 +111,9 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
 
         ShapedRecipeBuilder.shaped(ModBlocks.BARREL).define('#', Items.IRON_INGOT).define('X', ItemTags.SLABS).define('P', ItemTags.PLANKS).pattern("PXP").pattern("# #").pattern("PXP").unlockedBy("has_wood", has(Blocks.OAK_PLANKS)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.LIQUID_BARREL).define('#', Items.IRON_INGOT).define('X', ItemTags.SLABS).define('P', ItemTags.PLANKS).pattern("P P").pattern("# #").pattern("PXP").unlockedBy("has_wood", has(Blocks.OAK_PLANKS)).save(exporter);
+
+        ShapedRecipeBuilder.shaped(ModBlocks.UNFIRED_JAR).define('#', Items.CLAY_BALL).define('X', Items.CLAY).pattern(" # ").pattern("# #").pattern("XXX").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.UNFIRED_JAR.asItem()), ModBlocks.FIRED_JAR.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
 
 
         ////////////////////////////////////////////////////

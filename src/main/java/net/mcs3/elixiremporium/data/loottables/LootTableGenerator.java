@@ -1,5 +1,6 @@
 package net.mcs3.elixiremporium.data.loottables;
 
+import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.mcs3.elixiremporium.init.ModBlocks;
@@ -90,7 +91,9 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
                 ModBlocks.CHAIN_WAXED_COPPER,
                 ModBlocks.CHAIN_WAXED_EXPOSED_COPPER,
                 ModBlocks.CHAIN_WAXED_WEATHERED_COPPER,
-                ModBlocks.CHAIN_WAXED_OXIDIZED_COPPER
+                ModBlocks.CHAIN_WAXED_OXIDIZED_COPPER,
+
+                ModBlocks.UNFIRED_JAR
         )
 
                 .forEach(this::dropSelf);

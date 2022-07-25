@@ -86,6 +86,10 @@
   "block.elixiremporium.barrel": "Storage Barrel",
   "block.elixiremporium.liquid_barrel": "Liquid Barrel",
 
+  "block.elixiremporium.unfired_jar": "Unfired Jar",
+  "block.elixiremporium.fired_jar": "Fired Jar",
+  "block.elixiremporium.glazed_jar": "Glazed Jar",
+
 
 
 

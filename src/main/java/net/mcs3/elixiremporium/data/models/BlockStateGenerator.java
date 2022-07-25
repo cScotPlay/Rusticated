@@ -41,6 +41,7 @@ public class BlockStateGenerator extends FabricModelProvider
     public static final ModelTemplate CHAIN = createModdedModel("chain", TextureSlot.PARTICLE, TextureSlot.ALL);
     public static final ModelTemplate BARREL = createModdedModel("barrel_base", TextureSlot.PARTICLE, TextureSlot.TOP,TextureSlot.BOTTOM);
     public static final ModelTemplate LIQUID_BARREL = createModdedModel("liquid_barrel_base", TextureSlot.PARTICLE, TextureSlot.TOP,TextureSlot.BOTTOM);
+    public static final ModelTemplate JAR = createModdedModel("jar_base", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
 
 
 
@@ -136,6 +137,9 @@ public class BlockStateGenerator extends FabricModelProvider
 
         createBarrelStates(blockStateModelGenerator, ModBlocks.BARREL, BARREL);
         createBarrelStates(blockStateModelGenerator, ModBlocks.LIQUID_BARREL, LIQUID_BARREL);
+
+        createJarStates(blockStateModelGenerator, ModBlocks.UNFIRED_JAR, JAR);
+        createJarStates(blockStateModelGenerator, ModBlocks.FIRED_JAR, JAR);
 
 
 
@@ -253,6 +257,16 @@ public class BlockStateGenerator extends FabricModelProvider
                 net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, path3Location).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90),
                 net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, path3Location).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180),
                 net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, path3Location).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270)});
+    }
+
+    public static void createJarStates(BlockModelGenerators modelGenerator, Block block, ModelTemplate model)
+    {
+        TextureMapping texture = TextureMapping.cube(block);
+        ResourceLocation resource = model.create(block, texture, modelGenerator.modelOutput);
+
+        modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, resource));
+        modelGenerator.delegateItemModel(block, resource);
+
     }
 
     private static ModelTemplate createVanillaModel(String parent, TextureSlot... requiredTextures) {
