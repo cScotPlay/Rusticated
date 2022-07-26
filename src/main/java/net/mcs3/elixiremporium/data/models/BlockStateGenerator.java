@@ -140,6 +140,11 @@ public class BlockStateGenerator extends FabricModelProvider
 
         createJarStates(blockStateModelGenerator, ModBlocks.UNFIRED_JAR, JAR);
         createJarStates(blockStateModelGenerator, ModBlocks.FIRED_JAR, JAR);
+        createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_JAR_0, JAR);
+        createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_JAR_1, JAR);
+        createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_JAR_2, JAR);
+        createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_JAR_3, JAR);
+        createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_JAR_4, JAR);
 
 
 
@@ -151,7 +156,6 @@ public class BlockStateGenerator extends FabricModelProvider
     public void generateItemModels(ItemModelGenerators itemModelGenerator)
     {
         itemModelGenerator.generateFlatItem(ModItems.COPPER_NUGGET, ModelTemplates.FLAT_ITEM);
-
     }
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)

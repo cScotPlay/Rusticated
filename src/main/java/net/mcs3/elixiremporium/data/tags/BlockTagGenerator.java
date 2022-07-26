@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModBlocks;
+import net.mcs3.elixiremporium.tags.ModItemTags;
 import net.mcs3.elixiremporium.world.level.block.*;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
@@ -72,7 +73,5 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.BARREL,
                 ModBlocks.LIQUID_BARREL
         );
-
-
     }
 }

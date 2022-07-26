@@ -6,6 +6,7 @@ import net.mcs3.elixiremporium.data.loottables.LootTableGenerator;
 import net.mcs3.elixiremporium.data.models.BlockStateGenerator;
 import net.mcs3.elixiremporium.data.recipes.CraftingRecipeBuilder;
 import net.mcs3.elixiremporium.data.tags.BlockTagGenerator;
+import net.mcs3.elixiremporium.data.tags.ItemTagGenerator;
 
 public class DataGenerators implements DataGeneratorEntrypoint
 {
@@ -17,5 +18,6 @@ public class DataGenerators implements DataGeneratorEntrypoint
         dataGenerator.addProvider(BlockStateGenerator::new);
         dataGenerator.addProvider(LootTableGenerator::new);
         dataGenerator.addProvider(BlockTagGenerator::new);
+        dataGenerator.addProvider(ItemTagGenerator::new);
     }
 }

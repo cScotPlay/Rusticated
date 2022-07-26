@@ -88,10 +88,11 @@
 
   "block.elixiremporium.unfired_jar": "Unfired Jar",
   "block.elixiremporium.fired_jar": "Fired Jar",
-  "block.elixiremporium.glazed_jar": "Glazed Jar",
-
-
-
+  "block.elixiremporium.glazed_jar_0": "Glazed Jar",
+  "block.elixiremporium.glazed_jar_1": "Glazed Jar",
+  "block.elixiremporium.glazed_jar_2": "Glazed Jar",
+  "block.elixiremporium.glazed_jar_3": "Glazed Jar",
+  "block.elixiremporium.glazed_jar_4": "Glazed Jar",
 
   "item.elixiremporium.catalog": "Emporium Catalog",
   "item.elixiremporium.olives": "Olives",

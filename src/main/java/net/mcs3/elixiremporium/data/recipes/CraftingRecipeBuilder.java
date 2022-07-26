@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
+import net.mcs3.elixiremporium.tags.ModItemTags;
 import net.mcs3.elixiremporium.util.CopperStateMap;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
@@ -114,6 +115,15 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
 
         ShapedRecipeBuilder.shaped(ModBlocks.UNFIRED_JAR).define('#', Items.CLAY_BALL).define('X', Items.CLAY).pattern(" # ").pattern("# #").pattern("XXX").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.UNFIRED_JAR.asItem()), ModBlocks.FIRED_JAR.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.FIRED_JAR.asItem()), ModBlocks.GLAZED_JAR_0.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItemTags.JARS), ModBlocks.GLAZED_JAR_0.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter, new ResourceLocation("glazed_jar_from_glazed_jar"));
+        ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_JAR_1).requires(ModItemTags.JARS).requires(Items.WHITE_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_JAR_2).requires(ModItemTags.JARS).requires(Items.BLACK_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_JAR_3).requires(ModItemTags.JARS).requires(Items.BROWN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_JAR_4).requires(ModItemTags.JARS).requires(Items.GREEN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+
+
 
 
         ////////////////////////////////////////////////////

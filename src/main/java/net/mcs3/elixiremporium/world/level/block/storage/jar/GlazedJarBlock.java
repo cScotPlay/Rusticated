@@ -16,12 +16,17 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class GlazedJarBlock extends AbstractStorageBlock implements EntityBlock
 {
     protected static final VoxelShape JAR_AABB;
+    protected static final VoxelShape JAR_SHAPE_1;
+    protected static final VoxelShape JAR_SHAPE_2;
+    protected static final VoxelShape JAR_SHAPE_3;
+    protected static final VoxelShape JAR_SHAPE_4;
 
     public GlazedJarBlock() {
         super(Properties.of(Material.CLAY)
@@ -32,7 +37,7 @@ public class GlazedJarBlock extends AbstractStorageBlock implements EntityBlock
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new JarEntityBlock(ModBlockEntityTypes.JAR_CONTAINER, pos, state, 8);
+        return new JarEntityBlock(ModBlockEntityTypes.GLAZED_JAR_0_CONTAINER, pos, state, 8);
     }
 
     @Override
@@ -59,6 +64,10 @@ public class GlazedJarBlock extends AbstractStorageBlock implements EntityBlock
     }
 
     static {
-        JAR_AABB = Block.box(1.0, 0.1, 1.0, 15.0, 15.0, 15);
+        JAR_SHAPE_1 = Shapes.or(box(3.0, 0.0, 3.0, 13.0, 2.0, 13.0), box(2.0, 2.0, 2.0, 14.0, 4.0, 14.0), box(1.0, 4.0, 1.0, 15.0, 8.0, 15.0));
+        JAR_SHAPE_2 = Shapes.or(box(2.0, 8.0, 2.0, 14.0, 10.0, 14.0),box(3.0, 10.0, 3.0, 13.0, 11.0, 12.0), box(4.0, 11.0, 4.0, 12.0, 12.0, 12.0));
+        JAR_SHAPE_3 = Shapes.or(box(5.0, 12.0, 5.0, 11.0, 13.0, 11.0),box(6.0, 13.0, 6.0, 10.0, 14.0, 10.0), box(5.0, 14.0, 5.0, 11.0, 15.0, 11.0));
+        JAR_SHAPE_4 = Shapes.box(4.0, 15.0, 4.0, 12.0, 16.0, 12.0);
+        JAR_AABB = Shapes.or(JAR_SHAPE_1, JAR_SHAPE_2, JAR_SHAPE_3, JAR_SHAPE_4);
     }
 }

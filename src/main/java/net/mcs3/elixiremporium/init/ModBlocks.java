@@ -115,7 +115,11 @@ public class ModBlocks
 
     public static final Block UNFIRED_JAR = new ModBlock(Properties.of(Material.CLAY).instabreak().noOcclusion());
     public static final Block FIRED_JAR = new FiredJarBlock();
-    public static final Block GLAZED_JAR = new GlazedJarBlock();
+    public static final Block GLAZED_JAR_0 = new GlazedJarBlock();
+    public static final Block GLAZED_JAR_1 = new GlazedJarBlock();
+    public static final Block GLAZED_JAR_2 = new GlazedJarBlock();
+    public static final Block GLAZED_JAR_3 = new GlazedJarBlock();
+    public static final Block GLAZED_JAR_4 = new GlazedJarBlock();
 
     public static void init()
     {
@@ -205,7 +209,11 @@ public class ModBlocks
 
         register("unfired_jar", UNFIRED_JAR, DECORATION_TAB);
         registerSpecial("fired_jar", FIRED_JAR , ModBlockItems.FIRED_JAR_ITEM, DECORATION_TAB);
-        registerSpecial("glazed_jar", GLAZED_JAR , ModBlockItems.GLAZED_JAR_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_jar_0", GLAZED_JAR_0 , ModBlockItems.GLAZED_JAR_0_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_jar_1", GLAZED_JAR_1 , ModBlockItems.GLAZED_JAR_1_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_jar_2", GLAZED_JAR_2 , ModBlockItems.GLAZED_JAR_2_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_jar_3", GLAZED_JAR_3 , ModBlockItems.GLAZED_JAR_3_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_jar_4", GLAZED_JAR_4 , ModBlockItems.GLAZED_JAR_4_ITEM, DECORATION_TAB);
 
     }
 

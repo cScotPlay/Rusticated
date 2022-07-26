@@ -39,10 +39,6 @@ public class JarItem extends BlockItem
     @Override
     public InteractionResult useOn(UseOnContext context) {
         InteractionResult interactionResult = this.place(new BlockPlaceContext(context));
-        if (new MouseHandler(Minecraft.getInstance()).isMiddlePressed())
-        {
-            ElixirEmporium.LOGGER.info("MIDDLE BUTTON PRESSED");
-        }
         if (!interactionResult.consumesAction() && this.isEdible()) {
             InteractionResult interactionResult2 = this.use(context.getLevel(), context.getPlayer(), context.getHand()).getResult();
             return interactionResult2 == InteractionResult.CONSUME ? InteractionResult.CONSUME_PARTIAL : interactionResult2;
