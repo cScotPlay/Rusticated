@@ -9,6 +9,7 @@ import net.mcs3.elixiremporium.world.level.block.*;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChainBlock;
+import net.minecraft.world.level.block.SlabBlock;
 
 import java.util.Comparator;
 import java.util.function.Predicate;
@@ -27,23 +28,29 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
         // ***************************************************************************** //
         //  Vanilla Tags
         // ***************************************************************************** //
-        //getOrCreateTagBuilder(BlockTags.PLANKS)
-                //.add(ModBlocks.PAINTED_PLANKS_WHITE);
-
         getOrCreateTagBuilder(BlockTags.PLANKS)
                 .add(registry.stream().filter(b -> b instanceof PlanksBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.STAIRS)
                 .add(registry.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
+        getOrCreateTagBuilder(BlockTags.STAIRS)
+                .add(registry.stream().filter(b -> b instanceof ColoredStoneStairBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
                 .add(registry.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.SLABS)
-                .add(registry.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(registry.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(BlockTags.SLABS)
+                .add(registry.stream().filter(b -> b instanceof ColoredStoneSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
-                .add(registry.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(registry.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(BlockTags.WALLS)
+                .add(registry.stream().filter(b -> b instanceof ColoredStoneWallBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
 
 
@@ -58,6 +65,18 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(registry.stream().filter(b -> b instanceof WeatheringCopperChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(registry.stream().filter(b -> b instanceof ColoredStoneBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(registry.stream().filter(b -> b instanceof ColoredStoneSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(registry.stream().filter(b -> b instanceof ColoredStoneStairBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(registry.stream().filter(b -> b instanceof ColoredStoneWallBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 ModBlocks.CHANDELIER_WAXED_COPPER,

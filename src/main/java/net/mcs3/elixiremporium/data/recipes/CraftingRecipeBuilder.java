@@ -13,11 +13,14 @@ import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.HoneycombItem;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.ShapelessRecipe;
 import net.minecraft.world.level.ItemLike;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
@@ -35,6 +38,74 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ////////////////////////////////////////////////////
         /////                 BLOCKS                   /////
         ////////////////////////////////////////////////////
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_WHITE, Items.WHITE_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_ORANGE, Items.ORANGE_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_MAGENTA, Items.MAGENTA_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_LIGHT_BLUE, Items.LIGHT_BLUE_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_YELLOW, Items.YELLOW_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_LIME, Items.LIME_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_PINK, Items.PINK_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_GRAY, Items.GRAY_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_LIGHT_GRAY, Items.LIGHT_GRAY_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_CYAN, Items.CYAN_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_PURPLE, Items.PURPLE_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_BLUE, Items.BLUE_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_BROWN, Items.BROWN_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_GREEN, Items.GREEN_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_RED, Items.RED_DYE);
+        coloredStoneRecipe(exporter, ModBlocks.COBBLESTONE_BLACK, Items.BLACK_DYE);
+
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_WHITE, ModBlocks.COBBLESTONE_WHITE, Items.WHITE_DYE, "cobblestone_slab_white_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_ORANGE, ModBlocks.COBBLESTONE_ORANGE, Items.ORANGE_DYE, "cobblestone_slab_orange_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_MAGENTA, ModBlocks.COBBLESTONE_MAGENTA, Items.MAGENTA_DYE, "cobblestone_slab_magenta_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_LIGHT_BLUE, ModBlocks.COBBLESTONE_LIGHT_BLUE, Items.LIGHT_BLUE_DYE, "cobblestone_slab_light_blue_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_YELLOW, ModBlocks.COBBLESTONE_YELLOW, Items.YELLOW_DYE, "cobblestone_slab_yellow_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_LIME, ModBlocks.COBBLESTONE_LIME, Items.LIME_DYE, "cobblestone_slab_lime_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_PINK, ModBlocks.COBBLESTONE_PINK, Items.PINK_DYE, "cobblestone_slab_pink_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_GRAY, ModBlocks.COBBLESTONE_GRAY, Items.GRAY_DYE, "cobblestone_slab_gray_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_LIGHT_GRAY, ModBlocks.COBBLESTONE_LIGHT_GRAY, Items.LIGHT_GRAY_DYE, "cobblestone_slab_light_gray_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_CYAN, ModBlocks.COBBLESTONE_CYAN, Items.CYAN_DYE, "cobblestone_slab_cyan_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_PURPLE, ModBlocks.COBBLESTONE_PURPLE, Items.PURPLE_DYE, "cobblestone_slab_purple_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_BLUE, ModBlocks.COBBLESTONE_BLUE, Items.BLUE_DYE, "cobblestone_slab_blue_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_BROWN, ModBlocks.COBBLESTONE_BROWN, Items.BROWN_DYE, "cobblestone_slab_brown_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_GREEN, ModBlocks.COBBLESTONE_GREEN, Items.GREEN_DYE, "cobblestone_slab_gree_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_RED, ModBlocks.COBBLESTONE_RED, Items.RED_DYE, "cobblestone_slab_red_dyed");
+        coloredStoneSlabRecipe(exporter, ModBlocks.COBBLESTONE_SLAB_BLACK, ModBlocks.COBBLESTONE_BLACK, Items.BLACK_DYE, "cobblestone_slab_black_dyed");
+
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_WHITE, ModBlocks.COBBLESTONE_WHITE, Items.WHITE_DYE, "cobblestone_stairs_white_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_ORANGE, ModBlocks.COBBLESTONE_ORANGE, Items.ORANGE_DYE, "cobblestone_stairs_orange_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_MAGENTA, ModBlocks.COBBLESTONE_MAGENTA, Items.MAGENTA_DYE, "cobblestone_stairs_magenta_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_LIGHT_BLUE, ModBlocks.COBBLESTONE_LIGHT_BLUE, Items.LIGHT_BLUE_DYE, "cobblestone_stairs_light_blue_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_YELLOW, ModBlocks.COBBLESTONE_YELLOW, Items.YELLOW_DYE, "cobblestone_stairs_yellow_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_LIME, ModBlocks.COBBLESTONE_LIME, Items.LIME_DYE, "cobblestone_stairs_lime_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_PINK, ModBlocks.COBBLESTONE_PINK, Items.PINK_DYE, "cobblestone_stairs_pink_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_GRAY, ModBlocks.COBBLESTONE_GRAY, Items.GRAY_DYE, "cobblestone_stairs_gray_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_LIGHT_GRAY, ModBlocks.COBBLESTONE_LIGHT_GRAY, Items.LIGHT_GRAY_DYE, "cobblestone_stairs_light_gray_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_CYAN, ModBlocks.COBBLESTONE_CYAN, Items.CYAN_DYE, "cobblestone_stairs_cyan_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_PURPLE, ModBlocks.COBBLESTONE_PURPLE, Items.PURPLE_DYE, "cobblestone_stairs_purple_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_BLUE, ModBlocks.COBBLESTONE_BLUE, Items.BLUE_DYE, "cobblestone_stairs_blue_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_BROWN, ModBlocks.COBBLESTONE_BROWN, Items.BROWN_DYE, "cobblestone_stairs_brown_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_GREEN, ModBlocks.COBBLESTONE_GREEN, Items.GREEN_DYE, "cobblestone_stairs_gree_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_RED, ModBlocks.COBBLESTONE_RED, Items.RED_DYE, "cobblestone_stairs_red_dyed");
+        coloredStoneStairsRecipe(exporter, ModBlocks.COBBLESTONE_STAIRS_BLACK, ModBlocks.COBBLESTONE_BLACK, Items.BLACK_DYE, "cobblestone_stairs_black_dyed");
+
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_WHITE, ModBlocks.COBBLESTONE_WHITE, ModItemTags.COLORED_COBBLESTONE_WALL, Items.WHITE_DYE, Blocks.COBBLESTONE, "cobblestone_wall_white_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_ORANGE, ModBlocks.COBBLESTONE_ORANGE, ModItemTags.COLORED_COBBLESTONE_WALL, Items.ORANGE_DYE, Blocks.COBBLESTONE, "cobblestone_wall_orange_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_MAGENTA, ModBlocks.COBBLESTONE_MAGENTA, ModItemTags.COLORED_COBBLESTONE_WALL, Items.MAGENTA_DYE, Blocks.COBBLESTONE, "cobblestone_wall_magenta_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_LIGHT_BLUE, ModBlocks.COBBLESTONE_LIGHT_BLUE, ModItemTags.COLORED_COBBLESTONE_WALL, Items.LIGHT_BLUE_DYE, Blocks.COBBLESTONE, "cobblestone_wall_light_blue_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_YELLOW, ModBlocks.COBBLESTONE_YELLOW, ModItemTags.COLORED_COBBLESTONE_WALL, Items.YELLOW_DYE, Blocks.COBBLESTONE, "cobblestone_wall_yellow_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_LIME, ModBlocks.COBBLESTONE_LIME, ModItemTags.COLORED_COBBLESTONE_WALL, Items.LIME_DYE, Blocks.COBBLESTONE, "cobblestone_wall_lime_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_PINK, ModBlocks.COBBLESTONE_PINK, ModItemTags.COLORED_COBBLESTONE_WALL, Items.PINK_DYE, Blocks.COBBLESTONE, "cobblestone_wall_pink_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_GRAY, ModBlocks.COBBLESTONE_GRAY, ModItemTags.COLORED_COBBLESTONE_WALL, Items.GRAY_DYE, Blocks.COBBLESTONE, "cobblestone_wall_gray_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_LIGHT_GRAY, ModBlocks.COBBLESTONE_LIGHT_GRAY, ModItemTags.COLORED_COBBLESTONE_WALL, Items.LIGHT_GRAY_DYE, Blocks.COBBLESTONE, "cobblestone_wall_light_gray_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_CYAN, ModBlocks.COBBLESTONE_CYAN, ModItemTags.COLORED_COBBLESTONE_WALL, Items.CYAN_DYE, Blocks.COBBLESTONE, "cobblestone_wall_cyan_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_PURPLE, ModBlocks.COBBLESTONE_PURPLE, ModItemTags.COLORED_COBBLESTONE_WALL, Items.PURPLE_DYE, Blocks.COBBLESTONE, "cobblestone_wall_purple_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_BLUE, ModBlocks.COBBLESTONE_BLUE, ModItemTags.COLORED_COBBLESTONE_WALL, Items.BLUE_DYE, Blocks.COBBLESTONE, "cobblestone_wall_blue_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_BROWN, ModBlocks.COBBLESTONE_BROWN, ModItemTags.COLORED_COBBLESTONE_WALL, Items.BROWN_DYE, Blocks.COBBLESTONE, "cobblestone_wall_brown_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_GREEN, ModBlocks.COBBLESTONE_GREEN, ModItemTags.COLORED_COBBLESTONE_WALL, Items.GREEN_DYE, Blocks.COBBLESTONE, "cobblestone_wall_gree_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_RED, ModBlocks.COBBLESTONE_RED, ModItemTags.COLORED_COBBLESTONE_WALL, Items.RED_DYE, Blocks.COBBLESTONE, "cobblestone_wall_red_dyed");
+        coloredStoneWallRecipe(exporter, ModBlocks.COBBLESTONE_WALL_BLACK, ModBlocks.COBBLESTONE_BLACK, ModItemTags.COLORED_COBBLESTONE_WALL, Items.BLACK_DYE, Blocks.COBBLESTONE, "cobblestone_wall_black_dyed");
+
         coloredWoodRecipe(exporter, ModBlocks.PAINTED_PLANKS_WHITE, Items.WHITE_DYE);
         coloredWoodRecipe(exporter, ModBlocks.PAINTED_PLANKS_ORANGE, Items.ORANGE_DYE);
         coloredWoodRecipe(exporter, ModBlocks.PAINTED_PLANKS_MAGENTA, Items.MAGENTA_DYE);
@@ -144,6 +215,32 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
     {
         stairBuilder(output, Ingredient.of(new ItemLike[]{input})).group("painted_stairs").unlockedBy("has_stairs", has(Blocks.OAK_PLANKS)).save(exporter);
         ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.WOODEN_STAIRS).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("painted_stairs").unlockedBy("has_stair", has(Blocks.OAK_PLANKS)).save(exporter, new ResourceLocation(dyedRecipeName));
+    }
+
+    public static void coloredStoneSlabRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike inputCutter, ItemLike dyeInput, @Nullable String dyedRecipeName)
+    {
+        ShapedRecipeBuilder.shaped(output, 6).define('#', inputCutter).pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter);
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ModItemTags.COLORED_COBBLESTONE_SLAB).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter, new ResourceLocation(dyedRecipeName));
+        stonecutterResultFromBase(exporter, output, inputCutter, 2);
+    }
+
+    public static void coloredStoneRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike dyeInput)
+    {
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ModItemTags.COLORED_COBBLESTONE).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter);
+    }
+
+    public static void coloredStoneStairsRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike inputCutter, ItemLike dyeInput, @Nullable String dyedRecipeName)
+    {
+        ShapedRecipeBuilder.shaped(output, 4).define('#', inputCutter).pattern("#  ").pattern("## ").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter);
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ModItemTags.COLORED_COBBLESTONE_SLAB).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter, new ResourceLocation(dyedRecipeName));
+        stonecutterResultFromBase(exporter, output, inputCutter, 1);
+    }
+
+    public static void coloredStoneWallRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike inputCutter, TagKey<Item> itemTagKey, ItemLike dyeInput, Block materialBlock, @Nullable String dyedRecipeName)
+    {
+        ShapedRecipeBuilder.shaped(output, 6).define('#', inputCutter).pattern("###").pattern("###").unlockedBy(getHasName(materialBlock), has(materialBlock)).save(exporter);
+        ShapedRecipeBuilder.shaped(output, 8).define('#', itemTagKey).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("colored_cobblestone").unlockedBy(getHasName(materialBlock), has(materialBlock)).save(exporter, new ResourceLocation(dyedRecipeName));
+        stonecutterResultFromBase(exporter, output, inputCutter);
     }
 
     public static void coloredSlabRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input, ItemLike dyeInput, @Nullable String dyedRecipeName)
