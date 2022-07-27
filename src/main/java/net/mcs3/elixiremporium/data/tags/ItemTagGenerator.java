@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.init.ModBlockItems;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.tags.ModItemTags;
+import net.minecraft.world.level.block.Blocks;
 
 public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
 {
@@ -22,7 +23,65 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlockItems.GLAZED_JAR_3_ITEM,
                 ModBlockItems.GLAZED_JAR_4_ITEM);
 
+        getOrCreateTagBuilder(ModItemTags.COLORED_STONE).add(
+                Blocks.STONE.asItem(),
+                ModBlocks.STONE_WHITE.asItem(),
+                ModBlocks.STONE_ORANGE.asItem(),
+                ModBlocks.STONE_MAGENTA.asItem(),
+                ModBlocks.STONE_LIGHT_BLUE.asItem(),
+                ModBlocks.STONE_YELLOW.asItem(),
+                ModBlocks.STONE_LIME.asItem(),
+                ModBlocks.STONE_PINK.asItem(),
+                ModBlocks.STONE_GRAY.asItem(),
+                ModBlocks.STONE_LIGHT_GRAY.asItem(),
+                ModBlocks.STONE_CYAN.asItem(),
+                ModBlocks.STONE_PURPLE.asItem(),
+                ModBlocks.STONE_BLUE.asItem(),
+                ModBlocks.STONE_BROWN.asItem(),
+                ModBlocks.STONE_GREEN.asItem(),
+                ModBlocks.STONE_RED.asItem(),
+                ModBlocks.STONE_BLACK.asItem());
+
+        getOrCreateTagBuilder(ModItemTags.COLORED_STONE_SLAB).add(
+                Blocks.STONE_SLAB.asItem(),
+                ModBlocks.STONE_SLAB_WHITE.asItem(),
+                ModBlocks.STONE_SLAB_ORANGE.asItem(),
+                ModBlocks.STONE_SLAB_MAGENTA.asItem(),
+                ModBlocks.STONE_SLAB_LIGHT_BLUE.asItem(),
+                ModBlocks.STONE_SLAB_YELLOW.asItem(),
+                ModBlocks.STONE_SLAB_LIME.asItem(),
+                ModBlocks.STONE_SLAB_PINK.asItem(),
+                ModBlocks.STONE_SLAB_GRAY.asItem(),
+                ModBlocks.STONE_SLAB_LIGHT_GRAY.asItem(),
+                ModBlocks.STONE_SLAB_CYAN.asItem(),
+                ModBlocks.STONE_SLAB_PURPLE.asItem(),
+                ModBlocks.STONE_SLAB_BLUE.asItem(),
+                ModBlocks.STONE_SLAB_BROWN.asItem(),
+                ModBlocks.STONE_SLAB_GREEN.asItem(),
+                ModBlocks.STONE_SLAB_RED.asItem(),
+                ModBlocks.STONE_SLAB_BLACK.asItem());
+
+        getOrCreateTagBuilder(ModItemTags.COLORED_STONE_STAIRS).add(
+                Blocks.STONE_STAIRS.asItem(),
+                ModBlocks.STONE_STAIRS_WHITE.asItem(),
+                ModBlocks.STONE_STAIRS_ORANGE.asItem(),
+                ModBlocks.STONE_STAIRS_MAGENTA.asItem(),
+                ModBlocks.STONE_STAIRS_LIGHT_BLUE.asItem(),
+                ModBlocks.STONE_STAIRS_YELLOW.asItem(),
+                ModBlocks.STONE_STAIRS_LIME.asItem(),
+                ModBlocks.STONE_STAIRS_PINK.asItem(),
+                ModBlocks.STONE_STAIRS_GRAY.asItem(),
+                ModBlocks.STONE_STAIRS_LIGHT_GRAY.asItem(),
+                ModBlocks.STONE_STAIRS_CYAN.asItem(),
+                ModBlocks.STONE_STAIRS_PURPLE.asItem(),
+                ModBlocks.STONE_STAIRS_BLUE.asItem(),
+                ModBlocks.STONE_STAIRS_BROWN.asItem(),
+                ModBlocks.STONE_STAIRS_GREEN.asItem(),
+                ModBlocks.STONE_STAIRS_RED.asItem(),
+                ModBlocks.STONE_STAIRS_BLACK.asItem());
+
         getOrCreateTagBuilder(ModItemTags.COLORED_COBBLESTONE).add(
+                Blocks.COBBLESTONE.asItem(),
                 ModBlocks.COBBLESTONE_WHITE.asItem(),
                 ModBlocks.COBBLESTONE_ORANGE.asItem(),
                 ModBlocks.COBBLESTONE_MAGENTA.asItem(),
@@ -41,6 +100,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.COBBLESTONE_BLACK.asItem());
 
         getOrCreateTagBuilder(ModItemTags.COLORED_COBBLESTONE_SLAB).add(
+                Blocks.COBBLESTONE_SLAB.asItem(),
                 ModBlocks.COBBLESTONE_SLAB_WHITE.asItem(),
                 ModBlocks.COBBLESTONE_SLAB_ORANGE.asItem(),
                 ModBlocks.COBBLESTONE_SLAB_MAGENTA.asItem(),
@@ -59,6 +119,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.COBBLESTONE_SLAB_BLACK.asItem());
 
         getOrCreateTagBuilder(ModItemTags.COLORED_COBBLESTONE_STAIRS).add(
+                Blocks.COBBLESTONE_STAIRS.asItem(),
                 ModBlocks.COBBLESTONE_STAIRS_WHITE.asItem(),
                 ModBlocks.COBBLESTONE_STAIRS_ORANGE.asItem(),
                 ModBlocks.COBBLESTONE_STAIRS_MAGENTA.asItem(),
@@ -77,6 +138,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.COBBLESTONE_STAIRS_BLACK.asItem());
 
         getOrCreateTagBuilder(ModItemTags.COLORED_COBBLESTONE_WALL).add(
+                Blocks.COBBLESTONE_WALL.asItem(),
                 ModBlocks.COBBLESTONE_WALL_WHITE.asItem(),
                 ModBlocks.COBBLESTONE_WALL_ORANGE.asItem(),
                 ModBlocks.COBBLESTONE_WALL_MAGENTA.asItem(),

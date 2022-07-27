@@ -14,6 +14,11 @@ public class ModItemTags
     public static final TagKey<Item> COLORED_COBBLESTONE_STAIRS = modItem("colored_cobblestone_stairs");
     public static final TagKey<Item> COLORED_COBBLESTONE_WALL = modItem("colored_cobblestone_wall");
 
+    public static final TagKey<Item> COLORED_STONE = modItem("colored_stone");
+    public static final TagKey<Item> COLORED_STONE_SLAB = modItem("colored_stone_slab");
+    public static final TagKey<Item> COLORED_STONE_STAIRS = modItem("colored_stone_stairs");
+    public static final TagKey<Item> COLORED_STONE_WALL = modItem("colored_stone_wall");
+
 
     public static TagKey<Item> modItem(String path) {
         return TagKey.create(Registry.ITEM.key(), new ResourceLocation(ElixirEmporium.MOD_ID, path));

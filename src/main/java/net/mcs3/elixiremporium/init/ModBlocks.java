@@ -59,6 +59,57 @@ public class ModBlocks
     public static final Block CHAIN_WAXED_WEATHERED_COPPER = new ModChainBlock(Properties.copy(ModBlocks.CHAIN_WEATHERED_COPPER));
     public static final Block CHAIN_WAXED_OXIDIZED_COPPER = new ModChainBlock(Properties.copy(ModBlocks.CHAIN_OXIDIZED_COPPER));
 
+    public static final Block STONE_WHITE = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_ORANGE = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_MAGENTA = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_LIGHT_BLUE = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_YELLOW = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_LIME = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_PINK = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_GRAY = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_LIGHT_GRAY = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_CYAN = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_PURPLE = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_BLUE = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_BROWN = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_GREEN = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_RED = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_BLACK = new ColoredStoneBlock(Properties.copy(Blocks.STONE));
+
+    public static final Block STONE_SLAB_WHITE = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_ORANGE = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_MAGENTA = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_LIGHT_BLUE = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_YELLOW = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_LIME = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_PINK = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_GRAY = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_LIGHT_GRAY = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_CYAN = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_PURPLE = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_BLUE = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_BROWN = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_GREEN = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_RED = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+    public static final Block STONE_SLAB_BLACK = new ColoredStoneSlabBlock(Properties.copy(Blocks.STONE));
+
+    public static final Block STONE_STAIRS_WHITE = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_ORANGE = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_MAGENTA = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_LIGHT_BLUE = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_YELLOW = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_LIME = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_PINK = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_GRAY = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_LIGHT_GRAY = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_CYAN = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_PURPLE = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_BLUE = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_BROWN = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_GREEN = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_RED = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+    public static final Block STONE_STAIRS_BLACK = new ColoredStoneStairBlock(Blocks.STONE.defaultBlockState(), Properties.copy(Blocks.STONE));
+
     public static final Block COBBLESTONE_WHITE = new ColoredStoneBlock(Properties.copy(Blocks.COBBLESTONE));
     public static final Block COBBLESTONE_ORANGE = new ColoredStoneBlock(Properties.copy(Blocks.COBBLESTONE));
     public static final Block COBBLESTONE_MAGENTA = new ColoredStoneBlock(Properties.copy(Blocks.COBBLESTONE));
@@ -93,7 +144,7 @@ public class ModBlocks
     public static final Block COBBLESTONE_SLAB_RED = new ColoredStoneSlabBlock(Properties.copy(Blocks.COBBLESTONE));
     public static final Block COBBLESTONE_SLAB_BLACK = new ColoredStoneSlabBlock(Properties.copy(Blocks.COBBLESTONE));
 
-    public static final Block COBBLESTONE_STAIRS_WHITE = new ColoredStoneStairBlock(COBBLESTONE_WHITE.defaultBlockState(), Properties.copy(Blocks.COBBLESTONE));
+    public static final Block COBBLESTONE_STAIRS_WHITE = new ColoredStoneStairBlock(Blocks.COBBLESTONE.defaultBlockState(), Properties.copy(Blocks.COBBLESTONE));
     public static final Block COBBLESTONE_STAIRS_ORANGE = new ColoredStoneStairBlock(Blocks.COBBLESTONE.defaultBlockState(), Properties.copy(Blocks.COBBLESTONE));
     public static final Block COBBLESTONE_STAIRS_MAGENTA = new ColoredStoneStairBlock(Blocks.COBBLESTONE.defaultBlockState(), Properties.copy(Blocks.COBBLESTONE));
     public static final Block COBBLESTONE_STAIRS_LIGHT_BLUE = new ColoredStoneStairBlock(Blocks.COBBLESTONE.defaultBlockState(), Properties.copy(Blocks.COBBLESTONE));
@@ -220,6 +271,57 @@ public class ModBlocks
         register("chain_waxed_exposed_copper", CHAIN_WAXED_EXPOSED_COPPER, DECORATION_TAB);
         register("chain_waxed_weathered_copper", CHAIN_WAXED_WEATHERED_COPPER, DECORATION_TAB);
         register("chain_waxed_oxidized_copper", CHAIN_WAXED_OXIDIZED_COPPER, DECORATION_TAB);
+
+        register("stone_white", STONE_WHITE, DECORATION_TAB);
+        register("stone_orange", STONE_ORANGE, DECORATION_TAB);
+        register("stone_magenta", STONE_MAGENTA, DECORATION_TAB);
+        register("stone_light_blue", STONE_LIGHT_BLUE, DECORATION_TAB);
+        register("stone_yellow", STONE_YELLOW, DECORATION_TAB);
+        register("stone_lime", STONE_LIME, DECORATION_TAB);
+        register("stone_pink", STONE_PINK, DECORATION_TAB);
+        register("stone_gray", STONE_GRAY, DECORATION_TAB);
+        register("stone_light_gray", STONE_LIGHT_GRAY, DECORATION_TAB);
+        register("stone_cyan", STONE_CYAN, DECORATION_TAB);
+        register("stone_purple", STONE_PURPLE, DECORATION_TAB);
+        register("stone_blue", STONE_BLUE, DECORATION_TAB);
+        register("stone_brown", STONE_BROWN, DECORATION_TAB);
+        register("stone_green", STONE_GREEN, DECORATION_TAB);
+        register("stone_red", STONE_RED, DECORATION_TAB);
+        register("stone_black", STONE_BLACK, DECORATION_TAB);
+
+        register("stone_slab_white", STONE_SLAB_WHITE, DECORATION_TAB);
+        register("stone_slab_orange", STONE_SLAB_ORANGE, DECORATION_TAB);
+        register("stone_slab_magenta", STONE_SLAB_MAGENTA, DECORATION_TAB);
+        register("stone_slab_light_blue", STONE_SLAB_LIGHT_BLUE, DECORATION_TAB);
+        register("stone_slab_yellow", STONE_SLAB_YELLOW, DECORATION_TAB);
+        register("stone_slab_lime", STONE_SLAB_LIME, DECORATION_TAB);
+        register("stone_slab_pink", STONE_SLAB_PINK, DECORATION_TAB);
+        register("stone_slab_gray", STONE_SLAB_GRAY, DECORATION_TAB);
+        register("stone_slab_light_gray", STONE_SLAB_LIGHT_GRAY, DECORATION_TAB);
+        register("stone_slab_cyan", STONE_SLAB_CYAN, DECORATION_TAB);
+        register("stone_slab_purple", STONE_SLAB_PURPLE, DECORATION_TAB);
+        register("stone_slab_blue", STONE_SLAB_BLUE, DECORATION_TAB);
+        register("stone_slab_brown", STONE_SLAB_BROWN, DECORATION_TAB);
+        register("stone_slab_green", STONE_SLAB_GREEN, DECORATION_TAB);
+        register("stone_slab_red", STONE_SLAB_RED, DECORATION_TAB);
+        register("stone_slab_black", STONE_SLAB_BLACK, DECORATION_TAB);
+
+        register("stone_stairs_white", STONE_STAIRS_WHITE, DECORATION_TAB);
+        register("stone_stairs_orange", STONE_STAIRS_ORANGE, DECORATION_TAB);
+        register("stone_stairs_magenta", STONE_STAIRS_MAGENTA, DECORATION_TAB);
+        register("stone_stairs_light_blue", STONE_STAIRS_LIGHT_BLUE, DECORATION_TAB);
+        register("stone_stairs_yellow", STONE_STAIRS_YELLOW, DECORATION_TAB);
+        register("stone_stairs_lime", STONE_STAIRS_LIME, DECORATION_TAB);
+        register("stone_stairs_pink", STONE_STAIRS_PINK, DECORATION_TAB);
+        register("stone_stairs_gray", STONE_STAIRS_GRAY, DECORATION_TAB);
+        register("stone_stairs_light_gray", STONE_STAIRS_LIGHT_GRAY, DECORATION_TAB);
+        register("stone_stairs_cyan", STONE_STAIRS_CYAN, DECORATION_TAB);
+        register("stone_stairs_purple", STONE_STAIRS_PURPLE, DECORATION_TAB);
+        register("stone_stairs_blue", STONE_STAIRS_BLUE, DECORATION_TAB);
+        register("stone_stairs_brown", STONE_STAIRS_BROWN, DECORATION_TAB);
+        register("stone_stairs_green", STONE_STAIRS_GREEN, DECORATION_TAB);
+        register("stone_stairs_red", STONE_STAIRS_RED, DECORATION_TAB);
+        register("stone_stairs_black", STONE_STAIRS_BLACK, DECORATION_TAB);
 
         register("cobblestone_white", COBBLESTONE_WHITE, DECORATION_TAB);
         register("cobblestone_orange", COBBLESTONE_ORANGE, DECORATION_TAB);

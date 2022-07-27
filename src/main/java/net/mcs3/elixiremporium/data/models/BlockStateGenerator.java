@@ -34,7 +34,7 @@ public class BlockStateGenerator extends FabricModelProvider
     public static final ModelTemplate STAIRS_OUTER = createVanillaModel("outer_stairs", "_outer", TextureSlot.BOTTOM, TextureSlot.TOP, TextureSlot.SIDE);
     public static final ModelTemplate SLAB = createVanillaModel("slab", TextureSlot.BOTTOM, TextureSlot.TOP, TextureSlot.SIDE);
     public static final ModelTemplate SLAB_TOP = createVanillaModel("slab_top", "_top", TextureSlot.BOTTOM, TextureSlot.TOP, TextureSlot.SIDE);
-    public static final ModelTemplate COLORED_COBBLE = createModdedModel("template_colored_cobblestone", TextureSlot.ALL);
+    public static final ModelTemplate COLORED_COBBLE = createModdedModel("template_colored_stone", TextureSlot.ALL);
     public static final ModelTemplate COLORED_SLAB = createModdedModel("template_colored_slab", TextureSlot.BOTTOM, TextureSlot.TOP, TextureSlot.SIDE);
     public static final ModelTemplate COLORED_SLAB_TOP = createModdedModel("template_colored_slab_top", "_top", TextureSlot.BOTTOM, TextureSlot.TOP, TextureSlot.SIDE);
     public static final ModelTemplate COLORED_STAIRS = createModdedModel("template_colored_stairs", TextureSlot.BOTTOM, TextureSlot.TOP, TextureSlot.SIDE);
@@ -157,22 +157,73 @@ public class BlockStateGenerator extends FabricModelProvider
         createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_JAR_3, JAR);
         createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_JAR_4, JAR);
 
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_WHITE);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_ORANGE);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_MAGENTA);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_LIGHT_BLUE);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_YELLOW);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_LIME);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_PINK);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_GRAY);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_LIGHT_GRAY);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_CYAN);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_PURPLE);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_BLUE);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_BROWN);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_GREEN);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_RED);
-        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_BLACK);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_WHITE, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_ORANGE, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_MAGENTA, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_LIGHT_BLUE, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_YELLOW, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_LIME, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_PINK, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_GRAY, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_LIGHT_GRAY, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_CYAN, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_PURPLE, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_BLUE, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_BROWN, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_GREEN, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_RED, Blocks.STONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_BLACK, Blocks.STONE);
+
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_WHITE, Blocks.STONE, "stone_white");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_ORANGE, Blocks.STONE, "stone_orange");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_MAGENTA, Blocks.STONE, "stone_magenta");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_LIGHT_BLUE, Blocks.STONE, "stone_light_blue");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_YELLOW, Blocks.STONE, "stone_yellow");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_LIME, Blocks.STONE, "stone_lime");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_PINK, Blocks.STONE, "stone_pink");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_GRAY, Blocks.STONE, "stone_gray");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_LIGHT_GRAY, Blocks.STONE, "stone_light_gray");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_CYAN, Blocks.STONE, "stone_cyan");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_PURPLE, Blocks.STONE, "stone_purple");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_BLUE, Blocks.STONE, "stone_blue");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_BROWN, Blocks.STONE, "stone_brown");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_GREEN, Blocks.STONE, "stone_green");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_RED, Blocks.STONE, "stone_red");
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.STONE_SLAB_BLACK, Blocks.STONE, "stone_black");
+
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_WHITE, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_ORANGE, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_MAGENTA, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_LIGHT_BLUE, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_YELLOW, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_LIME, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_PINK, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_GRAY, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_LIGHT_GRAY, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_CYAN, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_PURPLE, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_BLUE, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_BROWN, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_GREEN, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_RED, Blocks.STONE);
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.STONE_STAIRS_BLACK, Blocks.STONE);
+
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_WHITE, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_ORANGE, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_MAGENTA, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_LIGHT_BLUE, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_YELLOW, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_LIME, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_PINK, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_GRAY, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_LIGHT_GRAY, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_CYAN, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_PURPLE, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_BLUE, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_BROWN, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_GREEN, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_RED, Blocks.COBBLESTONE);
+        createColoredCobbleModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_BLACK, Blocks.COBBLESTONE);
 
         createColoredSlabModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_SLAB_WHITE, Blocks.COBBLESTONE, "cobblestone_white");
         createColoredSlabModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_SLAB_ORANGE, Blocks.COBBLESTONE, "cobblestone_orange");
@@ -273,8 +324,8 @@ public class BlockStateGenerator extends FabricModelProvider
 
     }
 
-    public static void createColoredCobbleModels(BlockModelGenerators modelGenerator, Block block) {
-        TextureMapping textures = TextureMapping.cube(Blocks.COBBLESTONE);
+    public static void createColoredCobbleModels(BlockModelGenerators modelGenerator, Block block, Block textureBlock) {
+        TextureMapping textures = TextureMapping.cube(textureBlock);
         ResourceLocation resourceLocation = COLORED_COBBLE.create(block, textures, modelGenerator.modelOutput);
 
         modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, resourceLocation));
