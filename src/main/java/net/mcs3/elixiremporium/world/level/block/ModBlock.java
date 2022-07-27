@@ -19,23 +19,4 @@ public class ModBlock extends Block
     {
         super(properties);
     }
-
-    @Override
-    public InteractionResult use(BlockState state, Level world, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hitResult)
-    {
-        var stack = player.getItemInHand(hand);
-        if (stack.getItem() instanceof AxeItem)
-        {
-            var block = CopperStateMap.getUnwaxed(state.getBlock());
-            if (block.isPresent()) {
-                world.setBlock(pos, block.map(b -> b.withPropertiesOf(state)).get(), 11);
-                world.levelEvent(player, 3003, pos, 0);
-                if (player instanceof ServerPlayer) {
-                    CriteriaTriggers.ITEM_USED_ON_BLOCK.trigger((ServerPlayer) player, pos, stack);
-                }
-                return InteractionResult.SUCCESS;
-            }
-        }
-        return InteractionResult.PASS;
-    }
 }

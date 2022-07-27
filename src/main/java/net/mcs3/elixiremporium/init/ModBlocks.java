@@ -1,5 +1,6 @@
 package net.mcs3.elixiremporium.init;
 
+import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
 import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelBlock;
@@ -37,26 +38,26 @@ public class ModBlocks
     public static final Block GLAZED_JAR_3 = new GlazedJarBlock();
     public static final Block GLAZED_JAR_4 = new GlazedJarBlock();
 
-    public static final ChandelierBlock CHANDELIER_IRON = new ChandelierBlock(Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.ANVIL).noOcclusion());
-    public static final ChandelierBlock CHANDELIER_GOLD = new ChandelierBlock(Properties.copy(Blocks.GOLD_BLOCK).sound(SoundType.ANVIL).noOcclusion());
-    public static final WeatheringCopperChandelierBlock CHANDELIER_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.UNAFFECTED, Properties.copy(Blocks.COPPER_BLOCK).sound(SoundType.ANVIL).noOcclusion());
-    public static final WeatheringCopperChandelierBlock CHANDELIER_EXPOSED_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.EXPOSED, Properties.copy(Blocks.EXPOSED_COPPER).sound(SoundType.ANVIL).noOcclusion());
-    public static final WeatheringCopperChandelierBlock CHANDELIER_WEATHERED_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.WEATHERED, Properties.copy(Blocks.WEATHERED_COPPER).sound(SoundType.ANVIL).noOcclusion());
-    public static final WeatheringCopperChandelierBlock CHANDELIER_OXIDIZED_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.OXIDIZED, Properties.copy(Blocks.OXIDIZED_COPPER).sound(SoundType.ANVIL).noOcclusion());
-    public static final ModBlock CHANDELIER_WAXED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_COPPER));
-    public static final ModBlock CHANDELIER_WAXED_EXPOSED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_EXPOSED_COPPER));
-    public static final ModBlock CHANDELIER_WAXED_WEATHERED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_WEATHERED_COPPER));
-    public static final ModBlock CHANDELIER_WAXED_OXIDIZED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_OXIDIZED_COPPER));
+    public static final Block CHANDELIER_IRON = new ChandelierBlock(Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.ANVIL).noOcclusion());
+    public static final Block CHANDELIER_GOLD = new ChandelierBlock(Properties.copy(Blocks.GOLD_BLOCK).sound(SoundType.ANVIL).noOcclusion());
+    public static final Block CHANDELIER_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.UNAFFECTED, Properties.copy(Blocks.COPPER_BLOCK).sound(SoundType.ANVIL).noOcclusion());
+    public static final Block CHANDELIER_EXPOSED_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.EXPOSED, Properties.copy(Blocks.EXPOSED_COPPER).sound(SoundType.ANVIL).noOcclusion());
+    public static final Block CHANDELIER_WEATHERED_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.WEATHERED, Properties.copy(Blocks.WEATHERED_COPPER).sound(SoundType.ANVIL).noOcclusion());
+    public static final Block CHANDELIER_OXIDIZED_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.OXIDIZED, Properties.copy(Blocks.OXIDIZED_COPPER).sound(SoundType.ANVIL).noOcclusion());
+    public static final Block CHANDELIER_WAXED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_COPPER));
+    public static final Block CHANDELIER_WAXED_EXPOSED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_EXPOSED_COPPER));
+    public static final Block CHANDELIER_WAXED_WEATHERED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_WEATHERED_COPPER));
+    public static final Block CHANDELIER_WAXED_OXIDIZED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_OXIDIZED_COPPER));
 
-    public static final ModChainBlock CHAIN_GOLD = new ModChainBlock(Properties.copy(Blocks.CHAIN));
-    public static final WeatheringCopperChainBlock CHAIN_COPPER = new WeatheringCopperChainBlock(WeatheringCopper.WeatherState.UNAFFECTED, Properties.copy(Blocks.COPPER_BLOCK));
-    public static final WeatheringCopperChainBlock CHAIN_EXPOSED_COPPER = new WeatheringCopperChainBlock(WeatheringCopper.WeatherState.EXPOSED, Properties.copy(Blocks.EXPOSED_COPPER));
-    public static final WeatheringCopperChainBlock CHAIN_WEATHERED_COPPER = new WeatheringCopperChainBlock(WeatheringCopper.WeatherState.WEATHERED, Properties.copy(Blocks.WEATHERED_COPPER));
-    public static final WeatheringCopperChainBlock CHAIN_OXIDIZED_COPPER = new WeatheringCopperChainBlock(WeatheringCopper.WeatherState.OXIDIZED, Properties.copy(Blocks.OXIDIZED_COPPER));
-    public static final ModChainBlock CHAIN_WAXED_COPPER = new ModChainBlock(Properties.copy(ModBlocks.CHAIN_COPPER));
-    public static final ModChainBlock CHAIN_WAXED_EXPOSED_COPPER = new ModChainBlock(Properties.copy(ModBlocks.CHAIN_EXPOSED_COPPER));
-    public static final ModChainBlock CHAIN_WAXED_WEATHERED_COPPER = new ModChainBlock(Properties.copy(ModBlocks.CHAIN_WEATHERED_COPPER));
-    public static final ModChainBlock CHAIN_WAXED_OXIDIZED_COPPER = new ModChainBlock(Properties.copy(ModBlocks.CHAIN_OXIDIZED_COPPER));
+    public static final Block CHAIN_GOLD = new ModChainBlock(Properties.copy(Blocks.CHAIN));
+    public static final Block CHAIN_COPPER = new WeatheringCopperChainBlock(WeatheringCopper.WeatherState.UNAFFECTED, Properties.copy(Blocks.COPPER_BLOCK));
+    public static final Block CHAIN_EXPOSED_COPPER = new WeatheringCopperChainBlock(WeatheringCopper.WeatherState.EXPOSED, Properties.copy(Blocks.EXPOSED_COPPER));
+    public static final Block CHAIN_WEATHERED_COPPER = new WeatheringCopperChainBlock(WeatheringCopper.WeatherState.WEATHERED, Properties.copy(Blocks.WEATHERED_COPPER));
+    public static final Block CHAIN_OXIDIZED_COPPER = new WeatheringCopperChainBlock(WeatheringCopper.WeatherState.OXIDIZED, Properties.copy(Blocks.OXIDIZED_COPPER));
+    public static final Block CHAIN_WAXED_COPPER = new ModChainBlock(Properties.copy(ModBlocks.CHAIN_COPPER));
+    public static final Block CHAIN_WAXED_EXPOSED_COPPER = new ModChainBlock(Properties.copy(ModBlocks.CHAIN_EXPOSED_COPPER));
+    public static final Block CHAIN_WAXED_WEATHERED_COPPER = new ModChainBlock(Properties.copy(ModBlocks.CHAIN_WEATHERED_COPPER));
+    public static final Block CHAIN_WAXED_OXIDIZED_COPPER = new ModChainBlock(Properties.copy(ModBlocks.CHAIN_OXIDIZED_COPPER));
 
     public static final Block COBBLESTONE_WHITE = new ColoredStoneBlock(Properties.copy(Blocks.COBBLESTONE));
     public static final Block COBBLESTONE_ORANGE = new ColoredStoneBlock(Properties.copy(Blocks.COBBLESTONE));
@@ -177,8 +178,6 @@ public class ModBlocks
     public static final ModStairsBlock PAINTED_STAIRS_RED = new ModStairsBlock(PAINTED_PLANKS_RED.defaultBlockState(), Properties.copy(PAINTED_PLANKS_RED));
     public static final ModStairsBlock PAINTED_STAIRS_BLACK = new ModStairsBlock(PAINTED_PLANKS_BLACK.defaultBlockState(), Properties.copy(PAINTED_PLANKS_BLACK));
 
-
-
     public static final PathBlock COBBLESTONE_PATH = new PathBlock();
     public static final PathBlock STONE_PATH = new PathBlock();
     public static final PathBlock GRANITE_PATH = new PathBlock();
@@ -187,12 +186,6 @@ public class ModBlocks
     public static final PathBlock COBBLED_DEEPSLATE_PATH = new PathBlock();
     public static final PathBlock BLACKSTONE_PATH = new PathBlock();
     public static final PathBlock NETHER_BRICKS_PATH = new PathBlock();
-
-
-
-
-
-
 
     public static void init()
     {
@@ -347,8 +340,6 @@ public class ModBlocks
         register("painted_stairs_red", PAINTED_STAIRS_RED, DECORATION_TAB);
         register("painted_stairs_black", PAINTED_STAIRS_BLACK, DECORATION_TAB);
 
-
-
         register("cobblestone_path", COBBLESTONE_PATH, DECORATION_TAB);
         register("stone_path", STONE_PATH, DECORATION_TAB);
         register("granite_path", GRANITE_PATH, DECORATION_TAB);
@@ -360,11 +351,36 @@ public class ModBlocks
 
 
 
+        initOxidizables();
 
 
 
 
 
+
+
+
+    }
+
+    public static void initOxidizables()
+    {
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(CHAIN_COPPER, CHAIN_EXPOSED_COPPER);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(CHAIN_EXPOSED_COPPER, CHAIN_WEATHERED_COPPER);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(CHAIN_WEATHERED_COPPER, CHAIN_OXIDIZED_COPPER);
+
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(CHANDELIER_COPPER, CHANDELIER_EXPOSED_COPPER);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(CHANDELIER_EXPOSED_COPPER, CHANDELIER_WEATHERED_COPPER);
+        OxidizableBlocksRegistry.registerOxidizableBlockPair(CHANDELIER_WEATHERED_COPPER, CHANDELIER_OXIDIZED_COPPER);
+
+        OxidizableBlocksRegistry.registerWaxableBlockPair(CHAIN_COPPER, CHAIN_WAXED_COPPER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(CHAIN_EXPOSED_COPPER, CHAIN_WAXED_EXPOSED_COPPER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(CHAIN_WEATHERED_COPPER, CHAIN_WAXED_WEATHERED_COPPER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(CHAIN_OXIDIZED_COPPER, CHAIN_WAXED_OXIDIZED_COPPER);
+
+        OxidizableBlocksRegistry.registerWaxableBlockPair(CHANDELIER_COPPER, CHANDELIER_WAXED_COPPER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(CHANDELIER_EXPOSED_COPPER, CHANDELIER_WAXED_EXPOSED_COPPER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(CHANDELIER_WEATHERED_COPPER, CHANDELIER_WAXED_WEATHERED_COPPER);
+        OxidizableBlocksRegistry.registerWaxableBlockPair(CHANDELIER_OXIDIZED_COPPER, CHANDELIER_WAXED_OXIDIZED_COPPER);
     }
 
     static <T extends Block> T register(String name, T anyBlock, CreativeModeTab tab)
