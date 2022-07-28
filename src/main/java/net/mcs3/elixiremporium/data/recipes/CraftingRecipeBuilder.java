@@ -233,13 +233,23 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
 
         ShapedRecipeBuilder.shaped(ModBlocks.UNFIRED_JAR).define('#', Items.CLAY_BALL).define('X', Items.CLAY).pattern(" # ").pattern("# #").pattern("XXX").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.UNFIRED_JAR.asItem()), ModBlocks.FIRED_JAR.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
-
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.FIRED_JAR.asItem()), ModBlocks.GLAZED_JAR_0.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItemTags.JARS), ModBlocks.GLAZED_JAR_0.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter, new ResourceLocation("glazed_jar_from_glazed_jar"));
         ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_JAR_1).requires(ModItemTags.JARS).requires(Items.WHITE_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_JAR_2).requires(ModItemTags.JARS).requires(Items.BLACK_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_JAR_3).requires(ModItemTags.JARS).requires(Items.BROWN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_JAR_4).requires(ModItemTags.JARS).requires(Items.GREEN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+
+        ShapedRecipeBuilder.shaped(ModBlocks.UNFIRED_POT).define('#', Items.CLAY_BALL).define('X', Items.CLAY).pattern("# #").pattern("X X").pattern("XXX").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.UNFIRED_POT.asItem()), ModBlocks.FIRED_POT.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.FIRED_POT.asItem()), ModBlocks.GLAZED_POT_0.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItemTags.POTS), ModBlocks.GLAZED_POT_0.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter, new ResourceLocation("glazed_pot_from_glazed_pot"));
+        ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_POT_1).requires(ModItemTags.POTS).requires(Items.WHITE_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_POT_2).requires(ModItemTags.POTS).requires(Items.BLACK_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_POT_3).requires(ModItemTags.POTS).requires(Items.BROWN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_POT_4).requires(ModItemTags.POTS).requires(Items.GREEN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
+
+
 
 
 

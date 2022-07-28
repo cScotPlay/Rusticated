@@ -213,6 +213,14 @@
   "block.elixiremporium.glazed_jar_3": "Glazed Jar",
   "block.elixiremporium.glazed_jar_4": "Glazed Jar",
 
+  "block.elixiremporium.unfired_pot": "Unfired Pot",
+  "block.elixiremporium.fired_pot": "Fired Pot",
+  "block.elixiremporium.glazed_pot_0": "Glazed Pot",
+  "block.elixiremporium.glazed_pot_1": "Glazed Pot",
+  "block.elixiremporium.glazed_pot_2": "Glazed Pot",
+  "block.elixiremporium.glazed_pot_3": "Glazed Pot",
+  "block.elixiremporium.glazed_pot_4": "Glazed Pot",
+
   "item.elixiremporium.catalog": "Emporium Catalog",
   "item.elixiremporium.olives": "Olives",
 

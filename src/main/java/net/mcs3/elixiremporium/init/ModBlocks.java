@@ -7,6 +7,8 @@ import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.jar.FiredJarBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.jar.GlazedJarBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.liquid_barrel.LiquidBarrelBlock;
+import net.mcs3.elixiremporium.world.level.block.storage.pot.FiredPotBlock;
+import net.mcs3.elixiremporium.world.level.block.storage.pot.GlazedPotBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -37,6 +39,14 @@ public class ModBlocks
     public static final Block GLAZED_JAR_2 = new GlazedJarBlock();
     public static final Block GLAZED_JAR_3 = new GlazedJarBlock();
     public static final Block GLAZED_JAR_4 = new GlazedJarBlock();
+
+    public static final Block UNFIRED_POT = new ModBlock(Properties.of(Material.CLAY).instabreak().noOcclusion());
+    public static final Block FIRED_POT = new FiredPotBlock();
+    public static final Block GLAZED_POT_0 = new GlazedPotBlock();
+    public static final Block GLAZED_POT_1 = new GlazedPotBlock();
+    public static final Block GLAZED_POT_2 = new GlazedPotBlock();
+    public static final Block GLAZED_POT_3 = new GlazedPotBlock();
+    public static final Block GLAZED_POT_4 = new GlazedPotBlock();
 
     public static final Block CHANDELIER_IRON = new ChandelierBlock(Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.ANVIL).noOcclusion());
     public static final Block CHANDELIER_GOLD = new ChandelierBlock(Properties.copy(Blocks.GOLD_BLOCK).sound(SoundType.ANVIL).noOcclusion());
@@ -250,6 +260,14 @@ public class ModBlocks
         registerSpecial("glazed_jar_2", GLAZED_JAR_2 , ModBlockItems.GLAZED_JAR_2_ITEM, DECORATION_TAB);
         registerSpecial("glazed_jar_3", GLAZED_JAR_3 , ModBlockItems.GLAZED_JAR_3_ITEM, DECORATION_TAB);
         registerSpecial("glazed_jar_4", GLAZED_JAR_4 , ModBlockItems.GLAZED_JAR_4_ITEM, DECORATION_TAB);
+
+        register("unfired_pot", UNFIRED_POT, DECORATION_TAB);
+        registerSpecial("fired_pot", FIRED_POT, ModBlockItems.FIRE_POT_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_pot_0", GLAZED_POT_0 , ModBlockItems.GLAZED_POT_0_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_pot_1", GLAZED_POT_1 , ModBlockItems.GLAZED_POT_1_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_pot_2", GLAZED_POT_2 , ModBlockItems.GLAZED_POT_2_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_pot_3", GLAZED_POT_3 , ModBlockItems.GLAZED_POT_3_ITEM, DECORATION_TAB);
+        registerSpecial("glazed_pot_4", GLAZED_POT_4 , ModBlockItems.GLAZED_POT_4_ITEM, DECORATION_TAB);
 
         register("chandelier_iron", CHANDELIER_IRON, DECORATION_TAB);
         register("chandelier_gold", CHANDELIER_GOLD, DECORATION_TAB);

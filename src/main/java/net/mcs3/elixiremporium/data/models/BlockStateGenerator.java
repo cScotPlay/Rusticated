@@ -53,6 +53,7 @@ public class BlockStateGenerator extends FabricModelProvider
     public static final ModelTemplate BARREL = createModdedModel("barrel_base", TextureSlot.PARTICLE, TextureSlot.TOP,TextureSlot.BOTTOM);
     public static final ModelTemplate LIQUID_BARREL = createModdedModel("liquid_barrel_base", TextureSlot.PARTICLE, TextureSlot.TOP,TextureSlot.BOTTOM);
     public static final ModelTemplate JAR = createModdedModel("jar_base", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
+    public static final ModelTemplate POT = createModdedModel("pot_base", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
 
 
 
@@ -156,6 +157,14 @@ public class BlockStateGenerator extends FabricModelProvider
         createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_JAR_2, JAR);
         createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_JAR_3, JAR);
         createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_JAR_4, JAR);
+
+        createJarStates(blockStateModelGenerator, ModBlocks.UNFIRED_POT, POT);
+        createJarStates(blockStateModelGenerator, ModBlocks.FIRED_POT, POT);
+        createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_POT_0, POT);
+        createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_POT_1, POT);
+        createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_POT_2, POT);
+        createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_POT_3, POT);
+        createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_POT_4, POT);
 
         createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_WHITE, Blocks.STONE);
         createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_ORANGE, Blocks.STONE);

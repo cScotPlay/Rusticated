@@ -1,3 +1,3 @@
 accessWidener v1 named
 
-accessible class net/minecraft/data/client/BlockStateModelGenerator$BlockTexturePool
+accessible field net/minecraft/client/multiplayer/MultiPlayerGameMode destroyDelay I

@@ -2,6 +2,7 @@ package net.mcs3.elixiremporium;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
+import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.util.RegistryHandler;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -17,7 +18,7 @@ public class ElixirEmporium implements ModInitializer {
 
 	public static CreativeModeTab ITEMGROUPDECO = FabricItemGroupBuilder.build(
 			new ResourceLocation("elixiremporium", "item_group_deco"),
-			() -> new ItemStack(Items.WHEAT)); //TODO Update Item
+			() -> new ItemStack(ModBlocks.GLAZED_POT_4.asItem()));
 
 	public static CreativeModeTab ITEMGROUPAG = FabricItemGroupBuilder.build(
 			new ResourceLocation("elixiremporium", "item_group_ag"),

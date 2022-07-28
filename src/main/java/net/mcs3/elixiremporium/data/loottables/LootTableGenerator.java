@@ -167,7 +167,8 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
                 ModBlocks.CHAIN_WAXED_WEATHERED_COPPER,
                 ModBlocks.CHAIN_WAXED_OXIDIZED_COPPER,
 
-                ModBlocks.UNFIRED_JAR
+                ModBlocks.UNFIRED_JAR,
+                ModBlocks.UNFIRED_POT
         )
 
                 .forEach(this::dropSelf);

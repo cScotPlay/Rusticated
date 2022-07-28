@@ -23,6 +23,13 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlockItems.GLAZED_JAR_3_ITEM,
                 ModBlockItems.GLAZED_JAR_4_ITEM);
 
+        getOrCreateTagBuilder(ModItemTags.POTS).add(
+                ModBlockItems.GLAZED_POT_0_ITEM,
+                ModBlockItems.GLAZED_POT_1_ITEM,
+                ModBlockItems.GLAZED_POT_2_ITEM,
+                ModBlockItems.GLAZED_POT_3_ITEM,
+                ModBlockItems.GLAZED_POT_4_ITEM);
+
         getOrCreateTagBuilder(ModItemTags.COLORED_STONE).add(
                 Blocks.STONE.asItem(),
                 ModBlocks.STONE_WHITE.asItem(),
