@@ -7,9 +7,12 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
+import net.mcs3.elixiremporium.world.level.block.LatticeBlock;
 import net.minecraft.client.model.Model;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
+import net.minecraft.data.models.blockstates.Condition;
+import net.minecraft.data.models.blockstates.MultiPartGenerator;
 import net.minecraft.data.models.blockstates.MultiVariantGenerator;
 import net.minecraft.data.models.blockstates.VariantProperties;
 import net.minecraft.data.models.model.*;
@@ -17,6 +20,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.WallSide;
 
 
 import java.util.Map;
@@ -54,6 +59,11 @@ public class BlockStateGenerator extends FabricModelProvider
     public static final ModelTemplate LIQUID_BARREL = createModdedModel("liquid_barrel_base", TextureSlot.PARTICLE, TextureSlot.TOP,TextureSlot.BOTTOM);
     public static final ModelTemplate JAR = createModdedModel("jar_base", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
     public static final ModelTemplate POT = createModdedModel("pot_base", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
+    public static final ModelTemplate LATTICE_BASE = createModdedModel("template_lattice_base", TextureSlot.SIDE);
+    public static final ModelTemplate LATTICE_BAR = createModdedModel("template_lattice_bar", "_bar", TextureSlot.SIDE);
+    public static final ModelTemplate LATTICE_LEAVES_BASE = createModdedModel("template_lattice_leaves_base","_leaves_base", TextureSlot.TEXTURE);
+    public static final ModelTemplate LATTICE_LEAVES_BAR = createModdedModel("template_lattice_leaves_bar", "_leaves_bar", TextureSlot.TEXTURE);
+    public static final ModelTemplate LATTICE_INVENTORY = createModdedModel("template_lattice_inventory", "_inventory", TextureSlot.SIDE);
 
 
 
@@ -165,6 +175,8 @@ public class BlockStateGenerator extends FabricModelProvider
         createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_POT_2, POT);
         createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_POT_3, POT);
         createJarStates(blockStateModelGenerator, ModBlocks.GLAZED_POT_4, POT);
+
+        createLatticeStates(blockStateModelGenerator, ModBlocks.IRON_LATTICE);
 
         createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_WHITE, Blocks.STONE);
         createColoredCobbleModels(blockStateModelGenerator, ModBlocks.STONE_ORANGE, Blocks.STONE);
@@ -426,7 +438,54 @@ public class BlockStateGenerator extends FabricModelProvider
 
         modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, resource));
         modelGenerator.delegateItemModel(block, resource);
+    }
 
+    public static void createLatticeStates(BlockModelGenerators modelGenerators, Block block) {// BlockModelGenerators.BlockFamilyProvider wall(Block wallBlock) {
+
+        TextureMapping textureLattice = TextureMapping.cauldron(TextureMapping.getBlockTexture(Blocks.CAULDRON, "_side"));
+        TextureMapping textureLeaves = TextureMapping.cube(Blocks.OAK_LEAVES);
+
+        ResourceLocation latticeBase = LATTICE_BASE.create(block, textureLattice, modelGenerators.modelOutput);
+        ResourceLocation latticeBar = LATTICE_BAR.create(block, textureLattice, modelGenerators.modelOutput);
+        ResourceLocation leavesBase = LATTICE_LEAVES_BASE.create(block, textureLeaves, modelGenerators.modelOutput);
+        ResourceLocation leavesBar = LATTICE_LEAVES_BAR.create(block, textureLeaves, modelGenerators.modelOutput);
+        ResourceLocation latticeInventory = LATTICE_INVENTORY.create(block, textureLattice, modelGenerators.modelOutput);
+
+        modelGenerators.blockStateOutput.accept(createLattice(block, latticeBase, latticeBar, leavesBase, leavesBar));
+
+        modelGenerators.delegateItemModel(block, latticeInventory);
+
+//        MultiPartGenerator.multiPart(block).with(Condition.condition().term(BlockStateProperties.UP, true), );
+
+//        ResourceLocation resourceLocation = ModelTemplates.WALL_POST.create(wallBlock, this.mapping, BlockModelGenerators.this.modelOutput);
+//        ResourceLocation resourceLocation2 = ModelTemplates.WALL_LOW_SIDE.create(wallBlock, this.mapping, BlockModelGenerators.this.modelOutput);
+//        ResourceLocation resourceLocation3 = ModelTemplates.WALL_TALL_SIDE.create(wallBlock, this.mapping, BlockModelGenerators.this.modelOutput);
+//        BlockModelGenerators.this.blockStateOutput.accept(BlockModelGenerators.createWall(wallBlock, resourceLocation, resourceLocation2, resourceLocation3));
+//        ResourceLocation resourceLocation4 = ModelTemplates.WALL_INVENTORY.create(wallBlock, this.mapping, BlockModelGenerators.this.modelOutput);
+//        BlockModelGenerators.this.delegateItemModel(wallBlock, resourceLocation4);
+//
+//        return MultiPartGenerator.multiPart(wallBlock).with(Condition.condition().term(BlockStateProperties.UP, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, postModelLocation)).with(Condition.condition().term(BlockStateProperties.NORTH_WALL, WallSide.LOW), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, lowSideModelLocation).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.EAST_WALL, WallSide.LOW), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, lowSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.SOUTH_WALL, WallSide.LOW), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, lowSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.WEST_WALL, WallSide.LOW), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, lowSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.NORTH_WALL, WallSide.TALL), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, tallSideModelLocation).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.EAST_WALL, WallSide.TALL), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, tallSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.SOUTH_WALL, WallSide.TALL), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, tallSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.WEST_WALL, WallSide.TALL), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, tallSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true));
+
+    }
+
+    public static net.minecraft.data.models.blockstates.BlockStateGenerator createLattice(Block latticeBlock, ResourceLocation latticeBase, ResourceLocation latticeBar, ResourceLocation leavesBase, ResourceLocation leavesBar) {
+        return MultiPartGenerator.multiPart(latticeBlock)
+                .with(Condition.condition().term(BlockStateProperties.DOWN, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, latticeBase))
+                .with(Condition.condition().term(BlockStateProperties.DOWN, false), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, latticeBase))
+                .with(Condition.condition().term(BlockStateProperties.UP, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, latticeBar).with(VariantProperties.X_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.DOWN, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, latticeBar).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.NORTH, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, latticeBar).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.EAST, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, latticeBar).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.SOUTH, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, latticeBar).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.WEST, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, latticeBar).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.DOWN, true).term(LatticeBlock.LEAVES, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, leavesBase))
+                .with(Condition.condition().term(BlockStateProperties.DOWN, false).term(LatticeBlock.LEAVES, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, leavesBase))
+                .with(Condition.condition().term(BlockStateProperties.UP, true).term(LatticeBlock.LEAVES, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, leavesBar).with(VariantProperties.X_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.DOWN, true).term(LatticeBlock.LEAVES, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, leavesBar).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.NORTH, true).term(LatticeBlock.LEAVES, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, leavesBar).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.EAST, true).term(LatticeBlock.LEAVES, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, leavesBar).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.SOUTH, true).term(LatticeBlock.LEAVES, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, leavesBar).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true))
+                .with(Condition.condition().term(BlockStateProperties.WEST, true).term(LatticeBlock.LEAVES, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, leavesBar).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true));
     }
 
     public static MultiVariantGenerator pathModelVariants(Block block, ResourceLocation path0Location, ResourceLocation path1Location, ResourceLocation path2Location, ResourceLocation path3Location) {

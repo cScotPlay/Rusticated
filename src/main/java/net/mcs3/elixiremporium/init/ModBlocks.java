@@ -48,6 +48,8 @@ public class ModBlocks
     public static final Block GLAZED_POT_3 = new GlazedPotBlock();
     public static final Block GLAZED_POT_4 = new GlazedPotBlock();
 
+    public static final Block IRON_LATTICE = new LatticeBlock();
+
     public static final Block CHANDELIER_IRON = new ChandelierBlock(Properties.copy(Blocks.IRON_BLOCK).sound(SoundType.ANVIL).noOcclusion());
     public static final Block CHANDELIER_GOLD = new ChandelierBlock(Properties.copy(Blocks.GOLD_BLOCK).sound(SoundType.ANVIL).noOcclusion());
     public static final Block CHANDELIER_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.UNAFFECTED, Properties.copy(Blocks.COPPER_BLOCK).sound(SoundType.ANVIL).noOcclusion());
@@ -268,6 +270,8 @@ public class ModBlocks
         registerSpecial("glazed_pot_2", GLAZED_POT_2 , ModBlockItems.GLAZED_POT_2_ITEM, DECORATION_TAB);
         registerSpecial("glazed_pot_3", GLAZED_POT_3 , ModBlockItems.GLAZED_POT_3_ITEM, DECORATION_TAB);
         registerSpecial("glazed_pot_4", GLAZED_POT_4 , ModBlockItems.GLAZED_POT_4_ITEM, DECORATION_TAB);
+
+        register("iron_lattice", ModBlocks.IRON_LATTICE, DECORATION_TAB);
 
         register("chandelier_iron", CHANDELIER_IRON, DECORATION_TAB);
         register("chandelier_gold", CHANDELIER_GOLD, DECORATION_TAB);

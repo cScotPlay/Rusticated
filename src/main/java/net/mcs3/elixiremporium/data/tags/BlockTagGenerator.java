@@ -78,6 +78,9 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(registry.stream().filter(b -> b instanceof ColoredStoneWallBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
+                .add(registry.stream().filter(b -> b instanceof LatticeBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 ModBlocks.CHANDELIER_WAXED_COPPER,
                 ModBlocks.CHANDELIER_WAXED_EXPOSED_COPPER,

@@ -10,6 +10,7 @@ public class ModItemTags
 {
     public static final TagKey<Item> JARS = modItem("jars");
     public static final TagKey<Item> POTS = modItem("pots");
+
     public static final TagKey<Item> COLORED_COBBLESTONE = modItem("colored_cobblestone");
     public static final TagKey<Item> COLORED_COBBLESTONE_SLAB = modItem("colored_cobblestone_slab");
     public static final TagKey<Item> COLORED_COBBLESTONE_STAIRS = modItem("colored_cobblestone_stairs");

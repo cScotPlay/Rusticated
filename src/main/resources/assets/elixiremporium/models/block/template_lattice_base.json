@@ -1,0 +1,20 @@
+{
+	"textures": {
+		"texture": "minecraft:block/cauldron_side"
+	},
+	"elements": [
+		{
+			"name": "Cube",
+			"from": [7, 7, 7],
+			"to": [9, 9, 9],
+			"faces": {
+				"north": {"uv": [5, 6, 7, 8], "texture": "#texture"},
+				"east": {"uv": [9, 8, 11, 10], "texture": "#texture"},
+				"south": {"uv": [9, 6, 11, 8], "texture": "#texture"},
+				"west": {"uv": [7, 6, 9, 8], "texture": "#texture"},
+				"up": {"uv": [7, 4, 9, 6], "texture": "#texture"},
+				"down": {"uv": [5, 8, 7, 10], "texture": "#texture"}
+			}
+		}
+	]
+}

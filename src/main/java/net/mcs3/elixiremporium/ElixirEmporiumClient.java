@@ -17,8 +17,11 @@ import net.mcs3.elixiremporium.world.level.block.storage.pot.PotToolTipData;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.client.PotTooltipComponent;
 import net.mcs3.elixiremporium.world.menu.BarrelMenu;
 import net.mcs3.elixiremporium.world.menu.ModMenuTypes;
+import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.block.Blocks;
 
 public class ElixirEmporiumClient implements ClientModInitializer
 {
@@ -51,6 +54,7 @@ public class ElixirEmporiumClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.UNFIRED_JAR, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FIRED_JAR, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.FIRED_POT, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.IRON_LATTICE, RenderType.cutout());
 
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, LiquidBarrelRenderer::new);
 
@@ -199,6 +203,10 @@ public class ElixirEmporiumClient implements ClientModInitializer
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> 0x5e7c16, ModBlocks.COBBLESTONE_WALL_GREEN);
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> 0xb02e26, ModBlocks.COBBLESTONE_WALL_RED);
         ColorProviderRegistry.BLOCK.register((state, view, pos, tintIndex) -> 0x1d1d21, ModBlocks.COBBLESTONE_WALL_BLACK);
+
+        ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> {
+            return blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor();
+        }, ModBlocks.IRON_LATTICE);
     }
 
     private static void registerItemColorProviders()

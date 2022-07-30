@@ -58,23 +58,23 @@ public class GlazedPotBlock extends AbstractStorageBlock implements EntityBlock
         {
             return new PotEntityBlock(ModBlockEntityTypes.GLAZED_POT_0_CONTAINER, pos, state, 16);
         }
-        if(block == ModBlocks.GLAZED_POT_1)
+        else if(block == ModBlocks.GLAZED_POT_1)
         {
             return new PotEntityBlock(ModBlockEntityTypes.GLAZED_POT_1_CONTAINER, pos, state, 16);
         }
-        if(block == ModBlocks.GLAZED_POT_2)
+        else if(block == ModBlocks.GLAZED_POT_2)
         {
             return new PotEntityBlock(ModBlockEntityTypes.GLAZED_POT_2_CONTAINER, pos, state, 16);
         }
-        if(block == ModBlocks.GLAZED_POT_3)
+        else if(block == ModBlocks.GLAZED_POT_3)
         {
             return new PotEntityBlock(ModBlockEntityTypes.GLAZED_POT_3_CONTAINER, pos, state, 16);
         }
-        if(block == ModBlocks.GLAZED_POT_4)
+        else if(block == ModBlocks.GLAZED_POT_4)
         {
             return new PotEntityBlock(ModBlockEntityTypes.GLAZED_POT_4_CONTAINER, pos, state, 16);
         }
-        return null;//new PotEntityBlock(ModBlockEntityTypes.GLAZED_POT_0_CONTAINER, pos, state, 16);
+        return new PotEntityBlock(ModBlockEntityTypes.GLAZED_POT_0_CONTAINER, pos, state, 16);
     }
 
     static {

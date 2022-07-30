@@ -249,6 +249,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_POT_3).requires(ModItemTags.POTS).requires(Items.BROWN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_POT_4).requires(ModItemTags.POTS).requires(Items.GREEN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
 
+        ShapedRecipeBuilder.shaped(ModBlocks.IRON_LATTICE, 16).define('#', Items.IRON_INGOT).pattern(" # ").pattern("###").pattern(" # ").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(exporter);
+
 
 
 
