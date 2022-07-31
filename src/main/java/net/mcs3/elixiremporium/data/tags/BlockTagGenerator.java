@@ -95,5 +95,8 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.BARREL,
                 ModBlocks.LIQUID_BARREL
         );
+
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
+                .add(registry.stream().filter(b -> b instanceof FramedWallBlocks).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
     }
 }

@@ -222,6 +222,23 @@
   "block.elixiremporium.glazed_pot_4": "Glazed Pot",
   "block.elixiremporium.iron_lattice": "Iron Lattice",
 
+  "block.elixiremporium.framed_wall_cross_white": "White Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_orange": "Orange Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_magenta": "Magenta Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_light_blue": "Light Blue Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_yellow": "Yellow Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_lime": "Lime Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_pink": "Pink Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_gray": "Gray Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_light_gray": "Light Gray Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_cyan": "Cyan Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_purple": "Purple Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_blue": "Blue Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_brown": "Brown Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_green": "Green Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_red": "Red Framed Wall - Crossed",
+  "block.elixiremporium.framed_wall_cross_black": "Black Framed Wall - Crossed",
+
 
   "item.elixiremporium.catalog": "Emporium Catalog",
   "item.elixiremporium.olives": "Olives",

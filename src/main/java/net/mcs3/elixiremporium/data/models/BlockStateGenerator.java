@@ -59,11 +59,15 @@ public class BlockStateGenerator extends FabricModelProvider
     public static final ModelTemplate LIQUID_BARREL = createModdedModel("liquid_barrel_base", TextureSlot.PARTICLE, TextureSlot.TOP,TextureSlot.BOTTOM);
     public static final ModelTemplate JAR = createModdedModel("jar_base", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
     public static final ModelTemplate POT = createModdedModel("pot_base", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
-    public static final ModelTemplate LATTICE_BASE = createModdedModel("template_lattice_base", TextureSlot.SIDE);
-    public static final ModelTemplate LATTICE_BAR = createModdedModel("template_lattice_bar", "_bar", TextureSlot.SIDE);
-    public static final ModelTemplate LATTICE_LEAVES_BASE = createModdedModel("template_lattice_leaves_base","_leaves_base", TextureSlot.TEXTURE);
-    public static final ModelTemplate LATTICE_LEAVES_BAR = createModdedModel("template_lattice_leaves_bar", "_leaves_bar", TextureSlot.TEXTURE);
-    public static final ModelTemplate LATTICE_INVENTORY = createModdedModel("template_lattice_inventory", "_inventory", TextureSlot.SIDE);
+    public static final ModelTemplate LATTICE_BASE = createModdedModel("template_lattice_base", TextureSlot.SIDE, TextureSlot.PARTICLE);
+    public static final ModelTemplate LATTICE_BAR = createModdedModel("template_lattice_bar", "_bar", TextureSlot.SIDE, TextureSlot.PARTICLE);
+    public static final ModelTemplate LATTICE_LEAVES_BASE = createModdedModel("template_lattice_leaves_base","_leaves_base", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
+    public static final ModelTemplate LATTICE_LEAVES_BAR = createModdedModel("template_lattice_leaves_bar", "_leaves_bar", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
+    public static final ModelTemplate LATTICE_INVENTORY = createModdedModel("template_lattice_inventory", "_inventory", TextureSlot.SIDE, TextureSlot.PARTICLE);
+    public static final ModelTemplate FRAMED_CROSS = createModdedModel("template_framed_wall_cross", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
+    public static final ModelTemplate FRAMED_RT_DIAG = createModdedModel("template_framed_wall_rt_diag", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
+    public static final ModelTemplate FRAMED_LEFT_DIAG = createModdedModel("template_framed_wall_left_diag", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
+    public static final ModelTemplate FRAMED_WALL = createModdedModel("template_framed_wall", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
 
 
 
@@ -297,6 +301,74 @@ public class BlockStateGenerator extends FabricModelProvider
         createColoredStoneWallModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_WALL_RED, Blocks.COBBLESTONE);
         createColoredStoneWallModels(blockStateModelGenerator, ModBlocks.COBBLESTONE_WALL_BLACK, Blocks.COBBLESTONE);
 
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_WHITE, Blocks.WHITE_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_ORANGE, Blocks.ORANGE_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_MAGENTA, Blocks.MAGENTA_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_LIGHT_BLUE, Blocks.LIGHT_BLUE_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_YELLOW, Blocks.YELLOW_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_LIME, Blocks.LIME_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_PINK, Blocks.PINK_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_GRAY, Blocks.GRAY_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_LIGHT_GRAY, Blocks.LIGHT_GRAY_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_CYAN, Blocks.CYAN_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_PURPLE, Blocks.PURPLE_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_BLUE, Blocks.BLUE_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_BROWN, Blocks.BROWN_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_GREEN, Blocks.GREEN_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_RED, Blocks.RED_WOOL, FRAMED_CROSS);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CROSS_BLACK, Blocks.BLACK_WOOL, FRAMED_CROSS);
+
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_WHITE, Blocks.WHITE_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_ORANGE, Blocks.ORANGE_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_MAGENTA, Blocks.MAGENTA_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_LIGHT_BLUE, Blocks.LIGHT_BLUE_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_YELLOW, Blocks.YELLOW_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_LIME, Blocks.LIME_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_PINK, Blocks.PINK_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_GRAY, Blocks.GRAY_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_LIGHT_GRAY, Blocks.LIGHT_GRAY_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_CYAN, Blocks.CYAN_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_PURPLE, Blocks.PURPLE_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_BLUE, Blocks.BLUE_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_BROWN, Blocks.BROWN_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_GREEN, Blocks.GREEN_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_RED, Blocks.RED_WOOL, FRAMED_RT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RT_DIAG_BLACK, Blocks.BLACK_WOOL, FRAMED_RT_DIAG);
+
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_WHITE, Blocks.WHITE_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_ORANGE, Blocks.ORANGE_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_MAGENTA, Blocks.MAGENTA_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_LIGHT_BLUE, Blocks.LIGHT_BLUE_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_YELLOW, Blocks.YELLOW_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_LIME, Blocks.LIME_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_PINK, Blocks.PINK_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_GRAY, Blocks.GRAY_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_LIGHT_GRAY, Blocks.LIGHT_GRAY_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_CYAN, Blocks.CYAN_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_PURPLE, Blocks.PURPLE_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_BLUE, Blocks.BLUE_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_BROWN, Blocks.BROWN_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_GREEN, Blocks.GREEN_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_RED, Blocks.RED_WOOL, FRAMED_LEFT_DIAG);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LEFT_DIAG_BLACK, Blocks.BLACK_WOOL, FRAMED_LEFT_DIAG);
+
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_WHITE, Blocks.WHITE_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_ORANGE, Blocks.ORANGE_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_MAGENTA, Blocks.MAGENTA_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LIGHT_BLUE, Blocks.LIGHT_BLUE_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_YELLOW, Blocks.YELLOW_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LIME, Blocks.LIME_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_PINK, Blocks.PINK_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_GRAY, Blocks.GRAY_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_LIGHT_GRAY, Blocks.LIGHT_GRAY_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_CYAN, Blocks.CYAN_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_PURPLE, Blocks.PURPLE_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_BLUE, Blocks.BLUE_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_BROWN, Blocks.BROWN_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_GREEN, Blocks.GREEN_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RED, Blocks.RED_WOOL, FRAMED_WALL);
+        createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_BLACK, Blocks.BLACK_WOOL, FRAMED_WALL);
+
 
 
 
@@ -341,6 +413,17 @@ public class BlockStateGenerator extends FabricModelProvider
         ResourceLocation identifier2 = COLORED_SLAB_TOP.create(block, textures, modelGenerator.modelOutput);
 
         modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSlab(block, identifier, identifier2, baseModelId));
+        modelGenerator.delegateItemModel(block, identifier);
+
+    }
+
+    public static void createFramedWallModels(BlockModelGenerators modelGenerator, Block block, Block parentBlock, ModelTemplate modelTemplate) {
+        TextureMapping textures = TextureMapping.cube(parentBlock);
+        //ResourceLocation baseModelId = new ResourceLocation(MOD_ID, "block/" + name);
+
+        ResourceLocation identifier = modelTemplate.create(block, textures, modelGenerator.modelOutput);
+
+        modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, identifier));
         modelGenerator.delegateItemModel(block, identifier);
 
     }
@@ -452,21 +535,8 @@ public class BlockStateGenerator extends FabricModelProvider
         ResourceLocation latticeInventory = LATTICE_INVENTORY.create(block, textureLattice, modelGenerators.modelOutput);
 
         modelGenerators.blockStateOutput.accept(createLattice(block, latticeBase, latticeBar, leavesBase, leavesBar));
-
         modelGenerators.delegateItemModel(block, latticeInventory);
-
-//        MultiPartGenerator.multiPart(block).with(Condition.condition().term(BlockStateProperties.UP, true), );
-
-//        ResourceLocation resourceLocation = ModelTemplates.WALL_POST.create(wallBlock, this.mapping, BlockModelGenerators.this.modelOutput);
-//        ResourceLocation resourceLocation2 = ModelTemplates.WALL_LOW_SIDE.create(wallBlock, this.mapping, BlockModelGenerators.this.modelOutput);
-//        ResourceLocation resourceLocation3 = ModelTemplates.WALL_TALL_SIDE.create(wallBlock, this.mapping, BlockModelGenerators.this.modelOutput);
-//        BlockModelGenerators.this.blockStateOutput.accept(BlockModelGenerators.createWall(wallBlock, resourceLocation, resourceLocation2, resourceLocation3));
-//        ResourceLocation resourceLocation4 = ModelTemplates.WALL_INVENTORY.create(wallBlock, this.mapping, BlockModelGenerators.this.modelOutput);
-//        BlockModelGenerators.this.delegateItemModel(wallBlock, resourceLocation4);
-//
-//        return MultiPartGenerator.multiPart(wallBlock).with(Condition.condition().term(BlockStateProperties.UP, true), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, postModelLocation)).with(Condition.condition().term(BlockStateProperties.NORTH_WALL, WallSide.LOW), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, lowSideModelLocation).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.EAST_WALL, WallSide.LOW), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, lowSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.SOUTH_WALL, WallSide.LOW), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, lowSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.WEST_WALL, WallSide.LOW), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, lowSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.NORTH_WALL, WallSide.TALL), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, tallSideModelLocation).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.EAST_WALL, WallSide.TALL), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, tallSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.SOUTH_WALL, WallSide.TALL), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, tallSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180).with(VariantProperties.UV_LOCK, true)).with(Condition.condition().term(BlockStateProperties.WEST_WALL, WallSide.TALL), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, tallSideModelLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270).with(VariantProperties.UV_LOCK, true));
-
-    }
+}
 
     public static net.minecraft.data.models.blockstates.BlockStateGenerator createLattice(Block latticeBlock, ResourceLocation latticeBase, ResourceLocation latticeBar, ResourceLocation leavesBase, ResourceLocation leavesBar) {
         return MultiPartGenerator.multiPart(latticeBlock)

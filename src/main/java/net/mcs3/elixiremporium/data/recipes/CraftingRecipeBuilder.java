@@ -251,6 +251,57 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
 
         ShapedRecipeBuilder.shaped(ModBlocks.IRON_LATTICE, 16).define('#', Items.IRON_INGOT).pattern(" # ").pattern("###").pattern(" # ").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(exporter);
 
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_WHITE, Items.WHITE_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_ORANGE, Items.ORANGE_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_MAGENTA, Items.MAGENTA_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_LIGHT_BLUE, Items.LIGHT_BLUE_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_YELLOW, Items.YELLOW_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_LIME, Items.LIME_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_PINK, Items.PINK_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_GRAY, Items.GRAY_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_LIGHT_GRAY, Items.LIGHT_GRAY_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_CYAN, Items.CYAN_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_PURPLE, Items.PURPLE_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_BLUE, Items.BLUE_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_BROWN, Items.BROWN_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_GREEN, Items.GREEN_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_RED, Items.RED_WOOL);
+        frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_BLACK, Items.BLACK_WOOL);
+
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_WHITE, Items.WHITE_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_ORANGE, Items.ORANGE_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_MAGENTA, Items.MAGENTA_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_LIGHT_BLUE, Items.LIGHT_BLUE_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_YELLOW, Items.YELLOW_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_LIME, Items.LIME_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_PINK, Items.PINK_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_GRAY, Items.GRAY_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_LIGHT_GRAY, Items.LIGHT_GRAY_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_CYAN, Items.CYAN_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_PURPLE, Items.PURPLE_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_BLUE, Items.BLUE_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_BROWN, Items.BROWN_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_GREEN, Items.GREEN_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_RED, Items.RED_WOOL);
+        frameRtDiagRecipe(exporter, ModBlocks.FRAMED_WALL_RT_DIAG_BLACK, Items.BLACK_WOOL);
+
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_WHITE, Items.WHITE_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_ORANGE, Items.ORANGE_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_MAGENTA, Items.MAGENTA_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_LIGHT_BLUE, Items.LIGHT_BLUE_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_YELLOW, Items.YELLOW_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_LIME, Items.LIME_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_PINK, Items.PINK_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_GRAY, Items.GRAY_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_LIGHT_GRAY, Items.LIGHT_GRAY_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_CYAN, Items.CYAN_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_PURPLE, Items.PURPLE_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_BLUE, Items.BLUE_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_BROWN, Items.BROWN_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_GREEN, Items.GREEN_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_RED, Items.RED_WOOL);
+        frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_BLACK, Items.BLACK_WOOL);
+
 
 
 
@@ -312,6 +363,22 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
     {
         slab(exporter, output, input);
         ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.WOODEN_SLABS).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("painted_slabs").unlockedBy("has_slab", has(Blocks.OAK_PLANKS)).save(exporter, new ResourceLocation(dyedRecipeName));
+    }
+
+    public static void frameCrossedRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).define('T', Items.STICK).pattern("#T#").pattern("TXT").pattern("#T#").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
+    }
+
+    public static void frameRtDiagRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).define('T', Items.STICK).pattern("# #").pattern(" XT").pattern("#T#").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
+    }
+
+    public static void frameLeftDiagRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).define('T', Items.STICK).pattern("# #").pattern("TX ").pattern("#T#").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
+    }
+
+    public static void frameRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).pattern("# #").pattern(" X ").pattern("# #").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
     }
 
     public static void pathRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input, ItemLike inputCutter)

@@ -1,5 +1,6 @@
 {
 	"textures": {
+		"particle": "#particle",
 		"texture": "minecraft:block/cauldron_side"
 	},
 	"elements": [
