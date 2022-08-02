@@ -64,13 +64,11 @@ public class ChandelierBlock extends FallingBlock
     {
         if (isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinBuildHeight() && !suspended(level, pos)) {
             FallingBlockEntity fallingBlockEntity = FallingBlockEntity.fall(level, pos, state);
-            ElixirEmporium.LOGGER.info("This should Fall");
             this.falling(fallingBlockEntity);
         }
     }
 
-
-    private boolean suspended (Level level, BlockPos pos)
+    public static boolean suspended(Level level, BlockPos pos)
     {
         BlockState blockState = level.getBlockState(pos.above());
 
