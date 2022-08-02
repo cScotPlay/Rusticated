@@ -52,6 +52,12 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.WALLS)
                 .add(registry.stream().filter(b -> b instanceof ColoredStoneWallBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
+        getOrCreateTagBuilder(BlockTags.CLIMBABLE)
+                .add(registry.stream().filter(b -> b instanceof ModChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(BlockTags.CLIMBABLE)
+                .add(registry.stream().filter(b -> b instanceof WeatheringCopperChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
 
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
