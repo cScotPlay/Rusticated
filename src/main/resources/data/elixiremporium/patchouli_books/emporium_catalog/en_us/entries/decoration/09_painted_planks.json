@@ -1,0 +1,28 @@
+{
+  "name": "Painted Wood",
+  "icon": "elixiremporium:painted_planks_pink",
+  "category": "elixiremporium:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Now available, we have painted wood options. Planks, Slabs, and Stairs are offered in 16 different colors.",
+      "item": "elixiremporium:painted_planks_white,elixiremporium:painted_slab_white,elixiremporium:painted_stairs_white,elixiremporium:painted_planks_orange,elixiremporium:painted_slab_orange,elixiremporium:painted_stairs_orange,elixiremporium:painted_planks_magenta,elixiremporium:painted_slab_magenta,elixiremporium:painted_stairs_magenta,elixiremporium:painted_planks_light_blue,elixiremporium:painted_slab_light_blue,elixiremporium:painted_stairs_light_blue,elixiremporium:painted_planks_yellow,elixiremporium:painted_slab_yellow,elixiremporium:painted_stairs_yellow,elixiremporium:painted_planks_lime,elixiremporium:painted_slab_lime,elixiremporium:painted_stairs_lime,elixiremporium:painted_planks_pink,elixiremporium:painted_slab_pink,elixiremporium:painted_stairs_pink"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:painted_planks_pink",
+      "recipe2": "elixiremporium:painted_planks_pink_dyed"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:painted_stairs_pink",
+      "recipe2": "elixiremporium:painted_stairs_pink_dyed"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:painted_slab_pink",
+      "recipe2": "elixiremporium:painted_slab_pink_dyed"
+    }
+  ],
+  "sortnum": 9
+}

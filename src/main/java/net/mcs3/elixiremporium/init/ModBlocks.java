@@ -56,10 +56,10 @@ public class ModBlocks
     public static final Block CHANDELIER_EXPOSED_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.EXPOSED, Properties.copy(Blocks.EXPOSED_COPPER).sound(SoundType.ANVIL).noOcclusion());
     public static final Block CHANDELIER_WEATHERED_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.WEATHERED, Properties.copy(Blocks.WEATHERED_COPPER).sound(SoundType.ANVIL).noOcclusion());
     public static final Block CHANDELIER_OXIDIZED_COPPER = new WeatheringCopperChandelierBlock(WeatheringCopper.WeatherState.OXIDIZED, Properties.copy(Blocks.OXIDIZED_COPPER).sound(SoundType.ANVIL).noOcclusion());
-    public static final Block CHANDELIER_WAXED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_COPPER));
-    public static final Block CHANDELIER_WAXED_EXPOSED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_EXPOSED_COPPER));
-    public static final Block CHANDELIER_WAXED_WEATHERED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_WEATHERED_COPPER));
-    public static final Block CHANDELIER_WAXED_OXIDIZED_COPPER = new ModBlock(Properties.copy(ModBlocks.CHANDELIER_OXIDIZED_COPPER));
+    public static final Block CHANDELIER_WAXED_COPPER = new ChandelierBlock(Properties.copy(Blocks.COPPER_BLOCK).sound(SoundType.ANVIL).noOcclusion());
+    public static final Block CHANDELIER_WAXED_EXPOSED_COPPER = new ChandelierBlock(Properties.copy(Blocks.EXPOSED_COPPER).sound(SoundType.ANVIL).noOcclusion());
+    public static final Block CHANDELIER_WAXED_WEATHERED_COPPER = new ChandelierBlock(Properties.copy(Blocks.WEATHERED_COPPER).sound(SoundType.ANVIL).noOcclusion());
+    public static final Block CHANDELIER_WAXED_OXIDIZED_COPPER = new ChandelierBlock(Properties.copy(Blocks.OXIDIZED_COPPER).sound(SoundType.ANVIL).noOcclusion());
 
     public static final Block CHAIN_GOLD = new ModChainBlock(Properties.copy(Blocks.CHAIN));
     public static final Block CHAIN_COPPER = new WeatheringCopperChainBlock(WeatheringCopper.WeatherState.UNAFFECTED, Properties.copy(Blocks.COPPER_BLOCK));

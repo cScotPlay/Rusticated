@@ -1,0 +1,23 @@
+{
+  "name": "Framed Walls",
+  "icon": "elixiremporium:framed_wall_yellow",
+  "category": "elixiremporium:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Are you looking for a different option to decorate the walls of your place with? Try one of the four Framed Wall options.",
+      "item": "elixiremporium:framed_wall_yellow,elixiremporium:framed_wall_cross_yellow,elixiremporium:framed_wall_rt_diag_yellow,elixiremporium:framed_wall_left_diag_yellow,elixiremporium:framed_wall_red,elixiremporium:framed_wall_cross_red,elixiremporium:framed_wall_rt_diag_red,elixiremporium:framed_wall_left_diag_red,elixiremporium:framed_wall_blue,elixiremporium:framed_wall_cross_blue,elixiremporium:framed_wall_rt_diag_blue,elixiremporium:framed_wall_left_diag_blue,elixiremporium:framed_wall_gray,elixiremporium:framed_wall_cross_gray,elixiremporium:framed_wall_rt_diag_gray,elixiremporium:framed_wall_left_diag_gray"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:framed_wall_yellow",
+      "recipe2": "elixiremporium:framed_wall_cross_yellow"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:framed_wall_rt_diag_yellow",
+      "recipe2": "elixiremporium:framed_wall_left_diag_yellow"
+    }
+  ],
+  "sortnum": 10
+}

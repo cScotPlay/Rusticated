@@ -206,7 +206,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
 
         pathRecipe(exporter, ModBlocks.COBBLESTONE_PATH, Blocks.COBBLESTONE_SLAB, Blocks.COBBLESTONE);
         pathRecipe(exporter, ModBlocks.STONE_PATH, Blocks.STONE_SLAB, Blocks.STONE);
-        pathRecipe(exporter, ModBlocks.ANDESITE_PATH, Blocks.STONE_SLAB, Blocks.GRANITE);
+        pathRecipe(exporter, ModBlocks.ANDESITE_PATH, Blocks.STONE_SLAB, Blocks.ANDESITE);
+        pathRecipe(exporter, ModBlocks.GRANITE_PATH, Blocks.GRANITE_SLAB, Blocks.GRANITE);
         pathRecipe(exporter, ModBlocks.DIORITE_PATH, Blocks.DIORITE_SLAB, Blocks.DIORITE);
         pathRecipe(exporter, ModBlocks.COBBLED_DEEPSLATE_PATH, Blocks.COBBLED_DEEPSLATE_SLAB, Blocks.COBBLED_DEEPSLATE);
         pathRecipe(exporter, ModBlocks.BLACKSTONE_PATH, Blocks.BLACKSTONE_SLAB, Blocks.BLACKSTONE);
@@ -228,8 +229,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapelessRecipeBuilder.shapeless(ModBlocks.CHANDELIER_WAXED_WEATHERED_COPPER).requires(ModBlocks.CHANDELIER_WEATHERED_COPPER).requires(Items.HONEYCOMB).unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModBlocks.CHANDELIER_WAXED_OXIDIZED_COPPER).requires(ModBlocks.CHANDELIER_OXIDIZED_COPPER).requires(Items.HONEYCOMB).unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.BARREL).define('#', Items.IRON_INGOT).define('X', ItemTags.SLABS).define('P', ItemTags.PLANKS).pattern("PXP").pattern("# #").pattern("PXP").unlockedBy("has_wood", has(Blocks.OAK_PLANKS)).save(exporter);
-        ShapedRecipeBuilder.shaped(ModBlocks.LIQUID_BARREL).define('#', Items.IRON_INGOT).define('X', ItemTags.SLABS).define('P', ItemTags.PLANKS).pattern("P P").pattern("# #").pattern("PXP").unlockedBy("has_wood", has(Blocks.OAK_PLANKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.BARREL).define('#', Items.IRON_INGOT).define('X', ItemTags.WOODEN_SLABS).define('P', ItemTags.PLANKS).pattern("PXP").pattern("# #").pattern("PXP").unlockedBy("has_wood", has(Blocks.OAK_PLANKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.LIQUID_BARREL).define('#', Items.IRON_INGOT).define('X', ItemTags.WOODEN_SLABS).define('P', ItemTags.PLANKS).pattern("P P").pattern("# #").pattern("PXP").unlockedBy("has_wood", has(Blocks.OAK_PLANKS)).save(exporter);
 
         ShapedRecipeBuilder.shaped(ModBlocks.UNFIRED_JAR).define('#', Items.CLAY_BALL).define('X', Items.CLAY).pattern(" # ").pattern("# #").pattern("XXX").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.UNFIRED_JAR.asItem()), ModBlocks.FIRED_JAR.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
@@ -250,6 +251,23 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_POT_4).requires(ModItemTags.POTS).requires(Items.GREEN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
 
         ShapedRecipeBuilder.shaped(ModBlocks.IRON_LATTICE, 16).define('#', Items.IRON_INGOT).pattern(" # ").pattern("###").pattern(" # ").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(exporter);
+
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_WHITE, Items.WHITE_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_ORANGE, Items.ORANGE_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_MAGENTA, Items.MAGENTA_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_LIGHT_BLUE, Items.LIGHT_BLUE_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_YELLOW, Items.YELLOW_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_LIME, Items.LIME_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_PINK, Items.PINK_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_GRAY, Items.GRAY_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_LIGHT_GRAY, Items.LIGHT_GRAY_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_CYAN, Items.CYAN_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_PURPLE, Items.PURPLE_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_BLUE, Items.BLUE_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_BROWN, Items.BROWN_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_GREEN, Items.GREEN_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_RED, Items.RED_WOOL);
+        frameWallRecipe(exporter, ModBlocks.FRAMED_WALL_BLACK, Items.BLACK_WOOL);
 
         frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_WHITE, Items.WHITE_WOOL);
         frameCrossedRecipe(exporter, ModBlocks.FRAMED_WALL_CROSS_ORANGE, Items.ORANGE_WOOL);
@@ -377,7 +395,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).define('T', Items.STICK).pattern("# #").pattern("TX ").pattern("#T#").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
     }
 
-    public static void frameRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
+    public static void frameWallRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
         ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).pattern("# #").pattern(" X ").pattern("# #").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
     }
 

@@ -1,0 +1,27 @@
+{
+  "name": "Colored Stone Blocks",
+  "icon": "elixiremporium:stone_light_blue",
+  "category": "elixiremporium:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Colored Stone, Slab, and Stairs options are available in 16 separate colors.",
+      "item": "elixiremporium:stone_white,elixiremporium:stone_slab_white,elixiremporium:stone_stairs_white,elixiremporium:stone_orange,elixiremporium:stone_slab_orange,elixiremporium:stone_stairs_orange,elixiremporium:stone_magenta,elixiremporium:stone_slab_magenta,elixiremporium:stone_stairs_magenta,elixiremporium:stone_light_blue,elixiremporium:stone_slab_light_blue,elixiremporium:stone_stairs_light_blue,elixiremporium:stone_yellow,elixiremporium:stone_lime,elixiremporium:stone_pink,elixiremporium:stone_gray,elixiremporium:stone_light_gray,elixiremporium:stone_cyan,elixiremporium:stone_purple,elixiremporium:stone_blue,elixiremporium:stone_brown,elixiremporium:stone_green,elixiremporium:stone_red,elixiremporium:stone_black"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:stone_light_blue_dyed",
+      "recipe2": "elixiremporium:stone_stairs_light_blue_dyed"
+    },
+    {
+      "type": "stonecutting",
+      "recipe": "elixiremporium:stone_stairs_light_blue_from_stone_light_blue_stonecutting",
+      "recipe2": "elixiremporium:stone_slab_light_blue_from_stone_light_blue_stonecutting"
+    },
+    {
+      "type": "smelting",
+      "recipe": "elixiremporium:stone_light_blue"
+    }
+  ],
+  "sortnum": 7
+}

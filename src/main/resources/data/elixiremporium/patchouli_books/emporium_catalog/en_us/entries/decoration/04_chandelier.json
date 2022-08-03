@@ -1,0 +1,18 @@
+{
+  "name": "Chandeliers",
+  "icon": "elixiremporium:chandelier_iron",
+  "category": "elixiremporium:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Chandelier blocks are decorative blocks and allow the placement of torches on the sides of the block. Chandeliers are heavy blocks that require connections to a solid block above them. Link the Chandelier with chains or ropes. The unsecured Chandelier will fall and cause massive damage to those underneath it.",
+      "item": "elixiremporium:chandelier_iron,elixiremporium:chandelier_gold,elixiremporium:chandelier_copper,elixiremporium:chandelier_exposed_copper,elixiremporium:chandelier_weathered_copper,elixiremporium:chandelier_oxidized_copper"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:chandelier_iron",
+      "recipe2": "elixiremporium:chandelier_copper"
+    }
+  ],
+  "sortnum": 4
+}

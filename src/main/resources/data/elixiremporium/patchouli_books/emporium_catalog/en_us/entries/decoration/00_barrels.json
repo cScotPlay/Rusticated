@@ -1,0 +1,23 @@
+{
+  "name": "Barrels",
+  "icon": "elixiremporium:barrel",
+  "category": "elixiremporium:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Barrels are a decorative storage option. They provide another opportunity to store both items and fluids.",
+      "item": "elixiremporium:barrel"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:barrel",
+      "text": "Storage Barrel can hold up to 27 stacks of items. Thus, acting in the same manner as a single chest."
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:liquid_barrel",
+      "text": "Liquid Barrels hold up to 16 buckets of liquid and will retain their contents when destroyed. However, liquid Barrels can only hold liquids that are not gaseous. They will slowly collect water over time if you leave them in the rain."
+    }
+  ],
+  "sortnum": 0
+}

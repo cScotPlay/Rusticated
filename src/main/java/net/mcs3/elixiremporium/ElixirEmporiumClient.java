@@ -21,7 +21,6 @@ import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.FoliageColor;
-import net.minecraft.world.level.block.Blocks;
 
 public class ElixirEmporiumClient implements ClientModInitializer
 {

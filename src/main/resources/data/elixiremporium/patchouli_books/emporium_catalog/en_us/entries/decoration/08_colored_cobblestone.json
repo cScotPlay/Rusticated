@@ -1,0 +1,28 @@
+{
+  "name": "Colored Cobblestone",
+  "icon": "elixiremporium:cobblestone_lime",
+  "category": "elixiremporium:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Cobblestone now comes in a multitude of colors.  Options for slabs, stairs, and walls are also available.",
+      "item": "elixiremporium:cobblestone_white,elixiremporium:cobblestone_slab_white,elixiremporium:cobblestone_stairs_white,elixiremporium:cobblestone_wall_white,elixiremporium:cobblestone_orange,elixiremporium:cobblestone_slab_orange,elixiremporium:cobblestone_stairs_orange,elixiremporium:cobblestone_wall_orange,elixiremporium:cobblestone_magenta,elixiremporium:cobblestone_slab_magenta,elixiremporium:cobblestone_stairs_magenta,elixiremporium:cobblestone_wall_magenta,elixiremporium:cobblestone_light_blue,elixiremporium:cobblestone_slab_light_blue,elixiremporium:cobblestone_stairs_light_blue,elixiremporium:cobblestone_wall_light_blue,elixiremporium:cobblestone_yellow,elixiremporium:cobblestone_lime,elixiremporium:cobblestone_pink,elixiremporium:cobblestone_gray,elixiremporium:cobblestone_light_gray,elixiremporium:cobblestone_cyan,elixiremporium:cobblestone_purple,elixiremporium:cobblestone_blue,elixiremporium:cobblestone_brown,elixiremporium:cobblestone_green,elixiremporium:cobblestone_red,elixiremporium:cobblestone_black"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:cobblestone_lime",
+      "recipe2": "elixiremporium:cobblestone_stairs_lime"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:cobblestone_stairs_lime_dyed",
+      "recipe2": "elixiremporium:cobblestone_slab_lime"
+    },
+    {
+      "type": "stonecutting",
+      "recipe": "elixiremporium:cobblestone_stairs_lime_from_cobblestone_lime_stonecutting",
+      "recipe2": "elixiremporium:cobblestone_slab_lime_from_cobblestone_lime_stonecutting"
+    }
+  ],
+  "sortnum": 8
+}
