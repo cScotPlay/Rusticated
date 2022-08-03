@@ -1,0 +1,17 @@
+{
+  "name": "Fertile Soil",
+  "icon": "elixiremporium:fertile_soil",
+  "category": "elixiremporium:agricultural_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Fertile Soil is a better alternative to vanilla farmland. The Emporium’s Soil does not require water and is trample-proof. Due to its extremely high moisture content, it even grows Sugar Cane.  ",
+      "item": "elixiremporium:fertile_soil"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:fertile_soil"
+    }
+  ],
+  "sortnum": 0
+}

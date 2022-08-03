@@ -320,6 +320,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_RED, Items.RED_WOOL);
         frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_BLACK, Items.BLACK_WOOL);
 
+        ShapedRecipeBuilder.shaped(ModBlocks.FERTILE_SOIL).define('#', Blocks.DIRT).define('X', Items.GREEN_DYE).define('T', Items.BONE_MEAL).pattern(" X ").pattern("T#T").unlockedBy("has_dirt", has(Blocks.DIRT)).save(exporter);
+
 
 
 

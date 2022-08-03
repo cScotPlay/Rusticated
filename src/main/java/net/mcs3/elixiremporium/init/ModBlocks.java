@@ -28,6 +28,7 @@ public class ModBlocks
     public static final Map<ResourceLocation, Block> BLOCKS = new HashMap<>();
 
     public static CreativeModeTab DECORATION_TAB = ElixirEmporium.ITEMGROUPDECO;
+    public static CreativeModeTab AGRICULTURAL_TAB = ElixirEmporium.ITEMGROUPAG;
 
     public static final BarrelBlock BARREL = new BarrelBlock();
     public static final Block LIQUID_BARREL = new LiquidBarrelBlock();
@@ -317,6 +318,14 @@ public class ModBlocks
     public static final PathBlock COBBLED_DEEPSLATE_PATH = new PathBlock();
     public static final PathBlock BLACKSTONE_PATH = new PathBlock();
     public static final PathBlock NETHER_BRICKS_PATH = new PathBlock();
+
+
+    //////////////////////////////////////////////////////////
+    ///               Agricultural Blocks                  ///
+    //////////////////////////////////////////////////////////
+
+    public static final Block FERTILE_SOIL = new FertileSoilBlock(Properties.copy(Blocks.FARMLAND));
+
 
     public static void init()
     {
@@ -610,17 +619,15 @@ public class ModBlocks
         register("blackstone_path", BLACKSTONE_PATH, DECORATION_TAB);
         register("nether_bricks_path", NETHER_BRICKS_PATH, DECORATION_TAB);
 
+        //////////////////////////////////////////////////////////
+        ///          Agricultural Blocks Registry              ///
+        //////////////////////////////////////////////////////////
+
+        register("fertile_soil", FERTILE_SOIL, AGRICULTURAL_TAB);
+
 
 
         initOxidizables();
-
-
-
-
-
-
-
-
     }
 
     public static void initOxidizables()
@@ -659,7 +666,6 @@ public class ModBlocks
     {
         T block = Registry.register(Registry.BLOCK, new ResourceLocation(ElixirEmporium.MOD_ID, name), anyBlock);
         BLOCKS.put(new ResourceLocation(ElixirEmporium.MOD_ID, name), block);
-        //BlockItem blockItem = new BlockItem(item.getBlock(), new Item.Properties().tab(tab));
 
         Registry.register(Registry.ITEM, new ResourceLocation(ElixirEmporium.MOD_ID, name), item);
 

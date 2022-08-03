@@ -104,5 +104,9 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .add(registry.stream().filter(b -> b instanceof FramedWallBlocks).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).add(
+                ModBlocks.FERTILE_SOIL
+        );
     }
 }

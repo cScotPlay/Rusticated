@@ -68,6 +68,7 @@ public class BlockStateGenerator extends FabricModelProvider
     public static final ModelTemplate FRAMED_RT_DIAG = createModdedModel("template_framed_wall_rt_diag", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
     public static final ModelTemplate FRAMED_LEFT_DIAG = createModdedModel("template_framed_wall_left_diag", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
     public static final ModelTemplate FRAMED_WALL = createModdedModel("template_framed_wall", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
+    public static final ModelTemplate FERTILE_SOIL = createVanillaModel("template_farmland", TextureSlot.DIRT, TextureSlot.TOP);
 
 
 
@@ -369,6 +370,7 @@ public class BlockStateGenerator extends FabricModelProvider
         createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_RED, Blocks.RED_WOOL, FRAMED_WALL);
         createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_BLACK, Blocks.BLACK_WOOL, FRAMED_WALL);
 
+        createFertileSoil(blockStateModelGenerator);
 
 
 
@@ -586,6 +588,17 @@ public class BlockStateGenerator extends FabricModelProvider
         modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, resource));
         modelGenerator.delegateItemModel(block, resource);
 
+    }
+
+    public static void createFertileSoil(BlockModelGenerators modelGenerator) {
+        TextureMapping textureMapping = (new TextureMapping()).put(TextureSlot.DIRT, TextureMapping.getBlockTexture(Blocks.DIRT)).put(TextureSlot.TOP, TextureMapping.getBlockTexture(ModBlocks.FERTILE_SOIL));
+
+
+        ResourceLocation resourceLocation = FERTILE_SOIL.create(ModBlocks.FERTILE_SOIL, textureMapping, modelGenerator.modelOutput);
+
+        modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.FERTILE_SOIL, resourceLocation));
+        modelGenerator.delegateItemModel(ModBlocks.FERTILE_SOIL, resourceLocation);
+        //modelGenerator.createSimpleFlatItemModel(ModBlocks.FERTILE_SOIL.asItem());
     }
 
     private static ModelTemplate createVanillaModel(String parent, TextureSlot... requiredTextures) {
