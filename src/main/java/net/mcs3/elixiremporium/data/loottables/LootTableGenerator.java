@@ -256,7 +256,11 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
                 ModBlocks.UNFIRED_POT,
                 ModBlocks.IRON_LATTICE,
 
-                ModBlocks.FERTILE_SOIL
+                ModBlocks.FERTILE_SOIL,
+                ModBlocks.IRONWOOD_LOG,
+                ModBlocks.IRONWOOD_WOOD,
+                ModBlocks.STRIPPED_IRONWOOD_LOG,
+                ModBlocks.STRIPPED_IRONWOOD_WOOD
         )
 
                 .forEach(this::dropSelf);

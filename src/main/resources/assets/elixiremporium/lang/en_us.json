@@ -293,6 +293,10 @@
   "block.elixiremporium.fertile_soil": "Fertile Soil",
   "block.elixiremporium.ironwood_sapling": "Ironwood Sapling",
   "block.elixiremporium.ironwood_leaves": "Ironwood Leaves",
+  "block.elixiremporium.ironwood_log": "Ironwood Log",
+  "block.elixiremporium.ironwood_wood": "Ironwood Wood",
+  "block.elixiremporium.stripped_ironwood_log": "Stripped Ironwood Log",
+  "block.elixiremporium.stripped_ironwood_wood": "Stripped Ironwood Wood",
 
 
   "item.elixiremporium.catalog": "Emporium Catalog",

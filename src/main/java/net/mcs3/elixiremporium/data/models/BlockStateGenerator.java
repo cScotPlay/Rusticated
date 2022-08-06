@@ -374,6 +374,9 @@ public class BlockStateGenerator extends FabricModelProvider
         createPlantModels(blockStateModelGenerator, ModBlocks.IRONWOOD_SAPLING, ModBlocks.POTTED_IRONWOOD_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
         blockStateModelGenerator.createTrivialBlock(ModBlocks.IRONWOOD_LEAVES, TexturedModel.LEAVES);
 
+        crateWoodModels(blockStateModelGenerator, ModBlocks.IRONWOOD_WOOD, ModBlocks.IRONWOOD_LOG);
+        crateWoodModels(blockStateModelGenerator, ModBlocks.STRIPPED_IRONWOOD_WOOD, ModBlocks.STRIPPED_IRONWOOD_LOG);
+
 
 
 
@@ -601,7 +604,6 @@ public class BlockStateGenerator extends FabricModelProvider
 
         modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.FERTILE_SOIL, resourceLocation));
         modelGenerator.delegateItemModel(ModBlocks.FERTILE_SOIL, resourceLocation);
-        //modelGenerator.createSimpleFlatItemModel(ModBlocks.FERTILE_SOIL.asItem());
     }
 
     public static void createPlantModels(BlockModelGenerators modelGenerator, Block plantBlock, Block pottedPlantBlock, BlockModelGenerators.TintState tintState) {
@@ -609,6 +611,20 @@ public class BlockStateGenerator extends FabricModelProvider
         TextureMapping textureMapping = TextureMapping.plant(plantBlock);
         ResourceLocation resourceLocation = tintState.getCrossPot().create(pottedPlantBlock, textureMapping, modelGenerator.modelOutput);
         modelGenerator.blockStateOutput.accept(modelGenerator.createSimpleBlock(pottedPlantBlock, resourceLocation));
+    }
+
+    public static void crateWoodModels(BlockModelGenerators modelGenerators, Block woodBlock, Block logBlock)
+    {
+        TextureMapping logTexture = TextureMapping.logColumn(logBlock);
+        TextureMapping textureMapping = logTexture.copyAndUpdate(TextureSlot.END, logTexture.get(TextureSlot.SIDE));
+        ResourceLocation resourceLocationWood = ModelTemplates.CUBE_COLUMN.create(woodBlock, textureMapping, modelGenerators.modelOutput);
+        modelGenerators.blockStateOutput.accept(BlockModelGenerators.createAxisAlignedPillarBlock(woodBlock, resourceLocationWood));
+        modelGenerators.delegateItemModel(woodBlock, resourceLocationWood);
+
+        ResourceLocation resourceLocationLog = ModelTemplates.CUBE_COLUMN.create(logBlock, logTexture, modelGenerators.modelOutput);
+        ResourceLocation resourceLocationLogHoriz = ModelTemplates.CUBE_COLUMN_HORIZONTAL.create(logBlock, logTexture, modelGenerators.modelOutput);
+        modelGenerators.blockStateOutput.accept(BlockModelGenerators.createRotatedPillarWithHorizontalVariant(logBlock, resourceLocationLog, resourceLocationLogHoriz));
+        modelGenerators.delegateItemModel(logBlock, resourceLocationLog);
     }
 
     private static ModelTemplate createVanillaModel(String parent, TextureSlot... requiredTextures) {
@@ -630,6 +646,4 @@ public class BlockStateGenerator extends FabricModelProvider
     private static ModelTemplate createPathModel(String parent, String variant, TextureSlot... requiredTextures) {
         return new ModelTemplate(Optional.of(new ResourceLocation(MOD_ID, "block/" + parent)), Optional.of(variant), requiredTextures);
     }
-
-
 }

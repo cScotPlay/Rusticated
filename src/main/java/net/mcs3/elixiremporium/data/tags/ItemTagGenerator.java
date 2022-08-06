@@ -1,9 +1,11 @@
 package net.mcs3.elixiremporium.data.tags;
 
+import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.init.ModBlockItems;
 import net.mcs3.elixiremporium.init.ModBlocks;
+import net.mcs3.elixiremporium.tags.ModBlockTags;
 import net.mcs3.elixiremporium.tags.ModItemTags;
 import net.mcs3.elixiremporium.world.level.block.PlanksBlock;
 import net.minecraft.tags.BlockTags;
@@ -168,6 +170,17 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
         this.tag(ItemTags.LEAVES).add(
                 ModBlocks.IRONWOOD_LEAVES.asItem());
 
+        tag(ItemTags.LOGS).add(
+                ModBlocks.IRONWOOD_LOG.asItem(),
+                ModBlocks.IRONWOOD_WOOD.asItem(),
+                ModBlocks.STRIPPED_IRONWOOD_LOG.asItem(),
+                ModBlocks.STRIPPED_IRONWOOD_WOOD.asItem()
+                );
+
+
+
+
+
 
 
         // ***************************************************************************** //
@@ -320,6 +333,15 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.COBBLESTONE_WALL_GREEN.asItem(),
                 ModBlocks.COBBLESTONE_WALL_RED.asItem(),
                 ModBlocks.COBBLESTONE_WALL_BLACK.asItem());
+
+        tag(ModItemTags.IRONWOOD_LOGS).add(
+                ModBlocks.IRONWOOD_LOG.asItem(),
+                ModBlocks.IRONWOOD_WOOD.asItem(),
+                ModBlocks.STRIPPED_IRONWOOD_LOG.asItem(),
+                ModBlocks.STRIPPED_IRONWOOD_WOOD.asItem()
+        );
+
+
 
 
     }

@@ -1,5 +1,6 @@
 package net.mcs3.elixiremporium.init;
 
+import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
@@ -10,8 +11,10 @@ import net.mcs3.elixiremporium.world.level.block.storage.jar.GlazedJarBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.liquid_barrel.LiquidBarrelBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.FiredPotBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.GlazedPotBlock;
+import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -331,6 +334,15 @@ public class ModBlocks
     public static final Block IRONWOOD_SAPLING = new SaplingBlock(new IronwoodTreeGrower(), Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
     public static final Block POTTED_IRONWOOD_SAPLING = new FlowerPotBlock(IRONWOOD_SAPLING, Properties.of(Material.DECORATION).instabreak().noOcclusion());
     public static final Block IRONWOOD_LEAVES = new LeavesBlock(Properties.copy(Blocks.ACACIA_LEAVES));
+    public static final Block IRONWOOD_LOG = new RotatedPillarBlock(Properties.of(Material.WOOD, (blockState) -> {
+        return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.SAND : MaterialColor.COLOR_GRAY;
+    }).strength(2.0F).sound(SoundType.WOOD));
+    public static final Block IRONWOOD_WOOD = new RotatedPillarBlock(Properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD));
+    public static final Block STRIPPED_IRONWOOD_LOG = new RotatedPillarBlock(Properties.of(Material.WOOD, (blockState) -> {
+        return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.SAND : MaterialColor.COLOR_GRAY;
+    }).strength(2.0F).sound(SoundType.WOOD));
+    public static final Block STRIPPED_IRONWOOD_WOOD = new RotatedPillarBlock(Properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD));
+
 
     public static void init()
     {
@@ -632,10 +644,15 @@ public class ModBlocks
         register("ironwood_sapling", IRONWOOD_SAPLING, AGRICULTURAL_TAB);
         register("potted_ironwood_sapling", POTTED_IRONWOOD_SAPLING, null);
         register("ironwood_leaves", IRONWOOD_LEAVES, AGRICULTURAL_TAB);
+        register("ironwood_log", IRONWOOD_LOG, AGRICULTURAL_TAB);
+        register("ironwood_wood", IRONWOOD_WOOD, AGRICULTURAL_TAB);
+        register("stripped_ironwood_log", STRIPPED_IRONWOOD_LOG, AGRICULTURAL_TAB);
+        register("stripped_ironwood_wood", STRIPPED_IRONWOOD_WOOD, AGRICULTURAL_TAB);
 
 
 
         initOxidizables();
+        initStrippableWoods();
     }
 
     public static void initOxidizables()
@@ -657,6 +674,13 @@ public class ModBlocks
         OxidizableBlocksRegistry.registerWaxableBlockPair(CHANDELIER_EXPOSED_COPPER, CHANDELIER_WAXED_EXPOSED_COPPER);
         OxidizableBlocksRegistry.registerWaxableBlockPair(CHANDELIER_WEATHERED_COPPER, CHANDELIER_WAXED_WEATHERED_COPPER);
         OxidizableBlocksRegistry.registerWaxableBlockPair(CHANDELIER_OXIDIZED_COPPER, CHANDELIER_WAXED_OXIDIZED_COPPER);
+    }
+
+    public static void initStrippableWoods()
+    {
+        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+        AxeItem.STRIPPABLES.put(ModBlocks.IRONWOOD_LOG, ModBlocks.STRIPPED_IRONWOOD_LOG);
+        AxeItem.STRIPPABLES.put(ModBlocks.IRONWOOD_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
     }
 
     static <T extends Block> T register(String name, T anyBlock, CreativeModeTab tab)

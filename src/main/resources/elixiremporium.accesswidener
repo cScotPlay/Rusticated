@@ -2,3 +2,5 @@ accessWidener v1 named
 
 accessible field net/minecraft/client/multiplayer/MultiPlayerGameMode destroyDelay I
 accessible class net/minecraft/data/models/BlockModelGenerators$TintState
+accessible field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
+mutable field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;

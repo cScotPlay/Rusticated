@@ -321,6 +321,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_BLACK, Items.BLACK_WOOL);
 
         ShapedRecipeBuilder.shaped(ModBlocks.FERTILE_SOIL).define('#', Blocks.DIRT).define('X', Items.GREEN_DYE).define('T', Items.BONE_MEAL).pattern(" X ").pattern("T#T").unlockedBy("has_dirt", has(Blocks.DIRT)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.IRONWOOD_WOOD).define('#', ModBlocks.IRONWOOD_LOG).pattern("##").pattern("##").unlockedBy("has_log", has(ModBlocks.IRONWOOD_LOG)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.STRIPPED_IRONWOOD_WOOD).define('#', ModBlocks.STRIPPED_IRONWOOD_LOG).pattern("##").pattern("##").unlockedBy("has_log", has(ModBlocks.STRIPPED_IRONWOOD_LOG)).save(exporter);
 
 
 
@@ -333,6 +335,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapedRecipeBuilder.shaped(ModItems.CATALOG).define('#', Items.BOOK).define('X', Items.IRON_NUGGET).define('T', ModItems.OLIVES).pattern(" T ").pattern("X#X").pattern(" X ").unlockedBy("has_catalog", has(ModItems.CATALOG)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModItems.COPPER_NUGGET, 9).requires(Items.COPPER_INGOT).unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter, new ResourceLocation("copper_nugget_from_copper_ingot"));
         ShapedRecipeBuilder.shaped(Items.COPPER_INGOT).define('#', ModItems.COPPER_NUGGET).pattern("###").pattern("###").pattern("###").unlockedBy("has_catalog", has(ModItems.CATALOG)).save(exporter, new ResourceLocation("copper_ingot_from_copper_nugget"));
+
 
 
     }

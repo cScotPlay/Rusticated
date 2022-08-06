@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModBlocks;
+import net.mcs3.elixiremporium.tags.ModBlockTags;
 import net.mcs3.elixiremporium.tags.ModItemTags;
 import net.mcs3.elixiremporium.world.level.block.*;
 import net.minecraft.tags.BlockTags;
@@ -64,6 +65,12 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.LEAVES).add(
                 ModBlocks.IRONWOOD_LEAVES);
 
+        getOrCreateTagBuilder(BlockTags.LOGS).add(
+                ModBlocks.IRONWOOD_LOG);
+
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(
+                ModBlockTags.IRONWOOD_LOGS);
+
 
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
@@ -114,5 +121,14 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).add(
                 ModBlocks.FERTILE_SOIL
         );
+
+        // ***************************************************************************** //
+        //  Modded Tags
+        // ***************************************************************************** //
+        getOrCreateTagBuilder(ModBlockTags.IRONWOOD_LOGS).add(
+                ModBlocks.IRONWOOD_LOG,
+                ModBlocks.IRONWOOD_WOOD,
+                ModBlocks.STRIPPED_IRONWOOD_LOG,
+                ModBlocks.STRIPPED_IRONWOOD_WOOD);
     }
 }
