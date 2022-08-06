@@ -58,6 +58,12 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.CLIMBABLE)
                 .add(registry.stream().filter(b -> b instanceof WeatheringCopperChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
+        getOrCreateTagBuilder(BlockTags.SAPLINGS).add(
+                ModBlocks.IRONWOOD_SAPLING);
+
+        getOrCreateTagBuilder(BlockTags.LEAVES).add(
+                ModBlocks.IRONWOOD_LEAVES);
+
 
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)

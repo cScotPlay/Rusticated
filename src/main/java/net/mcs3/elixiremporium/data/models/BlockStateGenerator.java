@@ -371,6 +371,8 @@ public class BlockStateGenerator extends FabricModelProvider
         createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_BLACK, Blocks.BLACK_WOOL, FRAMED_WALL);
 
         createFertileSoil(blockStateModelGenerator);
+        createPlantModels(blockStateModelGenerator, ModBlocks.IRONWOOD_SAPLING, ModBlocks.POTTED_IRONWOOD_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
+        blockStateModelGenerator.createTrivialBlock(ModBlocks.IRONWOOD_LEAVES, TexturedModel.LEAVES);
 
 
 
@@ -380,6 +382,7 @@ public class BlockStateGenerator extends FabricModelProvider
     @Override
     public void generateItemModels(ItemModelGenerators itemModelGenerator)
     {
+        itemModelGenerator.generateFlatItem(ModItems.IRON_BERRIES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.COPPER_NUGGET, ModelTemplates.FLAT_ITEM);
     }
 
@@ -599,6 +602,13 @@ public class BlockStateGenerator extends FabricModelProvider
         modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(ModBlocks.FERTILE_SOIL, resourceLocation));
         modelGenerator.delegateItemModel(ModBlocks.FERTILE_SOIL, resourceLocation);
         //modelGenerator.createSimpleFlatItemModel(ModBlocks.FERTILE_SOIL.asItem());
+    }
+
+    public static void createPlantModels(BlockModelGenerators modelGenerator, Block plantBlock, Block pottedPlantBlock, BlockModelGenerators.TintState tintState) {
+        modelGenerator.createCrossBlockWithDefaultItem(plantBlock, tintState);
+        TextureMapping textureMapping = TextureMapping.plant(plantBlock);
+        ResourceLocation resourceLocation = tintState.getCrossPot().create(pottedPlantBlock, textureMapping, modelGenerator.modelOutput);
+        modelGenerator.blockStateOutput.accept(modelGenerator.createSimpleBlock(pottedPlantBlock, resourceLocation));
     }
 
     private static ModelTemplate createVanillaModel(String parent, TextureSlot... requiredTextures) {

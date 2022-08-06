@@ -3,6 +3,7 @@ package net.mcs3.elixiremporium.init;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
+import net.mcs3.elixiremporium.world.level.block.grower.IronwoodTreeGrower;
 import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.jar.FiredJarBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.jar.GlazedJarBlock;
@@ -15,6 +16,8 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.grower.AcaciaTreeGrower;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.*;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -325,7 +328,9 @@ public class ModBlocks
     //////////////////////////////////////////////////////////
 
     public static final Block FERTILE_SOIL = new FertileSoilBlock(Properties.copy(Blocks.FARMLAND));
-
+    public static final Block IRONWOOD_SAPLING = new SaplingBlock(new IronwoodTreeGrower(), Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+    public static final Block POTTED_IRONWOOD_SAPLING = new FlowerPotBlock(IRONWOOD_SAPLING, Properties.of(Material.DECORATION).instabreak().noOcclusion());
+    public static final Block IRONWOOD_LEAVES = new LeavesBlock(Properties.copy(Blocks.ACACIA_LEAVES));
 
     public static void init()
     {
@@ -624,6 +629,9 @@ public class ModBlocks
         //////////////////////////////////////////////////////////
 
         register("fertile_soil", FERTILE_SOIL, AGRICULTURAL_TAB);
+        register("ironwood_sapling", IRONWOOD_SAPLING, AGRICULTURAL_TAB);
+        register("potted_ironwood_sapling", POTTED_IRONWOOD_SAPLING, null);
+        register("ironwood_leaves", IRONWOOD_LEAVES, AGRICULTURAL_TAB);
 
 
 

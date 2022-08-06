@@ -1,16 +1,25 @@
 package net.mcs3.elixiremporium.world.level.block.storage.liquid_barrel;
 
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
+import net.mcs3.elixiremporium.ElixirEmporium;
+import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.world.level.block.entity.ModBlockEntityTypes;
 import net.mcs3.elixiremporium.world.level.block.storage.AbstractStorageBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -55,6 +64,49 @@ public class LiquidBarrelBlock extends AbstractStorageBlock implements EntityBlo
             return InteractionResult.sidedSuccess(level.isClientSide);
         }
         return super.use(state, level, pos, player, hand, hit);
+    }
+
+    protected static boolean shouldHandlePrecipitation(Level level, Biome.Precipitation precipitation) {
+        if (precipitation == Biome.Precipitation.RAIN) {
+            return level.getRandom().nextFloat() < 1.00F;
+        } else if (precipitation == Biome.Precipitation.SNOW) {
+            return level.getRandom().nextFloat() < 0.1F;
+        } else {
+            return false;
+        }
+    }
+
+    @Override
+    public void handlePrecipitation(BlockState state, Level level, BlockPos pos, Biome.Precipitation precipitation) {
+//        if (shouldHandlePrecipitation(level, precipitation)) {
+//            BlockEntity barrel = level.getBlockEntity(pos);
+//
+//            if (barrel instanceof LiquidBarrelEntityBlock)
+//            {
+//
+//                level.setBlockAndUpdate(pos, ModBlocks.LIQUID_BARREL);
+//                ElixirEmporium.LOGGER.info("This is a Liquid Barrel");
+//                LiquidBarrelEntityBlock liquidBarrel = (LiquidBarrelEntityBlock) barrel;
+//                FluidVariant water = FluidVariant.of(Fluids.WATER);
+//
+//                if(liquidBarrel.getAmount() < liquidBarrel.getCapacity())
+//                {
+//                    ElixirEmporium.LOGGER.info(liquidBarrel.getAmount() + " is in Barrel");
+//                }
+//                liquidBarrel.getCapacity();
+//
+//                liquidBarrel.insert(water, FluidConstants.BUCKET, null);
+//                ElixirEmporium.LOGGER.info(water.getFluid() + " was filed");
+//
+//            }
+////            if (precipitation == Biome.Precipitation.RAIN) {
+////                level.setBlockAndUpdate(pos, ModBlocks.LIQUID_BARREL.defaultBlockState());
+////                level.gameEvent((Entity)null, GameEvent.FLUID_PLACE, pos);
+////            } else if (precipitation == Biome.Precipitation.SNOW) {
+////                level.setBlockAndUpdate(pos, ModBlocks.LIQUID_BARREL.defaultBlockState());
+////                level.gameEvent((Entity)null, GameEvent.FLUID_PLACE, pos);
+////            }
+//        }
     }
 
     static {

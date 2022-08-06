@@ -5,7 +5,14 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.init.ModBlockItems;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.tags.ModItemTags;
+import net.mcs3.elixiremporium.world.level.block.PlanksBlock;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.ItemTags;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+
+import java.util.Comparator;
 
 public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
 {
@@ -16,6 +23,157 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
     @Override
     protected void generateTags()
     {
+        // ***************************************************************************** //
+        //  Vanilla Tags
+        // ***************************************************************************** //
+        this.tag(ItemTags.PLANKS).add(
+                ModBlocks.PAINTED_PLANKS_WHITE.asItem(),
+                ModBlocks.PAINTED_PLANKS_ORANGE.asItem(),
+                ModBlocks.PAINTED_PLANKS_MAGENTA.asItem(),
+                ModBlocks.PAINTED_PLANKS_LIGHT_BLUE.asItem(),
+                ModBlocks.PAINTED_PLANKS_YELLOW.asItem(),
+                ModBlocks.PAINTED_PLANKS_LIME.asItem(),
+                ModBlocks.PAINTED_PLANKS_PINK.asItem(),
+                ModBlocks.PAINTED_PLANKS_GRAY.asItem(),
+                ModBlocks.PAINTED_PLANKS_LIGHT_GRAY.asItem(),
+                ModBlocks.PAINTED_PLANKS_CYAN.asItem(),
+                ModBlocks.PAINTED_PLANKS_PURPLE.asItem(),
+                ModBlocks.PAINTED_PLANKS_BLUE.asItem(),
+                ModBlocks.PAINTED_PLANKS_BROWN.asItem(),
+                ModBlocks.PAINTED_PLANKS_GREEN.asItem(),
+                ModBlocks.PAINTED_PLANKS_RED.asItem(),
+                ModBlocks.PAINTED_PLANKS_BLACK.asItem());
+
+        this.tag(ItemTags.WOODEN_STAIRS).add(
+                ModBlocks.PAINTED_STAIRS_WHITE.asItem(),
+                ModBlocks.PAINTED_STAIRS_ORANGE.asItem(),
+                ModBlocks.PAINTED_STAIRS_MAGENTA.asItem(),
+                ModBlocks.PAINTED_STAIRS_LIGHT_BLUE.asItem(),
+                ModBlocks.PAINTED_STAIRS_YELLOW.asItem(),
+                ModBlocks.PAINTED_STAIRS_LIME.asItem(),
+                ModBlocks.PAINTED_STAIRS_PINK.asItem(),
+                ModBlocks.PAINTED_STAIRS_GRAY.asItem(),
+                ModBlocks.PAINTED_STAIRS_LIGHT_GRAY.asItem(),
+                ModBlocks.PAINTED_STAIRS_CYAN.asItem(),
+                ModBlocks.PAINTED_STAIRS_PURPLE.asItem(),
+                ModBlocks.PAINTED_STAIRS_BLUE.asItem(),
+                ModBlocks.PAINTED_STAIRS_BROWN.asItem(),
+                ModBlocks.PAINTED_STAIRS_GREEN.asItem(),
+                ModBlocks.PAINTED_STAIRS_RED.asItem(),
+                ModBlocks.PAINTED_STAIRS_BLACK.asItem());
+
+        this.tag(ItemTags.STAIRS).add(
+                ModBlocks.PAINTED_STAIRS_WHITE.asItem(),
+                ModBlocks.PAINTED_STAIRS_ORANGE.asItem(),
+                ModBlocks.PAINTED_STAIRS_MAGENTA.asItem(),
+                ModBlocks.PAINTED_STAIRS_LIGHT_BLUE.asItem(),
+                ModBlocks.PAINTED_STAIRS_YELLOW.asItem(),
+                ModBlocks.PAINTED_STAIRS_LIME.asItem(),
+                ModBlocks.PAINTED_STAIRS_PINK.asItem(),
+                ModBlocks.PAINTED_STAIRS_GRAY.asItem(),
+                ModBlocks.PAINTED_STAIRS_LIGHT_GRAY.asItem(),
+                ModBlocks.PAINTED_STAIRS_CYAN.asItem(),
+                ModBlocks.PAINTED_STAIRS_PURPLE.asItem(),
+                ModBlocks.PAINTED_STAIRS_BLUE.asItem(),
+                ModBlocks.PAINTED_STAIRS_BROWN.asItem(),
+                ModBlocks.PAINTED_STAIRS_GREEN.asItem(),
+                ModBlocks.PAINTED_STAIRS_RED.asItem(),
+                ModBlocks.PAINTED_STAIRS_BLACK.asItem(),
+                ModBlocks.STONE_STAIRS_WHITE.asItem(),
+                ModBlocks.STONE_STAIRS_ORANGE.asItem(),
+                ModBlocks.STONE_STAIRS_MAGENTA.asItem(),
+                ModBlocks.STONE_STAIRS_LIGHT_BLUE.asItem(),
+                ModBlocks.STONE_STAIRS_YELLOW.asItem(),
+                ModBlocks.STONE_STAIRS_LIME.asItem(),
+                ModBlocks.STONE_STAIRS_PINK.asItem(),
+                ModBlocks.STONE_STAIRS_GRAY.asItem(),
+                ModBlocks.STONE_STAIRS_LIGHT_GRAY.asItem(),
+                ModBlocks.STONE_STAIRS_CYAN.asItem(),
+                ModBlocks.STONE_STAIRS_PURPLE.asItem(),
+                ModBlocks.STONE_STAIRS_BLUE.asItem(),
+                ModBlocks.STONE_STAIRS_BROWN.asItem(),
+                ModBlocks.STONE_STAIRS_GREEN.asItem(),
+                ModBlocks.STONE_STAIRS_RED.asItem(),
+                ModBlocks.STONE_STAIRS_BLACK.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_WHITE.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_ORANGE.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_MAGENTA.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_LIGHT_BLUE.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_YELLOW.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_LIME.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_PINK.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_GRAY.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_LIGHT_GRAY.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_CYAN.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_PURPLE.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_BLUE.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_BROWN.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_GREEN.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_RED.asItem(),
+                ModBlocks.COBBLESTONE_STAIRS_BLACK.asItem());
+
+        this.tag(ItemTags.WOODEN_SLABS).add(
+                ModBlocks.PAINTED_SLAB_WHITE.asItem(),
+                ModBlocks.PAINTED_SLAB_ORANGE.asItem(),
+                ModBlocks.PAINTED_SLAB_MAGENTA.asItem(),
+                ModBlocks.PAINTED_SLAB_LIGHT_BLUE.asItem(),
+                ModBlocks.PAINTED_SLAB_YELLOW.asItem(),
+                ModBlocks.PAINTED_SLAB_LIME.asItem(),
+                ModBlocks.PAINTED_SLAB_PINK.asItem(),
+                ModBlocks.PAINTED_SLAB_GRAY.asItem(),
+                ModBlocks.PAINTED_SLAB_LIGHT_GRAY.asItem(),
+                ModBlocks.PAINTED_SLAB_CYAN.asItem(),
+                ModBlocks.PAINTED_SLAB_PURPLE.asItem(),
+                ModBlocks.PAINTED_SLAB_BLUE.asItem(),
+                ModBlocks.PAINTED_SLAB_BROWN.asItem(),
+                ModBlocks.PAINTED_SLAB_GREEN.asItem(),
+                ModBlocks.PAINTED_SLAB_RED.asItem(),
+                ModBlocks.PAINTED_SLAB_BLACK.asItem(),
+                ModBlocks.STONE_SLAB_WHITE.asItem(),
+                ModBlocks.STONE_SLAB_ORANGE.asItem(),
+                ModBlocks.STONE_SLAB_MAGENTA.asItem(),
+                ModBlocks.STONE_SLAB_LIGHT_BLUE.asItem(),
+                ModBlocks.STONE_SLAB_YELLOW.asItem(),
+                ModBlocks.STONE_SLAB_LIME.asItem(),
+                ModBlocks.STONE_SLAB_PINK.asItem(),
+                ModBlocks.STONE_SLAB_GRAY.asItem(),
+                ModBlocks.STONE_SLAB_LIGHT_GRAY.asItem(),
+                ModBlocks.STONE_SLAB_CYAN.asItem(),
+                ModBlocks.STONE_SLAB_PURPLE.asItem(),
+                ModBlocks.STONE_SLAB_BLUE.asItem(),
+                ModBlocks.STONE_SLAB_BROWN.asItem(),
+                ModBlocks.STONE_SLAB_GREEN.asItem(),
+                ModBlocks.STONE_SLAB_RED.asItem(),
+                ModBlocks.STONE_SLAB_BLACK.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_WHITE.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_ORANGE.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_MAGENTA.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_LIGHT_BLUE.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_YELLOW.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_LIME.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_PINK.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_GRAY.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_LIGHT_GRAY.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_CYAN.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_PURPLE.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_BLUE.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_BROWN.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_GREEN.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_RED.asItem(),
+                ModBlocks.COBBLESTONE_SLAB_BLACK.asItem());
+
+        this.tag(ItemTags.SAPLINGS).add(
+                ModBlocks.IRONWOOD_SAPLING.asItem());
+
+        this.tag(ItemTags.LEAVES).add(
+                ModBlocks.IRONWOOD_LEAVES.asItem());
+
+
+
+        // ***************************************************************************** //
+        //  Modded Tags
+        // ***************************************************************************** //
+
         getOrCreateTagBuilder(ModItemTags.JARS).add(
                 ModBlockItems.GLAZED_JAR_0_ITEM,
                 ModBlockItems.GLAZED_JAR_1_ITEM,

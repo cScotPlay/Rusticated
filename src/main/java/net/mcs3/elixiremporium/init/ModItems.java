@@ -25,6 +25,7 @@ public class ModItems
 
     public static Item CATALOG = new ModBookItem();
     public static Item OLIVES = new ModItem(new Item.Properties().tab(AG_TAB).food(ModFoodProperties.OLIVES));
+    public static Item IRON_BERRIES = new ModItem(new Item.Properties().tab(AG_TAB).food(ModFoodProperties.IRONBERRIES));
 
     public static Item COPPER_NUGGET = new ModItem(new Item.Properties().tab(DECORATION_TAB));
 
@@ -32,7 +33,9 @@ public class ModItems
     public static void init()
     {
         register("catalog", CATALOG);
+        register("iron_berries", IRON_BERRIES);
         register("olives", OLIVES);
+
         register("copper_nugget", COPPER_NUGGET);
 
     }

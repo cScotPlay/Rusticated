@@ -1,12 +1,20 @@
 package net.mcs3.elixiremporium.data.loottables;
 
+import com.google.common.collect.ImmutableSet;
 import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.mcs3.elixiremporium.init.ModBlocks;
+import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelBlock;
 import net.mcs3.elixiremporium.world.level.block.entity.ModBlockEntityTypes;
+import net.minecraft.advancements.critereon.EnchantmentPredicate;
+import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.data.loot.BlockLoot;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.enchantment.Enchantments;
+import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SlabBlock;
@@ -19,14 +27,23 @@ import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
 import net.minecraft.world.level.storage.loot.functions.CopyNbtFunction;
 import net.minecraft.world.level.storage.loot.functions.SetContainerContents;
 import net.minecraft.world.level.storage.loot.functions.SetItemCountFunction;
+import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemBlockStatePropertyCondition;
+import net.minecraft.world.level.storage.loot.predicates.MatchTool;
 import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
+import java.util.Set;
 import java.util.stream.Stream;
 
 public class LootTableGenerator extends FabricBlockLootTableProvider
 {
+    private static final net.minecraft.world.level.storage.loot.predicates.LootItemCondition.Builder HAS_SILK_TOUCH;
+    private static final net.minecraft.world.level.storage.loot.predicates.LootItemCondition.Builder HAS_SHEARS;
+    private static final net.minecraft.world.level.storage.loot.predicates.LootItemCondition.Builder HAS_SHEARS_OR_SILK_TOUCH;
+    private static final net.minecraft.world.level.storage.loot.predicates.LootItemCondition.Builder HAS_NO_SHEARS_OR_SILK_TOUCH;
+    private static final float[] NORMAL_LEAVES_SAPLING_CHANCES;
+
 
     public LootTableGenerator(FabricDataGenerator dataGenerator) {
         super(dataGenerator);
@@ -297,7 +314,9 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
 
         this.add(ModBlocks.BARREL, LootTableGenerator::createBarrelDrop);
 
-
+        add(ModBlocks.IRONWOOD_LEAVES, (block -> {
+            return createLeavesDropswithItem(ModBlocks.IRONWOOD_LEAVES, ModBlocks.IRONWOOD_SAPLING, ModItems.IRON_BERRIES, NORMAL_LEAVES_SAPLING_CHANCES);
+        }));
 
         add(ModBlocks.STONE_WHITE, (blockx) -> {
             return createSingleItemTableWithSilkTouch(blockx, ModBlocks.COBBLESTONE_WHITE);
@@ -350,8 +369,20 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
 
     }
 
+    public static LootTable.Builder createLeavesDropswithItem(Block leavesBlock, Block saplingBlock, Item droppedItem, float... chances) {
+        return createLeavesDrops(leavesBlock, saplingBlock, chances).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(((net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer.Builder)applyExplosionCondition(leavesBlock, LootItem.lootTableItem(droppedItem))).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, new float[]{0.1F, 0.025F, 0.06F, 0.025F, 0.3F}))));
+    }
+
     public static LootTable.Builder createBarrelDrop(Block barrelBlock) {
         return LootTable.lootTable().withPool((net.minecraft.world.level.storage.loot.LootPool.Builder)applyExplosionCondition(barrelBlock, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(barrelBlock).apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY)).apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY).copy("Lock", "BlockEntityTag.Lock").copy("LootTable", "BlockEntityTag.LootTable").copy("LootTableSeed", "BlockEntityTag.LootTableSeed")).apply(SetContainerContents.setContents(ModBlockEntityTypes.BARREL_CONTAINER).withEntry(DynamicLoot.dynamicEntry(BarrelBlock.CONTENTS))))));
+    }
+
+    static {
+        HAS_SILK_TOUCH = MatchTool.toolMatches(net.minecraft.advancements.critereon.ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))));
+        HAS_SHEARS = MatchTool.toolMatches(net.minecraft.advancements.critereon.ItemPredicate.Builder.item().of(new ItemLike[]{Items.SHEARS}));
+        HAS_SHEARS_OR_SILK_TOUCH = HAS_SHEARS.or(HAS_SILK_TOUCH);
+        HAS_NO_SHEARS_OR_SILK_TOUCH = HAS_SHEARS_OR_SILK_TOUCH.invert();
+        NORMAL_LEAVES_SAPLING_CHANCES = new float[]{0.05F, 0.0625F, 0.083333336F, 0.1F};
     }
 
 }

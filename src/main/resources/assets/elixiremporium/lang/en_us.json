@@ -291,9 +291,12 @@
   "block.elixiremporium.framed_wall_black": "Black Framed Wall",
 
   "block.elixiremporium.fertile_soil": "Fertile Soil",
+  "block.elixiremporium.ironwood_sapling": "Ironwood Sapling",
+  "block.elixiremporium.ironwood_leaves": "Ironwood Leaves",
 
 
   "item.elixiremporium.catalog": "Emporium Catalog",
+  "item.elixiremporium.iron_berries": "Iron Berries",
   "item.elixiremporium.olives": "Olives",
 
   "item.elixiremporium.copper_nugget": "Copper Nugget",

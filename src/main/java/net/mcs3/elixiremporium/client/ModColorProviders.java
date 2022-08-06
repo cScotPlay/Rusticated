@@ -2,8 +2,14 @@ package net.mcs3.elixiremporium.client;
 
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.mcs3.elixiremporium.init.ModBlocks;
+import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.BiomeColors;
+import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.state.BlockState;
 
 public class ModColorProviders
 {
@@ -131,6 +137,12 @@ public class ModColorProviders
         ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> {
             return blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor();
         }, ModBlocks.IRON_LATTICE);
+
+        ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> {
+            return blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor();
+        }, ModBlocks.IRONWOOD_LEAVES);
+
+
     }
 
     public static void registerItemColorProviders()
@@ -253,6 +265,9 @@ public class ModColorProviders
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x5e7c16, ModBlocks.COBBLESTONE_WALL_GREEN.asItem());
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0xb02e26, ModBlocks.COBBLESTONE_WALL_RED.asItem());
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x1d1d21, ModBlocks.COBBLESTONE_WALL_BLACK.asItem());
+
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorProviderRegistry.BLOCK.get(((BlockItem)stack.getItem()).getBlock()).getColor(((BlockItem)stack.getItem()).getBlock().defaultBlockState(), null, null, tintIndex), ModBlocks.IRONWOOD_LEAVES);
+
 
     }
 }
