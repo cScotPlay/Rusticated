@@ -10,8 +10,7 @@
     },
     {
       "type": "crafting",
-      "recipe": "elixiremporium:painted_planks_pink",
-      "recipe2": "elixiremporium:painted_planks_pink_dyed"
+      "recipe": "elixiremporium:painted_planks_pink"
     },
     {
       "type": "crafting",
