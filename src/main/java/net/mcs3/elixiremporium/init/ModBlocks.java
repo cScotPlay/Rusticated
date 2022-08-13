@@ -1,6 +1,7 @@
 package net.mcs3.elixiremporium.init;
 
 import com.google.common.collect.Maps;
+import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
@@ -653,6 +654,8 @@ public class ModBlocks
 
         initOxidizables();
         initStrippableWoods();
+        ModFireBlock.registerFlammableBlock();
+
     }
 
     public static void initOxidizables()

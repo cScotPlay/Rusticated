@@ -130,5 +130,8 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.IRONWOOD_WOOD,
                 ModBlocks.STRIPPED_IRONWOOD_LOG,
                 ModBlocks.STRIPPED_IRONWOOD_WOOD);
+
+        getOrCreateTagBuilder(ModBlockTags.FRAMED_WALLS)
+                .add(registry.stream().filter(b -> b instanceof FramedWallBlocks).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
     }
 }

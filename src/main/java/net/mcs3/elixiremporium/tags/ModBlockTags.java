@@ -8,6 +8,7 @@ import net.minecraft.world.level.block.Block;
 
 public class ModBlockTags
 {
+    public static final TagKey<Block> FRAMED_WALLS = create("framed_walls");
     public static final TagKey<Block> IRONWOOD_LOGS = create("ironwood_logs");
 
     private static TagKey<Block> create(String name) {
