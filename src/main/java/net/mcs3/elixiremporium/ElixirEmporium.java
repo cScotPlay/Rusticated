@@ -3,8 +3,10 @@ package net.mcs3.elixiremporium;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.mcs3.elixiremporium.data.worldgen.features.ModTreeFeatures;
+import net.mcs3.elixiremporium.data.worldgen.placement.ModTreePlacement;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.util.RegistryHandler;
+import net.mcs3.elixiremporium.world.level.levelgen.WorldGeneration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -37,6 +39,8 @@ public class ElixirEmporium implements ModInitializer {
 		RegistryHandler.onBlockEntityRegistry();
 
 		ModTreeFeatures.init();
+
+		WorldGeneration.generateWorld();
 
 		LOGGER.info("Scott's Elixir Emporium loaded!");
 	}

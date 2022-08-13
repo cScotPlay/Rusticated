@@ -20,10 +20,10 @@ public class ModTreeFeatures
     {
         IRONWOOD_TREE_FEATURE = FeatureUtils.register("ironwood_tree_feature", Feature.TREE, new TreeConfiguration.TreeConfigurationBuilder(
                 BlockStateProvider.simple(ModBlocks.IRONWOOD_LOG),
-                new ForkingTrunkPlacer(4, 3, 4),
+                new ForkingTrunkPlacer(4, 2, 2),
                 BlockStateProvider.simple(ModBlocks.IRONWOOD_LEAVES),
                 new RandomSpreadFoliagePlacer(ConstantInt.of(3), ConstantInt.of(0), ConstantInt.of(2), 100),
-                new TwoLayersFeatureSize(2, 0, 2)).ignoreVines().build());
+                new TwoLayersFeatureSize(3, 0, 2)).ignoreVines().build());
     }
 }
 
