@@ -11,9 +11,7 @@ public class ModFireBlock
     {
         FlammableBlockRegistry instance = FlammableBlockRegistry.getDefaultInstance();
 
-        instance.add(BlockTags.PLANKS, 5, 20);
-        instance.add(BlockTags.WOODEN_STAIRS, 5, 20);
-        instance.add(BlockTags.WOODEN_SLABS, 5, 20);
+        instance.add(ModBlockTags.FLAMMABLE_BLOCK, 5, 20);
 
         instance.add(ModBlockTags.FRAMED_WALLS, 10, 30);
 

@@ -133,5 +133,15 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
 
         getOrCreateTagBuilder(ModBlockTags.FRAMED_WALLS)
                 .add(registry.stream().filter(b -> b instanceof FramedWallBlocks).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(ModBlockTags.FLAMMABLE_BLOCK)
+                .add(registry.stream().filter(b -> b instanceof PlanksBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(ModBlockTags.FLAMMABLE_BLOCK)
+                .add(registry.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(ModBlockTags.FLAMMABLE_BLOCK)
+                .add(registry.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
     }
 }

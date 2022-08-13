@@ -10,6 +10,7 @@ public class ModBlockTags
 {
     public static final TagKey<Block> FRAMED_WALLS = create("framed_walls");
     public static final TagKey<Block> IRONWOOD_LOGS = create("ironwood_logs");
+    public static final TagKey<Block> FLAMMABLE_BLOCK = create("flammable_block");
 
     private static TagKey<Block> create(String name) {
         return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(ElixirEmporium.MOD_ID, name));
