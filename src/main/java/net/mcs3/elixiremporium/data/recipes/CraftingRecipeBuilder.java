@@ -326,6 +326,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapelessRecipeBuilder.shapeless(ModBlocks.IRONWOOD_PLANKS, 4).requires(ModBlocks.IRONWOOD_LOG).unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_LOG)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.IRONWOOD_SLAB, 6).define('#', ModBlocks.IRONWOOD_PLANKS).pattern("###").unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_PLANKS)).save(exporter);
         stairBuilder(ModBlocks.IRONWOOD_STAIRS, Ingredient.of(new ItemLike[]{ModBlocks.IRONWOOD_PLANKS})).unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_PLANKS)).save(exporter);
+        fenceBuilder(ModBlocks.IRONWOOD_FENCE, Ingredient.of(new ItemLike[]{ModBlocks.IRONWOOD_PLANKS})).unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_PLANKS)).save(exporter);
+        fenceGateBuilder(ModBlocks.IRONWOOD_GATE, Ingredient.of(new ItemLike[]{ModBlocks.IRONWOOD_PLANKS})).unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_PLANKS)).save(exporter);
 
 
 

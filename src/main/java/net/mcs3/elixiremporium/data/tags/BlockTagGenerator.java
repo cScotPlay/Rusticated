@@ -71,6 +71,14 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(
                 ModBlockTags.IRONWOOD_LOGS);
 
+        getOrCreateTagBuilder(BlockTags.FENCES).add(
+                ModBlocks.IRONWOOD_FENCE);
+
+        getOrCreateTagBuilder(BlockTags.WOODEN_FENCES).add(
+                ModBlocks.IRONWOOD_FENCE);
+
+        getOrCreateTagBuilder(BlockTags.FENCE_GATES).add(
+                ModBlocks.IRONWOOD_GATE);
 
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)

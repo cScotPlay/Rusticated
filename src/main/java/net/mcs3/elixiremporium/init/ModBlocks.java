@@ -344,6 +344,8 @@ public class ModBlocks
     public static final Block IRONWOOD_PLANKS = new PlanksBlock(MaterialColor.SAND);
     public static final ModSlabBlock IRONWOOD_SLAB = new ModSlabBlock(MaterialColor.SAND);
     public static final ModStairsBlock IRONWOOD_STAIRS = new ModStairsBlock(IRONWOOD_PLANKS.defaultBlockState(), Properties.copy(IRONWOOD_PLANKS));
+    public static final Block IRONWOOD_FENCE = new FenceBlock(Properties.copy(IRONWOOD_PLANKS));
+    public static final Block IRONWOOD_GATE = new FenceGateBlock(Properties.copy(IRONWOOD_PLANKS));
 
 
 
@@ -406,6 +408,8 @@ public class ModBlocks
         register("ironwood_planks", IRONWOOD_PLANKS, DECORATION_TAB);
         register("ironwood_slab", IRONWOOD_SLAB, DECORATION_TAB);
         register("ironwood_stairs", IRONWOOD_STAIRS, DECORATION_TAB);
+        register("ironwood_fence", IRONWOOD_FENCE, DECORATION_TAB);
+        register("ironwood_gate", IRONWOOD_GATE, DECORATION_TAB);
 
         register("stone_white", STONE_WHITE, DECORATION_TAB);
         register("stone_orange", STONE_ORANGE, DECORATION_TAB);

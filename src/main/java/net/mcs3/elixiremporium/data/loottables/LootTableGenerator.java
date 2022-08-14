@@ -262,7 +262,9 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
                 ModBlocks.STRIPPED_IRONWOOD_LOG,
                 ModBlocks.STRIPPED_IRONWOOD_WOOD,
                 ModBlocks.IRONWOOD_PLANKS,
-                ModBlocks.IRONWOOD_STAIRS
+                ModBlocks.IRONWOOD_STAIRS,
+                ModBlocks.IRONWOOD_FENCE,
+                ModBlocks.IRONWOOD_GATE
         )
 
                 .forEach(this::dropSelf);

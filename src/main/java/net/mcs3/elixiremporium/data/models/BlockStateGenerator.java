@@ -379,6 +379,8 @@ public class BlockStateGenerator extends FabricModelProvider
         blockStateModelGenerator.createTrivialCube(ModBlocks.IRONWOOD_PLANKS);
         createColoredSlabModels(blockStateModelGenerator, ModBlocks.IRONWOOD_SLAB, ModBlocks.IRONWOOD_PLANKS, "ironwood_planks");
         createColoredStairsModels(blockStateModelGenerator, ModBlocks.IRONWOOD_STAIRS, ModBlocks.IRONWOOD_PLANKS);
+        createFenceModels(blockStateModelGenerator, ModBlocks.IRONWOOD_FENCE, ModBlocks.IRONWOOD_PLANKS);
+        createFenceGateModels(blockStateModelGenerator, ModBlocks.IRONWOOD_GATE, ModBlocks.IRONWOOD_PLANKS);
 
 
 
@@ -458,6 +460,28 @@ public class BlockStateGenerator extends FabricModelProvider
 
         modelGenerator.blockStateOutput.accept(BlockModelGenerators.createStairs(block, identifier, identifier2, identifier3));
         modelGenerator.delegateItemModel(block, identifier2);
+    }
+
+    public static void createFenceModels(BlockModelGenerators modelGenerator, Block fenceBlock, Block textureBlock)
+    {
+        TextureMapping texture = TextureMapping.defaultTexture(textureBlock);
+        ResourceLocation resourceLocation = ModelTemplates.FENCE_POST.create(fenceBlock, texture, modelGenerator.modelOutput);
+        ResourceLocation resourceLocation2 = ModelTemplates.FENCE_SIDE.create(fenceBlock, texture, modelGenerator.modelOutput);
+        modelGenerator.blockStateOutput.accept(BlockModelGenerators.createFence(fenceBlock, resourceLocation, resourceLocation2));
+        ResourceLocation resourceLocation3 = ModelTemplates.FENCE_INVENTORY.create(fenceBlock, texture, modelGenerator.modelOutput);
+        modelGenerator.delegateItemModel(fenceBlock, resourceLocation3);
+    }
+
+    public static void createFenceGateModels(BlockModelGenerators modelGenerator, Block fenceGateBlock, Block textureBlock)
+    {
+        TextureMapping textureMapping = TextureMapping.defaultTexture(textureBlock);
+
+        ResourceLocation resourceLocation = ModelTemplates.FENCE_GATE_OPEN.create(fenceGateBlock, textureMapping, modelGenerator.modelOutput);
+        ResourceLocation resourceLocation2 = ModelTemplates.FENCE_GATE_CLOSED.create(fenceGateBlock, textureMapping, modelGenerator.modelOutput);
+        ResourceLocation resourceLocation3 = ModelTemplates.FENCE_GATE_WALL_OPEN.create(fenceGateBlock, textureMapping, modelGenerator.modelOutput);
+        ResourceLocation resourceLocation4 = ModelTemplates.FENCE_GATE_WALL_CLOSED.create(fenceGateBlock, textureMapping, modelGenerator.modelOutput);
+
+        modelGenerator.blockStateOutput.accept(BlockModelGenerators.createFenceGate(fenceGateBlock, resourceLocation, resourceLocation2, resourceLocation3, resourceLocation4));
     }
 
     public static void createColoredStoneWallModels(BlockModelGenerators modelGenerator, Block wallBlock, Block parentBlock)

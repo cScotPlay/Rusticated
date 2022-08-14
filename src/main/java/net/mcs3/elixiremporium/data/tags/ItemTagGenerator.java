@@ -1,20 +1,12 @@
 package net.mcs3.elixiremporium.data.tags;
 
-import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.init.ModBlockItems;
 import net.mcs3.elixiremporium.init.ModBlocks;
-import net.mcs3.elixiremporium.tags.ModBlockTags;
 import net.mcs3.elixiremporium.tags.ModItemTags;
-import net.mcs3.elixiremporium.world.level.block.PlanksBlock;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-
-import java.util.Comparator;
 
 public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
 {
@@ -180,6 +172,14 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.STRIPPED_IRONWOOD_LOG.asItem(),
                 ModBlocks.STRIPPED_IRONWOOD_WOOD.asItem()
                 );
+
+        this.tag(ItemTags.FENCES).add(
+                ModBlocks.IRONWOOD_FENCE.asItem()
+                );
+
+        this.tag(ItemTags.WOODEN_FENCES).add(
+                ModBlocks.IRONWOOD_FENCE.asItem()
+        );
 
 
 
