@@ -371,11 +371,14 @@ public class BlockStateGenerator extends FabricModelProvider
         createFramedWallModels(blockStateModelGenerator, ModBlocks.FRAMED_WALL_BLACK, Blocks.BLACK_WOOL, FRAMED_WALL);
 
         createFertileSoil(blockStateModelGenerator);
+
         createPlantModels(blockStateModelGenerator, ModBlocks.IRONWOOD_SAPLING, ModBlocks.POTTED_IRONWOOD_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
         blockStateModelGenerator.createTrivialBlock(ModBlocks.IRONWOOD_LEAVES, TexturedModel.LEAVES);
-
         crateWoodModels(blockStateModelGenerator, ModBlocks.IRONWOOD_WOOD, ModBlocks.IRONWOOD_LOG);
         crateWoodModels(blockStateModelGenerator, ModBlocks.STRIPPED_IRONWOOD_WOOD, ModBlocks.STRIPPED_IRONWOOD_LOG);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.IRONWOOD_PLANKS);
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.IRONWOOD_SLAB, ModBlocks.IRONWOOD_PLANKS, "ironwood_planks");
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.IRONWOOD_STAIRS, ModBlocks.IRONWOOD_PLANKS);
 
 
 

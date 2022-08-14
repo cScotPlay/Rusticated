@@ -326,15 +326,13 @@ public class ModBlocks
     public static final PathBlock BLACKSTONE_PATH = new PathBlock();
     public static final PathBlock NETHER_BRICKS_PATH = new PathBlock();
 
-
     //////////////////////////////////////////////////////////
-    ///               Agricultural Blocks                  ///
+    ///               Ironwood Blocks                  ///
     //////////////////////////////////////////////////////////
-
-    public static final Block FERTILE_SOIL = new FertileSoilBlock(Properties.copy(Blocks.FARMLAND));
     public static final Block IRONWOOD_SAPLING = new SaplingBlock(new IronwoodTreeGrower(), Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
     public static final Block POTTED_IRONWOOD_SAPLING = new FlowerPotBlock(IRONWOOD_SAPLING, Properties.of(Material.DECORATION).instabreak().noOcclusion());
     public static final Block IRONWOOD_LEAVES = new LeavesBlock(Properties.copy(Blocks.ACACIA_LEAVES));
+
     public static final Block IRONWOOD_LOG = new RotatedPillarBlock(Properties.of(Material.WOOD, (blockState) -> {
         return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.SAND : MaterialColor.COLOR_GRAY;
     }).strength(2.0F).sound(SoundType.WOOD));
@@ -343,6 +341,18 @@ public class ModBlocks
         return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.SAND : MaterialColor.COLOR_GRAY;
     }).strength(2.0F).sound(SoundType.WOOD));
     public static final Block STRIPPED_IRONWOOD_WOOD = new RotatedPillarBlock(Properties.of(Material.WOOD, MaterialColor.COLOR_GRAY).strength(2.0F).sound(SoundType.WOOD));
+    public static final Block IRONWOOD_PLANKS = new PlanksBlock(MaterialColor.SAND);
+    public static final ModSlabBlock IRONWOOD_SLAB = new ModSlabBlock(MaterialColor.SAND);
+    public static final ModStairsBlock IRONWOOD_STAIRS = new ModStairsBlock(IRONWOOD_PLANKS.defaultBlockState(), Properties.copy(IRONWOOD_PLANKS));
+
+
+
+    //////////////////////////////////////////////////////////
+    ///               Agricultural Blocks                  ///
+    //////////////////////////////////////////////////////////
+
+    public static final Block FERTILE_SOIL = new FertileSoilBlock(Properties.copy(Blocks.FARMLAND));
+
 
 
     public static void init()
@@ -388,6 +398,14 @@ public class ModBlocks
         register("chain_waxed_exposed_copper", CHAIN_WAXED_EXPOSED_COPPER, DECORATION_TAB);
         register("chain_waxed_weathered_copper", CHAIN_WAXED_WEATHERED_COPPER, DECORATION_TAB);
         register("chain_waxed_oxidized_copper", CHAIN_WAXED_OXIDIZED_COPPER, DECORATION_TAB);
+
+        register("ironwood_log", IRONWOOD_LOG, DECORATION_TAB);
+        register("ironwood_wood", IRONWOOD_WOOD, DECORATION_TAB);
+        register("stripped_ironwood_log", STRIPPED_IRONWOOD_LOG, DECORATION_TAB);
+        register("stripped_ironwood_wood", STRIPPED_IRONWOOD_WOOD, DECORATION_TAB);
+        register("ironwood_planks", IRONWOOD_PLANKS, DECORATION_TAB);
+        register("ironwood_slab", IRONWOOD_SLAB, DECORATION_TAB);
+        register("ironwood_stairs", IRONWOOD_STAIRS, DECORATION_TAB);
 
         register("stone_white", STONE_WHITE, DECORATION_TAB);
         register("stone_orange", STONE_ORANGE, DECORATION_TAB);
@@ -645,10 +663,7 @@ public class ModBlocks
         register("ironwood_sapling", IRONWOOD_SAPLING, AGRICULTURAL_TAB);
         register("potted_ironwood_sapling", POTTED_IRONWOOD_SAPLING, null);
         register("ironwood_leaves", IRONWOOD_LEAVES, AGRICULTURAL_TAB);
-        register("ironwood_log", IRONWOOD_LOG, AGRICULTURAL_TAB);
-        register("ironwood_wood", IRONWOOD_WOOD, AGRICULTURAL_TAB);
-        register("stripped_ironwood_log", STRIPPED_IRONWOOD_LOG, AGRICULTURAL_TAB);
-        register("stripped_ironwood_wood", STRIPPED_IRONWOOD_WOOD, AGRICULTURAL_TAB);
+
 
 
 

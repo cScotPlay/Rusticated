@@ -297,7 +297,9 @@
   "block.elixiremporium.ironwood_wood": "Ironwood Wood",
   "block.elixiremporium.stripped_ironwood_log": "Stripped Ironwood Log",
   "block.elixiremporium.stripped_ironwood_wood": "Stripped Ironwood Wood",
-
+  "block.elixiremporium.ironwood_planks": "Ironwood Planks",
+  "block.elixiremporium.ironwood_slab": "Ironwood Slab",
+  "block.elixiremporium.ironwood_stairs": "Ironwood Stairs",
 
   "item.elixiremporium.catalog": "Emporium Catalog",
   "item.elixiremporium.iron_berries": "Iron Berries",

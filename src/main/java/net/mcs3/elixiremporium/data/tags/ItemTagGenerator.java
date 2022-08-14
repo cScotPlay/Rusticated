@@ -44,7 +44,8 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.PAINTED_PLANKS_BROWN.asItem(),
                 ModBlocks.PAINTED_PLANKS_GREEN.asItem(),
                 ModBlocks.PAINTED_PLANKS_RED.asItem(),
-                ModBlocks.PAINTED_PLANKS_BLACK.asItem());
+                ModBlocks.PAINTED_PLANKS_BLACK.asItem(),
+                ModBlocks.IRONWOOD_PLANKS.asItem());
 
         this.tag(ItemTags.WOODEN_STAIRS).add(
                 ModBlocks.PAINTED_STAIRS_WHITE.asItem(),
@@ -62,7 +63,8 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.PAINTED_STAIRS_BROWN.asItem(),
                 ModBlocks.PAINTED_STAIRS_GREEN.asItem(),
                 ModBlocks.PAINTED_STAIRS_RED.asItem(),
-                ModBlocks.PAINTED_STAIRS_BLACK.asItem());
+                ModBlocks.PAINTED_STAIRS_BLACK.asItem(),
+                ModBlocks.IRONWOOD_STAIRS.asItem());
 
         this.tag(ItemTags.STAIRS).add(
                 ModBlocks.PAINTED_STAIRS_WHITE.asItem(),
@@ -112,7 +114,8 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.COBBLESTONE_STAIRS_BROWN.asItem(),
                 ModBlocks.COBBLESTONE_STAIRS_GREEN.asItem(),
                 ModBlocks.COBBLESTONE_STAIRS_RED.asItem(),
-                ModBlocks.COBBLESTONE_STAIRS_BLACK.asItem());
+                ModBlocks.COBBLESTONE_STAIRS_BLACK.asItem(),
+                ModBlocks.IRONWOOD_STAIRS.asItem());
 
         this.tag(ItemTags.WOODEN_SLABS).add(
                 ModBlocks.PAINTED_SLAB_WHITE.asItem(),
@@ -162,7 +165,8 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.COBBLESTONE_SLAB_BROWN.asItem(),
                 ModBlocks.COBBLESTONE_SLAB_GREEN.asItem(),
                 ModBlocks.COBBLESTONE_SLAB_RED.asItem(),
-                ModBlocks.COBBLESTONE_SLAB_BLACK.asItem());
+                ModBlocks.COBBLESTONE_SLAB_BLACK.asItem(),
+                ModBlocks.IRONWOOD_SLAB.asItem());
 
         this.tag(ItemTags.SAPLINGS).add(
                 ModBlocks.IRONWOOD_SAPLING.asItem());
