@@ -1,0 +1,13 @@
+{
+  "name": "Ironwood Trees",
+  "icon": "elixiremporium:iron_berries",
+  "category": "elixiremporium:agricultural_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "The Desert Ironwood Tree (Olneya tesota) grows naturally in the overworld in dry and arid climates. Use Ironwood Logs and break them down to Ironwood Planks that transitions to other Ironwood variants. Ironwood Leaves drop Ironwood Saplings and Iron Berries.",
+      "item": "elixiremporium:ironwood_sapling"
+    }
+  ],
+  "sortnum": 1
+}
