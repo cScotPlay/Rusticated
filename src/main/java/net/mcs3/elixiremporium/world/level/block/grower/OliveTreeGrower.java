@@ -10,9 +10,7 @@ import java.util.Random;
 
 public class OliveTreeGrower extends AbstractTreeGrower
 {
-    public OliveTreeGrower()
-    {
-    }
+    public OliveTreeGrower() {}
 
     @Nullable
     @Override

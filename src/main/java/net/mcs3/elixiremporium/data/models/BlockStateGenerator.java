@@ -386,6 +386,11 @@ public class BlockStateGenerator extends FabricModelProvider
         blockStateModelGenerator.createTrivialBlock(ModBlocks.OLIVE_LEAVES, TexturedModel.LEAVES);
         crateWoodModels(blockStateModelGenerator, ModBlocks.OLIVE_WOOD, ModBlocks.OLIVE_LOG);
         crateWoodModels(blockStateModelGenerator, ModBlocks.STRIPPED_OLIVE_WOOD, ModBlocks.STRIPPED_OLIVE_LOG);
+        blockStateModelGenerator.createTrivialCube(ModBlocks.OLIVE_PLANKS);
+        createColoredSlabModels(blockStateModelGenerator, ModBlocks.OLIVE_SLAB, ModBlocks.OLIVE_PLANKS, "olive_planks");
+        createColoredStairsModels(blockStateModelGenerator, ModBlocks.OLIVE_STAIRS, ModBlocks.OLIVE_PLANKS);
+        createFenceModels(blockStateModelGenerator, ModBlocks.OLIVE_FENCE, ModBlocks.OLIVE_PLANKS);
+        createFenceGateModels(blockStateModelGenerator, ModBlocks.OLIVE_GATE, ModBlocks.OLIVE_PLANKS);
 
 
 

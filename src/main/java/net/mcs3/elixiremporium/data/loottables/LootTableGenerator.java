@@ -271,7 +271,11 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
                 ModBlocks.OLIVE_LOG,
                 ModBlocks.OLIVE_WOOD,
                 ModBlocks.STRIPPED_OLIVE_LOG,
-                ModBlocks.STRIPPED_OLIVE_WOOD
+                ModBlocks.STRIPPED_OLIVE_WOOD,
+                ModBlocks.OLIVE_PLANKS,
+                ModBlocks.OLIVE_STAIRS,
+                ModBlocks.OLIVE_FENCE,
+                ModBlocks.OLIVE_GATE
         )
 
                 .forEach(this::dropSelf);
@@ -294,6 +298,7 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         add(ModBlocks.PAINTED_SLAB_BLACK, BlockLoot::createSlabItemTable);
 
         add(ModBlocks.IRONWOOD_SLAB, BlockLoot::createSlabItemTable);
+        add(ModBlocks.OLIVE_SLAB, BlockLoot::createSlabItemTable);
 
         add(ModBlocks.COBBLESTONE_SLAB_WHITE, BlockLoot::createSlabItemTable);
         add(ModBlocks.COBBLESTONE_SLAB_ORANGE, BlockLoot::createSlabItemTable);

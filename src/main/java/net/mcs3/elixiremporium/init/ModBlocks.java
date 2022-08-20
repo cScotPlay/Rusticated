@@ -356,13 +356,18 @@ public class ModBlocks
     public static final Block OLIVE_LEAVES = new LeavesBlock(Properties.copy(Blocks.ACACIA_LEAVES));
 
     public static final Block OLIVE_LOG = new RotatedPillarBlock(Properties.of(Material.WOOD, (blockState) -> {
-        return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.SAND : MaterialColor.COLOR_LIGHT_GRAY;
+        return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.PODZOL : MaterialColor.COLOR_LIGHT_GRAY;
     }).strength(2.0F).sound(SoundType.WOOD));
     public static final Block OLIVE_WOOD = new RotatedPillarBlock(Properties.of(Material.WOOD, MaterialColor.COLOR_LIGHT_GRAY).strength(2.0F).sound(SoundType.WOOD));
     public static final Block STRIPPED_OLIVE_LOG = new RotatedPillarBlock(Properties.of(Material.WOOD, (blockState) -> {
-        return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.SAND : MaterialColor.COLOR_LIGHT_GRAY;
+        return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.PODZOL : MaterialColor.COLOR_LIGHT_GRAY;
     }).strength(2.0F).sound(SoundType.WOOD));
     public static final Block STRIPPED_OLIVE_WOOD = new RotatedPillarBlock(Properties.of(Material.WOOD, MaterialColor.COLOR_LIGHT_GRAY).strength(2.0F).sound(SoundType.WOOD));
+    public static final Block OLIVE_PLANKS = new PlanksBlock(MaterialColor.PODZOL);
+    public static final ModSlabBlock OLIVE_SLAB = new ModSlabBlock(MaterialColor.PODZOL);
+    public static final ModStairsBlock OLIVE_STAIRS = new ModStairsBlock(OLIVE_PLANKS.defaultBlockState(), Properties.copy(OLIVE_PLANKS));
+    public static final Block OLIVE_FENCE = new FenceBlock(Properties.copy(OLIVE_PLANKS));
+    public static final Block OLIVE_GATE = new FenceGateBlock(Properties.copy(OLIVE_PLANKS));
 
 
     //////////////////////////////////////////////////////////
@@ -431,6 +436,11 @@ public class ModBlocks
         register("olive_wood", OLIVE_WOOD, DECORATION_TAB);
         register("stripped_olive_log", STRIPPED_OLIVE_LOG, DECORATION_TAB);
         register("stripped_olive_wood", STRIPPED_OLIVE_WOOD, DECORATION_TAB);
+        register("olive_planks", OLIVE_PLANKS, DECORATION_TAB);
+        register("olive_slab", OLIVE_SLAB, DECORATION_TAB);
+        register("olive_stairs", OLIVE_STAIRS, DECORATION_TAB);
+        register("olive_fence", OLIVE_FENCE, DECORATION_TAB);
+        register("olive_gate", OLIVE_GATE, DECORATION_TAB);
 
         register("stone_white", STONE_WHITE, DECORATION_TAB);
         register("stone_orange", STONE_ORANGE, DECORATION_TAB);

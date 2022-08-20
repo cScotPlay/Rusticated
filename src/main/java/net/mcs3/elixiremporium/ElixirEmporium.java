@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.mcs3.elixiremporium.data.worldgen.features.ModTreeFeatures;
 import net.mcs3.elixiremporium.data.worldgen.placement.ModTreePlacement;
 import net.mcs3.elixiremporium.init.ModBlocks;
+import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.util.RegistryHandler;
 import net.mcs3.elixiremporium.world.level.levelgen.WorldGeneration;
 import net.minecraft.resources.ResourceLocation;
@@ -25,7 +26,7 @@ public class ElixirEmporium implements ModInitializer {
 
 	public static CreativeModeTab ITEMGROUPAG = FabricItemGroupBuilder.build(
 			new ResourceLocation("elixiremporium", "item_group_ag"),
-			() -> new ItemStack(Items.WHEAT)); //TODO Update Item
+			() -> new ItemStack(ModItems.OLIVES)); //TODO Update Item
 
 	@Override
 	public void onInitialize() {
