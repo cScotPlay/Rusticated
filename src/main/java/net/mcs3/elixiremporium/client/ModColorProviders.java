@@ -142,6 +142,10 @@ public class ModColorProviders
             return blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor();
         }, ModBlocks.IRONWOOD_LEAVES);
 
+        ColorProviderRegistry.BLOCK.register((blockState, blockAndTintGetter, blockPos, i) -> {
+            return blockAndTintGetter != null && blockPos != null ? BiomeColors.getAverageFoliageColor(blockAndTintGetter, blockPos) : FoliageColor.getDefaultColor();
+        }, ModBlocks.OLIVE_LEAVES);
+
 
     }
 
@@ -267,6 +271,7 @@ public class ModColorProviders
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> 0x1d1d21, ModBlocks.COBBLESTONE_WALL_BLACK.asItem());
 
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorProviderRegistry.BLOCK.get(((BlockItem)stack.getItem()).getBlock()).getColor(((BlockItem)stack.getItem()).getBlock().defaultBlockState(), null, null, tintIndex), ModBlocks.IRONWOOD_LEAVES);
+        ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorProviderRegistry.BLOCK.get(((BlockItem)stack.getItem()).getBlock()).getColor(((BlockItem)stack.getItem()).getBlock().defaultBlockState(), null, null, tintIndex), ModBlocks.OLIVE_LEAVES);
 
 
     }
