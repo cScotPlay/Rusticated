@@ -6,8 +6,11 @@ import net.minecraft.data.worldgen.features.VegetationFeatures;
 import net.minecraft.data.worldgen.placement.PlacementUtils;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.world.level.levelgen.placement.PlacedFeature;
+import net.minecraft.world.level.levelgen.placement.RarityFilter;
 
 public class ModVegetationPlacement
 {
-    public static final Holder<PlacedFeature> TREES_IRONWOOD = PlacementUtils.register("trees_ironwood", ModVegetationFeatures.IRONWOOD_TREE_FILTERED, VegetationPlacements.treePlacement(PlacementUtils.countExtra(1, 0.1f, 1)));
+    public static final Holder<PlacedFeature> TREES_IRONWOOD = PlacementUtils.register("trees_ironwood", ModVegetationFeatures.IRONWOOD_TREE_FILTERED, VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(75)));
+    public static final Holder<PlacedFeature> TREES_OLIVE = PlacementUtils.register("trees_olive", ModVegetationFeatures.OLIVE_TREE_FILTERED, VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(100)));
+    public static final Holder<PlacedFeature> TREES_OLIVE_FOREST = PlacementUtils.register("trees_olive_forest", ModVegetationFeatures.OLIVE_TREE_FILTERED, VegetationPlacements.treePlacement(RarityFilter.onAverageOnceEvery(25)));
 }

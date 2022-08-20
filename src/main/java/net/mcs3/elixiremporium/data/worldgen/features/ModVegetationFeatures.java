@@ -14,5 +14,6 @@ import java.util.List;
 public class ModVegetationFeatures
 {
     public static Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> IRONWOOD_TREE_FILTERED = FeatureUtils.register("ironwood_tree_filtered", Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(ModTreePlacement.IRONWOOD_TREE_CHECKED, 0.8F)), ModTreePlacement.IRONWOOD_TREE_CHECKED));
+    public static Holder<ConfiguredFeature<RandomFeatureConfiguration, ?>> OLIVE_TREE_FILTERED = FeatureUtils.register("olive_tree_filtered", Feature.RANDOM_SELECTOR, new RandomFeatureConfiguration(List.of(new WeightedPlacedFeature(ModTreePlacement.OLIVE_TREE_CHECKED, 0.5F)), ModTreePlacement.OLIVE_TREE_CHECKED));
 
 }

@@ -1,0 +1,13 @@
+{
+  "name": "Olive Trees",
+  "icon": "elixiremporium:olives",
+  "category": "elixiremporium:agricultural_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Olive trees (Olea europaea) grow naturally in forests, plains, and mountains. However, olive trees can not survive the harsh cold of snowy areas. Olive Logs can break down into Olive Planks that transition to other olive wood variants. Olive leaves drop olive saplings and olives. Do not consume raw, unprocessed olives as they contain harmful toxins.",
+      "item": "elixiremporium:olive_sapling"
+    }
+  ],
+  "sortnum": 2
+}
