@@ -40,6 +40,10 @@ public class ModBlockEntityTypes
         EntityBlock factoryGlazedJar = (pos, state) -> new JarEntityBlock(GLAZED_JAR_0_CONTAINER, pos, state, 8);
         EntityBlock factoryPot = (pos, state) -> new PotEntityBlock(POT_CONTAINER, pos, state, 8);
         EntityBlock factoryGlazedPot = (pos, state) -> new PotEntityBlock(GLAZED_POT_0_CONTAINER, pos, state, 16);
+        EntityBlock factoryGlazedPot1 = (pos, state) -> new PotEntityBlock(GLAZED_POT_1_CONTAINER, pos, state, 16);
+        EntityBlock factoryGlazedPot2 = (pos, state) -> new PotEntityBlock(GLAZED_POT_2_CONTAINER, pos, state, 16);
+        EntityBlock factoryGlazedPot3 = (pos, state) -> new PotEntityBlock(GLAZED_POT_3_CONTAINER, pos, state, 16);
+        EntityBlock factoryGlazedPot4 = (pos, state) -> new PotEntityBlock(GLAZED_POT_4_CONTAINER, pos, state, 16);
 
         BARREL_CONTAINER = register("barrel_container", ModBlocks.BARREL, BarrelEntityBlock::new);
         LIQUID_BARREL_CONTAINER = register("liquid_barrel_container", ModBlocks.LIQUID_BARREL, factoryBarrel::newBlockEntity);
@@ -47,10 +51,10 @@ public class ModBlockEntityTypes
         GLAZED_JAR_0_CONTAINER = register("glazed_jar_0_container", ModBlocks.GLAZED_JAR_0, factoryGlazedJar::newBlockEntity);
         POT_CONTAINER = register("pot_container", ModBlocks.FIRED_POT, factoryPot::newBlockEntity);
         GLAZED_POT_0_CONTAINER = register("glazed_pot_0_container", ModBlocks.GLAZED_POT_0, factoryGlazedPot::newBlockEntity);
-        GLAZED_POT_1_CONTAINER = register("glazed_pot_1_container", ModBlocks.GLAZED_POT_1, factoryGlazedPot::newBlockEntity);
-        GLAZED_POT_2_CONTAINER = register("glazed_pot_2_container", ModBlocks.GLAZED_POT_2, factoryGlazedPot::newBlockEntity);
-        GLAZED_POT_3_CONTAINER = register("glazed_pot_3_container", ModBlocks.GLAZED_POT_3, factoryGlazedPot::newBlockEntity);
-        GLAZED_POT_4_CONTAINER = register("glazed_pot_4_container", ModBlocks.GLAZED_POT_4, factoryGlazedPot::newBlockEntity);
+        GLAZED_POT_1_CONTAINER = register("glazed_pot_1_container", ModBlocks.GLAZED_POT_1, factoryGlazedPot1::newBlockEntity);
+        GLAZED_POT_2_CONTAINER = register("glazed_pot_2_container", ModBlocks.GLAZED_POT_2, factoryGlazedPot2::newBlockEntity);
+        GLAZED_POT_3_CONTAINER = register("glazed_pot_3_container", ModBlocks.GLAZED_POT_3, factoryGlazedPot3::newBlockEntity);
+        GLAZED_POT_4_CONTAINER = register("glazed_pot_4_container", ModBlocks.GLAZED_POT_4, factoryGlazedPot4::newBlockEntity);
 
         FluidStorage.SIDED.registerSelf(LIQUID_BARREL_CONTAINER);
         FluidStorage.SIDED.registerSelf(JAR_CONTAINER);

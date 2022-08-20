@@ -24,13 +24,13 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-public class GlazedPotBlock extends AbstractStorageBlock implements EntityBlock
+public class GlazedPotBlock4 extends AbstractStorageBlock implements EntityBlock
 {
     protected static final VoxelShape JAR_AABB;
     protected static final VoxelShape JAR_SHAPE_1;
     protected static final VoxelShape JAR_SHAPE_2;
 
-    public GlazedPotBlock() {
+    public GlazedPotBlock4() {
         super(Properties.of(Material.CLAY)
                 .noOcclusion()
                 .strength(2.0f, 3.0f));
@@ -53,7 +53,7 @@ public class GlazedPotBlock extends AbstractStorageBlock implements EntityBlock
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new PotEntityBlock(ModBlockEntityTypes.GLAZED_POT_0_CONTAINER, pos, state, 16);
+        return new PotEntityBlock(ModBlockEntityTypes.GLAZED_POT_4_CONTAINER, pos, state, 16);
     }
 
     static {

@@ -11,8 +11,7 @@ import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.jar.FiredJarBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.jar.GlazedJarBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.liquid_barrel.LiquidBarrelBlock;
-import net.mcs3.elixiremporium.world.level.block.storage.pot.FiredPotBlock;
-import net.mcs3.elixiremporium.world.level.block.storage.pot.GlazedPotBlock;
+import net.mcs3.elixiremporium.world.level.block.storage.pot.*;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -52,10 +51,10 @@ public class ModBlocks
     public static final Block UNFIRED_POT = new ModBlock(Properties.of(Material.CLAY).instabreak().noOcclusion());
     public static final Block FIRED_POT = new FiredPotBlock();
     public static final Block GLAZED_POT_0 = new GlazedPotBlock();
-    public static final Block GLAZED_POT_1 = new GlazedPotBlock();
-    public static final Block GLAZED_POT_2 = new GlazedPotBlock();
-    public static final Block GLAZED_POT_3 = new GlazedPotBlock();
-    public static final Block GLAZED_POT_4 = new GlazedPotBlock();
+    public static final Block GLAZED_POT_1 = new GlazedPotBlock1();
+    public static final Block GLAZED_POT_2 = new GlazedPotBlock2();
+    public static final Block GLAZED_POT_3 = new GlazedPotBlock3();
+    public static final Block GLAZED_POT_4 = new GlazedPotBlock4();
 
     public static final Block IRON_LATTICE = new LatticeBlock();
 
