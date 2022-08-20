@@ -22,6 +22,7 @@ public class ModItemTags
     public static final TagKey<Item> COLORED_STONE_STAIRS = modItem("colored_stone_stairs");
 
     public static final TagKey<Item> IRONWOOD_LOGS = modItem("ironwood_logs");
+    public static final TagKey<Item> OLIVE_LOGS = modItem("olive_logs");
 
 
     public static TagKey<Item> modItem(String path) {

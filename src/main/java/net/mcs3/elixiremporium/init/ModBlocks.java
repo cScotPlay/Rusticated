@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
 import net.mcs3.elixiremporium.world.level.block.grower.IronwoodTreeGrower;
+import net.mcs3.elixiremporium.world.level.block.grower.OliveTreeGrower;
 import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.jar.FiredJarBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.jar.GlazedJarBlock;
@@ -347,6 +348,21 @@ public class ModBlocks
     public static final Block IRONWOOD_FENCE = new FenceBlock(Properties.copy(IRONWOOD_PLANKS));
     public static final Block IRONWOOD_GATE = new FenceGateBlock(Properties.copy(IRONWOOD_PLANKS));
 
+    //////////////////////////////////////////////////////////
+    ///               Olive Blocks                  ///
+    //////////////////////////////////////////////////////////
+    public static final Block OLIVE_SAPLING = new SaplingBlock(new OliveTreeGrower(), Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.GRASS));
+    public static final Block POTTED_OLIVE_SAPLING = new FlowerPotBlock(OLIVE_SAPLING, Properties.of(Material.DECORATION).instabreak().noOcclusion());
+    public static final Block OLIVE_LEAVES = new LeavesBlock(Properties.copy(Blocks.ACACIA_LEAVES));
+
+    public static final Block OLIVE_LOG = new RotatedPillarBlock(Properties.of(Material.WOOD, (blockState) -> {
+        return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.SAND : MaterialColor.COLOR_LIGHT_GRAY;
+    }).strength(2.0F).sound(SoundType.WOOD));
+    public static final Block OLIVE_WOOD = new RotatedPillarBlock(Properties.of(Material.WOOD, MaterialColor.COLOR_LIGHT_GRAY).strength(2.0F).sound(SoundType.WOOD));
+    public static final Block STRIPPED_OLIVE_LOG = new RotatedPillarBlock(Properties.of(Material.WOOD, (blockState) -> {
+        return blockState.getValue(RotatedPillarBlock.AXIS) == Direction.Axis.Y ? MaterialColor.SAND : MaterialColor.COLOR_LIGHT_GRAY;
+    }).strength(2.0F).sound(SoundType.WOOD));
+    public static final Block STRIPPED_OLIVE_WOOD = new RotatedPillarBlock(Properties.of(Material.WOOD, MaterialColor.COLOR_LIGHT_GRAY).strength(2.0F).sound(SoundType.WOOD));
 
 
     //////////////////////////////////////////////////////////
@@ -410,6 +426,11 @@ public class ModBlocks
         register("ironwood_stairs", IRONWOOD_STAIRS, DECORATION_TAB);
         register("ironwood_fence", IRONWOOD_FENCE, DECORATION_TAB);
         register("ironwood_gate", IRONWOOD_GATE, DECORATION_TAB);
+
+        register("olive_log", OLIVE_LOG, DECORATION_TAB);
+        register("olive_wood", OLIVE_WOOD, DECORATION_TAB);
+        register("stripped_olive_log", STRIPPED_OLIVE_LOG, DECORATION_TAB);
+        register("stripped_olive_wood", STRIPPED_OLIVE_WOOD, DECORATION_TAB);
 
         register("stone_white", STONE_WHITE, DECORATION_TAB);
         register("stone_orange", STONE_ORANGE, DECORATION_TAB);
@@ -668,6 +689,10 @@ public class ModBlocks
         register("potted_ironwood_sapling", POTTED_IRONWOOD_SAPLING, null);
         register("ironwood_leaves", IRONWOOD_LEAVES, AGRICULTURAL_TAB);
 
+        register("olive_sapling", OLIVE_SAPLING, AGRICULTURAL_TAB);
+        register("potted_olive_sapling", POTTED_OLIVE_SAPLING, null);
+        register("olive_leaves", OLIVE_LEAVES, AGRICULTURAL_TAB);
+
 
 
 
@@ -703,6 +728,8 @@ public class ModBlocks
         AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
         AxeItem.STRIPPABLES.put(ModBlocks.IRONWOOD_LOG, ModBlocks.STRIPPED_IRONWOOD_LOG);
         AxeItem.STRIPPABLES.put(ModBlocks.IRONWOOD_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
+        AxeItem.STRIPPABLES.put(ModBlocks.OLIVE_LOG, ModBlocks.STRIPPED_OLIVE_LOG);
+        AxeItem.STRIPPABLES.put(ModBlocks.OLIVE_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
     }
 
     static <T extends Block> T register(String name, T anyBlock, CreativeModeTab tab)

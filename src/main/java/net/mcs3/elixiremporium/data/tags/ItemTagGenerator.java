@@ -161,15 +161,21 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.IRONWOOD_SLAB.asItem());
 
         this.tag(ItemTags.SAPLINGS).add(
-                ModBlocks.IRONWOOD_SAPLING.asItem());
+                ModBlocks.IRONWOOD_SAPLING.asItem(),
+                ModBlocks.OLIVE_SAPLING.asItem());
 
         this.tag(ItemTags.LEAVES).add(
-                ModBlocks.IRONWOOD_LEAVES.asItem());
+                ModBlocks.IRONWOOD_LEAVES.asItem(),
+                ModBlocks.OLIVE_LEAVES.asItem());
 
         tag(ItemTags.LOGS).add(
                 ModBlocks.IRONWOOD_LOG.asItem(),
                 ModBlocks.IRONWOOD_WOOD.asItem(),
                 ModBlocks.STRIPPED_IRONWOOD_LOG.asItem(),
+                ModBlocks.STRIPPED_IRONWOOD_WOOD.asItem(),
+                ModBlocks.OLIVE_LOG.asItem(),
+                ModBlocks.OLIVE_WOOD.asItem(),
+                ModBlocks.STRIPPED_OLIVE_LOG.asItem(),
                 ModBlocks.STRIPPED_IRONWOOD_WOOD.asItem()
                 );
 
@@ -343,6 +349,13 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.IRONWOOD_WOOD.asItem(),
                 ModBlocks.STRIPPED_IRONWOOD_LOG.asItem(),
                 ModBlocks.STRIPPED_IRONWOOD_WOOD.asItem()
+        );
+
+        tag(ModItemTags.OLIVE_LOGS).add(
+                ModBlocks.OLIVE_LOG.asItem(),
+                ModBlocks.OLIVE_LOG.asItem(),
+                ModBlocks.STRIPPED_OLIVE_LOG.asItem(),
+                ModBlocks.STRIPPED_OLIVE_WOOD.asItem()
         );
 
 

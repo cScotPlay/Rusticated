@@ -1,16 +1,15 @@
 package net.mcs3.elixiremporium.data.tags;
 
+import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.tags.ModBlockTags;
-import net.mcs3.elixiremporium.tags.ModItemTags;
 import net.mcs3.elixiremporium.world.level.block.*;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChainBlock;
-import net.minecraft.world.level.block.SlabBlock;
 
 import java.util.Comparator;
 import java.util.function.Predicate;
@@ -60,16 +59,22 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 .add(registry.stream().filter(b -> b instanceof WeatheringCopperChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.SAPLINGS).add(
-                ModBlocks.IRONWOOD_SAPLING);
+                ModBlocks.IRONWOOD_SAPLING,
+                ModBlocks.OLIVE_SAPLING);
 
         getOrCreateTagBuilder(BlockTags.LEAVES).add(
-                ModBlocks.IRONWOOD_LEAVES);
+                ModBlocks.IRONWOOD_LEAVES,
+                ModBlocks.OLIVE_LEAVES);
 
         getOrCreateTagBuilder(BlockTags.LOGS).add(
-                ModBlocks.IRONWOOD_LOG);
+                ModBlocks.IRONWOOD_LOG,
+                ModBlocks.OLIVE_LOG);
 
         getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(
                 ModBlockTags.IRONWOOD_LOGS);
+
+        getOrCreateTagBuilder(BlockTags.LOGS_THAT_BURN).addTag(
+                ModBlockTags.OLIVE_LOGS);
 
         getOrCreateTagBuilder(BlockTags.FENCES).add(
                 ModBlocks.IRONWOOD_FENCE);
@@ -138,6 +143,12 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.IRONWOOD_WOOD,
                 ModBlocks.STRIPPED_IRONWOOD_LOG,
                 ModBlocks.STRIPPED_IRONWOOD_WOOD);
+
+        getOrCreateTagBuilder(ModBlockTags.OLIVE_LOGS).add(
+                ModBlocks.OLIVE_LOG,
+                ModBlocks.OLIVE_WOOD,
+                ModBlocks.STRIPPED_OLIVE_LOG,
+                ModBlocks.STRIPPED_OLIVE_WOOD);
 
         getOrCreateTagBuilder(ModBlockTags.FRAMED_WALLS)
                 .add(registry.stream().filter(b -> b instanceof FramedWallBlocks).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));

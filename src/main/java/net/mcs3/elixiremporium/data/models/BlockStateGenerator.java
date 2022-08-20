@@ -382,6 +382,11 @@ public class BlockStateGenerator extends FabricModelProvider
         createFenceModels(blockStateModelGenerator, ModBlocks.IRONWOOD_FENCE, ModBlocks.IRONWOOD_PLANKS);
         createFenceGateModels(blockStateModelGenerator, ModBlocks.IRONWOOD_GATE, ModBlocks.IRONWOOD_PLANKS);
 
+        createPlantModels(blockStateModelGenerator, ModBlocks.OLIVE_SAPLING, ModBlocks.POTTED_OLIVE_SAPLING, BlockModelGenerators.TintState.NOT_TINTED);
+        blockStateModelGenerator.createTrivialBlock(ModBlocks.OLIVE_LEAVES, TexturedModel.LEAVES);
+        crateWoodModels(blockStateModelGenerator, ModBlocks.OLIVE_WOOD, ModBlocks.OLIVE_LOG);
+        crateWoodModels(blockStateModelGenerator, ModBlocks.STRIPPED_OLIVE_WOOD, ModBlocks.STRIPPED_OLIVE_LOG);
+
 
 
 
@@ -391,6 +396,7 @@ public class BlockStateGenerator extends FabricModelProvider
     public void generateItemModels(ItemModelGenerators itemModelGenerator)
     {
         itemModelGenerator.generateFlatItem(ModItems.IRON_BERRIES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OLIVES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.COPPER_NUGGET, ModelTemplates.FLAT_ITEM);
     }
 

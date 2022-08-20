@@ -10,6 +10,7 @@ public class ModBlockTags
 {
     public static final TagKey<Block> FRAMED_WALLS = create("framed_walls");
     public static final TagKey<Block> IRONWOOD_LOGS = create("ironwood_logs");
+    public static final TagKey<Block> OLIVE_LOGS = create("olive_logs");
     public static final TagKey<Block> FLAMMABLE_BLOCK = create("flammable_block");
 
     private static TagKey<Block> create(String name) {

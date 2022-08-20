@@ -257,6 +257,7 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
                 ModBlocks.IRON_LATTICE,
 
                 ModBlocks.FERTILE_SOIL,
+                ModBlocks.IRONWOOD_SAPLING,
                 ModBlocks.IRONWOOD_LOG,
                 ModBlocks.IRONWOOD_WOOD,
                 ModBlocks.STRIPPED_IRONWOOD_LOG,
@@ -264,7 +265,13 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
                 ModBlocks.IRONWOOD_PLANKS,
                 ModBlocks.IRONWOOD_STAIRS,
                 ModBlocks.IRONWOOD_FENCE,
-                ModBlocks.IRONWOOD_GATE
+                ModBlocks.IRONWOOD_GATE,
+
+                ModBlocks.OLIVE_SAPLING,
+                ModBlocks.OLIVE_LOG,
+                ModBlocks.OLIVE_WOOD,
+                ModBlocks.STRIPPED_OLIVE_LOG,
+                ModBlocks.STRIPPED_OLIVE_WOOD
         )
 
                 .forEach(this::dropSelf);
@@ -326,6 +333,10 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
 
         add(ModBlocks.IRONWOOD_LEAVES, (block -> {
             return createLeavesDropswithItem(ModBlocks.IRONWOOD_LEAVES, ModBlocks.IRONWOOD_SAPLING, ModItems.IRON_BERRIES, NORMAL_LEAVES_SAPLING_CHANCES);
+        }));
+
+        add(ModBlocks.OLIVE_LEAVES, (block -> {
+            return createLeavesDropswithItem(ModBlocks.OLIVE_LEAVES, ModBlocks.OLIVE_SAPLING, ModItems.OLIVES, NORMAL_LEAVES_SAPLING_CHANCES);
         }));
 
         add(ModBlocks.STONE_WHITE, (blockx) -> {

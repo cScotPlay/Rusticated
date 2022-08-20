@@ -303,6 +303,13 @@
   "block.elixiremporium.ironwood_fence": "Ironwood Fence",
   "block.elixiremporium.ironwood_gate": "Ironwood Gate",
 
+  "block.elixiremporium.olive_sapling": "Olive Tree Sapling",
+  "block.elixiremporium.olive_leaves": "Olive Leaves",
+  "block.elixiremporium.olive_log": "Olive Log",
+  "block.elixiremporium.olive_wood": "Olive Wood",
+  "block.elixiremporium.stripped_olive_log": "Stripped Olive Log",
+  "block.elixiremporium.stripped_olive_wood": "Stripped Olive Wood",
+
   "item.elixiremporium.catalog": "Emporium Catalog",
   "item.elixiremporium.iron_berries": "Iron Berries",
   "item.elixiremporium.olives": "Olives",

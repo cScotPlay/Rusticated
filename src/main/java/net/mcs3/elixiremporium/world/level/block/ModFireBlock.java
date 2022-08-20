@@ -18,5 +18,8 @@ public class ModFireBlock
         instance.add(ModBlockTags.IRONWOOD_LOGS, 5, 5);
         instance.add(ModBlocks.IRONWOOD_LEAVES, 30, 60);
 
+        instance.add(ModBlockTags.OLIVE_LOGS, 5, 5);
+        instance.add(ModBlocks.OLIVE_LEAVES, 30, 60);
+
     }
 }
