@@ -21,5 +21,7 @@ public class ModFireBlock
         instance.add(ModBlockTags.OLIVE_LOGS, 5, 5);
         instance.add(ModBlocks.OLIVE_LEAVES, 30, 60);
 
+        instance.add(ModBlocks.ROPE, 20, 60);
+
     }
 }

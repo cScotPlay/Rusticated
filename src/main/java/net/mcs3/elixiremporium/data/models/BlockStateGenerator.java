@@ -8,7 +8,9 @@ import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.world.level.block.LatticeBlock;
+import net.mcs3.elixiremporium.world.level.block.RopeBlock;
 import net.minecraft.client.model.Model;
+import net.minecraft.core.Direction;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.blockstates.Condition;
@@ -55,6 +57,8 @@ public class BlockStateGenerator extends FabricModelProvider
     public static final ModelTemplate PATH_3 = createModdedModel("path_3", "_3", TextureSlot.PARTICLE, TextureSlot.TEXTURE);
     public static final ModelTemplate CHANDELIER = createModdedModel("chandelier", TextureSlot.ALL);
     public static final ModelTemplate CHAIN = createModdedModel("chain", TextureSlot.PARTICLE, TextureSlot.ALL);
+    public static final ModelTemplate ROPE = createModdedModel("template_rope", TextureSlot.PARTICLE, TextureSlot.ALL);
+    public static final ModelTemplate ROPE_KNOT = createModdedModel("template_rope_knot", TextureSlot.PARTICLE, TextureSlot.ALL);
     public static final ModelTemplate BARREL = createModdedModel("barrel_base", TextureSlot.PARTICLE, TextureSlot.TOP,TextureSlot.BOTTOM);
     public static final ModelTemplate LIQUID_BARREL = createModdedModel("liquid_barrel_base", TextureSlot.PARTICLE, TextureSlot.TOP,TextureSlot.BOTTOM);
     public static final ModelTemplate JAR = createModdedModel("jar_base", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
@@ -392,6 +396,8 @@ public class BlockStateGenerator extends FabricModelProvider
         createFenceModels(blockStateModelGenerator, ModBlocks.OLIVE_FENCE, ModBlocks.OLIVE_PLANKS);
         createFenceGateModels(blockStateModelGenerator, ModBlocks.OLIVE_GATE, ModBlocks.OLIVE_PLANKS);
 
+        createRopeStates(blockStateModelGenerator, ModBlocks.ROPE);
+
 
 
 
@@ -443,8 +449,6 @@ public class BlockStateGenerator extends FabricModelProvider
 
     public static void createFramedWallModels(BlockModelGenerators modelGenerator, Block block, Block parentBlock, ModelTemplate modelTemplate) {
         TextureMapping textures = TextureMapping.cube(parentBlock);
-        //ResourceLocation baseModelId = new ResourceLocation(MOD_ID, "block/" + name);
-
         ResourceLocation identifier = modelTemplate.create(block, textures, modelGenerator.modelOutput);
 
         modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, identifier));
@@ -558,6 +562,30 @@ public class BlockStateGenerator extends FabricModelProvider
 
         modelGenerators.createAxisAlignedPillarBlockCustomModel(block, resourceLocation);
         ModelTemplates.FLAT_ITEM.create(ModelLocationUtils.getModelLocation(block.asItem()), TextureMapping.layer0(blockTexture.asItem()), modelGenerators.modelOutput);
+    }
+
+    public static void createRopeStates(BlockModelGenerators modelGenerators, Block block)
+    {
+        TextureMapping texture = TextureMapping.cube(block);
+        ResourceLocation ropeLocation = ROPE.create(block, texture, modelGenerators.modelOutput);
+        ResourceLocation knotLocation = new ResourceLocation(MOD_ID, "block/template_rope_knot");
+        //ResourceLocation knotLocation = ROPE_KNOT.create(block, texture, modelGenerators.modelOutput);
+
+        modelGenerators.blockStateOutput.accept(createRope(block, ropeLocation, knotLocation));
+        //modelGenerators.createAxisAlignedPillarBlockCustomModel(block, ropeLocation);
+        modelGenerators.delegateItemModel(block, ropeLocation);
+    }
+
+    public static net.minecraft.data.models.blockstates.BlockStateGenerator createRope(Block ropeBlock, ResourceLocation ropeBase, ResourceLocation ropeKnot)
+    {
+        return MultiPartGenerator.multiPart(ropeBlock)
+                .with(Condition.condition().term(BlockStateProperties.AXIS, Direction.Axis.X), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, ropeBase).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, false))
+                .with(Condition.condition().term(BlockStateProperties.AXIS, Direction.Axis.Y), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, ropeBase))
+                .with(Condition.condition().term(BlockStateProperties.AXIS, Direction.Axis.Z), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, ropeBase).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, false))
+                .with(Condition.condition().term(BlockStateProperties.AXIS, Direction.Axis.X).term(RopeBlock.DANGLE, Boolean.TRUE), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, ropeKnot))
+                .with(Condition.condition().term(BlockStateProperties.AXIS, Direction.Axis.Z).term(RopeBlock.DANGLE, Boolean.TRUE), net.minecraft.data.models.blockstates.Variant.variant().with(VariantProperties.MODEL, ropeKnot).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                ;
+
     }
 
     public static void createBarrelStates(BlockModelGenerators modelGenerator, Block block, ModelTemplate model)

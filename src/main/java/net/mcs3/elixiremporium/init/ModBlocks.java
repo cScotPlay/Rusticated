@@ -1,7 +1,6 @@
 package net.mcs3.elixiremporium.init;
 
 import com.google.common.collect.Maps;
-import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
@@ -20,8 +19,6 @@ import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.*;
-import net.minecraft.world.level.block.grower.AcaciaTreeGrower;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockBehaviour.*;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
@@ -374,6 +371,7 @@ public class ModBlocks
     //////////////////////////////////////////////////////////
 
     public static final Block FERTILE_SOIL = new FertileSoilBlock(Properties.copy(Blocks.FARMLAND));
+    public static final Block ROPE = new RopeBlock();
 
 
 
@@ -701,6 +699,8 @@ public class ModBlocks
         register("olive_sapling", OLIVE_SAPLING, AGRICULTURAL_TAB);
         register("potted_olive_sapling", POTTED_OLIVE_SAPLING, null);
         register("olive_leaves", OLIVE_LEAVES, AGRICULTURAL_TAB);
+
+        register("rope", ROPE, AGRICULTURAL_TAB);
 
 
 

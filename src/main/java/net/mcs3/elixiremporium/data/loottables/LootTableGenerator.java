@@ -275,7 +275,9 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
                 ModBlocks.OLIVE_PLANKS,
                 ModBlocks.OLIVE_STAIRS,
                 ModBlocks.OLIVE_FENCE,
-                ModBlocks.OLIVE_GATE
+                ModBlocks.OLIVE_GATE,
+
+                ModBlocks.ROPE
         )
 
                 .forEach(this::dropSelf);

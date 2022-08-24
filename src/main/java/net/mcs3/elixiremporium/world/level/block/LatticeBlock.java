@@ -269,7 +269,7 @@ public class LatticeBlock extends Block
 
     private boolean connectsTo(BlockState state, boolean sideSolid) {
         Block block = state.getBlock();
-        return !isExceptionForConnection(state) && sideSolid || block instanceof LatticeBlock || block instanceof IronBarsBlock;
+        return !isExceptionForConnection(state) && sideSolid || block instanceof LatticeBlock || block instanceof IronBarsBlock || block instanceof RopeBlock;
     }
 
     @Override
