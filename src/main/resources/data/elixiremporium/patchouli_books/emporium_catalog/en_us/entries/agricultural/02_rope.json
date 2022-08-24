@@ -1,0 +1,18 @@
+{
+  "name": "Rope",
+  "icon": "elixiremporium:rope",
+  "category": "elixiremporium:agricultural_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Ropes are a replacement for ladders, a decoration, or used to grow grapes. Whether one places rope horizontally or vertically, they require an anchor from a solid block. Extend vertical runs of rope by placing more rope to the run. This allows one to create long runs of vertical rope easily.",
+      "item": "elixiremporium:rope"
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:rope",
+      "text": "Tie the rope around a Crop Stake to support the growth of grapes. Be careful as a shooting arrow easily breaks rope.  "
+    }
+  ],
+  "sortnum": 2
+}
