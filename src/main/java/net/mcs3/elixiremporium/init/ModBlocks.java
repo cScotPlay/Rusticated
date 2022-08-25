@@ -371,6 +371,8 @@ public class ModBlocks
     //////////////////////////////////////////////////////////
 
     public static final Block FERTILE_SOIL = new FertileSoilBlock(Properties.copy(Blocks.FARMLAND));
+    public static final Block CROP_STAKE = new CropStakeBlock();
+    public static final Block TIED_STAKE = new TiedStakeBlock(Properties.copy(CROP_STAKE));
     public static final Block ROPE = new RopeBlock();
 
 
@@ -700,6 +702,8 @@ public class ModBlocks
         register("potted_olive_sapling", POTTED_OLIVE_SAPLING, null);
         register("olive_leaves", OLIVE_LEAVES, AGRICULTURAL_TAB);
 
+        register("crop_stake", CROP_STAKE, AGRICULTURAL_TAB);
+        register("tied_stake", TIED_STAKE, null);
         register("rope", ROPE, AGRICULTURAL_TAB);
 
 

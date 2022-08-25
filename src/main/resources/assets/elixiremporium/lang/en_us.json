@@ -315,6 +315,8 @@
   "block.elixiremporium.olive_fence": "Olive Fence",
   "block.elixiremporium.olive_gate": "Olive Gate",
 
+  "block.elixiremporium.crop_stake": "Crop Stake",
+  "block.elixiremporium.tied_stake": "Crop Stake",
   "block.elixiremporium.rope": "Rope",
 
   "item.elixiremporium.catalog": "Emporium Catalog",

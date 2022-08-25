@@ -14,6 +14,7 @@ import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
+import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -25,19 +26,37 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.shapes.CollisionContext;
+import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
 public class RopeBlock extends ChainBlock
 {
     public static final BooleanProperty DANGLE = BooleanProperty.create("dangle");
+    protected static final VoxelShape Y_AXIS_AABB = Block.box(7.0, 0.0, 7.0, 9.0, 16.0, 9.0);
+    protected static final VoxelShape Z_AXIS_AABB = Block.box(7.0, 7.0, 0.0, 9.0, 9.0, 16.0);
+    protected static final VoxelShape X_AXIS_AABB = Block.box(0.0, 7.0, 7.0, 16.0, 9.0, 9.0);
 
     public RopeBlock()
     {
-        super(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).strength(0.5F).sound(SoundType.WOOL));
+        super(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).strength(0.5F).instabreak().sound(SoundType.WOOL));
         this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(WATERLOGGED, false)).setValue(AXIS, Direction.Axis.Y).setValue(DANGLE, false));
+    }
+
+    @Override
+    public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context) {
+        switch ((Direction.Axis)state.getValue(AXIS)) {
+            default: {
+                return X_AXIS_AABB;
+            }
+            case Z: {
+                return Z_AXIS_AABB;
+            }
+            case Y:
+        }
+        return Y_AXIS_AABB;
     }
 
     @Override

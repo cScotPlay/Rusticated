@@ -10,6 +10,7 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -337,6 +338,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         fenceBuilder(ModBlocks.OLIVE_FENCE, Ingredient.of(new ItemLike[]{ModBlocks.OLIVE_PLANKS})).unlockedBy("has_olive", has(ModBlocks.OLIVE_PLANKS)).save(exporter);
         fenceGateBuilder(ModBlocks.OLIVE_GATE, Ingredient.of(new ItemLike[]{ModBlocks.OLIVE_PLANKS})).unlockedBy("has_olive", has(ModBlocks.OLIVE_PLANKS)).save(exporter);
 
+        ShapedRecipeBuilder.shaped(ModBlocks.CROP_STAKE, 4).define('#', ItemTags.PLANKS).pattern(" #").pattern(" #").pattern(" #").unlockedBy("has_planks", has(ItemTags.PLANKS)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.ROPE, 1).define('#', Items.STRING).pattern(" #").pattern(" #").pattern(" #").unlockedBy("has_string", has(Items.STRING)).save(exporter);
 
 

@@ -1,7 +1,6 @@
 package net.mcs3.elixiremporium.data.models;
 
 import com.google.common.collect.Maps;
-import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.mcs3.elixiremporium.ElixirEmporium;
@@ -9,21 +8,17 @@ import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.world.level.block.LatticeBlock;
 import net.mcs3.elixiremporium.world.level.block.RopeBlock;
+import net.mcs3.elixiremporium.world.level.block.TiedStakeBlock;
 import net.minecraft.client.model.Model;
 import net.minecraft.core.Direction;
 import net.minecraft.data.models.BlockModelGenerators;
 import net.minecraft.data.models.ItemModelGenerators;
-import net.minecraft.data.models.blockstates.Condition;
-import net.minecraft.data.models.blockstates.MultiPartGenerator;
-import net.minecraft.data.models.blockstates.MultiVariantGenerator;
-import net.minecraft.data.models.blockstates.VariantProperties;
+import net.minecraft.data.models.blockstates.*;
 import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
-import net.minecraft.world.level.block.state.properties.WallSide;
 
 
 import java.util.Map;
@@ -58,7 +53,6 @@ public class BlockStateGenerator extends FabricModelProvider
     public static final ModelTemplate CHANDELIER = createModdedModel("chandelier", TextureSlot.ALL);
     public static final ModelTemplate CHAIN = createModdedModel("chain", TextureSlot.PARTICLE, TextureSlot.ALL);
     public static final ModelTemplate ROPE = createModdedModel("template_rope", TextureSlot.PARTICLE, TextureSlot.ALL);
-    public static final ModelTemplate ROPE_KNOT = createModdedModel("template_rope_knot", TextureSlot.PARTICLE, TextureSlot.ALL);
     public static final ModelTemplate BARREL = createModdedModel("barrel_base", TextureSlot.PARTICLE, TextureSlot.TOP,TextureSlot.BOTTOM);
     public static final ModelTemplate LIQUID_BARREL = createModdedModel("liquid_barrel_base", TextureSlot.PARTICLE, TextureSlot.TOP,TextureSlot.BOTTOM);
     public static final ModelTemplate JAR = createModdedModel("jar_base", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
@@ -397,6 +391,8 @@ public class BlockStateGenerator extends FabricModelProvider
         createFenceGateModels(blockStateModelGenerator, ModBlocks.OLIVE_GATE, ModBlocks.OLIVE_PLANKS);
 
         createRopeStates(blockStateModelGenerator, ModBlocks.ROPE);
+        createCropStakeModels(blockStateModelGenerator, ModBlocks.CROP_STAKE);
+        createTiedStakeMddels(blockStateModelGenerator, ModBlocks.TIED_STAKE);
 
 
 
@@ -453,7 +449,13 @@ public class BlockStateGenerator extends FabricModelProvider
 
         modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, identifier));
         modelGenerator.delegateItemModel(block, identifier);
+    }
 
+    public static void createCropStakeModels(BlockModelGenerators modelGenerator, Block block) {
+        ResourceLocation modelFile = new ResourceLocation(MOD_ID, "block/crop_stake");
+
+        modelGenerator.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(block, modelFile));
+        modelGenerator.delegateItemModel(block, modelFile);
     }
 
     public static void createColoredCobbleModels(BlockModelGenerators modelGenerator, Block block, Block textureBlock) {
@@ -569,10 +571,8 @@ public class BlockStateGenerator extends FabricModelProvider
         TextureMapping texture = TextureMapping.cube(block);
         ResourceLocation ropeLocation = ROPE.create(block, texture, modelGenerators.modelOutput);
         ResourceLocation knotLocation = new ResourceLocation(MOD_ID, "block/template_rope_knot");
-        //ResourceLocation knotLocation = ROPE_KNOT.create(block, texture, modelGenerators.modelOutput);
 
         modelGenerators.blockStateOutput.accept(createRope(block, ropeLocation, knotLocation));
-        //modelGenerators.createAxisAlignedPillarBlockCustomModel(block, ropeLocation);
         modelGenerators.delegateItemModel(block, ropeLocation);
     }
 
@@ -691,6 +691,23 @@ public class BlockStateGenerator extends FabricModelProvider
         ResourceLocation resourceLocationLogHoriz = ModelTemplates.CUBE_COLUMN_HORIZONTAL.create(logBlock, logTexture, modelGenerators.modelOutput);
         modelGenerators.blockStateOutput.accept(BlockModelGenerators.createRotatedPillarWithHorizontalVariant(logBlock, resourceLocationLog, resourceLocationLogHoriz));
         modelGenerators.delegateItemModel(logBlock, resourceLocationLog);
+    }
+
+    public static void createTiedStakeMddels(BlockModelGenerators modelGenerators, Block block)
+    {
+        ResourceLocation tiedStake = new ResourceLocation(MOD_ID, "block/tied_stake");
+        ResourceLocation tiedKnot = new ResourceLocation(MOD_ID, "block/tied_stake_rope");
+
+        modelGenerators.blockStateOutput.accept(stakeTiedVariants(block, tiedStake, tiedKnot));
+        modelGenerators.delegateItemModel(block, tiedStake);
+    }
+
+    public static MultiPartGenerator stakeTiedVariants(Block block, ResourceLocation baseLocation, ResourceLocation ropeLocation) {
+        return MultiPartGenerator.multiPart(block).with(Variant.variant().with(VariantProperties.MODEL, baseLocation))
+                .with((Condition)Condition.condition().term(TiedStakeBlock.NORTH, true), Variant.variant().with(VariantProperties.MODEL, ropeLocation))
+                .with((Condition)Condition.condition().term(TiedStakeBlock.EAST, true), Variant.variant().with(VariantProperties.MODEL, ropeLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with((Condition)Condition.condition().term(TiedStakeBlock.SOUTH, true), Variant.variant().with(VariantProperties.MODEL, ropeLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with((Condition)Condition.condition().term(TiedStakeBlock.WEST, true), Variant.variant().with(VariantProperties.MODEL, ropeLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270));
     }
 
     private static ModelTemplate createVanillaModel(String parent, TextureSlot... requiredTextures) {

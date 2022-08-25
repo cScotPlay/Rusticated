@@ -1,0 +1,53 @@
+{
+	"textures": {
+		"top_texture": "minecraft:block/spruce_log_top",
+		"side_texture": "minecraft:block/spruce_planks",
+		"particle": "minecraft:block/spruce_planks"
+	},
+	"elements": [
+		{
+			"name": "Crop_Stake",
+			"from": [6, 0, 6],
+			"to": [10, 16, 10],
+			"faces": {
+				"north": {"uv": [12, 0, 16, 16], "texture": "#side_texture"},
+				"east": {"uv": [0, 0, 4, 16], "texture": "#side_texture"},
+				"south": {"uv": [12, 0, 16, 16], "texture": "#side_texture"},
+				"west": {"uv": [0, 0, 4, 16], "texture": "#side_texture"},
+				"up": {"uv": [6, 6, 10, 10], "texture": "#top_texture", "cullface": "up"},
+				"down": {"uv": [6, 6, 10, 10], "texture": "#top_texture", "cullface": "down"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [3, 45, 0],
+			"translation": [-0.25, 1.75, 1],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [3, 45, 0],
+			"translation": [0, 1.75, 0.75],
+			"scale": [0.37, 0.37, 0.37]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 225, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"fixed": {
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

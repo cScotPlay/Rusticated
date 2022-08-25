@@ -1,7 +1,7 @@
 package net.mcs3.elixiremporium.data.loottables;
 
 import com.google.common.collect.ImmutableSet;
-import dev.architectury.platform.Mod;
+import com.terraformersmc.modmenu.util.mod.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.mcs3.elixiremporium.init.ModBlocks;
@@ -277,7 +277,8 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
                 ModBlocks.OLIVE_FENCE,
                 ModBlocks.OLIVE_GATE,
 
-                ModBlocks.ROPE
+                ModBlocks.ROPE,
+                ModBlocks.CROP_STAKE
         )
 
                 .forEach(this::dropSelf);
@@ -395,6 +396,8 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
             return createSingleItemTableWithSilkTouch(blockx, ModBlocks.COBBLESTONE_BLACK);
         });
 
+        add(ModBlocks.TIED_STAKE, LootTableGenerator::createTiedStakeDrop);
+
     }
 
     public static LootTable.Builder createLeavesDropswithItem(Block leavesBlock, Block saplingBlock, Item droppedItem, float... chances) {
@@ -403,6 +406,10 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
 
     public static LootTable.Builder createBarrelDrop(Block barrelBlock) {
         return LootTable.lootTable().withPool((net.minecraft.world.level.storage.loot.LootPool.Builder)applyExplosionCondition(barrelBlock, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(barrelBlock).apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY)).apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY).copy("Lock", "BlockEntityTag.Lock").copy("LootTable", "BlockEntityTag.LootTable").copy("LootTableSeed", "BlockEntityTag.LootTableSeed")).apply(SetContainerContents.setContents(ModBlockEntityTypes.BARREL_CONTAINER).withEntry(DynamicLoot.dynamicEntry(BarrelBlock.CONTENTS))))));
+    }
+
+    public static LootTable.Builder createTiedStakeDrop(Block block){
+        return LootTable.lootTable().withPool(BlockLoot.applyExplosionCondition(ModBlocks.TIED_STAKE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.CROP_STAKE)))).withPool(BlockLoot.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
     }
 
     static {
