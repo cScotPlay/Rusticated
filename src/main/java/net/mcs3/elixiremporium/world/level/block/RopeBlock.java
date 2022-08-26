@@ -10,7 +10,6 @@ import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.entity.projectile.Projectile;
-import net.minecraft.world.item.ArrowItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.BlockPlaceContext;
@@ -43,6 +42,11 @@ public class RopeBlock extends ChainBlock
     {
         super(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).strength(0.5F).instabreak().sound(SoundType.WOOL));
         this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(WATERLOGGED, false)).setValue(AXIS, Direction.Axis.Y).setValue(DANGLE, false));
+    }
+
+    public RopeBlock(Properties properties)
+    {
+        super(properties);
     }
 
     @Override

@@ -1,0 +1,35 @@
+{
+	"textures": {
+		"leaves_texture": "minecraft:block/oak_leaves",
+		"log_texture": "minecraft:block/dark_oak_log",
+		"particle": "minecraft:block/dark_oak_log"
+	},
+	"elements": [
+		{
+			"name": "Leaves",
+			"from": [0, 1, 0],
+			"to": [16, 15, 16],
+			"faces": {
+				"north": {"uv": [0, 1, 16, 15], "texture": "#leaves_texture", "cullface": "north", "tintindex": 0},
+				"east": {"uv": [0, 1, 16, 15], "texture": "#leaves_texture", "cullface": "east", "tintindex": 0},
+				"south": {"uv": [0, 1, 16, 15], "texture": "#leaves_texture", "cullface": "south", "tintindex": 0},
+				"west": {"uv": [0, 1, 16, 15], "texture": "#leaves_texture", "cullface": "west", "tintindex": 0},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#leaves_texture", "cullface": "up", "tintindex": 0},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#leaves_texture", "tintindex": 0}
+			}
+		},
+		{
+			"name": "Stem",
+			"from": [6, 0, 6],
+			"to": [10, 6, 10],
+			"faces": {
+				"north": {"uv": [0, 10, 4, 16], "texture": "#log_texture"},
+				"east": {"uv": [4, 10, 8, 16], "texture": "#log_texture"},
+				"south": {"uv": [8, 10, 12, 16], "texture": "#log_texture"},
+				"west": {"uv": [12, 10, 16, 16], "texture": "#log_texture"},
+				"up": {"uv": [6, 6, 10, 10], "texture": "#log_texture"},
+				"down": {"uv": [6, 6, 10, 10], "texture": "#log_texture", "cullface": "down"}
+			}
+		}
+	]
+}

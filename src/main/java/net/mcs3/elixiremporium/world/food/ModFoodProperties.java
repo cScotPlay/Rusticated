@@ -16,4 +16,5 @@ public class ModFoodProperties
             .effect(new MobEffectInstance(MobEffects.WEAKNESS, 200, 15), 0.95F)
             .effect(new MobEffectInstance(MobEffects.JUMP, 200, 250), 0.95F)
             .alwaysEat().build();
+    public static final FoodProperties GRAPES = (new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).build());
 }

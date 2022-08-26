@@ -1,6 +1,5 @@
 package net.mcs3.elixiremporium.data.tags;
 
-import dev.architectury.platform.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.ElixirEmporium;
@@ -58,8 +57,9 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
         getOrCreateTagBuilder(BlockTags.CLIMBABLE)
                 .add(registry.stream().filter(b -> b instanceof WeatheringCopperChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
-        getOrCreateTagBuilder(BlockTags.CLIMBABLE)
-                .add(registry.stream().filter(b -> b instanceof RopeBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+        getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
+                ModBlocks.ROPE,
+                ModBlocks.TIED_STAKE);
 
         getOrCreateTagBuilder(BlockTags.CLIMBABLE)
                 .add(registry.stream().filter(b -> b instanceof TiedStakeBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));

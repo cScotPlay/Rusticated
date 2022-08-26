@@ -24,5 +24,8 @@ public class ModFireBlock
         instance.add(ModBlocks.ROPE, 20, 60);
         instance.add(ModBlocks.ROPE, 5, 20);
 
+        instance.add(ModBlocks.GRAPE_STEM, 20, 100);
+        instance.add(ModBlocks.GRAPE_LEAVES, 30, 60);
+
     }
 }

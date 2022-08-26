@@ -4,6 +4,8 @@ import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
+import net.mcs3.elixiremporium.world.level.block.crop.GrapeLeavesBlock;
+import net.mcs3.elixiremporium.world.level.block.crop.GrapeStemBlock;
 import net.mcs3.elixiremporium.world.level.block.grower.IronwoodTreeGrower;
 import net.mcs3.elixiremporium.world.level.block.grower.OliveTreeGrower;
 import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelBlock;
@@ -374,6 +376,8 @@ public class ModBlocks
     public static final Block CROP_STAKE = new CropStakeBlock();
     public static final Block TIED_STAKE = new TiedStakeBlock(Properties.copy(CROP_STAKE));
     public static final Block ROPE = new RopeBlock();
+    public static final Block GRAPE_STEM = new GrapeStemBlock();
+    public static final Block GRAPE_LEAVES = new GrapeLeavesBlock();
 
 
 
@@ -705,6 +709,9 @@ public class ModBlocks
         register("crop_stake", CROP_STAKE, AGRICULTURAL_TAB);
         register("tied_stake", TIED_STAKE, null);
         register("rope", ROPE, AGRICULTURAL_TAB);
+        register("grape_stem", GRAPE_STEM, null);
+        register("grape_leaves", GRAPE_LEAVES, null);
+
 
 
 

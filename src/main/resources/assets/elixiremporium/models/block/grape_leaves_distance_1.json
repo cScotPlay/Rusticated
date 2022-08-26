@@ -1,0 +1,21 @@
+{
+	"textures": {
+		"leave_texture": "minecraft:block/oak_leaves",
+		"particle": "minecraft:block/leaves_oak"
+	},
+	"elements": [
+		{
+			"name": "Leaves",
+			"from": [3, 3, 0],
+			"to": [13, 13, 16],
+			"faces": {
+				"north": {"uv": [3, 3, 13, 13], "texture": "#leave_texture", "cullface": "north", "tintindex": 0},
+				"east": {"uv": [0, 3, 16, 13], "texture": "#leave_texture", "tintindex": 0},
+				"south": {"uv": [3, 3, 13, 13], "texture": "#leave_texture", "cullface": "south", "tintindex": 0},
+				"west": {"uv": [0, 3, 16, 13], "texture": "#leave_texture", "tintindex": 0},
+				"up": {"uv": [3, 0, 13, 16], "texture": "#leave_texture", "tintindex": 0},
+				"down": {"uv": [3, 0, 13, 16], "texture": "#leave_texture", "tintindex": 0}
+			}
+		}
+	]
+}

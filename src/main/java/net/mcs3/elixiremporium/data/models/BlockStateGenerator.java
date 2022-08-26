@@ -1,6 +1,7 @@
 package net.mcs3.elixiremporium.data.models;
 
 import com.google.common.collect.Maps;
+import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.mcs3.elixiremporium.ElixirEmporium;
@@ -9,6 +10,8 @@ import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.world.level.block.LatticeBlock;
 import net.mcs3.elixiremporium.world.level.block.RopeBlock;
 import net.mcs3.elixiremporium.world.level.block.TiedStakeBlock;
+import net.mcs3.elixiremporium.world.level.block.crop.GrapeLeavesBlock;
+import net.mcs3.elixiremporium.world.level.block.crop.GrapeStemBlock;
 import net.minecraft.client.model.Model;
 import net.minecraft.core.Direction;
 import net.minecraft.data.models.BlockModelGenerators;
@@ -19,6 +22,8 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
+import net.minecraft.world.level.block.state.properties.Property;
+import org.checkerframework.checker.units.qual.C;
 
 
 import java.util.Map;
@@ -393,6 +398,9 @@ public class BlockStateGenerator extends FabricModelProvider
         createRopeStates(blockStateModelGenerator, ModBlocks.ROPE);
         createCropStakeModels(blockStateModelGenerator, ModBlocks.CROP_STAKE);
         createTiedStakeMddels(blockStateModelGenerator, ModBlocks.TIED_STAKE);
+        createGrapeBlock(blockStateModelGenerator, ModBlocks.GRAPE_STEM, BlockStateProperties.AGE_3, 0, 1, 2, 3);
+        createGrapeLeavesStates(blockStateModelGenerator, ModBlocks.GRAPE_LEAVES);
+
 
 
 
@@ -405,6 +413,8 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItems.IRON_BERRIES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.OLIVES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.COPPER_NUGGET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.GRAPES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.GRAPE_SEEDS, ModelTemplates.FLAT_ITEM);
     }
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)
@@ -699,7 +709,6 @@ public class BlockStateGenerator extends FabricModelProvider
         ResourceLocation tiedKnot = new ResourceLocation(MOD_ID, "block/tied_stake_rope");
 
         modelGenerators.blockStateOutput.accept(stakeTiedVariants(block, tiedStake, tiedKnot));
-        modelGenerators.delegateItemModel(block, tiedStake);
     }
 
     public static MultiPartGenerator stakeTiedVariants(Block block, ResourceLocation baseLocation, ResourceLocation ropeLocation) {
@@ -708,6 +717,47 @@ public class BlockStateGenerator extends FabricModelProvider
                 .with((Condition)Condition.condition().term(TiedStakeBlock.EAST, true), Variant.variant().with(VariantProperties.MODEL, ropeLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
                 .with((Condition)Condition.condition().term(TiedStakeBlock.SOUTH, true), Variant.variant().with(VariantProperties.MODEL, ropeLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
                 .with((Condition)Condition.condition().term(TiedStakeBlock.WEST, true), Variant.variant().with(VariantProperties.MODEL, ropeLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270));
+    }
+
+    public final void createGrapeBlock(BlockModelGenerators modelGenerators, Block cropBlock, Property<Integer> ageProperty, int ... ageToVisualStageMapping) {
+        ResourceLocation grapeStem3 = new ResourceLocation(MOD_ID, "block/grape_stem_stage_3");
+        if (ageProperty.getPossibleValues().size() != ageToVisualStageMapping.length) {
+            throw new IllegalArgumentException();
+        }
+        Int2ObjectOpenHashMap int2ObjectMap = new Int2ObjectOpenHashMap();
+        PropertyDispatch propertyDispatch = PropertyDispatch.property(ageProperty).generate(integer -> {
+            int i = ageToVisualStageMapping[integer];
+            ResourceLocation resourceLocation;
+            if(i < 3) resourceLocation = (ResourceLocation) int2ObjectMap.computeIfAbsent(i, j -> modelGenerators.createSuffixedVariant(cropBlock, "_stage_" + i, ModelTemplates.CROSS, TextureMapping::cross));
+            else resourceLocation = grapeStem3;
+            return Variant.variant().with(VariantProperties.MODEL, resourceLocation);
+        });
+        //modelGenerators.delegateItemModel(ModBlocks.GRAPE_STEM, grapeStem3);
+        modelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(cropBlock).with(propertyDispatch));
+    }
+
+    public static void createGrapeLeavesStates(BlockModelGenerators modelGenerators, Block block)
+    {
+        ResourceLocation ropeLocation = new ResourceLocation(MOD_ID, "block/template_rope");
+        ResourceLocation leavesDist0Location = new ResourceLocation(MOD_ID, "block/grape_leaves_distance_0");
+        ResourceLocation leavesDist1Location = new ResourceLocation(MOD_ID, "block/grape_leaves_distance_1");
+        ResourceLocation grapesLocation = new ResourceLocation(MOD_ID, "block/grape_hanging");
+
+        modelGenerators.blockStateOutput.accept(createGrapeLeaves(block, leavesDist0Location, leavesDist1Location, ropeLocation, grapesLocation));
+        modelGenerators.delegateItemModel(block, leavesDist0Location);
+    }
+
+    public static net.minecraft.data.models.blockstates.BlockStateGenerator createGrapeLeaves(Block leaveBlock, ResourceLocation leavesDist0, ResourceLocation leavesDist1, ResourceLocation ropeBase, ResourceLocation grapesLoc)
+    {
+        return MultiPartGenerator.multiPart(leaveBlock)
+                .with(Condition.condition().term(GrapeLeavesBlock.DISTANCE, 0), Variant.variant().with(VariantProperties.MODEL, leavesDist0))
+                .with(Condition.condition().term(GrapeLeavesBlock.DISTANCE, 1).term(BlockStateProperties.AXIS, Direction.Axis.X), Variant.variant().with(VariantProperties.MODEL, leavesDist1).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with(Condition.condition().term(GrapeLeavesBlock.DISTANCE, 1).term(BlockStateProperties.AXIS, Direction.Axis.Z), Variant.variant().with(VariantProperties.MODEL, leavesDist1))
+                .with(Condition.condition().term(GrapeLeavesBlock.GRAPES, true), Variant.variant().with(VariantProperties.MODEL, grapesLoc))
+                .with(Condition.condition().term(BlockStateProperties.AXIS, Direction.Axis.X), Variant.variant().with(VariantProperties.MODEL, ropeBase).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, false))
+                .with(Condition.condition().term(BlockStateProperties.AXIS, Direction.Axis.Z), Variant.variant().with(VariantProperties.MODEL, ropeBase).with(VariantProperties.X_ROT, VariantProperties.Rotation.R90).with(VariantProperties.UV_LOCK, false))
+                ;
+
     }
 
     private static ModelTemplate createVanillaModel(String parent, TextureSlot... requiredTextures) {
