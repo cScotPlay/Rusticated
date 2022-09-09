@@ -1,6 +1,7 @@
 {
   "itemGroup.elixiremporium.item_group_deco": "Scott's Elixir Emporium Decorations",
   "itemGroup.elixiremporium.item_group_ag": "Scott's Elixir Emporium Agricultural",
+  "itemGroup.elixiremporium.item_group_herb": "Scott's Elixir Emporium Herbs",
 
   "block.elixiremporium.stone_white": "White Stone",
   "block.elixiremporium.stone_orange": "Orange Stone",
@@ -320,12 +321,14 @@
   "block.elixiremporium.rope": "Rope",
   "block.elixiremporium.grape_stem": "Grape Stem",
   "block.elixiremporium.grape_leaves": "Grape Leaves",
+  "block.elixiremporium.aloe_plant": "Aloe Plant",
 
   "item.elixiremporium.catalog": "Emporium Catalog",
   "item.elixiremporium.iron_berries": "Iron Berries",
   "item.elixiremporium.olives": "Olives",
   "item.elixiremporium.grape_seeds": "Grape Seeds",
   "item.elixiremporium.grapes": "Grapes",
+  "item.elixiremporium.aloe_vera": "Aloe Vera",
 
   "item.elixiremporium.copper_nugget": "Copper Nugget",
 

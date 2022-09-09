@@ -401,6 +401,8 @@ public class BlockStateGenerator extends FabricModelProvider
         createGrapeBlock(blockStateModelGenerator, ModBlocks.GRAPE_STEM, BlockStateProperties.AGE_3, 0, 1, 2, 3);
         createGrapeLeavesStates(blockStateModelGenerator, ModBlocks.GRAPE_LEAVES);
 
+        createHerbBlock(blockStateModelGenerator, ModBlocks.ALOE_PLANT, BlockStateProperties.AGE_3, 0, 1, 2, 3);
+
 
 
 
@@ -415,6 +417,7 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItems.COPPER_NUGGET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.GRAPES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.GRAPE_SEEDS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.ALOE_VERA, ModelTemplates.FLAT_ITEM);
     }
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)
@@ -732,7 +735,19 @@ public class BlockStateGenerator extends FabricModelProvider
             else resourceLocation = grapeStem3;
             return Variant.variant().with(VariantProperties.MODEL, resourceLocation);
         });
-        //modelGenerators.delegateItemModel(ModBlocks.GRAPE_STEM, grapeStem3);
+        modelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(cropBlock).with(propertyDispatch));
+    }
+
+    public final void createHerbBlock(BlockModelGenerators modelGenerators, Block cropBlock, Property<Integer> ageProperty, int ... ageToVisualStageMapping) {
+        if (ageProperty.getPossibleValues().size() != ageToVisualStageMapping.length) {
+            throw new IllegalArgumentException();
+        }
+        Int2ObjectOpenHashMap int2ObjectMap = new Int2ObjectOpenHashMap();
+        PropertyDispatch propertyDispatch = PropertyDispatch.property(ageProperty).generate(integer -> {
+            int i = ageToVisualStageMapping[integer];
+            ResourceLocation resourceLocation = (ResourceLocation) int2ObjectMap.computeIfAbsent(i, j -> modelGenerators.createSuffixedVariant(cropBlock, "_stage" + i, ModelTemplates.CROSS, TextureMapping::cross));
+            return Variant.variant().with(VariantProperties.MODEL, resourceLocation);
+        });
         modelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(cropBlock).with(propertyDispatch));
     }
 

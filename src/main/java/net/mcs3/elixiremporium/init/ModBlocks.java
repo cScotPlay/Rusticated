@@ -6,6 +6,7 @@ import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
 import net.mcs3.elixiremporium.world.level.block.crop.GrapeLeavesBlock;
 import net.mcs3.elixiremporium.world.level.block.crop.GrapeStemBlock;
+import net.mcs3.elixiremporium.world.level.block.crop.HerbPerennialBlock;
 import net.mcs3.elixiremporium.world.level.block.grower.IronwoodTreeGrower;
 import net.mcs3.elixiremporium.world.level.block.grower.OliveTreeGrower;
 import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelBlock;
@@ -16,6 +17,7 @@ import net.mcs3.elixiremporium.world.level.block.storage.pot.*;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -35,6 +37,7 @@ public class ModBlocks
 
     public static CreativeModeTab DECORATION_TAB = ElixirEmporium.ITEMGROUPDECO;
     public static CreativeModeTab AGRICULTURAL_TAB = ElixirEmporium.ITEMGROUPAG;
+    public static CreativeModeTab HERB_TAB = ElixirEmporium.ITEMGROUPHERB;
 
     public static final BarrelBlock BARREL = new BarrelBlock();
     public static final Block LIQUID_BARREL = new LiquidBarrelBlock();
@@ -379,6 +382,11 @@ public class ModBlocks
     public static final Block GRAPE_STEM = new GrapeStemBlock();
     public static final Block GRAPE_LEAVES = new GrapeLeavesBlock();
 
+    //////////////////////////////////////////////////////////
+    ///               Herbal Blocks Registry               ///
+    //////////////////////////////////////////////////////////
+    public static final Block ALOE_PLANT = new HerbPerennialBlock(BlockTags.SAND);
+
 
 
     public static void init()
@@ -683,7 +691,6 @@ public class ModBlocks
         register("framed_wall_left_diag_red", FRAMED_WALL_LEFT_DIAG_RED, DECORATION_TAB);
         register("framed_wall_left_diag_black", FRAMED_WALL_LEFT_DIAG_BLACK, DECORATION_TAB);
 
-
         register("cobblestone_path", COBBLESTONE_PATH, DECORATION_TAB);
         register("stone_path", STONE_PATH, DECORATION_TAB);
         register("granite_path", GRANITE_PATH, DECORATION_TAB);
@@ -712,7 +719,10 @@ public class ModBlocks
         register("grape_stem", GRAPE_STEM, null);
         register("grape_leaves", GRAPE_LEAVES, null);
 
-
+        //////////////////////////////////////////////////////////
+        ///               Herbal Blocks Registry               ///
+        //////////////////////////////////////////////////////////
+        register("aloe_plant", ALOE_PLANT, null);
 
 
 
@@ -769,6 +779,17 @@ public class ModBlocks
         BLOCKS.put(new ResourceLocation(ElixirEmporium.MOD_ID, name), block);
 
         Registry.register(Registry.ITEM, new ResourceLocation(ElixirEmporium.MOD_ID, name), item);
+
+        return anyBlock;
+    }
+
+    static <T extends Block> T registerHerbs(String name, T anyBlock)
+    {
+        T block = Registry.register(Registry.BLOCK, new ResourceLocation(ElixirEmporium.MOD_ID, name), anyBlock);
+        BLOCKS.put(new ResourceLocation(ElixirEmporium.MOD_ID, name), block);
+        //BlockItem blockItem = new BlockItem(block, new Item.Properties().tab(tab));
+
+        //Registry.register(Registry.ITEM, new ResourceLocation(ElixirEmporium.MOD_ID, name), blockItem);
 
         return anyBlock;
     }

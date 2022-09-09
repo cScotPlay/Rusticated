@@ -24,6 +24,8 @@ public class ModItemTags
     public static final TagKey<Item> IRONWOOD_LOGS = modItem("ironwood_logs");
     public static final TagKey<Item> OLIVE_LOGS = modItem("olive_logs");
 
+    public static final TagKey<Item> HERBS = modItem("herbs");
+
 
     public static TagKey<Item> modItem(String path) {
         return TagKey.create(Registry.ITEM.key(), new ResourceLocation(ElixirEmporium.MOD_ID, path));

@@ -23,6 +23,7 @@ public class ModItems
 
     public static CreativeModeTab DECORATION_TAB = ElixirEmporium.ITEMGROUPDECO;
     public static CreativeModeTab AG_TAB = ElixirEmporium.ITEMGROUPAG;
+    public static CreativeModeTab HERB_TAB = ElixirEmporium.ITEMGROUPHERB;
 
 
     public static Item CATALOG = new ModBookItem();
@@ -32,6 +33,8 @@ public class ModItems
     public static Item GRAPES = new ModItem(new Item.Properties().tab(AG_TAB).food(ModFoodProperties.GRAPES));
 
     public static Item COPPER_NUGGET = new ModItem(new Item.Properties().tab(DECORATION_TAB));
+
+    public static Item ALOE_VERA = new ItemNameBlockItem(ModBlocks.ALOE_PLANT, new Item.Properties().tab(HERB_TAB));
 
 
     public static void init()
@@ -43,6 +46,13 @@ public class ModItems
         register("grapes", GRAPES);
 
         register("copper_nugget", COPPER_NUGGET);
+
+
+
+        //////////////////////////////////////////////////////////
+        ///               Herbal Items Registry                ///
+        //////////////////////////////////////////////////////////
+        register("aloe_vera", ALOE_VERA);
 
     }
 

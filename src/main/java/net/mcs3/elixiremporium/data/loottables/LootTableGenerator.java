@@ -396,6 +396,10 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
             return createSingleItemTableWithSilkTouch(blockx, ModBlocks.COBBLESTONE_BLACK);
         });
 
+        add(ModBlocks.ALOE_PLANT, (block -> {
+            return createSingleItemTable(ModItems.ALOE_VERA);
+        }));
+
         add(ModBlocks.TIED_STAKE, LootTableGenerator::createTiedStakeDrop);
         add(Blocks.VINE, LootTableGenerator::createGrapeSeedDrop);
 

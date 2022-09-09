@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.init.ModBlockItems;
 import net.mcs3.elixiremporium.init.ModBlocks;
+import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.tags.ModItemTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
@@ -362,6 +363,10 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.OLIVE_LOG.asItem(),
                 ModBlocks.STRIPPED_OLIVE_LOG.asItem(),
                 ModBlocks.STRIPPED_OLIVE_WOOD.asItem()
+        );
+
+        tag(ModItemTags.HERBS).add(
+                ModItems.ALOE_VERA
         );
 
 

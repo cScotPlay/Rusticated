@@ -6,6 +6,7 @@ import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.tags.ModBlockTags;
 import net.mcs3.elixiremporium.world.level.block.*;
+import net.mcs3.elixiremporium.world.level.block.crop.HerbPerennialBlock;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChainBlock;
@@ -59,7 +60,8 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
 
         getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
                 ModBlocks.ROPE,
-                ModBlocks.TIED_STAKE);
+                ModBlocks.TIED_STAKE,
+                ModBlocks.IRON_LATTICE);
 
         getOrCreateTagBuilder(BlockTags.CLIMBABLE)
                 .add(registry.stream().filter(b -> b instanceof TiedStakeBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
@@ -172,6 +174,9 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
 
         getOrCreateTagBuilder(ModBlockTags.FLAMMABLE_BLOCK)
                 .add(registry.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+
+        getOrCreateTagBuilder(ModBlockTags.HERBS)
+                .add(registry.stream().filter(b -> b instanceof HerbPerennialBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
     }
 }
