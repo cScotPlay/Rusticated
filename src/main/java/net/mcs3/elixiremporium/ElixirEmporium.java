@@ -3,7 +3,6 @@ package net.mcs3.elixiremporium;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.mcs3.elixiremporium.data.worldgen.features.ModTreeFeatures;
-import net.mcs3.elixiremporium.data.worldgen.placement.ModTreePlacement;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.util.RegistryHandler;
@@ -11,7 +10,6 @@ import net.mcs3.elixiremporium.world.level.levelgen.WorldGeneration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import org.apache.logging.log4j.LogManager;
 
 public class ElixirEmporium implements ModInitializer {
@@ -26,7 +24,11 @@ public class ElixirEmporium implements ModInitializer {
 
 	public static CreativeModeTab ITEMGROUPAG = FabricItemGroupBuilder.build(
 			new ResourceLocation("elixiremporium", "item_group_ag"),
-			() -> new ItemStack(ModItems.OLIVES)); //TODO Update Item
+			() -> new ItemStack(ModItems.GRAPES));
+
+	public static CreativeModeTab ITEMGROUPHERB = FabricItemGroupBuilder.build(
+			new ResourceLocation("elixiremporium", "item_group_herb"),
+			() -> new ItemStack(ModItems.GRAPE_SEEDS));
 
 	@Override
 	public void onInitialize() {
