@@ -4,5 +4,6 @@
   "subtitle": "book.elixiremporium.subtitle",
   "model": "elixiremporium:catalog",
   "custom_book_item": "elixiremporium:catalog",
+  "creative_tab": "null",
   "show_progress": false
 }
