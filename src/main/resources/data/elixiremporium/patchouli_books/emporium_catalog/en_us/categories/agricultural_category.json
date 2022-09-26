@@ -1,6 +1,6 @@
 {
   "name": "Agricultural",
-  "description": "At the Elixir Emporium, we have many options to choose from to decorate the world around you. Most of our decorative items come in a rainbow of color options.",
-  "icon": "elixiremporium:glazed_pot_4",
+  "description": "The Emporium also provides a wide variety of herbs and agricultural products.",
+  "icon": "elixiremporium:grapes",
   "sortnum": 1
 }
