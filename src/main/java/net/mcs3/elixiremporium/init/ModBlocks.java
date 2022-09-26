@@ -386,6 +386,7 @@ public class ModBlocks
     ///               Herbal Blocks Registry               ///
     //////////////////////////////////////////////////////////
     public static final Block ALOE_PLANT = new HerbPerennialBlock(BlockTags.SAND);
+    public static final Block BLOOD_ORCHID = new HerbPerennialBlock(BlockTags.DIRT);
 
 
 
@@ -723,6 +724,7 @@ public class ModBlocks
         ///               Herbal Blocks Registry               ///
         //////////////////////////////////////////////////////////
         register("aloe_plant", ALOE_PLANT, null);
+        register("blood_orchid", BLOOD_ORCHID, null);
 
 
 

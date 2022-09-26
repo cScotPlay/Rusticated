@@ -3,20 +3,16 @@ package net.mcs3.elixiremporium.world.level.block.crop;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.CropBlock;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
@@ -65,6 +61,7 @@ public class HerbPerennialBlock extends CropBlock
     private ItemLike getSeedBase()
     {
         if(this == ModBlocks.ALOE_PLANT) return ModItems.ALOE_VERA;
+        if(this == ModBlocks.BLOOD_ORCHID) return ModItems.BLOOD_ORCHID_FLOWER;
         else return null;
     }
 

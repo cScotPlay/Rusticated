@@ -1,5 +1,6 @@
 package net.mcs3.elixiremporium.init;
 
+import com.terraformersmc.modmenu.util.mod.Mod;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.food.ModFoodProperties;
 import net.mcs3.elixiremporium.world.item.LiquidBarrelItem;
@@ -35,6 +36,7 @@ public class ModItems
     public static Item COPPER_NUGGET = new ModItem(new Item.Properties().tab(DECORATION_TAB));
 
     public static Item ALOE_VERA = new ItemNameBlockItem(ModBlocks.ALOE_PLANT, new Item.Properties().tab(HERB_TAB));
+    public static Item BLOOD_ORCHID_FLOWER = new ItemNameBlockItem(ModBlocks.BLOOD_ORCHID, new Item.Properties().tab(HERB_TAB));
 
 
     public static void init()
@@ -53,6 +55,7 @@ public class ModItems
         ///               Herbal Items Registry                ///
         //////////////////////////////////////////////////////////
         register("aloe_vera", ALOE_VERA);
+        register("blood_orchid_flower", BLOOD_ORCHID_FLOWER);
 
     }
 

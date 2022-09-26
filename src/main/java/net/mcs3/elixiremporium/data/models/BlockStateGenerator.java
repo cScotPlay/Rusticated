@@ -402,6 +402,7 @@ public class BlockStateGenerator extends FabricModelProvider
         createGrapeLeavesStates(blockStateModelGenerator, ModBlocks.GRAPE_LEAVES);
 
         createHerbBlock(blockStateModelGenerator, ModBlocks.ALOE_PLANT, BlockStateProperties.AGE_3, 0, 1, 2, 3);
+        createHerbBlock(blockStateModelGenerator, ModBlocks.BLOOD_ORCHID, BlockStateProperties.AGE_3, 0, 1, 2, 3);
 
 
 
@@ -418,6 +419,7 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItems.GRAPES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.GRAPE_SEEDS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.ALOE_VERA, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.BLOOD_ORCHID_FLOWER, ModelTemplates.FLAT_ITEM);
     }
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)
