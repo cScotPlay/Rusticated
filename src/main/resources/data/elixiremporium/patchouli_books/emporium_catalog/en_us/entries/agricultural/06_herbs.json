@@ -12,6 +12,11 @@
       "type": "spotlight",
       "text": "Grapes come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
       "item": "elixiremporium:blood_orchid_flower"
+    },
+    {
+      "type": "spotlight",
+      "text": "Grapes come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
+      "item": "elixiremporium:chamomile_flower"
     }
   ],
   "sortnum": 6

@@ -402,6 +402,9 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         add(ModBlocks.BLOOD_ORCHID, (block -> {
             return createSingleItemTable(ModItems.BLOOD_ORCHID_FLOWER);
         }));
+        add(ModBlocks.CHAMOMILE, (block -> {
+            return createSingleItemTable(ModItems.CHAMOMILE_FLOWER);
+        }));
 
         add(ModBlocks.TIED_STAKE, LootTableGenerator::createTiedStakeDrop);
         add(Blocks.VINE, LootTableGenerator::createGrapeSeedDrop);

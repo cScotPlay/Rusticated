@@ -37,6 +37,7 @@ public class ModItems
 
     public static Item ALOE_VERA = new ItemNameBlockItem(ModBlocks.ALOE_PLANT, new Item.Properties().tab(HERB_TAB));
     public static Item BLOOD_ORCHID_FLOWER = new ItemNameBlockItem(ModBlocks.BLOOD_ORCHID, new Item.Properties().tab(HERB_TAB));
+    public static Item CHAMOMILE_FLOWER = new ItemNameBlockItem(ModBlocks.CHAMOMILE, new Item.Properties().tab(HERB_TAB));
 
 
     public static void init()
@@ -56,6 +57,7 @@ public class ModItems
         //////////////////////////////////////////////////////////
         register("aloe_vera", ALOE_VERA);
         register("blood_orchid_flower", BLOOD_ORCHID_FLOWER);
+        register("chamomile_flower", CHAMOMILE_FLOWER);
 
     }
 

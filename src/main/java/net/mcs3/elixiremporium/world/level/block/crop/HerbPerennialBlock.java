@@ -62,6 +62,7 @@ public class HerbPerennialBlock extends CropBlock
     {
         if(this == ModBlocks.ALOE_PLANT) return ModItems.ALOE_VERA;
         if(this == ModBlocks.BLOOD_ORCHID) return ModItems.BLOOD_ORCHID_FLOWER;
+        if(this == ModBlocks.CHAMOMILE) return ModItems.CHAMOMILE_FLOWER;
         else return null;
     }
 
