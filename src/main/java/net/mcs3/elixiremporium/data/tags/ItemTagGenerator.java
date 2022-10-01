@@ -367,8 +367,10 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
 
         tag(ModItemTags.HERBS).add(
                 ModItems.ALOE_VERA,
-                ModItems.BLOOD_ORCHID_FLOWER,
-                ModItems.CHAMOMILE_FLOWER
+                ModItems.BLOOD_ORCHID,
+                ModItems.CHAMOMILE,
+                ModItems.CLOUD_LILY,
+                ModItems.COHOSH
         );
 
 

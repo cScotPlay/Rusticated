@@ -17,4 +17,5 @@ public class ModFoodProperties
             .effect(new MobEffectInstance(MobEffects.JUMP, 200, 250), 0.95F)
             .alwaysEat().build();
     public static final FoodProperties GRAPES = (new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).build());
+    public static final FoodProperties CLOUD_LILY = (new FoodProperties.Builder()).nutrition(0).saturationMod(0.0F).effect(new MobEffectInstance(MobEffects.LEVITATION, 400, 1), 1F).build();
 }

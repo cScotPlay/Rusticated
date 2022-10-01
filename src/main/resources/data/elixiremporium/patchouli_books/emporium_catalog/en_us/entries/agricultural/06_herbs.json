@@ -1,6 +1,6 @@
 {
   "name": "Herbs",
-  "icon": "elixiremporium:blood_orchid_flower",
+  "icon": "elixiremporium:blood_orchid",
   "category": "elixiremporium:agricultural_category",
   "pages": [
     {
@@ -11,12 +11,22 @@
     {
       "type": "spotlight",
       "text": "Grapes come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
-      "item": "elixiremporium:blood_orchid_flower"
+      "item": "elixiremporium:blood_orchid"
     },
     {
       "type": "spotlight",
       "text": "Grapes come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
-      "item": "elixiremporium:chamomile_flower"
+      "item": "elixiremporium:chamomile"
+    },
+    {
+      "type": "spotlight",
+      "text": "Cloud Lilies are come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
+      "item": "elixiremporium:cloud_lily"
+    },
+    {
+      "type": "spotlight",
+      "text": "Cohosh are come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
+      "item": "elixiremporium:cohosh"
     }
   ],
   "sortnum": 6

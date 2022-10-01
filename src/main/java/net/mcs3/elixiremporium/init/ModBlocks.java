@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
+import net.mcs3.elixiremporium.world.level.block.crop.AloeVeraBlock;
 import net.mcs3.elixiremporium.world.level.block.crop.GrapeLeavesBlock;
 import net.mcs3.elixiremporium.world.level.block.crop.GrapeStemBlock;
 import net.mcs3.elixiremporium.world.level.block.crop.HerbPerennialBlock;
@@ -385,9 +386,11 @@ public class ModBlocks
     //////////////////////////////////////////////////////////
     ///               Herbal Blocks Registry               ///
     //////////////////////////////////////////////////////////
-    public static final Block ALOE_PLANT = new HerbPerennialBlock(BlockTags.SAND);
+    public static final Block ALOE_VERA = new AloeVeraBlock();
     public static final Block BLOOD_ORCHID = new HerbPerennialBlock(BlockTags.DIRT);
     public static final Block CHAMOMILE = new HerbPerennialBlock(BlockTags.DIRT);
+    public static final Block CLOUD_LILY = new HerbPerennialBlock(BlockTags.DIRT);
+    public static final Block COHOSH = new HerbPerennialBlock(BlockTags.DIRT);
 
 
 
@@ -724,9 +727,11 @@ public class ModBlocks
         //////////////////////////////////////////////////////////
         ///               Herbal Blocks Registry               ///
         //////////////////////////////////////////////////////////
-        register("aloe_plant", ALOE_PLANT, null);
-        register("blood_orchid", BLOOD_ORCHID, null);
-        register("chamomile", CHAMOMILE, null);
+        registerHerbs("aloe_vera", ALOE_VERA);
+        registerHerbs("blood_orchid", BLOOD_ORCHID);
+        registerHerbs("chamomile", CHAMOMILE);
+        registerHerbs("cloud_lily", CLOUD_LILY);
+        registerHerbs("cohosh", COHOSH);
 
 
 

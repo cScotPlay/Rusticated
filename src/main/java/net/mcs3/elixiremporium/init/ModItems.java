@@ -35,9 +35,11 @@ public class ModItems
 
     public static Item COPPER_NUGGET = new ModItem(new Item.Properties().tab(DECORATION_TAB));
 
-    public static Item ALOE_VERA = new ItemNameBlockItem(ModBlocks.ALOE_PLANT, new Item.Properties().tab(HERB_TAB));
-    public static Item BLOOD_ORCHID_FLOWER = new ItemNameBlockItem(ModBlocks.BLOOD_ORCHID, new Item.Properties().tab(HERB_TAB));
-    public static Item CHAMOMILE_FLOWER = new ItemNameBlockItem(ModBlocks.CHAMOMILE, new Item.Properties().tab(HERB_TAB));
+    public static Item ALOE_VERA = new ItemNameBlockItem(ModBlocks.ALOE_VERA, new Item.Properties().tab(HERB_TAB));
+    public static Item BLOOD_ORCHID = new ItemNameBlockItem(ModBlocks.BLOOD_ORCHID, new Item.Properties().tab(HERB_TAB));
+    public static Item CHAMOMILE = new ItemNameBlockItem(ModBlocks.CHAMOMILE, new Item.Properties().tab(HERB_TAB));
+    public static Item CLOUD_LILY = new ItemNameBlockItem(ModBlocks.CLOUD_LILY, new Item.Properties().tab(HERB_TAB).food(ModFoodProperties.CLOUD_LILY));
+    public static Item COHOSH = new ItemNameBlockItem(ModBlocks.COHOSH, new Item.Properties().tab(HERB_TAB));
 
 
     public static void init()
@@ -56,8 +58,10 @@ public class ModItems
         ///               Herbal Items Registry                ///
         //////////////////////////////////////////////////////////
         register("aloe_vera", ALOE_VERA);
-        register("blood_orchid_flower", BLOOD_ORCHID_FLOWER);
-        register("chamomile_flower", CHAMOMILE_FLOWER);
+        register("blood_orchid", BLOOD_ORCHID);
+        register("chamomile", CHAMOMILE);
+        register("cloud_lily", CLOUD_LILY);
+        register("cohosh", COHOSH);
 
     }
 

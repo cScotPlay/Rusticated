@@ -401,9 +401,11 @@ public class BlockStateGenerator extends FabricModelProvider
         createGrapeBlock(blockStateModelGenerator, ModBlocks.GRAPE_STEM, BlockStateProperties.AGE_3, 0, 1, 2, 3);
         createGrapeLeavesStates(blockStateModelGenerator, ModBlocks.GRAPE_LEAVES);
 
-        createHerbBlock(blockStateModelGenerator, ModBlocks.ALOE_PLANT, BlockStateProperties.AGE_3, 0, 1, 2, 3);
+        createHerbBlock(blockStateModelGenerator, ModBlocks.ALOE_VERA, BlockStateProperties.AGE_3, 0, 1, 2, 3);
         createHerbBlock(blockStateModelGenerator, ModBlocks.BLOOD_ORCHID, BlockStateProperties.AGE_3, 0, 1, 2, 3);
         createHerbBlock(blockStateModelGenerator, ModBlocks.CHAMOMILE, BlockStateProperties.AGE_3, 0, 1, 2, 3);
+        createHerbBlock(blockStateModelGenerator, ModBlocks.CLOUD_LILY, BlockStateProperties.AGE_3, 0, 1, 2, 3);
+        createHerbBlock(blockStateModelGenerator, ModBlocks.COHOSH, BlockStateProperties.AGE_3, 0, 1, 2, 3);
 
 
 
@@ -420,8 +422,10 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItems.GRAPES, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.GRAPE_SEEDS, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.ALOE_VERA, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.BLOOD_ORCHID_FLOWER, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.CHAMOMILE_FLOWER, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.BLOOD_ORCHID, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CHAMOMILE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CLOUD_LILY, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.COHOSH, ModelTemplates.FLAT_ITEM);
     }
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)

@@ -4,6 +4,7 @@ import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
@@ -27,10 +28,8 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Random;
 
-public class HerbPerennialBlock extends CropBlock
+public class AloeVeraBlock extends CropBlock
 {
-    public static ItemLike SEED;
-    public static TagKey<Block> PLANTBASE;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
             Block.box(7.0, 0.0, 7.0, 10.0, 3.0, 10.0),
@@ -38,13 +37,9 @@ public class HerbPerennialBlock extends CropBlock
             Block.box(3.0, 0.0, 3.0, 14.0, 8.0, 14.0),
             Block.box(0.0, 0.0, 0.0, 16.0, 11.0, 16.0)};
 
-    public HerbPerennialBlock(/*ItemLike seedItem, */TagKey<Block> plantOnBlock) {
+    public AloeVeraBlock() {
         super(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
-        //this.SEED = seedItem;
-        this.SEED = getSeedBase();
-        this.PLANTBASE = plantOnBlock;
         this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(this.getAgeProperty(), 0));
-
     }
 
     @Override
@@ -60,11 +55,7 @@ public class HerbPerennialBlock extends CropBlock
 
     private ItemLike getSeedBase()
     {
-        if(this == ModBlocks.BLOOD_ORCHID) return ModItems.BLOOD_ORCHID;
-        if(this == ModBlocks.CHAMOMILE) return ModItems.CHAMOMILE;
-        if (this == ModBlocks.CLOUD_LILY) return ModItems.CLOUD_LILY;
-        if (this == ModBlocks.COHOSH) return ModItems.COHOSH;
-        else return null;
+        return ModItems.ALOE_VERA;
     }
 
     @Override
@@ -100,7 +91,7 @@ public class HerbPerennialBlock extends CropBlock
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos)
     {
-        return state.is(PLANTBASE);
+        return state.is(BlockTags.SAND);
     }
 
     protected static float getGrowthSpeed(Block block, BlockGetter level, BlockPos pos)
@@ -110,12 +101,11 @@ public class HerbPerennialBlock extends CropBlock
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return SEED;
+        return ModItems.ALOE_VERA;
     }
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(AGE);
     }
-
 }

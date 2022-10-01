@@ -396,14 +396,20 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
             return createSingleItemTableWithSilkTouch(blockx, ModBlocks.COBBLESTONE_BLACK);
         });
 
-        add(ModBlocks.ALOE_PLANT, (block -> {
+        add(ModBlocks.ALOE_VERA, (block -> {
             return createSingleItemTable(ModItems.ALOE_VERA);
         }));
         add(ModBlocks.BLOOD_ORCHID, (block -> {
-            return createSingleItemTable(ModItems.BLOOD_ORCHID_FLOWER);
+            return createSingleItemTable(ModItems.BLOOD_ORCHID);
         }));
         add(ModBlocks.CHAMOMILE, (block -> {
-            return createSingleItemTable(ModItems.CHAMOMILE_FLOWER);
+            return createSingleItemTable(ModItems.CHAMOMILE);
+        }));
+        add(ModBlocks.CLOUD_LILY, (block -> {
+            return createSingleItemTable(ModItems.CLOUD_LILY);
+        }));
+        add(ModBlocks.COHOSH, (block -> {
+            return createSingleItemTable(ModItems.COHOSH);
         }));
 
         add(ModBlocks.TIED_STAKE, LootTableGenerator::createTiedStakeDrop);
