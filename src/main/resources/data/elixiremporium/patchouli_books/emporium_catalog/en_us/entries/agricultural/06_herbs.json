@@ -5,28 +5,38 @@
   "pages": [
     {
       "type": "spotlight",
-      "text": "Grapes come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
+      "text": "Aloe Vera plants spawn in dry and arid biomes.",
       "item": "elixiremporium:aloe_vera"
     },
     {
       "type": "spotlight",
-      "text": "Grapes come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
+      "text": "Blood Orchid spawn in Jungle Biomes.",
       "item": "elixiremporium:blood_orchid"
     },
     {
       "type": "spotlight",
-      "text": "Grapes come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
+      "text": "Chamomile spawns in plains biomes, forest biomes, and swamp biomes.",
       "item": "elixiremporium:chamomile"
     },
     {
       "type": "spotlight",
-      "text": "Cloud Lilies are come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
+      "text": "Cloud Lilies spawn in mountainous biomes. It is edible and has a levitation effect upon consumption.",
       "item": "elixiremporium:cloud_lily"
     },
     {
       "type": "spotlight",
-      "text": "Cohosh are come from Grape Vines grown from Grape Seeds on Farmland or Fertile Soil. Obtain Grape Seeds by breaking vines. Grape Seeds grow into Grape Vines when supported by a horizontal Rope above them. Vines spread one block along the Rope and produce Grapes. The outer vines grow grapes as long as there is air below the vines.",
+      "text": "Cohosh spawns in forest biomes.",
       "item": "elixiremporium:cohosh"
+    },
+    {
+      "type": "spotlight",
+      "text": "Horsetail spawn in jungle, swamp, plains, and forest biomes.",
+      "item": "elixiremporium:horsetail"
+    },
+    {
+      "type": "spotlight",
+      "text": "Wind Thistle spawns in mountain and plains biomes. Thistles hurt and inflict pain when contacted.",
+      "item": "elixiremporium:wind_thistle"
     }
   ],
   "sortnum": 6
