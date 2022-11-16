@@ -370,7 +370,9 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModItems.BLOOD_ORCHID,
                 ModItems.CHAMOMILE,
                 ModItems.CLOUD_LILY,
-                ModItems.COHOSH
+                ModItems.COHOSH,
+                ModItems.HORSETAIL,
+                ModItems.WIND_THISTLE
         );
 
 

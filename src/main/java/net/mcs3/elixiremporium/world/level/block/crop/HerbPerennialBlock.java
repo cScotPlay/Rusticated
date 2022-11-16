@@ -7,6 +7,10 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
+import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
@@ -22,6 +26,7 @@ import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -58,12 +63,32 @@ public class HerbPerennialBlock extends CropBlock
         return InteractionResult.FAIL;
     }
 
+    @Override
+    public void entityInside(BlockState state, Level level, BlockPos pos, Entity entity) {
+        if (!(entity instanceof LivingEntity)) {
+            return;
+        }
+
+        if(this == ModBlocks.WIND_THISTLE){
+            entity.makeStuckInBlock(state, new Vec3(0.8f, 0.75, 0.8f));
+            if (!(level.isClientSide || state.getValue(AGE) <= 2 || entity.xOld == entity.getX() && entity.zOld == entity.getZ())) {
+                double d = Math.abs(entity.getX() - entity.xOld);
+                double e = Math.abs(entity.getZ() - entity.zOld);
+                if (d >= (double)0.003f || e >= (double)0.003f) {
+                    entity.hurt(DamageSource.SWEET_BERRY_BUSH, 1.0f);
+                }
+            }
+        }
+    }
+
     private ItemLike getSeedBase()
     {
         if(this == ModBlocks.BLOOD_ORCHID) return ModItems.BLOOD_ORCHID;
         if(this == ModBlocks.CHAMOMILE) return ModItems.CHAMOMILE;
-        if (this == ModBlocks.CLOUD_LILY) return ModItems.CLOUD_LILY;
-        if (this == ModBlocks.COHOSH) return ModItems.COHOSH;
+        if(this == ModBlocks.CLOUD_LILY) return ModItems.CLOUD_LILY;
+        if(this == ModBlocks.COHOSH) return ModItems.COHOSH;
+        if(this == ModBlocks.HORSETAIL) return ModItems.HORSETAIL;
+        if(this == ModBlocks.WIND_THISTLE) return ModItems.WIND_THISTLE;
         else return null;
     }
 

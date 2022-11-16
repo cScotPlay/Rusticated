@@ -391,6 +391,8 @@ public class ModBlocks
     public static final Block CHAMOMILE = new HerbPerennialBlock(BlockTags.DIRT);
     public static final Block CLOUD_LILY = new HerbPerennialBlock(BlockTags.DIRT);
     public static final Block COHOSH = new HerbPerennialBlock(BlockTags.DIRT);
+    public static final Block HORSETAIL = new HerbPerennialBlock(BlockTags.DIRT);
+    public static final Block WIND_THISTLE = new HerbPerennialBlock(BlockTags.DIRT);
 
 
 
@@ -732,6 +734,8 @@ public class ModBlocks
         registerHerbs("chamomile", CHAMOMILE);
         registerHerbs("cloud_lily", CLOUD_LILY);
         registerHerbs("cohosh", COHOSH);
+        registerHerbs("horsetail", HORSETAIL);
+        registerHerbs("wind_thistle", WIND_THISTLE);
 
 
 

@@ -326,6 +326,8 @@
   "block.elixiremporium.chamomile": "Chamomile",
   "block.elixiremporium.cloud_lily": "Cloud Lily",
   "block.elixiremporium.cohosh": "Cohosh",
+  "block.elixiremporium.horsetail": "Horsetail",
+  "block.elixiremporium.wind_thistle": "Wind Thistle",
 
   "item.elixiremporium.catalog": "Emporium Catalog",
   "item.elixiremporium.iron_berries": "Iron Berries",
@@ -337,6 +339,8 @@
   "item.elixiremporium.chamomile": "Chamomile Flower",
   "item.elixiremporium.cloud_lily": "Cloud Lily Flower",
   "item.elixiremporium.cohosh": "Cohosh Flowers",
+  "item.elixiremporium.horsetail": "Horsetail Flowers",
+  "item.elixiremporium.wind_thistle": "Wind Thistle Flowers",
 
   "item.elixiremporium.copper_nugget": "Copper Nugget",
 

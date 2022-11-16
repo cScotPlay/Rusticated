@@ -40,6 +40,8 @@ public class ModItems
     public static Item CHAMOMILE = new ItemNameBlockItem(ModBlocks.CHAMOMILE, new Item.Properties().tab(HERB_TAB));
     public static Item CLOUD_LILY = new ItemNameBlockItem(ModBlocks.CLOUD_LILY, new Item.Properties().tab(HERB_TAB).food(ModFoodProperties.CLOUD_LILY));
     public static Item COHOSH = new ItemNameBlockItem(ModBlocks.COHOSH, new Item.Properties().tab(HERB_TAB));
+    public static Item HORSETAIL = new ItemNameBlockItem(ModBlocks.HORSETAIL, new Item.Properties().tab(HERB_TAB));
+    public static Item WIND_THISTLE = new ItemNameBlockItem(ModBlocks.WIND_THISTLE, new Item.Properties().tab(HERB_TAB));
 
 
     public static void init()
@@ -62,6 +64,8 @@ public class ModItems
         register("chamomile", CHAMOMILE);
         register("cloud_lily", CLOUD_LILY);
         register("cohosh", COHOSH);
+        register("horsetail", HORSETAIL);
+        register("wind_thistle", WIND_THISTLE);
 
     }
 
