@@ -4,10 +4,7 @@ import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
-import net.mcs3.elixiremporium.world.level.block.crop.AloeVeraBlock;
-import net.mcs3.elixiremporium.world.level.block.crop.GrapeLeavesBlock;
-import net.mcs3.elixiremporium.world.level.block.crop.GrapeStemBlock;
-import net.mcs3.elixiremporium.world.level.block.crop.HerbPerennialBlock;
+import net.mcs3.elixiremporium.world.level.block.crop.*;
 import net.mcs3.elixiremporium.world.level.block.grower.IronwoodTreeGrower;
 import net.mcs3.elixiremporium.world.level.block.grower.OliveTreeGrower;
 import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelBlock;
@@ -393,6 +390,7 @@ public class ModBlocks
     public static final Block COHOSH = new HerbPerennialBlock(BlockTags.DIRT);
     public static final Block HORSETAIL = new HerbPerennialBlock(BlockTags.DIRT);
     public static final Block WIND_THISTLE = new HerbPerennialBlock(BlockTags.DIRT);
+    public static final Block MOONCAP_MUSHROOM = new ModMushroomBlock(Properties.copy(Blocks.BROWN_MUSHROOM), ModItems.MOONCAP_MUSHROOM);
 
 
 
@@ -736,6 +734,7 @@ public class ModBlocks
         registerHerbs("cohosh", COHOSH);
         registerHerbs("horsetail", HORSETAIL);
         registerHerbs("wind_thistle", WIND_THISTLE);
+        registerHerbs("mooncap_mushroom", MOONCAP_MUSHROOM);
 
 
 

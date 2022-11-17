@@ -372,7 +372,8 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModItems.CLOUD_LILY,
                 ModItems.COHOSH,
                 ModItems.HORSETAIL,
-                ModItems.WIND_THISTLE
+                ModItems.WIND_THISTLE,
+                ModItems.MOONCAP_MUSHROOM
         );
 
 

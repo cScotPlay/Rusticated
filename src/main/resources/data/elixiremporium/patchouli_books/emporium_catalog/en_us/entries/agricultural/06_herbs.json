@@ -10,7 +10,7 @@
     },
     {
       "type": "spotlight",
-      "text": "Blood Orchid spawn in Jungle Biomes.",
+      "text": "Blood Orchids spawn in Jungle Biomes.",
       "item": "elixiremporium:blood_orchid"
     },
     {
@@ -30,7 +30,7 @@
     },
     {
       "type": "spotlight",
-      "text": "Horsetail spawn in jungle, swamp, plains, and forest biomes.",
+      "text": "Horsetail spawns in Jungle, Swamp, Plains, and Forest biomes.",
       "item": "elixiremporium:horsetail"
     },
     {

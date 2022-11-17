@@ -148,6 +148,10 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.FERTILE_SOIL
         );
 
+        getOrCreateTagBuilder(BlockTags.MUSHROOM_GROW_BLOCK).add(
+                ModBlocks.FERTILE_SOIL
+        );
+
         // ***************************************************************************** //
         //  Modded Tags
         // ***************************************************************************** //
