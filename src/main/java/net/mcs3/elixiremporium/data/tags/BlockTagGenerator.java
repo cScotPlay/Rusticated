@@ -7,6 +7,7 @@ import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.tags.ModBlockTags;
 import net.mcs3.elixiremporium.world.level.block.*;
 import net.mcs3.elixiremporium.world.level.block.crop.HerbPerennialBlock;
+import net.mcs3.elixiremporium.world.level.block.crop.ModMushroomBlock;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChainBlock;
@@ -180,7 +181,8 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 .add(registry.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(ModBlockTags.HERBS)
-                .add(registry.stream().filter(b -> b instanceof HerbPerennialBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(registry.stream().filter(b -> b instanceof HerbPerennialBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new))
+                .add(registry.stream().filter(b -> b instanceof ModMushroomBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
     }
 }

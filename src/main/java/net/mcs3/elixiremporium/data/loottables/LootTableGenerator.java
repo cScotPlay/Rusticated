@@ -417,8 +417,8 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         add(ModBlocks.HORSETAIL, (block -> {
             return createSingleItemTable(ModItems.WIND_THISTLE);
         }));
-        add(ModBlocks.MOONCAP_MUSHROOM, (block -> {
-            return createSingleItemTable(ModItems.MOONCAP_MUSHROOM);
+        add(ModBlocks.NIGHTSHROOM, (block -> {
+            return createSingleItemTable(ModItems.NIGHTSHROOM);
         }));
 
         add(ModBlocks.TIED_STAKE, LootTableGenerator::createTiedStakeDrop);

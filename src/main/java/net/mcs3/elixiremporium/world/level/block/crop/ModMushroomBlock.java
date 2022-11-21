@@ -1,10 +1,13 @@
 package net.mcs3.elixiremporium.world.level.block.crop;
 
+import net.mcs3.elixiremporium.init.ModBlocks;
+import net.mcs3.elixiremporium.init.ModItems;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.tags.BlockTags;
+import net.minecraft.tags.TagKey;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -15,38 +18,39 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.BonemealableBlock;
-import net.minecraft.world.level.block.BushBlock;
-import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
+import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 import java.util.Random;
 
-public class ModMushroomBlock extends BushBlock implements BonemealableBlock
+public class ModMushroomBlock extends CropBlock
 {
+    public static ItemLike MUSHROOMTYPE;
+    public static TagKey<Block> MUSHROOMBASE;
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
-    public static final int MAX_AGE = 3;
-    protected static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
-            Block.box(4.0D, 0.0D, 4.0D, 12.0D, 8.0D, 12.0D),
-            Block.box(3.0D, 0.0D, 3.0D, 13.0D, 10.0D, 13.0D),
-            Block.box(2.0D, 0.0D, 2.0D, 14.0D, 12.0D, 14.0D),
-            Block.box(1.0D, 0.0D, 1.0D, 15.0D, 14.0D, 15.0D),
-    };
+    private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
+            Block.box(3.0, 0.0, 3.0, 13.0, 9.0, 13.0),
+            Block.box(3.0, 0.0, 3.0, 14.0, 11.0, 14.0),
+            Block.box(0.0, 0.0, 0.0, 14.0, 13.0, 14.0),
+            Block.box(0.0, 0.0, 0.0, 16.0, 15.0, 16.0)};
 
-    private final Item mushroomType;
+    public ModMushroomBlock(TagKey<Block> plantOnBlock) {
+        super(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().lightLevel((blockStatex) -> {
+            return 8;
+        }).instabreak().sound(SoundType.CROP));
+        this.MUSHROOMTYPE = getMushroomdBase();
+        this.MUSHROOMBASE = plantOnBlock;
+        this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(this.getAgeProperty(), 0));
 
-
-    public ModMushroomBlock(Properties properties, Item mushroomType) {
-        super(properties);
-        this.mushroomType = mushroomType;
-        this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(AGE, 0));
     }
 
     @Override
@@ -57,7 +61,6 @@ public class ModMushroomBlock extends BushBlock implements BonemealableBlock
 
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
-        super.createBlockStateDefinition(builder);
         builder.add(AGE);
     }
 
@@ -75,39 +78,22 @@ public class ModMushroomBlock extends BushBlock implements BonemealableBlock
 
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos) {
-        return state.is(BlockTags.MUSHROOM_GROW_BLOCK);
+        return state.is(MUSHROOMBASE);
     }
 
     @Override
     public boolean canSurvive(BlockState state, LevelReader level, BlockPos pos) {
         BlockPos blockPos = pos.below();
         BlockState blockState = level.getBlockState(blockPos);
-        if (blockState.is(BlockTags.MUSHROOM_GROW_BLOCK)) {
+        if (blockState.is(MUSHROOMBASE)) {
             return true;
         }
         return level.getRawBrightness(pos, 0) < 13 && this.mayPlaceOn(blockState, level, blockPos);
     }
 
     @Override
-    public boolean isValidBonemealTarget(BlockGetter level, BlockPos pos, BlockState state, boolean isClient) {
-        return !this.AGE.equals(AGE);
-    }
-
-    @Override
-    public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
-        return true;
-    }
-
-    @Override
-    public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state)
-    {
-        int age = Math.min(3, state.getValue(AGE) + 1);
-        level.setBlock(pos, state.setValue(AGE, age), 2);
-    }
-
-    @Override
     public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
-        return new ItemStack(mushroomType);
+        return new ItemStack(MUSHROOMTYPE);
     }
 
     @Override
@@ -118,9 +104,12 @@ public class ModMushroomBlock extends BushBlock implements BonemealableBlock
 
         if (age > 0 && heldItem.getItem() instanceof ShearsItem)
         {
-            Block.popResource(level, pos, getCloneItemStack(level, pos, state));
             level.playSound(null, pos, SoundEvents.MOOSHROOM_SHEAR, SoundSource.BLOCKS, 1.0f, 1.0f);
             level.setBlock(pos, state.setValue(AGE, 0), 2);
+            int n = new Random().nextInt(1,3);
+            for (int i = 1; i <= n; ++i) {
+                Block.popResource(level, pos, getMushroomdBase().asItem().getDefaultInstance());
+            }
             if (!level.isClientSide)
             {
                 heldItem.hurtAndBreak(1, player, player1 -> player1.broadcastBreakEvent(hand));
@@ -128,5 +117,26 @@ public class ModMushroomBlock extends BushBlock implements BonemealableBlock
             return InteractionResult.SUCCESS;
         }
         return InteractionResult.PASS;
+    }
+
+    @Override
+    public int getMaxAge() {
+        return 3;
+    }
+
+    @Override
+    public IntegerProperty getAgeProperty() {
+        return AGE;
+    }
+
+    private ItemLike getMushroomdBase()
+    {
+        if(this == ModBlocks.NIGHTSHROOM) return ModItems.NIGHTSHROOM;
+        else return null;
+    }
+
+    @Override
+    protected ItemLike getBaseSeedId() {
+        return MUSHROOMTYPE;
     }
 }
