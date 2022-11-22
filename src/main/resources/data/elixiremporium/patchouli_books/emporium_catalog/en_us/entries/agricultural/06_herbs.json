@@ -52,6 +52,11 @@
       "type": "spotlight",
       "text": "Core Root is an edible root that spawns in caves.",
       "item": "elixiremporium:core_root"
+    },
+    {
+      "type": "spotlight",
+      "text": "Ginseng is an edible root that spawns in plains and forests.",
+      "item": "elixiremporium:ginseng"
     }
   ],
   "sortnum": 6

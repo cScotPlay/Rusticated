@@ -393,6 +393,7 @@ public class ModBlocks
     public static final Block NIGHTSHROOM = new ModMushroomBlock(BlockTags.MUSHROOM_GROW_BLOCK);
     public static final Block GREEN_SPORED_ASBESTOS = new ModMushroomBlock(BlockTags.MUSHROOM_GROW_BLOCK);
     public static final Block CORE_ROOT = new RootBlock(BlockTags.BASE_STONE_OVERWORLD);
+    public static final Block GINSENG = new RootBlock(BlockTags.DIRT);
 
 
 
@@ -739,6 +740,7 @@ public class ModBlocks
         registerHerbs("nightshroom", NIGHTSHROOM);
         registerHerbs("green_spored_asbestos", GREEN_SPORED_ASBESTOS);
         registerHerbs("core_root", CORE_ROOT);
+        registerHerbs("ginseng", GINSENG);
 
 
 

@@ -75,6 +75,7 @@ public class ElixirEmporiumClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.NIGHTSHROOM, RenderType.cutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GREEN_SPORED_ASBESTOS, RenderType.cutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CORE_ROOT, RenderType.cutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GINSENG, RenderType.cutoutMipped());
 
 
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, LiquidBarrelRenderer::new);

@@ -117,6 +117,7 @@ public class RootBlock extends CropBlock
     private ItemLike getRootBase()
     {
         if(this == ModBlocks.CORE_ROOT) return ModItems.CORE_ROOT;
+        if(this == ModBlocks.GINSENG) return ModItems.GINSENG;
         else return null;
     }
 
