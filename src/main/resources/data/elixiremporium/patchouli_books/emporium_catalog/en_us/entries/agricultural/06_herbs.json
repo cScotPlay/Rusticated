@@ -37,6 +37,16 @@
       "type": "spotlight",
       "text": "Wind Thistle spawns in mountain and plains biomes. Thistles hurt and inflict pain when contacted.",
       "item": "elixiremporium:wind_thistle"
+    },
+    {
+      "type": "spotlight",
+      "text": "Nightshrooms spawn in jungle biomes and caves.",
+      "item": "elixiremporium:nightshroom"
+    },
+    {
+      "type": "spotlight",
+      "text": "Green Spored Asbestos spawns in the nether.",
+      "item": "elixiremporium:green_spored_asbestos"
     }
   ],
   "sortnum": 6
