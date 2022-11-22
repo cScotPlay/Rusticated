@@ -57,6 +57,11 @@
       "type": "spotlight",
       "text": "Ginseng is an edible root that spawns in plains and forests.",
       "item": "elixiremporium:ginseng"
+    },
+    {
+      "type": "spotlight",
+      "text": "Marshmallow Root is an edible root that spawns in the jungle and swamp.",
+      "item": "elixiremporium:marshmallow"
     }
   ],
   "sortnum": 6
