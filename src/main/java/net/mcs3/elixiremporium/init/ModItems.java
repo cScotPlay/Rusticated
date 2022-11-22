@@ -44,6 +44,7 @@ public class ModItems
     public static Item WIND_THISTLE = new ItemNameBlockItem(ModBlocks.WIND_THISTLE, new Item.Properties().tab(HERB_TAB));
     public static Item NIGHTSHROOM = new ItemNameBlockItem(ModBlocks.NIGHTSHROOM, new Item.Properties().tab(HERB_TAB));
     public static Item GREEN_SPORED_ASBESTOS = new ItemNameBlockItem(ModBlocks.GREEN_SPORED_ASBESTOS, new Item.Properties().tab(HERB_TAB));
+    public static Item CORE_ROOT = new ItemNameBlockItem(ModBlocks.CORE_ROOT, new Item.Properties().tab(HERB_TAB).food(ModFoodProperties.CORE_ROOT));
 
 
     public static void init()
@@ -70,6 +71,7 @@ public class ModItems
         register("wind_thistle", WIND_THISTLE);
         register("nightshroom", NIGHTSHROOM);
         register("green_spored_asbestos", GREEN_SPORED_ASBESTOS);
+        register("core_root", CORE_ROOT);
 
     }
 

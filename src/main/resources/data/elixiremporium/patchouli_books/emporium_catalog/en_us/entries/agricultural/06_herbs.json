@@ -47,6 +47,11 @@
       "type": "spotlight",
       "text": "Green Spored Asbestos spawns in the nether.",
       "item": "elixiremporium:green_spored_asbestos"
+    },
+    {
+      "type": "spotlight",
+      "text": "Core Root is an edible root that spawns in caves.",
+      "item": "elixiremporium:core_root"
     }
   ],
   "sortnum": 6

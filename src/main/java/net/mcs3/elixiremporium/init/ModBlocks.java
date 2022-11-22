@@ -392,6 +392,7 @@ public class ModBlocks
     public static final Block WIND_THISTLE = new HerbPerennialBlock(BlockTags.DIRT);
     public static final Block NIGHTSHROOM = new ModMushroomBlock(BlockTags.MUSHROOM_GROW_BLOCK);
     public static final Block GREEN_SPORED_ASBESTOS = new ModMushroomBlock(BlockTags.MUSHROOM_GROW_BLOCK);
+    public static final Block CORE_ROOT = new RootBlock(BlockTags.BASE_STONE_OVERWORLD);
 
 
 
@@ -737,6 +738,7 @@ public class ModBlocks
         registerHerbs("wind_thistle", WIND_THISTLE);
         registerHerbs("nightshroom", NIGHTSHROOM);
         registerHerbs("green_spored_asbestos", GREEN_SPORED_ASBESTOS);
+        registerHerbs("core_root", CORE_ROOT);
 
 
 

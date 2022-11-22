@@ -410,6 +410,7 @@ public class BlockStateGenerator extends FabricModelProvider
         createHerbBlock(blockStateModelGenerator, ModBlocks.WIND_THISTLE, BlockStateProperties.AGE_3, 0, 1, 2, 3);
         createHerbBlock(blockStateModelGenerator, ModBlocks.NIGHTSHROOM, BlockStateProperties.AGE_3, 0, 1, 2, 3);
         createHerbBlock(blockStateModelGenerator, ModBlocks.GREEN_SPORED_ASBESTOS, BlockStateProperties.AGE_3, 0, 1, 2, 3);
+        createHerbBlock(blockStateModelGenerator, ModBlocks.CORE_ROOT, BlockStateProperties.AGE_3, 0, 1, 2, 3);
 
 
 
@@ -434,6 +435,7 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItems.WIND_THISTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.NIGHTSHROOM, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.GREEN_SPORED_ASBESTOS, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.CORE_ROOT, ModelTemplates.FLAT_ITEM);
     }
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)
