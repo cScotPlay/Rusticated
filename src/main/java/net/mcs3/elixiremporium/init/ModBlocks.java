@@ -390,8 +390,8 @@ public class ModBlocks
     public static final Block COHOSH = new HerbPerennialBlock(BlockTags.DIRT);
     public static final Block HORSETAIL = new HerbPerennialBlock(BlockTags.DIRT);
     public static final Block WIND_THISTLE = new HerbPerennialBlock(BlockTags.DIRT);
-    //public static final Block MOONCAP_MUSHROOM = new ModMushroomBlock(Properties.copy(Blocks.BROWN_MUSHROOM), ModItems.MOONCAP_MUSHROOM);
     public static final Block NIGHTSHROOM = new ModMushroomBlock(BlockTags.MUSHROOM_GROW_BLOCK);
+    public static final Block GREEN_SPORED_ASBESTOS = new ModMushroomBlock(BlockTags.MUSHROOM_GROW_BLOCK);
 
 
 
@@ -736,6 +736,7 @@ public class ModBlocks
         registerHerbs("horsetail", HORSETAIL);
         registerHerbs("wind_thistle", WIND_THISTLE);
         registerHerbs("nightshroom", NIGHTSHROOM);
+        registerHerbs("green_spored_asbestos", GREEN_SPORED_ASBESTOS);
 
 
 

@@ -43,6 +43,7 @@ public class ModItems
     public static Item HORSETAIL = new ItemNameBlockItem(ModBlocks.HORSETAIL, new Item.Properties().tab(HERB_TAB));
     public static Item WIND_THISTLE = new ItemNameBlockItem(ModBlocks.WIND_THISTLE, new Item.Properties().tab(HERB_TAB));
     public static Item NIGHTSHROOM = new ItemNameBlockItem(ModBlocks.NIGHTSHROOM, new Item.Properties().tab(HERB_TAB));
+    public static Item GREEN_SPORED_ASBESTOS = new ItemNameBlockItem(ModBlocks.GREEN_SPORED_ASBESTOS, new Item.Properties().tab(HERB_TAB));
 
 
     public static void init()
@@ -68,6 +69,7 @@ public class ModItems
         register("horsetail", HORSETAIL);
         register("wind_thistle", WIND_THISTLE);
         register("nightshroom", NIGHTSHROOM);
+        register("green_spored_asbestos", GREEN_SPORED_ASBESTOS);
 
     }
 

@@ -420,6 +420,9 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         add(ModBlocks.NIGHTSHROOM, (block -> {
             return createSingleItemTable(ModItems.NIGHTSHROOM);
         }));
+        add(ModBlocks.GREEN_SPORED_ASBESTOS, (block -> {
+            return createSingleItemTable(ModItems.GREEN_SPORED_ASBESTOS);
+        }));
 
         add(ModBlocks.TIED_STAKE, LootTableGenerator::createTiedStakeDrop);
         add(Blocks.VINE, LootTableGenerator::createGrapeSeedDrop);

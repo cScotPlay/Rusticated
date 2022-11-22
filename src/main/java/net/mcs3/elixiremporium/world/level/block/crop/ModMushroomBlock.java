@@ -132,6 +132,7 @@ public class ModMushroomBlock extends CropBlock
     private ItemLike getMushroomdBase()
     {
         if(this == ModBlocks.NIGHTSHROOM) return ModItems.NIGHTSHROOM;
+        if(this == ModBlocks.GREEN_SPORED_ASBESTOS) return ModItems.GREEN_SPORED_ASBESTOS;
         else return null;
     }
 
