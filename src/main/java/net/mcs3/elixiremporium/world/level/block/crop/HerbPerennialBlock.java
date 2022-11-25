@@ -125,6 +125,7 @@ public class HerbPerennialBlock extends CropBlock
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos)
     {
+        //return state.isSolidRender(level, pos);
         return state.is(PLANTBASE);
     }
 

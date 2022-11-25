@@ -106,7 +106,7 @@ public class RootBlock extends CropBlock
     @Override
     protected boolean mayPlaceOn(BlockState state, BlockGetter level, BlockPos pos)
     {
-        return state.is(ROOTBASE);
+        return state.isSolidRender(level, pos);
     }
 
     @Override
