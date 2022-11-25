@@ -41,7 +41,7 @@ public class HerbPerennialBlock extends CropBlock
             Block.box(7.0, 0.0, 7.0, 10.0, 3.0, 10.0),
             Block.box(3.0, 0.0, 3.0, 14.0, 8.0, 14.0),
             Block.box(3.0, 0.0, 3.0, 14.0, 8.0, 14.0),
-            Block.box(0.0, 0.0, 0.0, 16.0, 11.0, 16.0)};
+            Block.box(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)};
 
     public HerbPerennialBlock(/*ItemLike seedItem, */TagKey<Block> plantOnBlock) {
         super(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));

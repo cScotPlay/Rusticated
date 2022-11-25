@@ -56,7 +56,7 @@ public class ModMushroomBlock extends CropBlock
     @Override
     public VoxelShape getShape(BlockState state, BlockGetter level, BlockPos pos, CollisionContext context)
     {
-        return SHAPE_BY_AGE[state.getValue(AGE)];
+        return SHAPE_BY_AGE[state.getValue(this.getAgeProperty())];
     }
 
     @Override

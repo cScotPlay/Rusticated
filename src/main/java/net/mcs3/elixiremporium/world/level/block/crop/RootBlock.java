@@ -38,9 +38,9 @@ public class RootBlock extends CropBlock
     public static final IntegerProperty AGE = BlockStateProperties.AGE_3;
     private static final VoxelShape[] SHAPE_BY_AGE = new VoxelShape[]{
             Block.box(7.0, 0.0, 7.0, 10.0, 3.0, 10.0),
-            Block.box(6.0, 0.0, 3.0, 10.0, 4.0, 10.0),
-            Block.box(6.0, 0.0, 3.0, 10.0, 4.0, 10.0),
-            Block.box(5.0, 0.0, 5.0, 11.0, 9.0, 11.0)};
+            Block.box(6.0, 0.0, 6.0, 10.0, 4.0, 10.0),
+            Block.box(6.0, 0.0, 6.0, 10.0, 4.0, 10.0),
+            Block.box(0.0, 0.0, 0.0, 16.0, 12.0, 16.0)};
 
     public RootBlock(TagKey<Block> plantOnBlock)
     {
