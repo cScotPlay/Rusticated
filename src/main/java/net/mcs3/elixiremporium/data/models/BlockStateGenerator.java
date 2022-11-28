@@ -72,6 +72,7 @@ public class BlockStateGenerator extends FabricModelProvider
     public static final ModelTemplate FRAMED_LEFT_DIAG = createModdedModel("template_framed_wall_left_diag", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
     public static final ModelTemplate FRAMED_WALL = createModdedModel("template_framed_wall", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
     public static final ModelTemplate FERTILE_SOIL = createVanillaModel("template_farmland", TextureSlot.DIRT, TextureSlot.TOP);
+    public static final ModelTemplate CONDENSER_FIRE = createModdedModel("condenser_fire", TextureSlot.FIRE);
 
 
 
@@ -397,7 +398,7 @@ public class BlockStateGenerator extends FabricModelProvider
 
         createRopeStates(blockStateModelGenerator, ModBlocks.ROPE);
         createCropStakeModels(blockStateModelGenerator, ModBlocks.CROP_STAKE);
-        createTiedStakeMddels(blockStateModelGenerator, ModBlocks.TIED_STAKE);
+        createTiedStakeModels(blockStateModelGenerator, ModBlocks.TIED_STAKE);
         createGrapeBlock(blockStateModelGenerator, ModBlocks.GRAPE_STEM, BlockStateProperties.AGE_3, 0, 1, 2, 3);
         createGrapeLeavesStates(blockStateModelGenerator, ModBlocks.GRAPE_LEAVES);
 
@@ -413,6 +414,8 @@ public class BlockStateGenerator extends FabricModelProvider
         createHerbBlock(blockStateModelGenerator, ModBlocks.CORE_ROOT, BlockStateProperties.AGE_3, 0, 1, 2, 3);
         createHerbBlock(blockStateModelGenerator, ModBlocks.GINSENG, BlockStateProperties.AGE_3, 0, 1, 2, 3);
         createHerbBlock(blockStateModelGenerator, ModBlocks.MARSHMALLOW, BlockStateProperties.AGE_3, 0, 1, 2, 3);
+
+        createCondenser(blockStateModelGenerator, ModBlocks.CONDENSER);
 
 
 
@@ -728,7 +731,7 @@ public class BlockStateGenerator extends FabricModelProvider
         modelGenerators.delegateItemModel(logBlock, resourceLocationLog);
     }
 
-    public static void createTiedStakeMddels(BlockModelGenerators modelGenerators, Block block)
+    public static void createTiedStakeModels(BlockModelGenerators modelGenerators, Block block)
     {
         ResourceLocation tiedStake = new ResourceLocation(MOD_ID, "block/tied_stake");
         ResourceLocation tiedKnot = new ResourceLocation(MOD_ID, "block/tied_stake_rope");
@@ -796,6 +799,43 @@ public class BlockStateGenerator extends FabricModelProvider
                 ;
 
     }
+
+    public final void createCondenser(BlockModelGenerators modelGenerators, Block furnaceBlock) {
+        ResourceLocation condenserModel = new ResourceLocation(MOD_ID, "block/condenser_base");
+        ResourceLocation condenserOnModel = new ResourceLocation(MOD_ID, "block/condenser_base_on");
+        ResourceLocation condenserTopModel = new ResourceLocation(MOD_ID, "block/condenser_top");
+        ResourceLocation condenserItemModel = new ResourceLocation(MOD_ID, "item/condenser_item");
+        //ResourceLocation resourceLocation = modelProvider.create(furnaceBlock, modelGenerators.modelOutput);
+        //ResourceLocation resourceLocation2 = TextureMapping.getBlockTexture(furnaceBlock, "_on");
+        //ResourceLocation resourceLocation3 = modelProvider.get(furnaceBlock).updateTextures(textureMapping -> textureMapping.put(TextureSlot.FIRE, resourceLocation2)).createWithSuffix(furnaceBlock, "_base_on", modelGenerators.modelOutput);
+        modelGenerators.blockStateOutput.accept(condenserVariants(furnaceBlock, condenserModel, condenserOnModel, condenserTopModel));
+        modelGenerators.delegateItemModel(furnaceBlock.asItem(), condenserItemModel);
+    }
+
+    public static MultiPartGenerator condenserVariants(Block block, ResourceLocation baseLocation, ResourceLocation baseOnLocation, ResourceLocation topLocation) {
+        return MultiPartGenerator.multiPart(block)
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, baseLocation))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, baseOnLocation))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, topLocation))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, topLocation))
+
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, baseLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, baseOnLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, baseLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, baseOnLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, baseLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, baseOnLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270));
+
+    }
+
 
     private static ModelTemplate createVanillaModel(String parent, TextureSlot... requiredTextures) {
         return new ModelTemplate(Optional.of(new ResourceLocation("minecraft", "block/" + parent)), Optional.empty(), requiredTextures);

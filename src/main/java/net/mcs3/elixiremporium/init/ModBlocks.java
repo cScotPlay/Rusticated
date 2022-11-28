@@ -4,6 +4,7 @@ import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
+import net.mcs3.elixiremporium.world.level.block.alchemy.CondenserBlock;
 import net.mcs3.elixiremporium.world.level.block.crop.*;
 import net.mcs3.elixiremporium.world.level.block.grower.IronwoodTreeGrower;
 import net.mcs3.elixiremporium.world.level.block.grower.OliveTreeGrower;
@@ -381,7 +382,7 @@ public class ModBlocks
     public static final Block GRAPE_LEAVES = new GrapeLeavesBlock();
 
     //////////////////////////////////////////////////////////
-    ///               Herbal Blocks Registry               ///
+    ///                   Herbal Blocks                    ///
     //////////////////////////////////////////////////////////
     public static final Block ALOE_VERA = new AloeVeraBlock();
     public static final Block BLOOD_ORCHID = new HerbPerennialBlock(BlockTags.DIRT);
@@ -395,6 +396,13 @@ public class ModBlocks
     public static final Block CORE_ROOT = new RootBlock(BlockTags.BASE_STONE_OVERWORLD);
     public static final Block GINSENG = new RootBlock(BlockTags.DIRT);
     public static final Block MARSHMALLOW = new RootBlock(BlockTags.DIRT);
+
+
+    //////////////////////////////////////////////////////////
+    ///                  Alchemy Blocks                    ///
+    //////////////////////////////////////////////////////////
+    public static final Block CONDENSER = new CondenserBlock();
+
 
 
 
@@ -744,6 +752,11 @@ public class ModBlocks
         registerHerbs("ginseng", GINSENG);
         registerHerbs("marshmallow", MARSHMALLOW);
 
+
+        //////////////////////////////////////////////////////////
+        ///               Alchemy Blocks Registry              ///
+        //////////////////////////////////////////////////////////
+        register("condenser", CONDENSER, HERB_TAB);
 
 
         initOxidizables();

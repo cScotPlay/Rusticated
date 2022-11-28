@@ -78,6 +78,8 @@ public class ElixirEmporiumClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.GINSENG, RenderType.cutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MARSHMALLOW, RenderType.cutoutMipped());
 
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CONDENSER, RenderType.cutoutMipped());
+
 
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, LiquidBarrelRenderer::new);
 

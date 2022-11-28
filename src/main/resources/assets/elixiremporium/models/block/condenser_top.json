@@ -1,0 +1,120 @@
+{
+	"textures": {
+		"brick": "minecraft:block/bricks",
+		"terra": "minecraft:block/white_terracotta",
+		"iron": "minecraft:block/cauldron_side",
+		"particle": "minecraft:block/bricks"
+	},
+	"elements": [
+		{
+			"name": "top_base",
+			"from": [0, 0, 0],
+			"to": [16, 3, 16],
+			"faces": {
+				"north": {"uv": [0, 3, 16, 6], "rotation": 180, "texture": "#brick"},
+				"east": {"uv": [0, 5, 16, 8], "texture": "#brick"},
+				"south": {"uv": [0, 5, 16, 8], "texture": "#brick"},
+				"west": {"uv": [0, 13, 16, 16], "texture": "#brick"},
+				"up": {"uv": [0, 0, 16, 16], "texture": "#brick"},
+				"down": {"uv": [0, 0, 16, 16], "texture": "#brick"}
+			}
+		},
+		{
+			"name": "chimney_neck",
+			"from": [4, 3, 4],
+			"to": [12, 5, 12],
+			"faces": {
+				"north": {"uv": [3, 0, 11, 2], "texture": "#terra"},
+				"east": {"uv": [3, 10, 11, 12], "texture": "#terra"},
+				"south": {"uv": [0, 6, 8, 8], "texture": "#terra"},
+				"west": {"uv": [8, 3, 16, 5], "texture": "#terra"},
+				"up": {"uv": [3, 2, 11, 10], "texture": "#terra"},
+				"down": {"uv": [3, 2, 11, 10], "texture": "#terra"}
+			}
+		},
+		{
+			"name": "chimney_insert",
+			"from": [5, 5, 5],
+			"to": [11, 6, 11],
+			"faces": {
+				"north": {"uv": [5, 4, 11, 5], "texture": "#iron"},
+				"east": {"uv": [5, 4, 11, 5], "texture": "#iron"},
+				"south": {"uv": [5, 4, 11, 5], "texture": "#iron"},
+				"west": {"uv": [5, 4, 11, 5], "texture": "#iron"},
+				"up": {"uv": [5, 5, 11, 11], "texture": "#iron"},
+				"down": {"uv": [5, 5, 11, 11], "texture": "#iron"}
+			}
+		},
+		{
+			"name": "chimney_north",
+			"from": [3, 5, 3],
+			"to": [13, 7, 5],
+			"faces": {
+				"north": {"uv": [2, 4, 12, 6], "texture": "#brick"},
+				"east": {"uv": [10, 9, 12, 11], "texture": "#brick"},
+				"south": {"uv": [3, 5, 13, 7], "texture": "#brick"},
+				"west": {"uv": [7, 5, 9, 7], "texture": "#brick"},
+				"up": {"uv": [3, 12, 13, 14], "texture": "#brick"},
+				"down": {"uv": [0, 0, 10, 2], "texture": "#brick"}
+			}
+		},
+		{
+			"name": "chimney_east",
+			"from": [11, 5, 5],
+			"to": [13, 7, 11],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 2], "texture": "#brick"},
+				"east": {"uv": [5, 9, 11, 11], "texture": "#brick"},
+				"south": {"uv": [0, 0, 2, 2], "texture": "#brick"},
+				"west": {"uv": [0, 0, 6, 2], "texture": "#brick"},
+				"up": {"uv": [0, 0, 2, 6], "texture": "#brick"},
+				"down": {"uv": [0, 0, 2, 6], "texture": "#brick"}
+			}
+		},
+		{
+			"name": "chimney_south",
+			"from": [3, 5, 11],
+			"to": [13, 7, 13],
+			"faces": {
+				"north": {"uv": [0, 0, 10, 2], "texture": "#brick"},
+				"east": {"uv": [3, 9, 5, 11], "texture": "#brick"},
+				"south": {"uv": [2, 5, 12, 7], "texture": "#brick"},
+				"west": {"uv": [14, 5, 16, 7], "texture": "#brick"},
+				"up": {"uv": [0, 0, 10, 2], "texture": "#brick"},
+				"down": {"uv": [0, 0, 10, 2], "texture": "#brick"}
+			}
+		},
+		{
+			"name": "chimney_west",
+			"from": [3, 5, 5],
+			"to": [5, 7, 11],
+			"faces": {
+				"north": {"uv": [0, 0, 2, 2], "texture": "#brick"},
+				"east": {"uv": [0, 0, 6, 2], "texture": "#brick"},
+				"south": {"uv": [0, 0, 2, 2], "texture": "#brick"},
+				"west": {"uv": [9, 5, 15, 7], "texture": "#brick"},
+				"up": {"uv": [5, 4, 7, 10], "texture": "#brick"},
+				"down": {"uv": [5, 5, 7, 11], "texture": "#brick"}
+			}
+		}
+	],
+	"display": {},
+	"groups": [
+		{
+			"name": "Condenser_Top",
+			"origin": [0, 0, 0],
+			"color": 0,
+			"children": [
+				0,
+				1,
+				2,
+				{
+					"name": "chimney",
+					"origin": [0, 0, 0],
+					"color": 0,
+					"children": [3, 4, 5, 6]
+				}
+			]
+		}
+	]
+}
