@@ -342,6 +342,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapedRecipeBuilder.shaped(ModBlocks.ROPE, 1).define('#', Items.STRING).pattern(" #").pattern(" #").pattern(" #").unlockedBy("has_string", has(Items.STRING)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModItems.GRAPE_SEEDS).requires(ModItems.GRAPES).unlockedBy("has_grapes", has(ModItems.GRAPES)).save(exporter);
 
+        ShapedRecipeBuilder.shaped(ModBlocks.CONDENSER).define('#', Blocks.BRICKS).define('^', Blocks.WHITE_TERRACOTTA).define('@', Items.BUCKET).pattern("#^#").pattern("^@^").pattern("#^#").unlockedBy("has_bricks", has(Blocks.BRICKS)).save(exporter);
+
 
 
 

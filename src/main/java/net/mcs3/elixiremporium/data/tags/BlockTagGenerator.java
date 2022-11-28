@@ -1,5 +1,6 @@
 package net.mcs3.elixiremporium.data.tags;
 
+import com.terraformersmc.modmenu.util.mod.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.ElixirEmporium;
@@ -130,7 +131,8 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.CHANDELIER_WAXED_COPPER,
                 ModBlocks.CHANDELIER_WAXED_EXPOSED_COPPER,
                 ModBlocks.CHANDELIER_WAXED_WEATHERED_COPPER,
-                ModBlocks.CHANDELIER_WAXED_OXIDIZED_COPPER);
+                ModBlocks.CHANDELIER_WAXED_OXIDIZED_COPPER,
+                ModBlocks.CONDENSER);
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(registry.stream().filter(b -> b instanceof WeatheringCopperChandelierBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));

@@ -433,6 +433,8 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
             return createSingleItemTable(ModItems.MARSHMALLOW);
         }));
 
+        add(ModBlocks.CONDENSER, BlockLoot::createNameableBlockEntityTable);
+
         add(ModBlocks.TIED_STAKE, LootTableGenerator::createTiedStakeDrop);
         add(Blocks.VINE, LootTableGenerator::createGrapeSeedDrop);
 
