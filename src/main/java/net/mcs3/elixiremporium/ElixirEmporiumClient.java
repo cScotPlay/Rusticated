@@ -4,21 +4,18 @@ import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
-import net.fabricmc.fabric.api.client.screenhandler.v1.ScreenRegistry;
-import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.mcs3.elixiremporium.client.ModColorProviders;
-import net.mcs3.elixiremporium.client.screens.inventory.BarrelScreen;
+import net.mcs3.elixiremporium.client.screens.inventory.CondenserScreen;
 import net.mcs3.elixiremporium.init.ModBlocks;
+import net.mcs3.elixiremporium.world.inventory.ModMenuTypes;
 import net.mcs3.elixiremporium.world.level.block.entity.ModBlockEntityTypes;
 import net.mcs3.elixiremporium.world.level.block.storage.liquid_barrel.LiquidBarrelRenderer;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.GlazedPotRenderer;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.PotRenderer;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.PotToolTipData;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.client.PotTooltipComponent;
-import net.mcs3.elixiremporium.world.menu.BarrelMenu;
-import net.mcs3.elixiremporium.world.menu.ModMenuTypes;
+import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.RenderType;
-import net.minecraft.resources.ResourceLocation;
 
 public class ElixirEmporiumClient implements ClientModInitializer
 {
@@ -94,8 +91,9 @@ public class ElixirEmporiumClient implements ClientModInitializer
 
     private static void registerScreenTypes()
     {
-        ScreenRegistry.register(ModMenuTypes.BARREL_MENU_TYPE, BarrelScreen::new);
-        ModMenuTypes.BARREL_MENU_TYPE = ScreenHandlerRegistry.registerSimple(new ResourceLocation(ElixirEmporium.MOD_ID, "barrel_menu"), BarrelMenu::new);
+        MenuScreens.register(ModMenuTypes.CONDENSER_MENU_TYPE, CondenserScreen::new);
+
+
     }
 
     private static void setupTooltips()

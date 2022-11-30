@@ -6,6 +6,8 @@ import net.mcs3.elixiremporium.data.worldgen.features.ModTreeFeatures;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.util.RegistryHandler;
+import net.mcs3.elixiremporium.world.inventory.ModMenuTypes;
+import net.mcs3.elixiremporium.world.item.crafting.ModRecipes;
 import net.mcs3.elixiremporium.world.level.levelgen.WorldGeneration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
@@ -44,6 +46,9 @@ public class ElixirEmporium implements ModInitializer {
 		ModTreeFeatures.init();
 
 		WorldGeneration.generateWorld();
+
+		ModRecipes.onRecipeRegistry();
+		ModMenuTypes.registerAllMenuTypes();
 
 		LOGGER.info("Scott's Elixir Emporium loaded!");
 	}

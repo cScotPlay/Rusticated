@@ -1,0 +1,14 @@
+{
+  "type": "elixiremporium:condenser",
+  "ingredient": [
+    {
+      "item": "elixiremporium:cohosh"
+    },
+    {
+      "item": "minecraft:honeycomb"
+    }
+  ],
+  "result": {
+    "item": "minecraft:golden_apple"
+  }
+}

@@ -77,7 +77,6 @@ public class BlockStateGenerator extends FabricModelProvider
 
 
 
-
     public BlockStateGenerator(FabricDataGenerator dataGenerator) {
         super(dataGenerator);
     }
@@ -416,10 +415,6 @@ public class BlockStateGenerator extends FabricModelProvider
         createHerbBlock(blockStateModelGenerator, ModBlocks.MARSHMALLOW, BlockStateProperties.AGE_3, 0, 1, 2, 3);
 
         createCondenser(blockStateModelGenerator, ModBlocks.CONDENSER);
-
-
-
-
 
     }
 

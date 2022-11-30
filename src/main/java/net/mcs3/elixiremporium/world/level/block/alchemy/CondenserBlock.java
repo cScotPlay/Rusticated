@@ -1,7 +1,12 @@
 package net.mcs3.elixiremporium.world.level.block.alchemy;
 
+import net.mcs3.elixiremporium.world.level.block.entity.ModBlockEntityTypes;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
+import net.minecraft.world.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -10,21 +15,26 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.entity.BlockEntity;
+import net.minecraft.world.level.block.entity.BlockEntityTicker;
+import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Random;
 import java.util.stream.Stream;
 
-public class CondenserBlock extends Block
+public class CondenserBlock extends BaseEntityBlock implements EntityBlock
 {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
     public static final BooleanProperty LIT = BlockStateProperties.LIT;
@@ -115,7 +125,12 @@ public class CondenserBlock extends Block
     @Nullable
     @Override
     public BlockState getStateForPlacement(BlockPlaceContext context) {
-        return (BlockState)this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        BlockPos blockPos = context.getClickedPos();
+        Level level = context.getLevel();
+        if (blockPos.getY() < level.getMaxBuildHeight() - 1 && level.getBlockState(blockPos.above()).canBeReplaced(context)) {
+            return (BlockState)this.defaultBlockState().setValue(FACING, context.getHorizontalDirection().getOpposite());
+        }
+        return null;
     }
 
     @Override
@@ -131,6 +146,103 @@ public class CondenserBlock extends Block
     @Override
     protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder) {
         builder.add(FACING, LIT, BOTTOM);
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
+    {
+        if (!level.isClientSide) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (level.getBlockState(pos).getBlock() instanceof CondenserBlock)
+            {
+                if(state.getValue(BOTTOM))
+                {
+                    player.openMenu((CondenserBlockEntity)blockEntity);
+                }else if (!state.getValue(BOTTOM))
+                {
+                    BlockEntity blockEntityBelow = level.getBlockEntity(pos.below());
+                    player.openMenu((CondenserBlockEntity)blockEntityBelow);
+                }
+            }
+        }
+        return InteractionResult.SUCCESS;
+
+//        if (level.isClientSide) {
+//            MenuProvider menuProvider = state.getMenuProvider(level, pos);  //TODO update this for the "BOTTOM" block
+//            if (menuProvider != null)
+//            {
+//                player.openMenu(menuProvider);
+//            }
+//        }
+//        return InteractionResult.SUCCESS;
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!state.is(newState.getBlock())) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof CondenserBlockEntity) {
+                Containers.dropContents(level, pos, (Container)blockEntity);  //TODO update this for the "BOTTOM" block only  && state.getValue(BOTTOM)
+                level.updateNeighbourForOutputSignal(pos, this);
+            }
+            super.onRemove(state, level, pos, newState, isMoving);
+        }
+    }
+
+    @Nullable
+    @Override
+    public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
+        return createTickerHelper(blockEntityType, ModBlockEntityTypes.CONDENSER_CONTAINER, CondenserBlockEntity::serverTick);
+    }
+
+    @Override
+    public RenderShape getRenderShape(BlockState state) {
+        return RenderShape.MODEL;
+    }
+
+    @Nullable
+    @Override
+    public BlockEntity newBlockEntity(BlockPos pos, BlockState state)
+    {
+        if(state.getValue(BOTTOM))
+        {
+            return new CondenserBlockEntity(pos, state);
+        }
+        return null;
+    }
+
+    @Override
+    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
+        if (!state.getValue(LIT))
+        {
+            if(level.getBlockState(pos.below()).getBlock() instanceof CondenserBlock && level.getBlockState(pos.below()).getValue(LIT))
+            {
+                double d = (double)pos.getX() + 0.5;
+                double e = pos.getY();
+                double f = (double)pos.getZ() + 0.5;
+
+                level.addParticle(ParticleTypes.SMOKE, d, e + 0.4, f, 0.0, 0.0, 0.0);
+            }
+            else
+                return;
+        }
+        double d = (double)pos.getX() + 0.5;
+        double e = pos.getY();
+        double f = (double)pos.getZ() + 0.5;
+        if (random.nextDouble() < 0.1) {
+            level.playLocalSound(d, e, f, SoundEvents.BLASTFURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0f, 1.0f, false);
+        }
+        Direction direction = state.getValue(FACING);
+        Direction.Axis axis = direction.getAxis();
+        double g = 0.52;
+        double h = random.nextDouble() * 0.6 - 0.3;
+        double i = axis == Direction.Axis.X ? (double)direction.getStepX() * 0.52 : h;
+        double j = random.nextDouble() * 16.0 / 16.0;
+        double k = axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52 : h;
+        level.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
+        level.addParticle(ParticleTypes.FLAME, d + i, e + j, f + k, 0.0, 0.0, 0.0);
     }
 
     private static final VoxelShape SHAPE_TOP = Stream.of(
@@ -234,5 +346,4 @@ public class CondenserBlock extends Block
             Block.box(1, 0, 1, 14, 16, 6),
             Block.box(1, 0, 10, 14, 16, 15)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
-
 }
