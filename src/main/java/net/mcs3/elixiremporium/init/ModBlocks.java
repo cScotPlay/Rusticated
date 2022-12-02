@@ -406,6 +406,7 @@ public class ModBlocks
 
 
 
+
     public static void init()
     {
         register("barrel", BARREL, DECORATION_TAB);

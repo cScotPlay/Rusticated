@@ -415,6 +415,7 @@ public class BlockStateGenerator extends FabricModelProvider
         createHerbBlock(blockStateModelGenerator, ModBlocks.MARSHMALLOW, BlockStateProperties.AGE_3, 0, 1, 2, 3);
 
         createCondenser(blockStateModelGenerator, ModBlocks.CONDENSER);
+        //blockStateModelGenerator.createFurnace(ModBlocks.CONDENSER_TEST, TexturedModel.ORIENTABLE_ONLY_TOP);
 
     }
 

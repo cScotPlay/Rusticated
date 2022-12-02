@@ -92,8 +92,6 @@ public class ElixirEmporiumClient implements ClientModInitializer
     private static void registerScreenTypes()
     {
         MenuScreens.register(ModMenuTypes.CONDENSER_MENU_TYPE, CondenserScreen::new);
-
-
     }
 
     private static void setupTooltips()

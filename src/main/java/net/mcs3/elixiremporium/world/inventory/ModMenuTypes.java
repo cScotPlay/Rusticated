@@ -1,5 +1,6 @@
 package net.mcs3.elixiremporium.world.inventory;
 
+import net.fabricmc.fabric.api.screenhandler.v1.ExtendedScreenHandlerType;
 import net.fabricmc.fabric.api.screenhandler.v1.ScreenHandlerRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.minecraft.core.Registry;
@@ -11,12 +12,12 @@ import java.util.Scanner;
 
 public class ModMenuTypes
 {
-    public static MenuType<CondenserMenu> CONDENSER_MENU_TYPE;
+    public static MenuType<CondenserMenu> CONDENSER_MENU_TYPE = new ExtendedScreenHandlerType<>(CondenserMenu::new);
+
 
     public static void registerAllMenuTypes()
     {
-        CONDENSER_MENU_TYPE = Registry.register(Registry.MENU, new ResourceLocation(ElixirEmporium.MOD_ID, "condenser_menu_type"), new MenuType<>(CondenserMenu::new));
-
+        Registry.register(Registry.MENU, new ResourceLocation(ElixirEmporium.MOD_ID, "condenser_menu_type"), CONDENSER_MENU_TYPE);
     }
 
 }

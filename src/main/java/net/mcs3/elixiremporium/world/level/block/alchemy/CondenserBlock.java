@@ -1,6 +1,11 @@
 package net.mcs3.elixiremporium.world.level.block.alchemy;
 
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.mcs3.elixiremporium.ElixirEmporium;
+import net.mcs3.elixiremporium.fluid.FluidStack;
 import net.mcs3.elixiremporium.world.level.block.entity.ModBlockEntityTypes;
+import net.mcs3.elixiremporium.world.level.block.storage.jar.JarEntityBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -9,7 +14,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -21,6 +29,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.*;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.material.PushReaction;
@@ -67,7 +76,6 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
          }
         }else
             return SHAPE_TOP;
-
     }
 
     @Override
@@ -85,7 +93,6 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
             level.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), 35);
             level.levelEvent(player, 2001, pos.below(), Block.getId(aboveState));
         }
-
         super.playerWillDestroy(level, pos, state, player);
     }
 
@@ -152,30 +159,39 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
     @SuppressWarnings("deprecation")
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
     {
-        if (!level.isClientSide) {
-            BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (level.getBlockState(pos).getBlock() instanceof CondenserBlock)
-            {
-                if(state.getValue(BOTTOM))
-                {
-                    player.openMenu((CondenserBlockEntity)blockEntity);
-                }else if (!state.getValue(BOTTOM))
-                {
-                    BlockEntity blockEntityBelow = level.getBlockEntity(pos.below());
-                    player.openMenu((CondenserBlockEntity)blockEntityBelow);
+        ItemStack itemStack = player.getItemInHand(hand);
+        CondenserBlockEntity blockEntity = (CondenserBlockEntity) level.getBlockEntity(pos);
+        CondenserBlockEntity blockEntityBelow = (CondenserBlockEntity) level.getBlockEntity(pos.below());
+
+        if(!level.isClientSide) {
+            if(state.getValue(BOTTOM) && blockEntity.getBlockState().getBlock() instanceof CondenserBlock) {
+                if(player.getMainHandItem().is(Items.WATER_BUCKET) && !((CondenserBlockEntity) level.getBlockEntity(pos)).atCapacity(blockEntity)) {
+                    ((CondenserBlockEntity) level.getBlockEntity(pos)).onPlayerAddFluid();
+                    player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.BUCKET)));
+                }else {
+                    if(player.getMainHandItem().is(Items.BUCKET) && blockEntity.canPullFluid(blockEntity)) {
+                        ((CondenserBlockEntity) level.getBlockEntity(pos)).onPlayerRemoveFluid(blockEntity);
+                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.WATER_BUCKET)));
+                    }else {
+                        player.openMenu(blockEntity);
+                    }
+                }
+
+            } else if (!state.getValue(BOTTOM) && level.getBlockState(pos).getBlock() instanceof CondenserBlock) {
+                if(player.getMainHandItem().is(Items.WATER_BUCKET) && !((CondenserBlockEntity) level.getBlockEntity(pos.below())).atCapacity(blockEntityBelow)) {
+                    ((CondenserBlockEntity) level.getBlockEntity(pos.below())).onPlayerAddFluid();
+                    player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.BUCKET)));
+                } else {
+                    if(player.getMainHandItem().is(Items.BUCKET) && blockEntityBelow.canPullFluid(blockEntityBelow)) {
+                        ((CondenserBlockEntity) level.getBlockEntity(pos.below())).onPlayerRemoveFluid(blockEntityBelow);
+                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.WATER_BUCKET)));
+                    }else {
+                        player.openMenu(blockEntityBelow);
+                    }
                 }
             }
         }
         return InteractionResult.SUCCESS;
-
-//        if (level.isClientSide) {
-//            MenuProvider menuProvider = state.getMenuProvider(level, pos);  //TODO update this for the "BOTTOM" block
-//            if (menuProvider != null)
-//            {
-//                player.openMenu(menuProvider);
-//            }
-//        }
-//        return InteractionResult.SUCCESS;
     }
 
     @Override
@@ -183,7 +199,7 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
     public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
         if (!state.is(newState.getBlock())) {
             BlockEntity blockEntity = level.getBlockEntity(pos);
-            if (blockEntity instanceof CondenserBlockEntity) {
+            if (blockEntity instanceof CondenserBlockEntity && blockEntity.getBlockState().getValue(BOTTOM)) {
                 Containers.dropContents(level, pos, (Container)blockEntity);  //TODO update this for the "BOTTOM" block only  && state.getValue(BOTTOM)
                 level.updateNeighbourForOutputSignal(pos, this);
             }
@@ -194,7 +210,7 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
-        return createTickerHelper(blockEntityType, ModBlockEntityTypes.CONDENSER_CONTAINER, CondenserBlockEntity::serverTick);
+        return level.isClientSide ? null : createTickerHelper(blockEntityType, ModBlockEntityTypes.CONDENSER_CONTAINER, CondenserBlockEntity::serverTick);
     }
 
     @Override

@@ -15,4 +15,9 @@ public class ModResultSlot extends Slot
     public boolean mayPlace(ItemStack stack) {
         return false;
     }
+
+    @Override
+    public int getMaxStackSize() {
+        return 16;
+    }
 }

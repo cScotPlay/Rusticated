@@ -1,8 +1,12 @@
 package net.mcs3.elixiremporium.world.inventory;
 
+import net.mcs3.elixiremporium.fluid.FluidStack;
 import net.mcs3.elixiremporium.world.inventory.slots.ModBottleSlot;
 import net.mcs3.elixiremporium.world.inventory.slots.ModFuelSlot;
 import net.mcs3.elixiremporium.world.inventory.slots.ModResultSlot;
+import net.mcs3.elixiremporium.world.level.block.alchemy.CondenserBlockEntity;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Inventory;
@@ -12,29 +16,33 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.inventory.SimpleContainerData;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.block.entity.BlockEntity;
 
 public class CondenserMenu extends AbstractContainerMenu
 {
     private final Container container;
     private final ContainerData containerData;
+    public FluidStack fluidStack;
+    public CondenserBlockEntity blockEntity;
 
-    public CondenserMenu(int i, Inventory inventory) {
-        this(i, inventory, new SimpleContainer(6), new SimpleContainerData(6));
+    public CondenserMenu(int i, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
+        this(i, (CondenserBlockEntity) inventory.player.level.getBlockEntity(friendlyByteBuf.readBlockPos()), inventory, new SimpleContainer(5), new SimpleContainerData(5));
     }
 
-    public CondenserMenu(int i, Inventory inventory, Container container, ContainerData containerData) {
+    public CondenserMenu(int i, CondenserBlockEntity blockEntity, Inventory inventory, Container container, ContainerData containerData) {
         super(ModMenuTypes.CONDENSER_MENU_TYPE, i);
-        checkContainerSize(container, 6);
+        checkContainerSize(container, 5);
         this.container = container;
         container.startOpen(inventory.player);
         this.containerData = containerData;
+        this.blockEntity = blockEntity;
+        this.fluidStack = new FluidStack(blockEntity.fluidStorage.variant, blockEntity.fluidStorage.amount);
 
         this.addSlot(new Slot(container, 0, 26, 18));
         this.addSlot(new Slot(container, 1, 26, 53));
         this.addSlot(new ModBottleSlot(container, 2, 107, 63));
         this.addSlot(new ModFuelSlot(container, 3, 71, 63));
-        this.addSlot(new Slot(container, 4, 134, 27));
-        this.addSlot(new ModResultSlot(container, 5, 103, 31));
+        this.addSlot(new ModResultSlot(container, 4, 107, 35));
 
         int j;
         for (j = 0; j < 3; ++j) {
@@ -59,6 +67,10 @@ public class CondenserMenu extends AbstractContainerMenu
         return containerData.get(2) > 0;
     }
 
+    public void setFluid(FluidStack stack) {
+        fluidStack = stack;
+    }
+
     public int getScaledProgress()
     {
         int progress = this.containerData.get(0);
@@ -75,6 +87,14 @@ public class CondenserMenu extends AbstractContainerMenu
         int fuelProgressSize = 14;
 
         return maxFuelProgress != 0 ? (int)(((float)fuelProgress / (float)maxFuelProgress) * fuelProgressSize) : 0;
+    }
+
+    public int getLitProgress() {
+        int i = this.containerData.get(3);
+        if (i == 0) {
+            i = 200;
+        }
+        return this.containerData.get(2) * 13 / i;
     }
 
     @Override
