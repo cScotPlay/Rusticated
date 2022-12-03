@@ -162,29 +162,25 @@ public class CondenserBlockEntity extends BlockEntity implements ExtendedScreenH
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, CondenserBlockEntity blockEntity)
     {
-        if(isConsumingFuel(blockEntity))
-        {
-            blockEntity.fuelTime--;
-            state = (BlockState)state.setValue(CondenserBlock.LIT, isConsumingFuel(blockEntity));
-            level.setBlock(pos, state, 3);
-        }
-        if(hasRecipe(blockEntity))
-        {
-            if(hasFuelInFuelSlot(blockEntity) && !isConsumingFuel(blockEntity) && hasBottleInSlot(blockEntity) && hasEnoughFluid(blockEntity))
-            {
-                blockEntity.consumeFuel();
+        if(CondenserBlock.hasRetorts(state, level, pos)) {
+            if (isConsumingFuel(blockEntity)) {
+                blockEntity.fuelTime--;
+                state = (BlockState) state.setValue(CondenserBlock.LIT, isConsumingFuel(blockEntity));
+                level.setBlock(pos, state, 3);
             }
-            if(isConsumingFuel(blockEntity) && hasBottleInSlot(blockEntity) && hasEnoughFluid(blockEntity))
-            {
-                blockEntity.progress++;
-                if(blockEntity.progress == blockEntity.maxProgress)
-                {
-                    craftItems(blockEntity);
+            if (hasRecipe(blockEntity)) {
+                if (hasFuelInFuelSlot(blockEntity) && !isConsumingFuel(blockEntity) && hasBottleInSlot(blockEntity) && hasEnoughFluid(blockEntity)) {
+                    blockEntity.consumeFuel();
                 }
+                if (isConsumingFuel(blockEntity) && hasBottleInSlot(blockEntity) && hasEnoughFluid(blockEntity)) {
+                    blockEntity.progress++;
+                    if (blockEntity.progress == blockEntity.maxProgress) {
+                        craftItems(blockEntity);
+                    }
+                }
+            } else {
+                blockEntity.resetProgress();
             }
-        }
-        else {
-            blockEntity.resetProgress();
         }
     }
 

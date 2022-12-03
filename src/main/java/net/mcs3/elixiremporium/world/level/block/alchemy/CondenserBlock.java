@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.fluid.FluidStack;
+import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.world.level.block.entity.ModBlockEntityTypes;
 import net.mcs3.elixiremporium.world.level.block.storage.jar.JarEntityBlock;
 import net.minecraft.core.BlockPos;
@@ -164,29 +165,31 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
         CondenserBlockEntity blockEntityBelow = (CondenserBlockEntity) level.getBlockEntity(pos.below());
 
         if(!level.isClientSide) {
-            if(state.getValue(BOTTOM) && blockEntity.getBlockState().getBlock() instanceof CondenserBlock) {
-                if(player.getMainHandItem().is(Items.WATER_BUCKET) && !((CondenserBlockEntity) level.getBlockEntity(pos)).atCapacity(blockEntity)) {
-                    ((CondenserBlockEntity) level.getBlockEntity(pos)).onPlayerAddFluid();
-                    player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.BUCKET)));
-                }else {
-                    if(player.getMainHandItem().is(Items.BUCKET) && blockEntity.canPullFluid(blockEntity)) {
-                        ((CondenserBlockEntity) level.getBlockEntity(pos)).onPlayerRemoveFluid(blockEntity);
-                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.WATER_BUCKET)));
-                    }else {
-                        player.openMenu(blockEntity);
+            if(hasRetorts(state, level, pos)) {
+                if (state.getValue(BOTTOM) && blockEntity.getBlockState().getBlock() instanceof CondenserBlock) {
+                    if (player.getMainHandItem().is(Items.WATER_BUCKET) && !((CondenserBlockEntity) level.getBlockEntity(pos)).atCapacity(blockEntity)) {
+                        ((CondenserBlockEntity) level.getBlockEntity(pos)).onPlayerAddFluid();
+                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.BUCKET)));
+                    } else {
+                        if (player.getMainHandItem().is(Items.BUCKET) && blockEntity.canPullFluid(blockEntity)) {
+                            ((CondenserBlockEntity) level.getBlockEntity(pos)).onPlayerRemoveFluid(blockEntity);
+                            player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.WATER_BUCKET)));
+                        } else {
+                            player.openMenu(blockEntity);
+                        }
                     }
-                }
 
-            } else if (!state.getValue(BOTTOM) && level.getBlockState(pos).getBlock() instanceof CondenserBlock) {
-                if(player.getMainHandItem().is(Items.WATER_BUCKET) && !((CondenserBlockEntity) level.getBlockEntity(pos.below())).atCapacity(blockEntityBelow)) {
-                    ((CondenserBlockEntity) level.getBlockEntity(pos.below())).onPlayerAddFluid();
-                    player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.BUCKET)));
-                } else {
-                    if(player.getMainHandItem().is(Items.BUCKET) && blockEntityBelow.canPullFluid(blockEntityBelow)) {
-                        ((CondenserBlockEntity) level.getBlockEntity(pos.below())).onPlayerRemoveFluid(blockEntityBelow);
-                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.WATER_BUCKET)));
-                    }else {
-                        player.openMenu(blockEntityBelow);
+                } else if (!state.getValue(BOTTOM) && level.getBlockState(pos).getBlock() instanceof CondenserBlock) {
+                    if (player.getMainHandItem().is(Items.WATER_BUCKET) && !((CondenserBlockEntity) level.getBlockEntity(pos.below())).atCapacity(blockEntityBelow)) {
+                        ((CondenserBlockEntity) level.getBlockEntity(pos.below())).onPlayerAddFluid();
+                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.BUCKET)));
+                    } else {
+                        if (player.getMainHandItem().is(Items.BUCKET) && blockEntityBelow.canPullFluid(blockEntityBelow)) {
+                            ((CondenserBlockEntity) level.getBlockEntity(pos.below())).onPlayerRemoveFluid(blockEntityBelow);
+                            player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.WATER_BUCKET)));
+                        } else {
+                            player.openMenu(blockEntityBelow);
+                        }
                     }
                 }
             }
@@ -207,6 +210,53 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
         }
     }
 
+    public static boolean hasRetorts(BlockState state, Level level, BlockPos pos) {
+        BlockPos blockPos;
+        if (state.getBlock() != ModBlocks.CONDENSER) {
+            return false;
+        }
+
+        if(!state.getValue(BOTTOM)) {
+            blockPos = pos.below();
+        } else blockPos = pos;
+
+        switch (state.getValue(FACING)) {
+            case NORTH:
+                if(level.getBlockState(blockPos.east()).getBlock() != ModBlocks.RETORT || level.getBlockState(blockPos.west()).getBlock() != ModBlocks.RETORT) {
+                    return false;
+                }
+                if(level.getBlockState(blockPos.east()).getValue(FACING) != Direction.WEST || level.getBlockState(blockPos.west()).getValue(FACING) != Direction.EAST) {
+                    return false;
+                }
+                break;
+            case EAST:
+                if(level.getBlockState(blockPos.north()).getBlock() != ModBlocks.RETORT || level.getBlockState(blockPos.south()).getBlock() != ModBlocks.RETORT) {
+                    return false;
+                }
+                if(level.getBlockState(blockPos.north()).getValue(FACING) != Direction.SOUTH || level.getBlockState(blockPos.south()).getValue(FACING) != Direction.NORTH) {
+                    return false;
+                }
+                break;
+            case SOUTH:
+                if(level.getBlockState(blockPos.east()).getBlock() != ModBlocks.RETORT || level.getBlockState(blockPos.west()).getBlock() != ModBlocks.RETORT) {
+                    return false;
+                }
+                if(level.getBlockState(blockPos.east()).getValue(FACING) != Direction.WEST || level.getBlockState(blockPos.west()).getValue(FACING) != Direction.EAST) {
+                    return false;
+                }
+                break;
+            case WEST:
+                if(level.getBlockState(blockPos.north()).getBlock() != ModBlocks.RETORT || level.getBlockState(blockPos.south()).getBlock() != ModBlocks.RETORT) {
+                    return false;
+                }
+                if(level.getBlockState(blockPos.north()).getValue(FACING) != Direction.SOUTH || level.getBlockState(blockPos.south()).getValue(FACING) != Direction.NORTH) {
+                    return false;
+                }
+                break;
+        }
+        return true;
+    }
+
     @Nullable
     @Override
     public <T extends BlockEntity> BlockEntityTicker<T> getTicker(Level level, BlockState state, BlockEntityType<T> blockEntityType) {
@@ -216,6 +266,10 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
     @Override
     public RenderShape getRenderShape(BlockState state) {
         return RenderShape.MODEL;
+    }
+
+    protected void renderParticles() {
+
     }
 
     @Nullable
@@ -259,6 +313,14 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
         double k = axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52 : h;
         level.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
         level.addParticle(ParticleTypes.FLAME, d + i, e + j, f + k, 0.0, 0.0, 0.0);
+
+        if(direction == Direction.NORTH || direction == Direction.SOUTH) {
+            level.addParticle(ParticleTypes.SMOKE, d - 1.0D, e + 0.95D, f, 0, 0.125, 0);
+            level.addParticle(ParticleTypes.SMOKE, d + 1.0D, e + 0.95D, f, 0, 0.125, 0);
+        } else if (direction == Direction.EAST || direction == Direction.WEST) {
+            level.addParticle(ParticleTypes.SMOKE, d, e + 0.95D, f + 1.0D, 0, 0.125, 0);
+            level.addParticle(ParticleTypes.SMOKE, d, e + 0.95D, f - 1.0D, 0, 0.125, 0);
+        }
     }
 
     private static final VoxelShape SHAPE_TOP = Stream.of(
@@ -274,7 +336,7 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
     private static final VoxelShape SHAPE_N = Stream.of(
             Block.box(6, 7, 2, 10, 13, 13),
             Block.box(0, 0, 14, 16, 16, 16),
-            Block.box(0.5, 9, 6, 1.5, 13, 10),
+            Block.box(0, 9, 6, 1, 13, 10),
             Block.box(0, 0, 0, 4, 5, 4),
             Block.box(0, 5, 0, 2, 9, 2),
             Block.box(0, 9, 0, 4, 13, 4),
@@ -287,7 +349,7 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
             Block.box(12, 9, 0, 16, 13, 4),
             Block.box(15, 9, 12, 16, 13, 14),
             Block.box(14, 5, 0, 16, 9, 2),
-            Block.box(14.5, 9, 6, 15.5, 13, 10),
+            Block.box(15, 9, 6, 16, 13, 10),
             Block.box(6, 0, 1, 10, 7, 14),
             Block.box(6, 13, 1, 10, 16, 14),
             Block.box(10, 0, 1, 15, 16, 14),
@@ -297,7 +359,7 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
     private static final VoxelShape SHAPE_E = Stream.of(
             Block.box(3, 7, 6, 14, 13, 10),
             Block.box(0, 0, 0, 2, 16, 16),
-            Block.box(6, 9, 0.5, 10, 13, 1.5),
+            Block.box(6, 9, 0, 10, 13, 1),
             Block.box(12, 0, 0, 16, 5, 4),
             Block.box(14, 5, 0, 16, 9, 2),
             Block.box(12, 9, 0, 16, 13, 4),
@@ -310,7 +372,7 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
             Block.box(12, 9, 12, 16, 13, 16),
             Block.box(2, 9, 15, 4, 13, 16),
             Block.box(14, 5, 14, 16, 9, 16),
-            Block.box(6, 9, 14.5, 10, 13, 15.5),
+            Block.box(6, 9, 15, 10, 13, 16),
             Block.box(2, 0, 6, 15, 7, 10),
             Block.box(2, 13, 6, 15, 16, 10),
             Block.box(2, 0, 10, 15, 16, 15),
@@ -320,7 +382,7 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
     private static final VoxelShape SHAPE_S = Stream.of(
             Block.box(6, 7, 3, 10, 13, 14),
             Block.box(0, 0, 0, 16, 16, 2),
-            Block.box(14.5, 9, 6, 15.5, 13, 10),
+            Block.box(15, 9, 6, 16, 13, 10),
             Block.box(12, 0, 12, 16, 5, 16),
             Block.box(14, 5, 14, 16, 9, 16),
             Block.box(12, 9, 12, 16, 13, 16),
@@ -333,7 +395,7 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
             Block.box(0, 9, 12, 4, 13, 16),
             Block.box(0, 9, 2, 1, 13, 4),
             Block.box(0, 5, 14, 2, 9, 16),
-            Block.box(0.5, 9, 6, 1.5, 13, 10),
+            Block.box(0, 9, 6, 1, 13, 10),
             Block.box(6, 0, 2, 10, 7, 15),
             Block.box(6, 13, 2, 10, 16, 15),
             Block.box(1, 0, 2, 6, 16, 15),
@@ -343,7 +405,7 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
     private static final VoxelShape SHAPE_W = Stream.of(
             Block.box(2, 7, 6, 13, 13, 10),
             Block.box(14, 0, 0, 16, 16, 16),
-            Block.box(6, 9, 14.5, 10, 13, 15.5),
+            Block.box(6, 9, 15, 10, 13, 16),
             Block.box(0, 0, 12, 4, 5, 16),
             Block.box(0, 5, 14, 2, 9, 16),
             Block.box(0, 9, 12, 4, 13, 16),
@@ -356,7 +418,7 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
             Block.box(0, 9, 0, 4, 13, 4),
             Block.box(12, 9, 0, 14, 13, 1),
             Block.box(0, 5, 0, 2, 9, 2),
-            Block.box(6, 9, 0.5, 10, 13, 1.5),
+            Block.box(6, 9, 0, 10, 13, 1),
             Block.box(1, 0, 6, 14, 7, 10),
             Block.box(1, 13, 6, 14, 16, 10),
             Block.box(1, 0, 1, 14, 16, 6),
