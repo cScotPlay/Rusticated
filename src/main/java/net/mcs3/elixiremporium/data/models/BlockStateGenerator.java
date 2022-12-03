@@ -72,8 +72,6 @@ public class BlockStateGenerator extends FabricModelProvider
     public static final ModelTemplate FRAMED_LEFT_DIAG = createModdedModel("template_framed_wall_left_diag", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
     public static final ModelTemplate FRAMED_WALL = createModdedModel("template_framed_wall", TextureSlot.TEXTURE, TextureSlot.PARTICLE);
     public static final ModelTemplate FERTILE_SOIL = createVanillaModel("template_farmland", TextureSlot.DIRT, TextureSlot.TOP);
-    public static final ModelTemplate CONDENSER_FIRE = createModdedModel("condenser_fire", TextureSlot.FIRE);
-
 
 
 
@@ -415,7 +413,9 @@ public class BlockStateGenerator extends FabricModelProvider
         createHerbBlock(blockStateModelGenerator, ModBlocks.MARSHMALLOW, BlockStateProperties.AGE_3, 0, 1, 2, 3);
 
         createCondenser(blockStateModelGenerator, ModBlocks.CONDENSER);
-        //blockStateModelGenerator.createFurnace(ModBlocks.CONDENSER_TEST, TexturedModel.ORIENTABLE_ONLY_TOP);
+        createRetorts(blockStateModelGenerator, ModBlocks.RETORT);
+        //blockStateModelGenerator.createHorizontallyRotatedBlock(ModBlocks.RETORT, TexturedModel.ORIENTABLE);
+
 
     }
 
@@ -796,14 +796,19 @@ public class BlockStateGenerator extends FabricModelProvider
 
     }
 
+    public final void createRetorts(BlockModelGenerators modelGenerators, Block retortBlock) {
+        ResourceLocation retortModel = new ResourceLocation(MOD_ID, "block/retort_base");
+        ResourceLocation retortItemModel = new ResourceLocation(MOD_ID, "item/retort_item");
+
+        modelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(retortBlock, Variant.variant().with(VariantProperties.MODEL, retortModel)).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        modelGenerators.delegateItemModel(retortBlock.asItem(), retortItemModel);
+    }
+
     public final void createCondenser(BlockModelGenerators modelGenerators, Block furnaceBlock) {
         ResourceLocation condenserModel = new ResourceLocation(MOD_ID, "block/condenser_base");
         ResourceLocation condenserOnModel = new ResourceLocation(MOD_ID, "block/condenser_base_on");
         ResourceLocation condenserTopModel = new ResourceLocation(MOD_ID, "block/condenser_top");
         ResourceLocation condenserItemModel = new ResourceLocation(MOD_ID, "item/condenser_item");
-        //ResourceLocation resourceLocation = modelProvider.create(furnaceBlock, modelGenerators.modelOutput);
-        //ResourceLocation resourceLocation2 = TextureMapping.getBlockTexture(furnaceBlock, "_on");
-        //ResourceLocation resourceLocation3 = modelProvider.get(furnaceBlock).updateTextures(textureMapping -> textureMapping.put(TextureSlot.FIRE, resourceLocation2)).createWithSuffix(furnaceBlock, "_base_on", modelGenerators.modelOutput);
         modelGenerators.blockStateOutput.accept(condenserVariants(furnaceBlock, condenserModel, condenserOnModel, condenserTopModel));
         modelGenerators.delegateItemModel(furnaceBlock.asItem(), condenserItemModel);
     }
