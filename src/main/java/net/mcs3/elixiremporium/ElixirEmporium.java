@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.mcs3.elixiremporium.data.worldgen.features.ModTreeFeatures;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
-import net.mcs3.elixiremporium.network.ModNetworkSync;
 import net.mcs3.elixiremporium.util.RegistryHandler;
 import net.mcs3.elixiremporium.world.inventory.ModMenuTypes;
 import net.mcs3.elixiremporium.world.item.crafting.ModRecipes;
