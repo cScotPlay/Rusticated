@@ -414,7 +414,6 @@ public class BlockStateGenerator extends FabricModelProvider
 
         createCondenser(blockStateModelGenerator, ModBlocks.CONDENSER);
         createRetorts(blockStateModelGenerator, ModBlocks.RETORT);
-        //blockStateModelGenerator.createHorizontallyRotatedBlock(ModBlocks.RETORT, TexturedModel.ORIENTABLE);
 
 
     }
