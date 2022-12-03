@@ -61,6 +61,26 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.IRONWOOD_STAIRS.asItem(),
                 ModBlocks.OLIVE_STAIRS.asItem());
 
+        this.tag(ItemTags.WOODEN_SLABS).add(
+                ModBlocks.PAINTED_SLAB_WHITE.asItem(),
+                ModBlocks.PAINTED_SLAB_ORANGE.asItem(),
+                ModBlocks.PAINTED_SLAB_MAGENTA.asItem(),
+                ModBlocks.PAINTED_SLAB_LIGHT_BLUE.asItem(),
+                ModBlocks.PAINTED_SLAB_YELLOW.asItem(),
+                ModBlocks.PAINTED_SLAB_LIME.asItem(),
+                ModBlocks.PAINTED_SLAB_PINK.asItem(),
+                ModBlocks.PAINTED_SLAB_GRAY.asItem(),
+                ModBlocks.PAINTED_SLAB_LIGHT_GRAY.asItem(),
+                ModBlocks.PAINTED_SLAB_CYAN.asItem(),
+                ModBlocks.PAINTED_SLAB_PURPLE.asItem(),
+                ModBlocks.PAINTED_SLAB_BLUE.asItem(),
+                ModBlocks.PAINTED_SLAB_BROWN.asItem(),
+                ModBlocks.PAINTED_SLAB_GREEN.asItem(),
+                ModBlocks.PAINTED_SLAB_RED.asItem(),
+                ModBlocks.PAINTED_SLAB_BLACK.asItem(),
+                ModBlocks.IRONWOOD_SLAB.asItem(),
+                ModBlocks.OLIVE_SLAB.asItem());
+
         this.tag(ItemTags.STAIRS).add(
                 ModBlocks.PAINTED_STAIRS_WHITE.asItem(),
                 ModBlocks.PAINTED_STAIRS_ORANGE.asItem(),
@@ -113,7 +133,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.IRONWOOD_STAIRS.asItem(),
                 ModBlocks.OLIVE_STAIRS.asItem());
 
-        this.tag(ItemTags.WOODEN_SLABS).add(
+        this.tag(ItemTags.SLABS).add(
                 ModBlocks.PAINTED_SLAB_WHITE.asItem(),
                 ModBlocks.PAINTED_SLAB_ORANGE.asItem(),
                 ModBlocks.PAINTED_SLAB_MAGENTA.asItem(),
