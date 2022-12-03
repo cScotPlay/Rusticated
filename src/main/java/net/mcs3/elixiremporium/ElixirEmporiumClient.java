@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.mcs3.elixiremporium.client.ModColorProviders;
 import net.mcs3.elixiremporium.client.screens.inventory.CondenserScreen;
 import net.mcs3.elixiremporium.init.ModBlocks;
+import net.mcs3.elixiremporium.network.ModNetworkSync;
 import net.mcs3.elixiremporium.world.inventory.ModMenuTypes;
 import net.mcs3.elixiremporium.world.level.block.entity.ModBlockEntityTypes;
 import net.mcs3.elixiremporium.world.level.block.storage.liquid_barrel.LiquidBarrelRenderer;
@@ -26,6 +27,7 @@ public class ElixirEmporiumClient implements ClientModInitializer
         registerRenderTypes();
         ModColorProviders.registerBlockColorProviders();
         ModColorProviders.registerItemColorProviders();
+        ModNetworkSync.registerS2CPackets();
         registerScreenTypes();
         setupTooltips();
     }
@@ -76,6 +78,7 @@ public class ElixirEmporiumClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.MARSHMALLOW, RenderType.cutoutMipped());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CONDENSER, RenderType.cutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RETORT, RenderType.cutoutMipped());
 
 
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, LiquidBarrelRenderer::new);

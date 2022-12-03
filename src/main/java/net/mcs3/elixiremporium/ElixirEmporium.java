@@ -43,8 +43,6 @@ public class ElixirEmporium implements ModInitializer {
 		RegistryHandler.onBlockRegistry();
 		RegistryHandler.onItemRegistry();
 
-		ModNetworkSync.registerS2CPackets();
-
 		RegistryHandler.onBlockEntityRegistry();
 
 		ModTreeFeatures.init();

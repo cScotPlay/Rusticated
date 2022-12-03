@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
 import net.mcs3.elixiremporium.world.level.block.alchemy.CondenserBlock;
+import net.mcs3.elixiremporium.world.level.block.alchemy.RetortBlock;
 import net.mcs3.elixiremporium.world.level.block.crop.*;
 import net.mcs3.elixiremporium.world.level.block.grower.IronwoodTreeGrower;
 import net.mcs3.elixiremporium.world.level.block.grower.OliveTreeGrower;
@@ -402,6 +403,7 @@ public class ModBlocks
     ///                  Alchemy Blocks                    ///
     //////////////////////////////////////////////////////////
     public static final Block CONDENSER = new CondenserBlock();
+    public static final Block RETORT = new RetortBlock();
 
 
 
@@ -758,6 +760,7 @@ public class ModBlocks
         ///               Alchemy Blocks Registry              ///
         //////////////////////////////////////////////////////////
         register("condenser", CONDENSER, HERB_TAB);
+        register("retort", RETORT, HERB_TAB);
 
 
         initOxidizables();
