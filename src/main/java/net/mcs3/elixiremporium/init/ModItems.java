@@ -6,6 +6,7 @@ import net.mcs3.elixiremporium.world.food.ModFoodProperties;
 import net.mcs3.elixiremporium.world.item.LiquidBarrelItem;
 import net.mcs3.elixiremporium.world.item.ModBookItem;
 import net.mcs3.elixiremporium.world.item.ModItem;
+import net.mcs3.elixiremporium.world.item.alchmey.ElixirItem;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BlockItem;
@@ -48,6 +49,8 @@ public class ModItems
     public static Item GINSENG = new ItemNameBlockItem(ModBlocks.GINSENG, new Item.Properties().tab(HERB_TAB).food(ModFoodProperties.GINSENG));
     public static Item MARSHMALLOW = new ItemNameBlockItem(ModBlocks.MARSHMALLOW, new Item.Properties().tab(HERB_TAB).food(ModFoodProperties.MARSHMALLOW));
 
+    public static Item ELIXIR = new ElixirItem();
+
 
     public static void init()
     {
@@ -69,13 +72,15 @@ public class ModItems
         register("chamomile", CHAMOMILE);
         register("cloud_lily", CLOUD_LILY);
         register("cohosh", COHOSH);
-        register("horsetail", HORSETAIL);
+        register("horsetail", HORSETAIL);  //Advance
         register("wind_thistle", WIND_THISTLE);
         register("nightshroom", NIGHTSHROOM);
         register("green_spored_asbestos", GREEN_SPORED_ASBESTOS);
         register("core_root", CORE_ROOT);
         register("ginseng", GINSENG);
-        register("marshmallow", MARSHMALLOW);
+        register("marshmallow", MARSHMALLOW); // Advance
+
+        register("elixir", ELIXIR);
 
     }
 

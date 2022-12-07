@@ -2,10 +2,13 @@ package net.mcs3.elixiremporium.client;
 
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.mcs3.elixiremporium.init.ModBlocks;
+import net.mcs3.elixiremporium.init.ModItems;
 import net.minecraft.client.color.block.BlockColors;
 import net.minecraft.client.renderer.BiomeColors;
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.FoliageColor;
 import net.minecraft.world.level.block.Blocks;
@@ -277,6 +280,8 @@ public class ModColorProviders
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorProviderRegistry.BLOCK.get(((BlockItem)stack.getItem()).getBlock()).getColor(((BlockItem)stack.getItem()).getBlock().defaultBlockState(), null, null, tintIndex), ModBlocks.IRONWOOD_LEAVES);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorProviderRegistry.BLOCK.get(((BlockItem)stack.getItem()).getBlock()).getColor(((BlockItem)stack.getItem()).getBlock().defaultBlockState(), null, null, tintIndex), ModBlocks.OLIVE_LEAVES);
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorProviderRegistry.BLOCK.get(((BlockItem)stack.getItem()).getBlock()).getColor(((BlockItem)stack.getItem()).getBlock().defaultBlockState(), null, null, tintIndex), ModBlocks.GRAPE_LEAVES);
+
+        ColorProviderRegistry.ITEM.register((itemStack, i) -> i > 0 ? -1 : PotionUtils.getColor(itemStack), ModItems.ELIXIR);
 
 
     }

@@ -7,6 +7,7 @@ import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.util.RegistryHandler;
 import net.mcs3.elixiremporium.world.inventory.ModMenuTypes;
+import net.mcs3.elixiremporium.world.item.alchmey.Elixirs;
 import net.mcs3.elixiremporium.world.item.crafting.ModRecipes;
 import net.mcs3.elixiremporium.world.level.levelgen.WorldGeneration;
 import net.minecraft.resources.ResourceLocation;
@@ -47,6 +48,7 @@ public class ElixirEmporium implements ModInitializer {
 		ModTreeFeatures.init();
 
 		WorldGeneration.generateWorld();
+		Elixirs.initElixirs();
 
 		ModRecipes.onRecipeRegistry();
 		ModMenuTypes.registerAllMenuTypes();

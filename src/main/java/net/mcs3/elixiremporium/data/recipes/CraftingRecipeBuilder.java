@@ -5,12 +5,12 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.tags.ModItemTags;
+import net.mcs3.elixiremporium.world.item.alchmey.Elixirs;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -21,6 +21,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Collections;
 import java.util.function.Consumer;
 
 public class CraftingRecipeBuilder extends FabricRecipeProvider
@@ -357,7 +358,16 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapelessRecipeBuilder.shapeless(ModItems.COPPER_NUGGET, 9).requires(Items.COPPER_INGOT).unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter, new ResourceLocation("copper_nugget_from_copper_ingot"));
         ShapedRecipeBuilder.shaped(Items.COPPER_INGOT).define('#', ModItems.COPPER_NUGGET).pattern("###").pattern("###").pattern("###").unlockedBy("has_catalog", has(ModItems.CATALOG)).save(exporter, new ResourceLocation("copper_ingot_from_copper_nugget"));
 
-
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.ALOE_VERA, Items.BEEF)), Elixirs.HEALING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.HEALING_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.BLOOD_ORCHID, Items.HONEYCOMB)), Elixirs.REGENERATION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.REGENERATION_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.NIGHTSHROOM, Items.CARROT)), Elixirs.NIGHT_VISION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.NIGHT_VISION_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.WIND_THISTLE, Items.SUGAR)), Elixirs.SWIFTNESS_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.SWIFTNESS_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GREEN_SPORED_ASBESTOS, Items.WEEPING_VINES)), Elixirs.FIRE_RESISTANCE_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.FIRE_RESISTANCE_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GINSENG, Items.BONE)), Elixirs.STRENGTH_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.STRENGTH_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CORE_ROOT, Items.KELP)), Elixirs.WATER_BREATHING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.WATER_BREATHING_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CLOUD_LILY, Items.FEATHER)), Elixirs.SLOW_FALLING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.SLOW_FALLING_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CHAMOMILE, Items.GLOW_BERRIES)), Elixirs.INVISIBILITY_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.INVISIBILITY_ELIXIR.getName("elixir_")));
+        //CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES)), """IRON SKIN ENCHANT""").unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.INVISIBILITY_ELIXIR.getName("elixir_")));
 
     }
 

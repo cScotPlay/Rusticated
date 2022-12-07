@@ -354,6 +354,17 @@
   "item.elixiremporium.ginseng": "Ginseng",
   "item.elixiremporium.marshmallow": "Marshmallow Root",
 
+  "item.elixiremporium.elixir.effect.healing": "Elixir of Healing",
+  "item.elixiremporium.elixir.effect.regeneration": "Elixir of Regeneration",
+  "item.elixiremporium.elixir.effect.night_vision": "Elixir of Night Vision",
+  "item.elixiremporium.elixir.effect.swiftness": "Elixir of Swiftness",
+  "item.elixiremporium.elixir.effect.fire_resistance": "Elixir of Fire Resistance",
+  "item.elixiremporium.elixir.effect.strength": "Elixir of Strength",
+  "item.elixiremporium.elixir.effect.water_breathing": "Elixir of Water Breathing",
+  "item.elixiremporium.elixir.effect.slow_falling": "Elixir of Slow Falling",
+  "item.elixiremporium.elixir.effect.invisibility": "Elixir of Invisibility",
+
+
   "item.elixiremporium.copper_nugget": "Copper Nugget",
 
   "book.elixiremporium.title": "Elixir Emporium Catalog",

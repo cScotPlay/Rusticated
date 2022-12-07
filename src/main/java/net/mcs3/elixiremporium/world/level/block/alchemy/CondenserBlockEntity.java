@@ -10,6 +10,7 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.mcs3.elixiremporium.fluid.FluidStack;
+import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.network.ModNetworkSync;
 import net.mcs3.elixiremporium.world.ModContainer;
 import net.mcs3.elixiremporium.world.inventory.CondenserMenu;
@@ -31,6 +32,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.alchemy.Potion;
+import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -245,7 +248,10 @@ public class CondenserBlockEntity extends BlockEntity implements ExtendedScreenH
             blockEntity.removeItem(2, 1);
 
             extractFluid(blockEntity);
-            blockEntity.setItem(4, new ItemStack(match.get().getResultItem().getItem(), blockEntity.getItem(4).getCount() + 1));
+
+            Potion potion = match.get().getPotion();
+
+            blockEntity.setItem(4, PotionUtils.setPotion(new ItemStack(ModItems.ELIXIR, blockEntity.getItem(4).getCount() + 1), potion));
             level.playSound(null, blockPos, SoundEvents.BREWING_STAND_BREW, SoundSource.BLOCKS, 1.0f, 1.0f);
 
             blockEntity.resetProgress();
