@@ -367,7 +367,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CORE_ROOT, Items.KELP)), Elixirs.WATER_BREATHING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.WATER_BREATHING_ELIXIR.getName("elixir_")));
         CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CLOUD_LILY, Items.FEATHER)), Elixirs.SLOW_FALLING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.SLOW_FALLING_ELIXIR.getName("elixir_")));
         CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CHAMOMILE, Items.GLOW_BERRIES)), Elixirs.INVISIBILITY_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.INVISIBILITY_ELIXIR.getName("elixir_")));
-        //CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES)), """IRON SKIN ENCHANT""").unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.INVISIBILITY_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES)), Elixirs.IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.IRONSKIN_ELIXIR.getName("elixir_")));
 
     }
 

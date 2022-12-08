@@ -31,6 +31,9 @@ public class Elixirs {
     public static Potion LONG_SLOW_FALLING_ELIXIR;
     public static Potion INVISIBILITY_ELIXIR;
     public static Potion LONG_INVISIBILITY_ELIXIR;
+    public static Potion IRONSKIN_ELIXIR;
+    public static Potion LONG_IRONSKIN_ELIXIR;
+    public static Potion STRONG_IRONSKIN_ELIXIR;
 
     public static Potion init(Potion potion) {
         ELIXIRS.add(potion);
@@ -59,6 +62,9 @@ public class Elixirs {
         LONG_SLOW_FALLING_ELIXIR = init(Potions.LONG_SLOW_FALLING);
         INVISIBILITY_ELIXIR = init(Potions.INVISIBILITY);
         LONG_INVISIBILITY_ELIXIR = init(Potions.LONG_INVISIBILITY);
+        IRONSKIN_ELIXIR = init(ModPotions.IRON_SKIN);
+        LONG_IRONSKIN_ELIXIR = init(ModPotions.LONG_IRON_SKIN);
+        STRONG_IRONSKIN_ELIXIR = init(ModPotions.STRONG_IRON_SKIN);
 
     }
 }

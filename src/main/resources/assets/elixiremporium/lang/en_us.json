@@ -363,9 +363,27 @@
   "item.elixiremporium.elixir.effect.water_breathing": "Elixir of Water Breathing",
   "item.elixiremporium.elixir.effect.slow_falling": "Elixir of Slow Falling",
   "item.elixiremporium.elixir.effect.invisibility": "Elixir of Invisibility",
+  "item.elixiremporium.elixir.effect.ironskin": "Elixir of Iron Skin",
+  "item.elixiremporium.elixir.effect.longironskin": "Elixir of Iron Skin",
+  "item.elixiremporium.elixir.effect.strongironskin": "Elixir of Iron Skin",
 
+  "item.minecraft.potion.effect.ironskin": "Potion of Iron Skin",
+  "item.minecraft.potion.effect.longironskin": "Potion of Iron Skin",
+  "item.minecraft.potion.effect.strongironskin": "Potion of Iron Skin",
+
+  "item.minecraft.splash_potion.effect.ironskin": "Splash Potion of Iron Skin",
+  "item.minecraft.splash_potion.effect.longironskin": "Splash Potion of Iron Skin",
+  "item.minecraft.splash_potion.effect.strongironskin": "Splash Potion of Iron Skin",
+
+  "item.minecraft.lingering_potion.effect.ironskin": "Lingering Potion of Iron Skin",
+  "item.minecraft.lingering_potion.effect.longironskin": "Lingering Potion of Iron Skin",
+  "item.minecraft.lingering_potion.effect.strongironskin": "Lingering Potion of Iron Skin",
 
   "item.elixiremporium.copper_nugget": "Copper Nugget",
+
+  "effect.elixiremporium.ironskin": "Iron Skin",
+
+
 
   "book.elixiremporium.title": "Elixir Emporium Catalog",
   "book.elixiremporium.subtitle": "For All Your Needs",
