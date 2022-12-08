@@ -1,7 +1,7 @@
 package net.mcs3.elixiremporium.client.screens.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import me.shedaniel.rei.api.client.gui.widgets.TooltipContext;
+
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
 import org.apache.logging.log4j.core.pattern.TextRenderer;
