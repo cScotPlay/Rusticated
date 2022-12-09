@@ -3,9 +3,11 @@ package net.mcs3.elixiremporium;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
+import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.mcs3.elixiremporium.client.ModColorProviders;
 import net.mcs3.elixiremporium.client.screens.inventory.CondenserScreen;
+import net.mcs3.elixiremporium.client.screens.renderer.entity.ModEntityRenderers;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.network.ModNetworkSync;
 import net.mcs3.elixiremporium.world.inventory.ModMenuTypes;
@@ -15,8 +17,17 @@ import net.mcs3.elixiremporium.world.level.block.storage.pot.GlazedPotRenderer;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.PotRenderer;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.PotToolTipData;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.client.PotTooltipComponent;
+import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.entity.LivingEntityRenderer;
+import net.minecraft.client.renderer.entity.player.PlayerRenderer;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.player.Player;
+
+import java.util.Collection;
 
 public class ElixirEmporiumClient implements ClientModInitializer
 {
@@ -30,6 +41,7 @@ public class ElixirEmporiumClient implements ClientModInitializer
         ModNetworkSync.registerS2CPackets();
         registerScreenTypes();
         setupTooltips();
+        registerLayers();
     }
 
     private static void registerRenderTypes()
@@ -97,6 +109,11 @@ public class ElixirEmporiumClient implements ClientModInitializer
         MenuScreens.register(ModMenuTypes.CONDENSER_MENU_TYPE, CondenserScreen::new);
     }
 
+    private void registerLayers() {
+        LivingEntityFeatureRendererRegistrationCallback.EVENT.register(this::initAuxiliaryRender);
+
+    }
+
     private static void setupTooltips()
     {
         TooltipComponentCallback.EVENT.register(data -> {
@@ -104,5 +121,12 @@ public class ElixirEmporiumClient implements ClientModInitializer
                 return new PotTooltipComponent(potToolTipData);
             } return null;
         });
+    }
+
+    private void initAuxiliaryRender(EntityType<? extends LivingEntity> type, LivingEntityRenderer<?, ?> renderer,
+                                     LivingEntityFeatureRendererRegistrationCallback.RegistrationHelper helper, EntityRendererProvider.Context ctx) {
+        if (type == EntityType.PLAYER && renderer instanceof PlayerRenderer playerRenderer) {
+            ModEntityRenderers.addAuxiliaryPlayerRenders(playerRenderer, helper::register);
+        }
     }
 }
