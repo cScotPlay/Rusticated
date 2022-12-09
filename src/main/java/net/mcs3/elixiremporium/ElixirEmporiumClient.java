@@ -17,7 +17,6 @@ import net.mcs3.elixiremporium.world.level.block.storage.pot.GlazedPotRenderer;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.PotRenderer;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.PotToolTipData;
 import net.mcs3.elixiremporium.world.level.block.storage.pot.client.PotTooltipComponent;
-import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.screens.MenuScreens;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
@@ -25,9 +24,6 @@ import net.minecraft.client.renderer.entity.LivingEntityRenderer;
 import net.minecraft.client.renderer.entity.player.PlayerRenderer;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.player.Player;
-
-import java.util.Collection;
 
 public class ElixirEmporiumClient implements ClientModInitializer
 {
