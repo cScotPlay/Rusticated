@@ -2,10 +2,7 @@ package net.mcs3.elixiremporium.world.item.crafting;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModItems;
-import net.mcs3.elixiremporium.world.item.alchmey.ElixirItem;
-import net.mcs3.elixiremporium.world.item.alchmey.Elixirs;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -15,7 +12,6 @@ import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 
@@ -29,9 +25,9 @@ public class CondenserRecipe implements Recipe<Container>
     public CondenserRecipe(ResourceLocation id, Potion inputPotion, NonNullList<Ingredient> recipeItems)
     {
         this.id = id;
-        this.outputItem = getOutputItem();
         this.potion = inputPotion;
         this.recipeItems = recipeItems;
+        this.outputItem = getOutputItem();
     }
 
     public Potion getPotion() {
@@ -40,6 +36,10 @@ public class CondenserRecipe implements Recipe<Container>
 
     public ItemStack getOutputItem() {
         return PotionUtils.setPotion(new ItemStack(ModItems.ELIXIR), potion);
+    }
+
+    public CompoundTag getTag() {
+        return getOutputItem().getOrCreateTag();
     }
 
     @Override
