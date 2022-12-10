@@ -1,8 +1,12 @@
 package net.mcs3.elixiremporium.compat.jei;
 
+import com.mojang.blaze3d.vertex.PoseStack;
 import mezz.jei.api.constants.VanillaTypes;
 import mezz.jei.api.gui.builder.IRecipeLayoutBuilder;
 import mezz.jei.api.gui.drawable.IDrawable;
+import mezz.jei.api.gui.drawable.IDrawableAnimated;
+import mezz.jei.api.gui.drawable.IDrawableStatic;
+import mezz.jei.api.gui.ingredient.IRecipeSlotsView;
 import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.recipe.IFocusGroup;
 import mezz.jei.api.recipe.RecipeIngredientRole;
@@ -31,10 +35,22 @@ public class CondenserRecipeCategory implements IRecipeCategory<CondenserRecipe>
 
     private final IDrawable background;
     private final IDrawable icon;
+    private final IDrawableAnimated progress;
+    private final IDrawableAnimated fuel;
+    private final IDrawableAnimated brewing;
 
     public CondenserRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 86);
         this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(ModBlocks.CONDENSER.asItem()));
+
+        IDrawableStatic progressDrawable = helper.drawableBuilder(TEXTURE, 176, 14, 55, 28).addPadding(30, 0, 46, 0).build();
+        this.progress = helper.createAnimatedDrawable(progressDrawable, 80, IDrawableAnimated.StartDirection.LEFT, false);
+
+        IDrawableStatic brewingDrawable = helper.drawableBuilder(TEXTURE, 176, 43, 11, 28).addPadding(14, 0, 74, 0).build();
+        this.brewing = helper.createAnimatedDrawable(brewingDrawable, 80, IDrawableAnimated.StartDirection.BOTTOM, false);
+
+        IDrawableStatic fuelDrawable = helper.drawableBuilder(TEXTURE, 176, 0, 14, 14).addPadding(47, 0, 72, 0).build();
+        this.fuel = helper.createAnimatedDrawable(fuelDrawable, 80, IDrawableAnimated.StartDirection.BOTTOM, false);
     }
 
     @Override
@@ -62,6 +78,13 @@ public class CondenserRecipeCategory implements IRecipeCategory<CondenserRecipe>
     @Override
     public IDrawable getIcon() {
         return this.icon;
+    }
+
+    @Override
+    public void draw(CondenserRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
+        this.fuel.draw(stack);
+        this.progress.draw(stack);
+        this.brewing.draw(stack);
     }
 
     @Override
