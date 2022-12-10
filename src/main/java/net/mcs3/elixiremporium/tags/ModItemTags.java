@@ -25,6 +25,7 @@ public class ModItemTags
     public static final TagKey<Item> OLIVE_LOGS = modItem("olive_logs");
 
     public static final TagKey<Item> HERBS = modItem("herbs");
+    public static final TagKey<Item> ELIXIR = modItem("elixir");
 
 
     public static TagKey<Item> modItem(String path) {

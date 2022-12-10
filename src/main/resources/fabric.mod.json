@@ -26,6 +26,9 @@
     ],
     "fabric-datagen": [
       "net.mcs3.elixiremporium.data.DataGenerators"
+    ],
+    "jei_mod_plugin": [
+      "net.mcs3.elixiremporium.compat.jei.ElixirJEIPlugin"
     ]
   },
   "mixins": [

@@ -10,6 +10,7 @@ import net.minecraft.nbt.ListTag;
 import net.minecraft.nbt.StringTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
@@ -114,5 +115,22 @@ public class NbtUtility
         } else {
             tag.putInt(key, i);
         }
+    }
+
+    public static boolean verifyExistence(ItemStack stack, String tag) {
+        return !stack.isEmpty() && stack.hasTag() && stack.getOrCreateTag().contains(tag);
+    }
+
+    public static String getString(ItemStack stack, String tag, String defaultExpected) {
+        return verifyExistence(stack, tag) ? stack.getOrCreateTag().getString(tag) : defaultExpected;
+    }
+
+    public static String getString(ItemStack item, String key) {
+        return hasTag(item) ? item.getOrCreateTag().getString(key) : "";
+    }
+
+    public static boolean hasTag(ItemStack stack)
+    {
+        return stack.hasTag();
     }
 }

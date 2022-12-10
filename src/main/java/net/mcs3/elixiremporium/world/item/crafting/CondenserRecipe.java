@@ -54,6 +54,11 @@ public class CondenserRecipe implements Recipe<Container>
     }
 
     @Override
+    public NonNullList<Ingredient> getIngredients() {
+        return recipeItems;
+    }
+
+    @Override
     public ItemStack assemble(Container container) {
         return outputItem;
     }

@@ -400,6 +400,10 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModItems.MARSHMALLOW
         );
 
+        tag(ModItemTags.ELIXIR).add(
+                ModItems.ELIXIR
+        );
+
 
 
 

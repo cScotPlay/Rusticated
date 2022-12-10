@@ -1,8 +1,12 @@
 package net.mcs3.elixiremporium.world.item.alchmey;
 
 import net.mcs3.elixiremporium.ElixirEmporium;
+import net.mcs3.elixiremporium.tags.ModItemTags;
+import net.mcs3.elixiremporium.util.NbtUtility;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.Holder;
 import net.minecraft.core.NonNullList;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
@@ -18,6 +22,7 @@ import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.gameevent.GameEvent;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -97,13 +102,27 @@ public class ElixirItem extends Item {
         return super.isFoil(stack) || !PotionUtils.getMobEffects(stack).isEmpty();
     }
 
+    public static String getCategory(ItemStack stack)
+    {
+        return NbtUtility.getString(stack, "elixir");
+    }
+
+    @NotNull
+    public static String getSubtype(ItemStack stack) {
+        return stack.hasTag() ? NbtUtility.getString(stack, "elixir", "none") : "none";
+    }
+
     @Override
     public void fillItemCategory(CreativeModeTab category, NonNullList<ItemStack> items) {
         if (this.allowdedIn(category)) {
             for (Potion potion : Elixirs.ELIXIRS) {
-                if (potion == Potions.EMPTY) continue;
-                items.add(PotionUtils.setPotion(new ItemStack(this), potion));
+                if (potion == Potions.EMPTY) continue;{
+                    items.add(PotionUtils.setPotion(new ItemStack(this), potion));
+                }
+
             }
         }
     }
+
+
 }
