@@ -47,6 +47,7 @@ public class FluidStackRenderer implements IIngredientRenderer<FluidStack> {
         this(FluidStack.convertDropletsToMb(FluidConstants.BUCKET), TooltipMode.SHOW_AMOUNT_AND_CAPACITY, 16, 16);
     }
 
+
     public FluidStackRenderer(long capacityMb, boolean showCapacity, int width, int height) {
         this(capacityMb, showCapacity ? TooltipMode.SHOW_AMOUNT_AND_CAPACITY : TooltipMode.SHOW_AMOUNT, width, height);
     }
