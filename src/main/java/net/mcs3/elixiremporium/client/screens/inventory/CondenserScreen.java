@@ -6,12 +6,16 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.client.screens.renderer.FluidStackRenderer;
 import net.mcs3.elixiremporium.fluid.FluidStack;
+import net.mcs3.elixiremporium.util.MouseUtil;
 import net.mcs3.elixiremporium.world.inventory.CondenserMenu;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Inventory;
+import net.minecraft.world.item.TooltipFlag;
+
+import java.util.Optional;
 
 public class CondenserScreen extends AbstractContainerScreen<CondenserMenu>
 {
@@ -28,6 +32,22 @@ public class CondenserScreen extends AbstractContainerScreen<CondenserMenu>
         super.init();
         this.titleLabelX = (this.imageWidth - this.font.width(this.title)) / 2;
         assignFluidStackRenderer();
+    }
+
+    @Override
+    protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
+        int x = (width - imageWidth) / 2;
+        int y = (height - imageHeight) / 2;
+
+        renderFluidAreaTooltips(poseStack, mouseX, mouseY, x, y, menu.fluidStack, 134, 27, fluidStackRenderer);
+
+    }
+
+    private void renderFluidAreaTooltips(PoseStack pPoseStack, int pMouseX, int pMouseY, int x, int y, FluidStack fluidStack, int offsetX, int offsetY, FluidStackRenderer renderer) {
+        if(isMouseAboveArea(pMouseX, pMouseY, x, y, offsetX, offsetY, renderer)) {
+            renderTooltip(pPoseStack, renderer.getTooltip(fluidStack, TooltipFlag.Default.NORMAL),
+                    Optional.empty(), pMouseX - x, pMouseY - y);
+        }
     }
 
     @Override //Renders Background
@@ -62,8 +82,6 @@ public class CondenserScreen extends AbstractContainerScreen<CondenserMenu>
         //Draws Fluid in GUI
         fluidStackRenderer.drawFluid(poseStack, menu.fluidStack, i + 134, j + 27, 16, 32,
                 FluidStack.convertDropletsToMb(FluidConstants.BUCKET) * 8);
-
-
     }
 
     @Override
@@ -76,5 +94,9 @@ public class CondenserScreen extends AbstractContainerScreen<CondenserMenu>
     private void assignFluidStackRenderer() {
         fluidStackRenderer = new FluidStackRenderer(FluidStack.convertDropletsToMb(FluidConstants.BUCKET) * 8,
                 true, 16, 32);
+    }
+
+    private boolean isMouseAboveArea(int pMouseX, int pMouseY, int x, int y, int offsetX, int offsetY, FluidStackRenderer renderer) {
+        return MouseUtil.isMouseOver(pMouseX, pMouseY, x + offsetX, y + offsetY, renderer.getWidth(), renderer.getHeight());
     }
 }

@@ -4,6 +4,8 @@ import com.mojang.blaze3d.vertex.PoseStack;
 
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.Font;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.item.TooltipFlag;
 import org.apache.logging.log4j.core.pattern.TextRenderer;
 
 import javax.annotation.Nullable;
@@ -27,14 +29,14 @@ public interface IIngredientRenderer<T> {
 
 
 
-//    /**
-//     * Get the tooltip text for this ingredient. JEI renders the tooltip based on this.
-//     *
-//     * @param ingredient  The ingredient to get the tooltip for.
-//     * @param tooltipFlag Whether to show advanced information on item tooltips, toggled by F3+H
-//     * @return The tooltip text for the ingredient.
-//     */
-//    List<Font> getTooltip(T ingredient, TooltipContext tooltipFlag);
+    /**
+     * Get the tooltip text for this ingredient. JEI renders the tooltip based on this.
+     *
+     * @param ingredient  The ingredient to get the tooltip for.
+     * @param tooltipFlag Whether to show advanced information on item tooltips, toggled by F3+H
+     * @return The tooltip text for the ingredient.
+     */
+    List<Component> getTooltip(T ingredient, TooltipFlag tooltipFlag);
 
     /**
      * Get the tooltip font renderer for this ingredient. JEI renders the tooltip based on this.

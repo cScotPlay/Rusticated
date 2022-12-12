@@ -389,6 +389,9 @@
 
   "book.elixiremporium.title": "Elixir Emporium Catalog",
   "book.elixiremporium.subtitle": "For All Your Needs",
-  "book.elixiremporium.landingtext": "All Your Needs in One Place"
+  "book.elixiremporium.landingtext": "All Your Needs in One Place",
+
+  "tooltip.elixiremporium.liquid.amount.with.capacity": "%s / %s mB",
+  "tooltip.elixiremporium.liquid.amount": "%s mB"
 
 }

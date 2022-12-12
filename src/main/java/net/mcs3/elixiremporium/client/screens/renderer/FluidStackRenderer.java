@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry
 import net.fabricmc.fabric.api.transfer.v1.client.fluid.FluidVariantRendering;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.fluid.FluidStack;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
@@ -17,10 +18,10 @@ import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.Registry;
-import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.Style;
+import net.minecraft.network.chat.*;
 import net.minecraft.world.inventory.InventoryMenu;
+import net.minecraft.world.item.TooltipFlag;
+import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 
 import java.text.NumberFormat;
@@ -101,27 +102,35 @@ public class FluidStackRenderer implements IIngredientRenderer<FluidStack> {
         RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
     }
 
-//    @Override  TODO Look at Tool Tip for FLuids
-//    public List<Font> getTooltip(FluidStack fluidStack, TooltipContext tooltipFlag) {
-//        List<Font> tooltip = new ArrayList<>();
-//        FluidVariant fluidType = fluidStack.getFluidVariant();
-//        if (fluidType == null) {
-//            return tooltip;
-//        }
-//
-//        MutableComponent displayName = Component.translatable("block." + Registry.FLUID.getId(fluidStack.fluidVariant.getFluid()).toTranslationKey());
-//        tooltip.add(displayName);
-//
-//        long amount = fluidStack.getAmount();
-//        if (tooltipMode == TooltipMode.SHOW_AMOUNT_AND_CAPACITY) {
-//            MutableComponent amountString = Component.translatable("tutorialmod.tooltip.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
-//            tooltip.add(amountString.withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_GRAY)));
-//        } else if (tooltipMode == TooltipMode.SHOW_AMOUNT) {
-//            MutableComponent amountString = Component.translatable("tutorialmod.tooltip.liquid.amount", nf.format(amount));
-//            tooltip.add(amountString.withStyle(Style.EMPTY.withColor(ChatFormatting.DARK_GRAY)));
-//        }
-//        return tooltip;
-//    }
+    @Override
+    public List<Component> getTooltip(FluidStack fluidStack, TooltipFlag tooltipFlag) {
+        List<Component> tooltip = new ArrayList<>();
+
+        FluidVariant fluidType = fluidStack.getFluidVariant();
+        try {
+            if (fluidType == null) {
+                return tooltip;
+            }
+
+            Component displayName = new TranslatableComponent("Water");
+            ElixirEmporium.LOGGER.info(displayName);
+            tooltip.add(displayName);
+
+            long amount = fluidStack.getAmount();
+
+            if (tooltipMode == TooltipMode.SHOW_AMOUNT_AND_CAPACITY) {
+                MutableComponent amountString = new TranslatableComponent("tooltip.elixiremporium.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
+                tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
+            } else if (tooltipMode == TooltipMode.SHOW_AMOUNT) {
+                MutableComponent amountString = new TranslatableComponent("tooltip.elixiremporium.liquid.amount", nf.format(amount));
+                tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
+            }
+        } catch (RuntimeException e) {
+            ElixirEmporium.LOGGER.error("Failed to get tooltip for fluid: " + e);
+        }
+
+        return tooltip;
+    }
 
     @Override
     public int getWidth() {
