@@ -11,7 +11,7 @@ public class ModRecipes
     private static String MOD_ID = ElixirEmporium.MOD_ID;
 
     public static final CondenserRecipe.Serializer CONDENSER_RECIPE_SERIALIZER = CondenserRecipe.Serializer.INSTANCE;
-    public static final RecipeType CONDENSER_RECIPE_TYPE = CondenserRecipe.Type.INSTANCE;
+    public static final RecipeType<CondenserRecipe> CONDENSER_RECIPE_TYPE = CondenserRecipe.Type.INSTANCE;
 
     public static void onRecipeRegistry()
     {

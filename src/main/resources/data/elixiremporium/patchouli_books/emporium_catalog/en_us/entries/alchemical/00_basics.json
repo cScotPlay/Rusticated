@@ -1,0 +1,18 @@
+{
+  "name": "Alchemy",
+  "icon": "elixiremporium:condenser",
+  "category": "elixiremporium:alchemical_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Elixirs are magical concoctions created through alchemy in condensers. They are similar to potions. However, they are stackable up to sixteen bottles, not craftable with arrows, nor made into a splash or lingering variants.",
+      "item": "elixiremporium:elixir"
+    },
+    {
+      "type": "spotlight",
+      "text": "Alchemy is the process of brewing elixirs in Condensers. Alchemy is done in condensers, requiring attached Retorts. Creating elixirs involves water, a glass bottle, ingredients (and optionally modifiers), and fuel to operate the condenser. Any furnace fuel should work.",
+      "item": "elixiremporium:condenser"
+    }
+  ],
+  "sortnum": 0
+}

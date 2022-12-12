@@ -1,0 +1,73 @@
+{
+  "name": "Basic Elixir Recipes",
+  "icon": "elixiremporium:elixir",
+  "category": "elixiremporium:alchemical_category",
+  "pages": [
+    {
+      "type": "elixiremporium:text_template",
+      "heading": "Basic Elixirs",
+      "text": "The Basic Elixirs are less potent and have a shorter duration than their Advance counterparts.$(br)$(l)Elixir Types:$()$(br)Elixir of Healing$(br)Elixir of Regeneration$(br)Elixir of Night Vision$(br)Elixir of Swiftness$(br)Elixir of Fire Resistance$(br)Elixir of Strength$(br)Elixir of Water Breathing$(br)Elixir of Slow Falling$(br)Elixir of Invisibility$(br)Elixir of Iron Skin"
+    },
+    {
+      "type": "elixiremporium:condenser_template",
+      "heading": "Elixir of Healing",
+      "recipes": "elixiremporium:elixir_healing",
+      "text": "Restores health by 2x Hearts"
+    },
+    {
+      "type": "elixiremporium:condenser_template",
+      "heading": "Elixir of Regeneration",
+      "recipes": "elixiremporium:elixir_regeneration",
+      "text": "Restores health by half ♥ every 2.5 seconds."
+    },
+    {
+      "type": "elixiremporium:condenser_template",
+      "heading": "Elixir of Night Vision",
+      "recipes": "elixiremporium:elixir_night_vision",
+      "text": "Makes everything appear to be at the maximum light level, including underwater areas."
+    },
+    {
+      "type": "elixiremporium:condenser_template",
+      "heading": "Elixir of Swiftness",
+      "recipes": "elixiremporium:elixir_swiftness",
+      "text": "Increases movement speed, sprinting speed, and jumping length by 20%."
+    },
+    {
+      "type": "elixiremporium:condenser_template",
+      "heading": "Elixir of Fire Resistance",
+      "recipes": "elixiremporium:elixir_fire_resistance",
+      "text": "Gives immunity to damage from fire, lava, magma blocks, campfires, and blazes' ranged attacks."
+    },
+    {
+      "type": "elixiremporium:condenser_template",
+      "heading": "Elixir of Strength",
+      "recipes": "elixiremporium:elixir_strength",
+      "text": "Increases player's melee attack damage by 3x ♥ + half ♥."
+    },
+    {
+      "type": "elixiremporium:condenser_template",
+      "heading": "Elixir of Water Breathing",
+      "recipes": "elixiremporium:elixir_water_breathing",
+      "text": "Prevents the oxygen bar from depleting when underwater."
+    },
+    {
+      "type": "elixiremporium:condenser_template",
+      "heading": "Elixir of Slow Falling",
+      "recipes": "elixiremporium:elixir_slow_falling",
+      "text": "Causes the player to fall at a slower rate and not take any damage when hitting the ground."
+    },
+    {
+      "type": "elixiremporium:condenser_template",
+      "heading": "Elixir of Invisibility",
+      "recipes": "elixiremporium:elixir_invisibility",
+      "text": "Renders the player invisible. Equipped and wielded items are still visible."
+    },
+    {
+      "type": "elixiremporium:condenser_template",
+      "heading": "Elixir of Iron Skin",
+      "recipes": "elixiremporium:elixir_ironskin",
+      "text": "Adds Armor and Armor Toughness to the player while providing a visual overlay on the skin."
+    }
+  ],
+  "sortnum": 3
+}
