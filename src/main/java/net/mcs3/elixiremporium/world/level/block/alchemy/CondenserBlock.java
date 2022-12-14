@@ -261,10 +261,6 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
         return RenderShape.MODEL;
     }
 
-    protected void renderParticles() {
-
-    }
-
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state)
