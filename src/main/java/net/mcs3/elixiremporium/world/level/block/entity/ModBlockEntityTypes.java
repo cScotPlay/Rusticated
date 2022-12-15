@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.transfer.v1.item.ItemStorage;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModBlockItems;
+import net.mcs3.elixiremporium.world.level.block.alchemy.AdvCondenserBlockEntity;
 import net.mcs3.elixiremporium.world.level.block.alchemy.CondenserBlockEntity;
 import net.mcs3.elixiremporium.world.level.block.storage.barrel.BarrelEntityBlock;
 import net.mcs3.elixiremporium.world.level.block.storage.jar.JarEntityBlock;
@@ -32,6 +33,7 @@ public class ModBlockEntityTypes
     public static BlockEntityType<BlockEntity> GLAZED_POT_3_CONTAINER;
     public static BlockEntityType<BlockEntity> GLAZED_POT_4_CONTAINER;
     public static BlockEntityType<CondenserBlockEntity> CONDENSER_CONTAINER;
+    public static BlockEntityType<AdvCondenserBlockEntity> ADV_CONDENSER_CONTAINER;
 
 
 
@@ -58,8 +60,10 @@ public class ModBlockEntityTypes
         GLAZED_POT_3_CONTAINER = register("glazed_pot_3_container", ModBlocks.GLAZED_POT_3, factoryGlazedPot3::newBlockEntity);
         GLAZED_POT_4_CONTAINER = register("glazed_pot_4_container", ModBlocks.GLAZED_POT_4, factoryGlazedPot4::newBlockEntity);
         CONDENSER_CONTAINER = register("condenser_container", ModBlocks.CONDENSER, CondenserBlockEntity::new);
+        ADV_CONDENSER_CONTAINER = register("adv_condenser_container", ModBlocks.ADV_CONDENSER, AdvCondenserBlockEntity::new);
 
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, CONDENSER_CONTAINER);
+        FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, ADV_CONDENSER_CONTAINER);
 
 
         FluidStorage.SIDED.registerSelf(LIQUID_BARREL_CONTAINER);

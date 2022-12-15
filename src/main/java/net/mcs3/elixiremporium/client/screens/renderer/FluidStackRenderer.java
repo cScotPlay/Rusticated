@@ -3,25 +3,17 @@ package net.mcs3.elixiremporium.client.screens.renderer;
 import com.google.common.base.Preconditions;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.brigadier.Message;
-import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
-import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.transfer.v1.client.fluid.FluidVariantRendering;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.fluid.FluidStack;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.Font;
-import net.minecraft.client.gui.Gui;
 import net.minecraft.client.gui.GuiComponent;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.core.Registry;
 import net.minecraft.network.chat.*;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 
 import java.text.NumberFormat;
@@ -113,7 +105,6 @@ public class FluidStackRenderer implements IIngredientRenderer<FluidStack> {
             }
 
             Component displayName = new TranslatableComponent("Water");
-            ElixirEmporium.LOGGER.info(displayName);
             tooltip.add(displayName);
 
             long amount = fluidStack.getAmount();

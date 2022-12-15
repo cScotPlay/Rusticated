@@ -414,6 +414,8 @@ public class BlockStateGenerator extends FabricModelProvider
 
         createCondenser(blockStateModelGenerator, ModBlocks.CONDENSER);
         createRetorts(blockStateModelGenerator, ModBlocks.RETORT);
+        createAdvCondenser(blockStateModelGenerator, ModBlocks.ADV_CONDENSER);
+        createAdvRetorts(blockStateModelGenerator, ModBlocks.ADV_RETORT);
 
 
     }
@@ -803,6 +805,14 @@ public class BlockStateGenerator extends FabricModelProvider
         modelGenerators.delegateItemModel(retortBlock.asItem(), retortItemModel);
     }
 
+    public final void createAdvRetorts(BlockModelGenerators modelGenerators, Block retortBlock) {
+        ResourceLocation retortModel = new ResourceLocation(MOD_ID, "block/adv_retort_base");
+        ResourceLocation retortItemModel = new ResourceLocation(MOD_ID, "item/adv_retort_item");
+
+        modelGenerators.blockStateOutput.accept(MultiVariantGenerator.multiVariant(retortBlock, Variant.variant().with(VariantProperties.MODEL, retortModel)).with(BlockModelGenerators.createHorizontalFacingDispatch()));
+        modelGenerators.delegateItemModel(retortBlock.asItem(), retortItemModel);
+    }
+
     public final void createCondenser(BlockModelGenerators modelGenerators, Block furnaceBlock) {
         ResourceLocation condenserModel = new ResourceLocation(MOD_ID, "block/condenser_base");
         ResourceLocation condenserOnModel = new ResourceLocation(MOD_ID, "block/condenser_base_on");
@@ -810,6 +820,40 @@ public class BlockStateGenerator extends FabricModelProvider
         ResourceLocation condenserItemModel = new ResourceLocation(MOD_ID, "item/condenser_item");
         modelGenerators.blockStateOutput.accept(condenserVariants(furnaceBlock, condenserModel, condenserOnModel, condenserTopModel));
         modelGenerators.delegateItemModel(furnaceBlock.asItem(), condenserItemModel);
+    }
+
+    public final void createAdvCondenser(BlockModelGenerators modelGenerators, Block furnaceBlock) {
+        ResourceLocation condenserModel = new ResourceLocation(MOD_ID, "block/adv_condenser_base");
+        ResourceLocation condenserOnModel = new ResourceLocation(MOD_ID, "block/adv_condenser_base_on");
+        ResourceLocation condenserTopModel = new ResourceLocation(MOD_ID, "block/adv_condenser_top");
+        ResourceLocation condenserTopOnModel = new ResourceLocation(MOD_ID, "block/adv_condenser_top_on");
+        ResourceLocation condenserItemModel = new ResourceLocation(MOD_ID, "item/adv_condenser_item");
+        modelGenerators.blockStateOutput.accept(advCondenserVariants(furnaceBlock, condenserModel, condenserOnModel, condenserTopModel, condenserTopOnModel));
+        modelGenerators.delegateItemModel(furnaceBlock.asItem(), condenserItemModel);
+    }
+
+    public static MultiPartGenerator advCondenserVariants(Block block, ResourceLocation baseLocation, ResourceLocation baseOnLocation, ResourceLocation topLocation, ResourceLocation topOnLocation) {
+        return MultiPartGenerator.multiPart(block)
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, baseLocation))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, baseOnLocation))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, topLocation))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL,  topOnLocation))
+
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, baseLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, baseOnLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, topOnLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, baseLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, baseOnLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, topOnLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, baseLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, true).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, baseOnLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
+                .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, topOnLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270));
+
     }
 
     public static MultiPartGenerator condenserVariants(Block block, ResourceLocation baseLocation, ResourceLocation baseOnLocation, ResourceLocation topLocation) {

@@ -336,6 +336,8 @@
 
   "block.elixiremporium.condenser": "Alchemical Condenser",
   "block.elixiremporium.retort": "Condenser Retort",
+  "block.elixiremporium.adv_condenser": "Advanced Alchemical Condenser",
+  "block.elixiremporium.adv_retort": "Advanced Condenser Retort",
 
   "item.elixiremporium.catalog": "Emporium Catalog",
   "item.elixiremporium.iron_berries": "Iron Berries",

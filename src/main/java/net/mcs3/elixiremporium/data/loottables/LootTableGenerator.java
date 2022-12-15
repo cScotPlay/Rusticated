@@ -279,7 +279,8 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
 
                 ModBlocks.ROPE,
                 ModBlocks.CROP_STAKE,
-                ModBlocks.RETORT
+                ModBlocks.RETORT,
+                ModBlocks.ADV_RETORT
         )
 
                 .forEach(this::dropSelf);
@@ -435,6 +436,7 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         }));
 
         add(ModBlocks.CONDENSER, BlockLoot::createNameableBlockEntityTable);
+        add(ModBlocks.ADV_CONDENSER, BlockLoot::createNameableBlockEntityTable);
 
         add(ModBlocks.TIED_STAKE, LootTableGenerator::createTiedStakeDrop);
         add(Blocks.VINE, LootTableGenerator::createGrapeSeedDrop);

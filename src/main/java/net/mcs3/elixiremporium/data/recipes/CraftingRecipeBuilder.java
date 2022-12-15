@@ -345,6 +345,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
 
         ShapedRecipeBuilder.shaped(ModBlocks.CONDENSER).define('#', Blocks.BRICKS).define('^', Blocks.WHITE_TERRACOTTA).define('@', Items.BUCKET).pattern("# #").pattern("^@^").pattern("#^#").unlockedBy("has_bricks", has(Blocks.BRICKS)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.RETORT).define('#', Blocks.BRICKS).define('^', Items.IRON_INGOT).define('@', Items.BUCKET).pattern(" #").pattern("^@").pattern(" #").unlockedBy("has_bricks", has(Blocks.BRICKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.ADV_CONDENSER).define('#', Blocks.NETHER_BRICKS).define('^', Blocks.IRON_BLOCK).define('@', Items.BUCKET).pattern("# #").pattern("^@^").pattern("#^#").unlockedBy("has_nether_bricks", has(Blocks.NETHER_BRICKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.ADV_RETORT).define('#', Blocks.NETHER_BRICKS).define('^', Items.IRON_INGOT).define('@', Items.BUCKET).pattern(" #").pattern("^@").pattern(" #").unlockedBy("has_nether_bricks", has(Blocks.NETHER_BRICKS)).save(exporter);
 
 
 

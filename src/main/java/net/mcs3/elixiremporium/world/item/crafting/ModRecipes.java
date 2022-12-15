@@ -13,9 +13,15 @@ public class ModRecipes
     public static final CondenserRecipe.Serializer CONDENSER_RECIPE_SERIALIZER = CondenserRecipe.Serializer.INSTANCE;
     public static final RecipeType<CondenserRecipe> CONDENSER_RECIPE_TYPE = CondenserRecipe.Type.INSTANCE;
 
+    public static final AdvCondenserRecipe.Serializer ADV_CONDENSER_RECIPE_SERIALIZER = AdvCondenserRecipe.Serializer.INSTANCE;
+    public static final RecipeType<AdvCondenserRecipe> ADV_CONDENSER_RECIPE_TYPE = AdvCondenserRecipe.Type.INSTANCE;
+
     public static void onRecipeRegistry()
     {
         Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(MOD_ID, CondenserRecipe.Serializer.ID), CONDENSER_RECIPE_SERIALIZER);
+        Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(MOD_ID, AdvCondenserRecipe.Serializer.ID), ADV_CONDENSER_RECIPE_SERIALIZER);
+
         Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(MOD_ID, CondenserRecipe.Type.ID), CondenserRecipe.Type.INSTANCE);
+        Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(MOD_ID, AdvCondenserRecipe.Type.ID), AdvCondenserRecipe.Type.INSTANCE);
     }
 }

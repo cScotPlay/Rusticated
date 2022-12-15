@@ -6,6 +6,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.mcs3.elixiremporium.client.ModColorProviders;
+import net.mcs3.elixiremporium.client.screens.inventory.AdvCondenserScreen;
 import net.mcs3.elixiremporium.client.screens.inventory.CondenserScreen;
 import net.mcs3.elixiremporium.client.screens.renderer.entity.ModEntityRenderers;
 import net.mcs3.elixiremporium.init.ModBlocks;
@@ -87,6 +88,8 @@ public class ElixirEmporiumClient implements ClientModInitializer
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CONDENSER, RenderType.cutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.RETORT, RenderType.cutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ADV_CONDENSER, RenderType.cutoutMipped());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ADV_RETORT, RenderType.cutoutMipped());
 
 
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, LiquidBarrelRenderer::new);
@@ -103,6 +106,7 @@ public class ElixirEmporiumClient implements ClientModInitializer
     private static void registerScreenTypes()
     {
         MenuScreens.register(ModMenuTypes.CONDENSER_MENU_TYPE, CondenserScreen::new);
+        MenuScreens.register(ModMenuTypes.ADV_CONDENSER_MENU_TYPE, AdvCondenserScreen::new);
     }
 
     private void registerLayers() {

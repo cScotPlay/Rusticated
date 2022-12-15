@@ -133,7 +133,9 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.CHANDELIER_WAXED_WEATHERED_COPPER,
                 ModBlocks.CHANDELIER_WAXED_OXIDIZED_COPPER,
                 ModBlocks.CONDENSER,
-                ModBlocks.RETORT);
+                ModBlocks.RETORT,
+                ModBlocks.ADV_CONDENSER,
+                ModBlocks.ADV_RETORT);
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(registry.stream().filter(b -> b instanceof WeatheringCopperChandelierBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));

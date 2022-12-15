@@ -13,11 +13,13 @@ import java.util.Scanner;
 public class ModMenuTypes
 {
     public static MenuType<CondenserMenu> CONDENSER_MENU_TYPE = new ExtendedScreenHandlerType<>(CondenserMenu::new);
+    public static MenuType<AdvCondenserMenu> ADV_CONDENSER_MENU_TYPE = new ExtendedScreenHandlerType<>(AdvCondenserMenu::new);
 
 
     public static void registerAllMenuTypes()
     {
         Registry.register(Registry.MENU, new ResourceLocation(ElixirEmporium.MOD_ID, "condenser_menu_type"), CONDENSER_MENU_TYPE);
+        Registry.register(Registry.MENU, new ResourceLocation(ElixirEmporium.MOD_ID, "adv_condenser_menu_type"), ADV_CONDENSER_MENU_TYPE);
     }
 
 }

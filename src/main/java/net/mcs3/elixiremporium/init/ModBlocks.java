@@ -4,6 +4,8 @@ import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.level.block.*;
+import net.mcs3.elixiremporium.world.level.block.alchemy.AdvCondenserBlock;
+import net.mcs3.elixiremporium.world.level.block.alchemy.AdvRetortBlock;
 import net.mcs3.elixiremporium.world.level.block.alchemy.CondenserBlock;
 import net.mcs3.elixiremporium.world.level.block.alchemy.RetortBlock;
 import net.mcs3.elixiremporium.world.level.block.crop.*;
@@ -404,6 +406,8 @@ public class ModBlocks
     //////////////////////////////////////////////////////////
     public static final Block CONDENSER = new CondenserBlock();
     public static final Block RETORT = new RetortBlock();
+    public static final Block ADV_CONDENSER = new AdvCondenserBlock();
+    public static final Block ADV_RETORT = new AdvRetortBlock();
 
 
 
@@ -761,6 +765,8 @@ public class ModBlocks
         //////////////////////////////////////////////////////////
         register("condenser", CONDENSER, HERB_TAB);
         register("retort", RETORT, HERB_TAB);
+        register("adv_condenser", ADV_CONDENSER, HERB_TAB);
+        register("adv_retort", ADV_RETORT, HERB_TAB);
 
 
         initOxidizables();
