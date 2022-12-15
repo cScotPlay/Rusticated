@@ -15,6 +15,7 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -370,6 +371,9 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CLOUD_LILY, Items.FEATHER)), Elixirs.SLOW_FALLING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.SLOW_FALLING_ELIXIR.getName("elixir_")));
         CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CHAMOMILE, Items.GLOW_BERRIES)), Elixirs.INVISIBILITY_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.INVISIBILITY_ELIXIR.getName("elixir_")));
         CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES)), Elixirs.IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.IRONSKIN_ELIXIR.getName("elixir_")));
+
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.ALOE_VERA, Items.BEEF)), Elixirs.HEALING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.HEALING_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.ALOE_VERA, Items.BEEF, ModItems.MARSHMALLOW)), Elixirs.HEALING_STRONG_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.HEALING_STRONG_ELIXIR.getName("elixir_adv_strong_")));
 
     }
 

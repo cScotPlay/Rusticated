@@ -2,6 +2,7 @@ package net.mcs3.elixiremporium.world.item.crafting;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
@@ -14,19 +15,22 @@ import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Blocks;
 
 public class AdvCondenserRecipe implements Recipe<Container> {
     private final ResourceLocation id;
     private final ItemStack outputItem;
     private final Potion potion;
     private final NonNullList<Ingredient> recipeItems;
+    private final int arraySize;
 
-    public AdvCondenserRecipe(ResourceLocation id, Potion inputPotion, NonNullList<Ingredient> recipeItems)
+    public AdvCondenserRecipe(ResourceLocation id, Potion inputPotion, NonNullList<Ingredient> recipeItems, int arraySize)
     {
         this.id = id;
         this.potion = inputPotion;
         this.recipeItems = recipeItems;
         this.outputItem = getOutputItem();
+        this.arraySize = arraySize;
     }
 
     public Potion getPotion() {
@@ -45,9 +49,16 @@ public class AdvCondenserRecipe implements Recipe<Container> {
     public boolean matches(Container container, Level level) {
         if (level.isClientSide()){return false;}
 
-        if(recipeItems.get(0).test(container.getItem(0))) {
-            if (recipeItems.get(1).test(container.getItem(1))) {
-                return recipeItems.get(2).test(container.getItem(2));
+        if(container.getItem(2).is(Blocks.AIR.asItem()))
+        {
+            if(recipeItems.get(0).test(container.getItem(0))) {
+                return recipeItems.get(1).test(container.getItem(1));
+            }
+        }else {
+            if(recipeItems.get(0).test(container.getItem(0))) {
+                if(recipeItems.get(1).test(container.getItem(1))) {
+                    return recipeItems.get(2).test(container.getItem(2));
+                }
             }
         }
         return false;
@@ -110,20 +121,32 @@ public class AdvCondenserRecipe implements Recipe<Container> {
             Potion potion = Potion.byName(tagOutput);
 
             JsonArray ingredients = GsonHelper.getAsJsonArray(jsonObject, "ingredient");
+
+            int arraySize = GsonHelper.getAsJsonArray(jsonObject, "ingredient").size();
+            ElixirEmporium.LOGGER.info(arraySize);
             NonNullList<Ingredient> inputs = NonNullList.withSize(3, Ingredient.EMPTY);  //set size number to amount of input items
 
-            for (int i = 0; i < inputs.size(); i++)
+            if(arraySize == 2)
             {
-                inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+                inputs.set(0, Ingredient.fromJson(ingredients.get(0)));
+                inputs.set(1, Ingredient.fromJson(ingredients.get(1)));
+                inputs.set(2, Ingredient.of(Blocks.AIR.asItem()));
+
+            }else {
+                for (int i = 0; i < inputs.size(); i++)
+                {
+                    inputs.set(i, Ingredient.fromJson(ingredients.get(i)));
+                }
             }
 
-            return new AdvCondenserRecipe(recipeId, potion, inputs);
+            return new AdvCondenserRecipe(recipeId, potion, inputs, arraySize);
         }
 
         @Override
         public AdvCondenserRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
         {
             NonNullList<Ingredient> inputs = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY);
+            int arraySize = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY).size();
 
             for (int i = 0; i < inputs.size(); i++)
             {
@@ -133,7 +156,7 @@ public class AdvCondenserRecipe implements Recipe<Container> {
             Potion potion = PotionUtils.getPotion(buffer.readNbt());
 
             ItemStack output = buffer.readItem();
-            return new AdvCondenserRecipe(recipeId, potion, inputs);
+            return new AdvCondenserRecipe(recipeId, potion, inputs, arraySize);
         }
 
         @Override

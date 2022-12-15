@@ -62,7 +62,7 @@ public class AdvCondenserScreen extends AbstractContainerScreen<AdvCondenserMenu
         if(menu.isCrafting())
         {
             //Draws Progress Arrow in GUI
-            blit(poseStack, i + 45, j + 30, 176, 14, menu.getScaledProgress(), 43);
+            blit(poseStack, i + 45, j + 23, 176, 14, menu.getScaledProgress(), 43);
             //Draws Bubbles in GUI
             m = menu.getScaledProgress();
             int n = (int)(28.0f * (1.0f - (float)m / 72.0f));

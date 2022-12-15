@@ -38,6 +38,7 @@ import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
+import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -172,7 +173,7 @@ public class AdvCondenserBlockEntity extends BlockEntity implements ExtendedScre
                 if (hasFuelInFuelSlot(blockEntity) && !isConsumingFuel(blockEntity) && hasBottleInSlot(blockEntity) && hasEnoughFluid(blockEntity)) {
                     blockEntity.consumeFuel();
                 }
-                if (isConsumingFuel(blockEntity) && hasBottleInSlot(blockEntity) && hasEnoughFluid(blockEntity)) {
+                if (isConsumingFuel(blockEntity) && hasBottleInSlot(blockEntity) && hasEnoughFluid(blockEntity) && equalItemsInSlot(blockEntity)) {
                     blockEntity.progress++;
                     if (blockEntity.progress == blockEntity.maxProgress) {
                         craftItems(blockEntity);
@@ -211,8 +212,33 @@ public class AdvCondenserBlockEntity extends BlockEntity implements ExtendedScre
         Optional<AdvCondenserRecipe> match = level.getRecipeManager().getRecipeFor(AdvCondenserRecipe.Type.INSTANCE, container, level);
 
         return match.isPresent() && canInsertAmountIntoOutputSlot(container)
-                && canInsertItemIntoOutputSlot(container, match.get().getResultItem());
+                && canInsertItemIntoOutputSlot(container, match.get().getOutputItem());
 
+    }
+
+    private static boolean equalItemsInSlot(AdvCondenserBlockEntity blockEntity) {
+        Level level = blockEntity.level;
+        Container container = new SimpleContainer(blockEntity.inventory.size());
+        for (int i = 0; i < blockEntity.inventory.size(); i++)
+        {
+            container.setItem(i, blockEntity.getItem(i));
+        }
+
+        Optional<AdvCondenserRecipe> match = level.getRecipeManager().getRecipeFor(AdvCondenserRecipe.Type.INSTANCE, container, level);
+
+        ItemStack outputItem = match.get().getOutputItem();
+
+        CompoundTag outputTag = container.getItem(5).getOrCreateTag();
+        CompoundTag resultTag = outputItem.getOrCreateTag();
+
+        if(container.getItem(5).isEmpty()) {
+            return true;
+        } else if(outputTag.equals(resultTag)) {
+            return true;
+        } else if(outputTag != resultTag) {
+            return false;
+        }
+        return true;
     }
 
     private static boolean isConsumingFuel(AdvCondenserBlockEntity blockEntity)

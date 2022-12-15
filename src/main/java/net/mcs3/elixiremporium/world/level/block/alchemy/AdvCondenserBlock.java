@@ -302,10 +302,17 @@ public class AdvCondenserBlock extends BaseEntityBlock implements EntityBlock {
                 double e = pos.getY();
                 double f = (double)pos.getZ() + 0.5;
 
-                level.addParticle(ParticleTypes.SMOKE, d, e + 0.4, f, 0.0, 0.0, 0.0);
+                level.addParticle(ParticleTypes.SMOKE, d, e + 0.9, f, 0.0, 0.0, 0.0);
             }
-            else
-                return;
+            else return;
+
+            if(level.getBlockState(pos.below()).getValue(LIT) && !level.getBlockState(pos).getValue(BOTTOM)) {
+                level.setBlock(pos, state.setValue(LIT, true), 3);
+            }
+            if(!level.getBlockState(pos.below()).getValue(LIT) && !level.getBlockState(pos).getValue(BOTTOM)) {
+                level.setBlock(pos, state.setValue(LIT, false), 3);
+            }
+
         }
         double d = (double)pos.getX() + 0.5;
         double e = pos.getY();
@@ -323,12 +330,22 @@ public class AdvCondenserBlock extends BaseEntityBlock implements EntityBlock {
         level.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
         level.addParticle(ParticleTypes.FLAME, d + i, e + j, f + k, 0.0, 0.0, 0.0);
 //TODO UPDATE THIS
-        if(direction == Direction.NORTH || direction == Direction.SOUTH) {
+        if(direction == Direction.NORTH) {
             level.addParticle(ParticleTypes.SMOKE, d - 1.0D, e + 0.95D, f, 0, 0.125, 0);
             level.addParticle(ParticleTypes.SMOKE, d + 1.0D, e + 0.95D, f, 0, 0.125, 0);
-        } else if (direction == Direction.EAST || direction == Direction.WEST) {
+            level.addParticle(ParticleTypes.SMOKE, d, e + 0.95D, f + 1.0D, 0, 0.125, 0);
+        } else if (direction == Direction.EAST) {
             level.addParticle(ParticleTypes.SMOKE, d, e + 0.95D, f + 1.0D, 0, 0.125, 0);
             level.addParticle(ParticleTypes.SMOKE, d, e + 0.95D, f - 1.0D, 0, 0.125, 0);
+            level.addParticle(ParticleTypes.SMOKE, d - 1.0D, e + 0.95D, f, 0, 0.125, 0);
+        } else if(direction == Direction.SOUTH) {
+            level.addParticle(ParticleTypes.SMOKE, d - 1.0D, e + 0.95D, f, 0, 0.125, 0);
+            level.addParticle(ParticleTypes.SMOKE, d + 1.0D, e + 0.95D, f, 0, 0.125, 0);
+            level.addParticle(ParticleTypes.SMOKE, d, e + 0.95D, f - 1.0D, 0, 0.125, 0);
+        }else if (direction == Direction.WEST) {
+            level.addParticle(ParticleTypes.SMOKE, d, e + 0.95D, f + 1.0D, 0, 0.125, 0);
+            level.addParticle(ParticleTypes.SMOKE, d, e + 0.95D, f - 1.0D, 0, 0.125, 0);
+            level.addParticle(ParticleTypes.SMOKE, d + 1.0D, e + 0.95D, f, 0, 0.125, 0);
         }
     }
 

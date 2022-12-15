@@ -25,7 +25,7 @@ public class AdvCondenserMenu extends AbstractContainerMenu {
 
     public AdvCondenserMenu(int i, AdvCondenserBlockEntity blockEntity, Inventory inventory, Container container, ContainerData containerData) {
         super(ModMenuTypes.ADV_CONDENSER_MENU_TYPE, i);
-        checkContainerSize(container, 5);
+        checkContainerSize(container, 6);
         this.container = container;
         container.startOpen(inventory.player);
         this.containerData = containerData;
