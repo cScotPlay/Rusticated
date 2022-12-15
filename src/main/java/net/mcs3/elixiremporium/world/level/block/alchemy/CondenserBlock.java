@@ -162,10 +162,12 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
                 if (state.getValue(BOTTOM) && blockEntity.getBlockState().getBlock() instanceof CondenserBlock) {
                     if (player.getMainHandItem().is(Items.WATER_BUCKET) && !((CondenserBlockEntity) level.getBlockEntity(pos)).atCapacity(blockEntity)) {
                         ((CondenserBlockEntity) level.getBlockEntity(pos)).onPlayerAddFluid();
+                        level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.0f);
                         player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.BUCKET)));
                     } else {
                         if (player.getMainHandItem().is(Items.BUCKET) && blockEntity.canPullFluid(blockEntity)) {
                             ((CondenserBlockEntity) level.getBlockEntity(pos)).onPlayerRemoveFluid(blockEntity);
+                            level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
                             player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.WATER_BUCKET)));
                         } else {
                             player.openMenu(blockEntity);
@@ -175,10 +177,12 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
                 } else if (!state.getValue(BOTTOM) && level.getBlockState(pos).getBlock() instanceof CondenserBlock) {
                     if (player.getMainHandItem().is(Items.WATER_BUCKET) && !((CondenserBlockEntity) level.getBlockEntity(pos.below())).atCapacity(blockEntityBelow)) {
                         ((CondenserBlockEntity) level.getBlockEntity(pos.below())).onPlayerAddFluid();
+                        level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.0f);
                         player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.BUCKET)));
                     } else {
                         if (player.getMainHandItem().is(Items.BUCKET) && blockEntityBelow.canPullFluid(blockEntityBelow)) {
                             ((CondenserBlockEntity) level.getBlockEntity(pos.below())).onPlayerRemoveFluid(blockEntityBelow);
+                            level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
                             player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.WATER_BUCKET)));
                         } else {
                             player.openMenu(blockEntityBelow);
