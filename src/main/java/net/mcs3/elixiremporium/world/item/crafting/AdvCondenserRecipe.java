@@ -123,7 +123,6 @@ public class AdvCondenserRecipe implements Recipe<Container> {
             JsonArray ingredients = GsonHelper.getAsJsonArray(jsonObject, "ingredient");
 
             int arraySize = GsonHelper.getAsJsonArray(jsonObject, "ingredient").size();
-            ElixirEmporium.LOGGER.info(arraySize);
             NonNullList<Ingredient> inputs = NonNullList.withSize(3, Ingredient.EMPTY);  //set size number to amount of input items
 
             if(arraySize == 2)

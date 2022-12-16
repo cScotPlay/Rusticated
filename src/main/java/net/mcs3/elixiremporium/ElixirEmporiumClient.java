@@ -5,7 +5,8 @@ import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
-import net.mcs3.elixiremporium.client.ModColorProviders;
+import net.mcs3.elixiremporium.client.color.FluidColorRegistry;
+import net.mcs3.elixiremporium.client.color.ModColorProviders;
 import net.mcs3.elixiremporium.client.screens.inventory.AdvCondenserScreen;
 import net.mcs3.elixiremporium.client.screens.inventory.CondenserScreen;
 import net.mcs3.elixiremporium.client.screens.renderer.entity.ModEntityRenderers;
@@ -35,6 +36,7 @@ public class ElixirEmporiumClient implements ClientModInitializer
         registerRenderTypes();
         ModColorProviders.registerBlockColorProviders();
         ModColorProviders.registerItemColorProviders();
+        FluidColorRegistry.registerClientFluids();
         ModNetworkSync.registerS2CPackets();
         registerScreenTypes();
         setupTooltips();

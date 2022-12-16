@@ -12,6 +12,7 @@ import net.mcs3.elixiremporium.world.level.block.RopeBlock;
 import net.mcs3.elixiremporium.world.level.block.TiedStakeBlock;
 import net.mcs3.elixiremporium.world.level.block.crop.GrapeLeavesBlock;
 import net.mcs3.elixiremporium.world.level.block.crop.GrapeStemBlock;
+import net.mcs3.elixiremporium.world.level.material.ModFluids;
 import net.minecraft.client.model.Model;
 import net.minecraft.core.Direction;
 import net.minecraft.data.models.BlockModelGenerators;
@@ -417,6 +418,8 @@ public class BlockStateGenerator extends FabricModelProvider
         createAdvCondenser(blockStateModelGenerator, ModBlocks.ADV_CONDENSER);
         createAdvRetorts(blockStateModelGenerator, ModBlocks.ADV_RETORT);
 
+        blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.OLIVE_OIL_BLOCK, Blocks.WATER);
+
 
     }
 
@@ -440,6 +443,9 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItems.CORE_ROOT, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.GINSENG, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.MARSHMALLOW, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(ModFluids.OLIVE_OIL_BUCKET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OLIVE_OIL_BOTTLE, ModelTemplates.FLAT_ITEM);
     }
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)

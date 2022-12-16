@@ -3,16 +3,14 @@ package net.mcs3.elixiremporium.init;
 import com.terraformersmc.modmenu.util.mod.Mod;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.world.food.ModFoodProperties;
+import net.mcs3.elixiremporium.world.item.FluidBottleItem;
 import net.mcs3.elixiremporium.world.item.LiquidBarrelItem;
 import net.mcs3.elixiremporium.world.item.ModBookItem;
 import net.mcs3.elixiremporium.world.item.ModItem;
 import net.mcs3.elixiremporium.world.item.alchmey.ElixirItem;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.world.item.BlockItem;
-import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemNameBlockItem;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.block.Block;
 import org.lwjgl.system.CallbackI;
 
@@ -51,6 +49,8 @@ public class ModItems
 
     public static Item ELIXIR = new ElixirItem();
 
+    public static Item OLIVE_OIL_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.OLIVE_OIL).stacksTo(16));
+
 
     public static void init()
     {
@@ -81,6 +81,7 @@ public class ModItems
         register("marshmallow", MARSHMALLOW); // Advance
 
         register("elixir", ELIXIR);
+        register("olive_oil_bottle", OLIVE_OIL_BOTTLE);
 
     }
 

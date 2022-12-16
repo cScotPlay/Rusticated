@@ -1,4 +1,4 @@
-package net.mcs3.elixiremporium.client;
+package net.mcs3.elixiremporium.client.color;
 
 import net.fabricmc.fabric.api.client.rendering.v1.ColorProviderRegistry;
 import net.mcs3.elixiremporium.init.ModBlocks;
@@ -282,7 +282,6 @@ public class ModColorProviders
         ColorProviderRegistry.ITEM.register((stack, tintIndex) -> ColorProviderRegistry.BLOCK.get(((BlockItem)stack.getItem()).getBlock()).getColor(((BlockItem)stack.getItem()).getBlock().defaultBlockState(), null, null, tintIndex), ModBlocks.GRAPE_LEAVES);
 
         ColorProviderRegistry.ITEM.register((itemStack, i) -> i > 0 ? -1 : PotionUtils.getColor(itemStack), ModItems.ELIXIR);
-
 
     }
 }

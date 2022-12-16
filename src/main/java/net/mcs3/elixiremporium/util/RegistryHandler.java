@@ -4,6 +4,7 @@ import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.world.level.block.entity.ModBlockEntityTypes;
+import net.mcs3.elixiremporium.world.level.material.ModFluids;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.level.block.Block;
@@ -32,5 +33,9 @@ public class RegistryHandler
     public static void onBlockEntityRegistry()
     {
         ModBlockEntityTypes.init();
+    }
+
+    public static void onFluidRegistry() {
+        ModFluids.init();
     }
 }

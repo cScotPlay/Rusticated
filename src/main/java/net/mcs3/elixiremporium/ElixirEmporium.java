@@ -46,6 +46,7 @@ public class ElixirEmporium implements ModInitializer {
 		RegistryHandler.onItemRegistry();
 
 		RegistryHandler.onBlockEntityRegistry();
+		RegistryHandler.onFluidRegistry();
 
 		ModTreeFeatures.init();
 
