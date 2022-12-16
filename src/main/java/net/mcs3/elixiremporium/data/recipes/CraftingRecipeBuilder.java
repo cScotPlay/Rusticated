@@ -403,8 +403,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CHAMOMILE, Items.GLOW_BERRIES, ModItems.MARSHMALLOW)), Elixirs.LONG_INVISIBILITY_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_INVISIBILITY_ELIXIR.getName("elixir_adv_long_")));
 
         AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES)), Elixirs.IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.IRONSKIN_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES, ModItems.MARSHMALLOW)), Elixirs.LONG_IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_IRONSKIN_ELIXIR.getName("elixir_adv_long_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES, ModItems.HORSETAIL)), Elixirs.STRONG_IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.STRONG_IRONSKIN_ELIXIR.getName("elixir_adv_strong_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES, ModItems.MARSHMALLOW)), Elixirs.LONG_IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_IRONSKIN_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES, ModItems.HORSETAIL)), Elixirs.STRONG_IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.STRONG_IRONSKIN_ELIXIR.getName("elixir_adv_")));
 
     }
 

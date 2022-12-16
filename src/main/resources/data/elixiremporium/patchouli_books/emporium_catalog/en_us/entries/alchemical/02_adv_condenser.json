@@ -1,17 +1,26 @@
 {
-  "name": "Advanced Alchemical Condenser",
-  "icon": "elixiremporium:retort",
+  "name": "Advanced Condenser",
+  "icon": "elixiremporium:adv_condenser",
   "category": "elixiremporium:alchemical_category",
   "pages": [
     {
-      "type": "spotlight",
-      "text": "Elixirs are magical concoctions created through alchemy in condensers. They are similar to potions. However, they can be stacked up to sixteen and not be crafted with arrows or made into a splash or lingering variants.",
-      "item": "elixiremporium:elixir"
+      "type": "image",
+      "title": "Advanced Condenser",
+      "images": [
+        "elixiremporium:textures/gui/catalog/advcondenser.png"
+      ],
+      "border": "true",
+      "text": "Advanced Condensers are similar to the basic condenser, with a few key differences."
     },
     {
-      "type": "spotlight",
-      "text": "Alchemy is the process of brewing elixirs in Condensers. Alchemy is done in condensers, requiring attached Retorts. Creating elixirs involves water, a glass bottle, ingredients (and optionally modifiers), and fuel to operate the condenser. Any furnace fuel should work.",
-      "item": "elixiremporium:condenser"
+      "type": "crafting",
+      "recipe": "elixiremporium:adv_condenser",
+      "text": "The Advanced Condensers can utilize three ingredients to distill into an elixir. As with the basic condenser, water is a requirement for distilling elixirs. The advanced versions also process ingredients at a faster rate."
+    },
+    {
+      "type": "crafting",
+      "recipe": "elixiremporium:adv_retort",
+      "text": "The Advanced Condensers require Advanced Retorts, instead of regular retorts, and they need three attached to operate. The Advanced Retorts link to the bottom half of the advanced condenser on the left, right, and back sides relative to the direction it is facing."
     }
   ],
   "sortnum": 2

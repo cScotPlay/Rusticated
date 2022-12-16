@@ -53,7 +53,7 @@ public class AdvCondenserBlockEntity extends BlockEntity implements ExtendedScre
 
     protected final ContainerData dataAccess;
     private int progress = 0;
-    private int maxProgress = 200;
+    private int maxProgress = 120;
     int fuelTime;
     private int maxFuelTime = 0;
 

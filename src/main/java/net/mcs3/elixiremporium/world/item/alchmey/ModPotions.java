@@ -26,7 +26,7 @@ public class ModPotions {
 
     public static void registerPotions() {
         IRON_SKIN = register("ironskin", new Potion(new MobEffectInstance(ModEffects.IRON_SKIN_EFFECT, 3600)));
-        LONG_IRON_SKIN = register("longironskin", new Potion(new MobEffectInstance(ModEffects.IRON_SKIN_EFFECT, 9600)));
-        STRONG_IRON_SKIN = register("strongironskin", new Potion(new MobEffectInstance(ModEffects.IRON_SKIN_EFFECT, 1800, 1)));
+        LONG_IRON_SKIN = register("long_ironskin", new Potion(new MobEffectInstance(ModEffects.IRON_SKIN_EFFECT, 9600)));
+        STRONG_IRON_SKIN = register("strong_ironskin", new Potion(new MobEffectInstance(ModEffects.IRON_SKIN_EFFECT, 1800, 1)));
     }
 }

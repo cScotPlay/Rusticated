@@ -1,0 +1,157 @@
+{
+  "name": "Advanced Elixir Recipes",
+  "icon": "elixiremporium:elixir",
+  "category": "elixiremporium:alchemical_category",
+  "pages": [
+    {
+      "type": "elixiremporium:text_template",
+      "heading": "Basic Elixirs",
+      "text": "The Advanced Elixirs are stronger and have longer duration than their basis counterparts.$(br)$(l)Elixir Types:$()$(br)Elixir of Healing$(br)Elixir of Regeneration$(br)Elixir of Night Vision$(br)Elixir of Swiftness$(br)Elixir of Fire Resistance$(br)Elixir of Strength$(br)Elixir of Water Breathing$(br)Elixir of Slow Falling$(br)Elixir of Invisibility$(br)Elixir of Iron Skin"
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Healing",
+      "recipes": "elixiremporium:elixir_adv_healing",
+      "text": "Restores health by 2x ♥♥"
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Healing",
+      "recipes": "elixiremporium:elixir_adv_strong_healing",
+      "text": "Restores health by 4x ♥♥♥♥."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Regeneration",
+      "recipes": "elixiremporium:elixir_adv_regeneration",
+      "text": "Restores health by half ♥ every 2.5 seconds for 45 seconds."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Regeneration",
+      "recipes": "elixiremporium:elixir_adv_long_regeneration",
+      "text": "Restores health by half ♥ every 2.5 seconds for 2 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Regeneration",
+      "recipes": "elixiremporium:elixir_adv_strong_regeneration",
+      "text": "Restores health by half ♥ every 1.2 seconds for 22 seconds."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Night Vision",
+      "recipes": "elixiremporium:elixir_adv_night_vision",
+      "text": "Makes everything appear to be at the maximum light level, including underwater areas for 3 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Night Vision",
+      "recipes": "elixiremporium:elixir_adv_long_night_vision",
+      "text": "Makes everything appear to be at the maximum light level, including underwater areas for 8 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Swiftness",
+      "recipes": "elixiremporium:elixir_adv_swiftness",
+      "text": "Increases movement speed, sprinting speed, and jumping length by 20% for 3 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Swiftness",
+      "recipes": "elixiremporium:elixir_adv_long_swiftness",
+      "text": "Increases movement speed, sprinting speed, and jumping length by 20% for 8 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Swiftness",
+      "recipes": "elixiremporium:elixir_adv_strong_swiftness",
+      "text": "Increases movement speed, sprinting speed, and jumping length by 40% for 1.5 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Fire Resistance",
+      "recipes": "elixiremporium:elixir_adv_fire_resistance",
+      "text": "Gives immunity to damage from fire, lava, magma blocks, campfires, and blazes' ranged attacks for 3 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Fire Resistance",
+      "recipes": "elixiremporium:elixir_adv_long_fire_resistance",
+      "text": "Gives immunity to damage from fire, lava, magma blocks, campfires, and blazes' ranged attacks for 8 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Strength",
+      "recipes": "elixiremporium:elixir_adv_strength",
+      "text": "Increases player's melee attack damage by 3x ♥ + half ♥ for 3 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Strength",
+      "recipes": "elixiremporium:elixir_adv_long_strength",
+      "text": "Increases player's melee attack damage by 3x ♥ + half ♥ for 8 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Strength",
+      "recipes": "elixiremporium:elixir_adv_strong_strength",
+      "text": "Increases player's melee attack damage by 3x ♥♥♥ for 1.5 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Water Breathing",
+      "recipes": "elixiremporium:elixir_adv_water_breathing",
+      "text": "Prevents the oxygen bar from depleting when underwater for 3 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Water Breathing",
+      "recipes": "elixiremporium:elixir_adv_long_water_breathing",
+      "text": "Prevents the oxygen bar from depleting when underwater for 8 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Slow Falling",
+      "recipes": "elixiremporium:elixir_adv_slow_falling",
+      "text": "Causes the player to fall at a slower rate and not take any damage when hitting the ground 1.5 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Slow Falling",
+      "recipes": "elixiremporium:elixir_adv_long_slow_falling",
+      "text": "Causes the player to fall at a slower rate and not take any damage when hitting the ground 3 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Invisibility",
+      "recipes": "elixiremporium:elixir_adv_invisibility",
+      "text": "Renders the player invisible. Equipped and wielded items are still visible for 3 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Invisibility",
+      "recipes": "elixiremporium:elixir_adv_long_invisibility",
+      "text": "Renders the player invisible. Equipped and wielded items are still visible for 8 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Iron Skin",
+      "recipes": "elixiremporium:elixir_adv_ironskin",
+      "text": "Adds +3 Armor and +2 Armor Toughness to the player while providing a visual overlay on the skin for 3 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Iron Skin",
+      "recipes": "elixiremporium:elixir_adv_long_ironskin",
+      "text": "Adds +3 Armor and +2 Armor Toughness to the player while providing a visual overlay on the skin for 8 minutes."
+    },
+    {
+      "type": "elixiremporium:adv_condenser_template",
+      "heading": "Elixir of Iron Skin",
+      "recipes": "elixiremporium:elixir_adv_strong_ironskin",
+      "text": "Adds +6 Armor and +4 Armor Toughness to the player while providing a visual overlay on the skin for 90 seconds."
+    }
+  ],
+  "sortnum": 4
+}
