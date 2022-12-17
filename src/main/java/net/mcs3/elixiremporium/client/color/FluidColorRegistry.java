@@ -22,9 +22,16 @@ public class FluidColorRegistry {
                         new ResourceLocation("minecraft:block/water_flow"),
                         0XA7C4CB56
                 ));
+        FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.SOURCE_IRONBERRY_JUICE, ModFluids.FLOWING_IRONBERRY_JUICE,
+                new SimpleFluidRenderHandler(
+                        new ResourceLocation("minecraft:block/water_still"),
+                        new ResourceLocation("minecraft:block/water_flow"),
+                        0XA84C4C4C
+                ));
     }
 
     private static void registerRenderTypes() {
         BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(), ModFluids.SOURCE_OLIVE_OIL, ModFluids.FLOWING_OLIVE_OIL);
+        BlockRenderLayerMap.INSTANCE.putFluids(RenderType.translucent(), ModFluids.SOURCE_IRONBERRY_JUICE, ModFluids.FLOWING_IRONBERRY_JUICE);
     }
 }

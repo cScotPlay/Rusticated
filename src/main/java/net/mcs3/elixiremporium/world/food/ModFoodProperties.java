@@ -23,4 +23,12 @@ public class ModFoodProperties
     public static final FoodProperties MARSHMALLOW = new FoodProperties.Builder().nutrition(3).saturationMod(0.3F).build();
 
     public static final FoodProperties OLIVE_OIL = new FoodProperties.Builder().nutrition(1).saturationMod(0.4F).effect(new MobEffectInstance(MobEffects.CONFUSION, 600, 1), 0.95F).build();
+    public static final FoodProperties IRONBERRY_JUICE = new FoodProperties.Builder().nutrition(2).saturationMod(0.8F)
+            .effect(new MobEffectInstance(MobEffects.CONFUSION, 600, 15), 0.95F)
+            .effect(new MobEffectInstance(MobEffects.FIRE_RESISTANCE, 600, 15), 0.95F)
+            .effect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 600, 15), 0.95F)
+            .effect(new MobEffectInstance(MobEffects.DIG_SLOWDOWN, 600, 15), 0.95F)
+            .effect(new MobEffectInstance(MobEffects.WEAKNESS, 600, 15), 0.95F)
+            .effect(new MobEffectInstance(MobEffects.JUMP, 600, 250), 0.95F)
+            .alwaysEat().build();
 }

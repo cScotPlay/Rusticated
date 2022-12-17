@@ -26,11 +26,8 @@ public class FluidBottleItem extends Item {
         if (livingEntity instanceof ServerPlayer) {
             ServerPlayer serverPlayer = (ServerPlayer)livingEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
-//            serverPlayer.awardStat(Stats.ITEM_USED.get(this));
         }
-//        if (!level.isClientSide) {
-//            livingEntity.removeEffect(MobEffects.POISON);
-//        }
+
         if (stack.isEmpty()) {
             return new ItemStack(Items.GLASS_BOTTLE);
         }
