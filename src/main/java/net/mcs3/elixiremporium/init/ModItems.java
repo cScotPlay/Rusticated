@@ -51,6 +51,7 @@ public class ModItems
 
     public static Item OLIVE_OIL_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.OLIVE_OIL).stacksTo(16));
     public static Item IRONBERRY_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.IRONBERRY_JUICE).stacksTo(16));
+    public static Item WILDBERRY_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.WILDBERRY_JUICE).stacksTo(16));
 
 
     public static void init()
@@ -84,6 +85,7 @@ public class ModItems
         register("elixir", ELIXIR);
         register("olive_oil_bottle", OLIVE_OIL_BOTTLE);
         register("ironberry_juice_bottle", IRONBERRY_JUICE_BOTTLE);
+        register("wildberry_juice_bottle", WILDBERRY_JUICE_BOTTLE);
 
     }
 

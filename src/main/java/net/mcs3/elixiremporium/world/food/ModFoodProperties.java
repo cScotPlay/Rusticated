@@ -31,4 +31,5 @@ public class ModFoodProperties
             .effect(new MobEffectInstance(MobEffects.WEAKNESS, 600, 15), 0.95F)
             .effect(new MobEffectInstance(MobEffects.JUMP, 600, 250), 0.95F)
             .alwaysEat().build();
+    public static final FoodProperties WILDBERRY_JUICE = new FoodProperties.Builder().nutrition(1).saturationMod(1F).effect(new MobEffectInstance(MobEffects.REGENERATION, 75, 1), 0.95F).build();
 }
