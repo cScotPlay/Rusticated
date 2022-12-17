@@ -423,6 +423,7 @@ public class BlockStateGenerator extends FabricModelProvider
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.WILDBERRY_JUICE_BLOCK, Blocks.WATER);
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.GRAPE_JUICE_BLOCK, Blocks.WATER);
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.APPLE_JUICE_BLOCK, Blocks.WATER);
+        blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.ALE_WORT_BLOCK, Blocks.WATER);
 
 
     }
@@ -458,6 +459,8 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItems.GRAPE_JUICE_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModFluids.APPLE_JUICE_BUCKET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.APPLE_JUICE_BOTTLE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModFluids.ALE_WORT_BUCKET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.ALE_WORT_BOTTLE, ModelTemplates.FLAT_ITEM);
     }
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)

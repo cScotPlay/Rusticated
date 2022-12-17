@@ -54,6 +54,7 @@ public class ModItems
     public static Item WILDBERRY_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.WILDBERRY_JUICE).stacksTo(16));
     public static Item GRAPE_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.GRAPE_JUICE).stacksTo(16));
     public static Item APPLE_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.APPLE_JUICE).stacksTo(16));
+    public static Item ALE_WORT_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.ALE_WORT).stacksTo(16));
 
 
     public static void init()
@@ -90,6 +91,7 @@ public class ModItems
         register("wildberry_juice_bottle", WILDBERRY_JUICE_BOTTLE);
         register("grape_juice_bottle", GRAPE_JUICE_BOTTLE);
         register("apple_juice_bottle", APPLE_JUICE_BOTTLE);
+        register("ale_wort_bottle", ALE_WORT_BOTTLE);
 
     }
 
