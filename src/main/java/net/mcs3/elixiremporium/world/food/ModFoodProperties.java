@@ -33,4 +33,5 @@ public class ModFoodProperties
             .alwaysEat().build();
     public static final FoodProperties WILDBERRY_JUICE = new FoodProperties.Builder().nutrition(1).saturationMod(1F).effect(new MobEffectInstance(MobEffects.REGENERATION, 75, 1), 0.95F).build();
     public static final FoodProperties GRAPE_JUICE = new FoodProperties.Builder().nutrition(1).saturationMod(0.9F).build();
+    public static final FoodProperties APPLE_JUICE = new FoodProperties.Builder().nutrition(1).saturationMod(1.2F).build();
 }
