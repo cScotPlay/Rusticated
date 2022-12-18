@@ -49,6 +49,8 @@ public class ModItems
 
     public static Item ELIXIR = new ElixirItem();
 
+    public static Item UNFIRED_EVAPORATING_BASIN = new ModItem(new Item.Properties().tab(AG_TAB));
+
     public static Item OLIVE_OIL_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.OLIVE_OIL).stacksTo(16));
     public static Item IRONBERRY_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.IRONBERRY_JUICE).stacksTo(16));
     public static Item WILDBERRY_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.WILDBERRY_JUICE).stacksTo(16));
@@ -56,14 +58,16 @@ public class ModItems
     public static Item APPLE_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.APPLE_JUICE).stacksTo(16));
     public static Item ALE_WORT_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.ALE_WORT).stacksTo(16));
 
-    //public static Item UNFIRED_EVAPORATING_BASIN = new ModItem(new Item.Properties().tab(AG_TAB));
+
     public static Item TINY_IRON_DUST = new ModItem(new Item.Properties().tab(AG_TAB));
 
 
     public static void init()
     {
         register("catalog", CATALOG);
+        register("unfired_evaporating_basin", UNFIRED_EVAPORATING_BASIN);
         register("iron_berries", IRON_BERRIES);
+        register("tiny_iron_dust", TINY_IRON_DUST);
         register("olives", OLIVES);
         register("grape_seeds", GRAPE_SEEDS);
         register("grapes", GRAPES);
@@ -89,13 +93,15 @@ public class ModItems
         register("marshmallow", MARSHMALLOW); // Advance
 
         register("elixir", ELIXIR);
+
+
         register("olive_oil_bottle", OLIVE_OIL_BOTTLE);
         register("ironberry_juice_bottle", IRONBERRY_JUICE_BOTTLE);
         register("wildberry_juice_bottle", WILDBERRY_JUICE_BOTTLE);
         register("grape_juice_bottle", GRAPE_JUICE_BOTTLE);
         register("apple_juice_bottle", APPLE_JUICE_BOTTLE);
         register("ale_wort_bottle", ALE_WORT_BOTTLE);
-        register("tiny_iron_dust", TINY_IRON_DUST);
+
 
     }
 

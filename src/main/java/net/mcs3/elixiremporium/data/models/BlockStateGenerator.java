@@ -20,6 +20,7 @@ import net.minecraft.data.models.ItemModelGenerators;
 import net.minecraft.data.models.blockstates.*;
 import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -427,6 +428,7 @@ public class BlockStateGenerator extends FabricModelProvider
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.HONEY_FLUID_BLOCK, Blocks.WATER);
 
         createEvaporatingBasin(blockStateModelGenerator, ModBlocks.EVAPORATING_BASIN);
+        createUnfiredEvaporatingBasin(blockStateModelGenerator, ModItems.UNFIRED_EVAPORATING_BASIN);
 
 
     }
@@ -467,6 +469,7 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModFluids.HONEY_BUCKET, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(ModItems.TINY_IRON_DUST, ModelTemplates.FLAT_ITEM);
+
     }
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)
@@ -909,18 +912,14 @@ public class BlockStateGenerator extends FabricModelProvider
 
     public final void createEvaporatingBasin(BlockModelGenerators modelGenerators, Block basinBlock) {
         ResourceLocation basinModel = new ResourceLocation(MOD_ID, "block/evaporating_basin");
-//        ResourceLocation condenserOnModel = new ResourceLocation(MOD_ID, "block/adv_condenser_base_on");
-//        ResourceLocation condenserTopModel = new ResourceLocation(MOD_ID, "block/adv_condenser_top");
-//        ResourceLocation condenserTopOnModel = new ResourceLocation(MOD_ID, "block/adv_condenser_top_on");
-//        ResourceLocation condenserItemModel = new ResourceLocation(MOD_ID, "item/adv_condenser_item");
-//        modelGenerators.blockStateOutput.accept(condenserModel);
-//        modelGenerators.delegateItemModel(furnaceBlock.asItem(), condenserItemModel);
-//
-//        TextureMapping texture = TextureMapping.cube(Blocks.SPRUCE_PLANKS);
-//        ResourceLocation resource = model.create(basinBlock, texture, modelGenerators.modelOutput);
 
         modelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(basinBlock, basinModel));
         modelGenerators.delegateItemModel(basinBlock, basinModel);
+    }
+
+    public final void createUnfiredEvaporatingBasin(BlockModelGenerators modelGenerators, Item evaporationItem) {
+        ResourceLocation condenserItemModel = new ResourceLocation(MOD_ID, "item/unfired_evaporating_basin_base");
+        modelGenerators.delegateItemModel(evaporationItem, condenserItemModel);
     }
 
 
