@@ -426,6 +426,8 @@ public class BlockStateGenerator extends FabricModelProvider
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.ALE_WORT_BLOCK, Blocks.WATER);
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.HONEY_FLUID_BLOCK, Blocks.WATER);
 
+        createEvaporatingBasin(blockStateModelGenerator, ModBlocks.EVAPORATING_BASIN);
+
 
     }
 
@@ -463,6 +465,8 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModFluids.ALE_WORT_BUCKET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.ALE_WORT_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModFluids.HONEY_BUCKET, ModelTemplates.FLAT_ITEM);
+
+        itemModelGenerator.generateFlatItem(ModItems.TINY_IRON_DUST, ModelTemplates.FLAT_ITEM);
     }
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)
@@ -901,6 +905,22 @@ public class BlockStateGenerator extends FabricModelProvider
                 .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, false).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270))
                 .with((Condition)Condition.condition().term(BlockStateProperties.BOTTOM, false).term(BlockStateProperties.LIT, true).term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL, topLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270));
 
+    }
+
+    public final void createEvaporatingBasin(BlockModelGenerators modelGenerators, Block basinBlock) {
+        ResourceLocation basinModel = new ResourceLocation(MOD_ID, "block/evaporating_basin");
+//        ResourceLocation condenserOnModel = new ResourceLocation(MOD_ID, "block/adv_condenser_base_on");
+//        ResourceLocation condenserTopModel = new ResourceLocation(MOD_ID, "block/adv_condenser_top");
+//        ResourceLocation condenserTopOnModel = new ResourceLocation(MOD_ID, "block/adv_condenser_top_on");
+//        ResourceLocation condenserItemModel = new ResourceLocation(MOD_ID, "item/adv_condenser_item");
+//        modelGenerators.blockStateOutput.accept(condenserModel);
+//        modelGenerators.delegateItemModel(furnaceBlock.asItem(), condenserItemModel);
+//
+//        TextureMapping texture = TextureMapping.cube(Blocks.SPRUCE_PLANKS);
+//        ResourceLocation resource = model.create(basinBlock, texture, modelGenerators.modelOutput);
+
+        modelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(basinBlock, basinModel));
+        modelGenerators.delegateItemModel(basinBlock, basinModel);
     }
 
 

@@ -4,7 +4,7 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.init.ModItems;
-import net.mcs3.elixiremporium.tags.ModItemTags;
+import net.mcs3.elixiremporium.data.tags.ModItemTags;
 import net.mcs3.elixiremporium.world.item.alchmey.Elixirs;
 import net.mcs3.elixiremporium.world.level.material.ModFluids;
 import net.minecraft.data.recipes.FinishedRecipe;
@@ -16,7 +16,6 @@ import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.alchemy.Potions;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
@@ -408,6 +407,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES, ModItems.HORSETAIL)), Elixirs.STRONG_IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.STRONG_IRONSKIN_ELIXIR.getName("elixir_adv_")));
 
         ShapedRecipeBuilder.shaped(ModFluids.ALE_WORT_BUCKET).define('#', Items.BREAD).define('^', Items.SUGAR).define('@', Items.WATER_BUCKET).pattern("#^").pattern("@ ").unlockedBy("has_sugar", has(Items.SUGAR)).save(exporter);
+
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.TINY_IRON_DUST), Items.IRON_NUGGET, 0.0F, 25).unlockedBy("has_tiny_iron", has(ModItems.TINY_IRON_DUST)).save(exporter);
 
     }
 

@@ -339,6 +339,8 @@
   "block.elixiremporium.adv_condenser": "Advanced Alchemical Condenser",
   "block.elixiremporium.adv_retort": "Advanced Condenser Retort",
 
+  "block.elixiremporium.evaporating_basin": "Evaporating Basin",
+
   "item.elixiremporium.catalog": "Emporium Catalog",
   "item.elixiremporium.iron_berries": "Iron Berries",
   "item.elixiremporium.olives": "Olives",
@@ -397,6 +399,7 @@
   "item.elixiremporium.ale_wort_bucket": "Ale Wort Bucket",
   "item.elixiremporium.ale_wort_bottle": "Bottle of Ale Wort",
   "item.elixiremporium.honey_bucket": "Honey Bucket",
+  "item.elixiremporium.tiny_iron_dust": "Tiny Iron Dust",
 
 
   "effect.elixiremporium.ironskin": "Iron Skin",

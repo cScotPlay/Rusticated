@@ -56,6 +56,9 @@ public class ModItems
     public static Item APPLE_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.APPLE_JUICE).stacksTo(16));
     public static Item ALE_WORT_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.ALE_WORT).stacksTo(16));
 
+    //public static Item UNFIRED_EVAPORATING_BASIN = new ModItem(new Item.Properties().tab(AG_TAB));
+    public static Item TINY_IRON_DUST = new ModItem(new Item.Properties().tab(AG_TAB));
+
 
     public static void init()
     {
@@ -92,6 +95,7 @@ public class ModItems
         register("grape_juice_bottle", GRAPE_JUICE_BOTTLE);
         register("apple_juice_bottle", APPLE_JUICE_BOTTLE);
         register("ale_wort_bottle", ALE_WORT_BOTTLE);
+        register("tiny_iron_dust", TINY_IRON_DUST);
 
     }
 
