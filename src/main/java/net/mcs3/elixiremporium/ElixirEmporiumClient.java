@@ -9,6 +9,7 @@ import net.mcs3.elixiremporium.client.color.FluidColorRegistry;
 import net.mcs3.elixiremporium.client.color.ModColorProviders;
 import net.mcs3.elixiremporium.client.screens.inventory.AdvCondenserScreen;
 import net.mcs3.elixiremporium.client.screens.inventory.CondenserScreen;
+import net.mcs3.elixiremporium.client.screens.renderer.EvaporationBasinRenderer;
 import net.mcs3.elixiremporium.client.screens.renderer.entity.ModEntityRenderers;
 import net.mcs3.elixiremporium.init.ModBlocks;
 import net.mcs3.elixiremporium.network.ModNetworkSync;
@@ -93,8 +94,11 @@ public class ElixirEmporiumClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ADV_CONDENSER, RenderType.cutoutMipped());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ADV_RETORT, RenderType.cutoutMipped());
 
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EVAPORATING_BASIN, RenderType.cutout());
+
 
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, LiquidBarrelRenderer::new);
+        BlockEntityRendererRegistry.register(ModBlockEntityTypes.EVAPORATING_BASIN_CONTAINER, EvaporationBasinRenderer::new);
 
         PotRenderer.register(ModBlockEntityTypes.POT_CONTAINER);
         GlazedPotRenderer.register(ModBlockEntityTypes.GLAZED_POT_0_CONTAINER);

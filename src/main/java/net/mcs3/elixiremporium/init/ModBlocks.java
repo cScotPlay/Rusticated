@@ -409,6 +409,11 @@ public class ModBlocks
     public static final Block ADV_CONDENSER = new AdvCondenserBlock();
     public static final Block ADV_RETORT = new AdvRetortBlock();
 
+    //////////////////////////////////////////////////////////
+    ///                  Brewing Blocks                    ///
+    //////////////////////////////////////////////////////////
+    public static final Block EVAPORATING_BASIN = new EvaporatingBasinBlock();
+
 
 
 
@@ -767,6 +772,11 @@ public class ModBlocks
         register("retort", RETORT, HERB_TAB);
         register("adv_condenser", ADV_CONDENSER, HERB_TAB);
         register("adv_retort", ADV_RETORT, HERB_TAB);
+
+        //////////////////////////////////////////////////////////
+        ///               Brewing Blocks Registry              ///
+        //////////////////////////////////////////////////////////
+        register("evaporating_basin", EVAPORATING_BASIN, AGRICULTURAL_TAB);
 
 
         initOxidizables();

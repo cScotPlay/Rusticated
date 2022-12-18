@@ -1,12 +1,9 @@
 package net.mcs3.elixiremporium.world.item.alchmey;
 
 import net.mcs3.elixiremporium.ElixirEmporium;
-import net.mcs3.elixiremporium.tags.ModItemTags;
 import net.mcs3.elixiremporium.util.NbtUtility;
 import net.minecraft.advancements.CriteriaTriggers;
-import net.minecraft.core.Holder;
 import net.minecraft.core.NonNullList;
-import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.stats.Stats;
