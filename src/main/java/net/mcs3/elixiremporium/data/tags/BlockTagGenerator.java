@@ -1,11 +1,9 @@
 package net.mcs3.elixiremporium.data.tags;
 
-import com.terraformersmc.modmenu.util.mod.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModBlocks;
-import net.mcs3.elixiremporium.tags.ModBlockTags;
 import net.mcs3.elixiremporium.world.level.block.*;
 import net.mcs3.elixiremporium.world.level.block.crop.HerbPerennialBlock;
 import net.mcs3.elixiremporium.world.level.block.crop.ModMushroomBlock;
@@ -135,7 +133,8 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.CONDENSER,
                 ModBlocks.RETORT,
                 ModBlocks.ADV_CONDENSER,
-                ModBlocks.ADV_RETORT);
+                ModBlocks.ADV_RETORT,
+                ModBlocks.EVAPORATING_BASIN);
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(registry.stream().filter(b -> b instanceof WeatheringCopperChandelierBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));

@@ -2,8 +2,7 @@ package net.mcs3.elixiremporium.world.level.block;
 
 import net.fabricmc.fabric.api.registry.FlammableBlockRegistry;
 import net.mcs3.elixiremporium.init.ModBlocks;
-import net.mcs3.elixiremporium.tags.ModBlockTags;
-import net.minecraft.tags.BlockTags;
+import net.mcs3.elixiremporium.data.tags.ModBlockTags;
 
 public class ModFireBlock
 {
