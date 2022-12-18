@@ -1,4 +1,4 @@
-package net.mcs3.elixiremporium.tags;
+package net.mcs3.elixiremporium.data.tags;
 
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.minecraft.core.Registry;
