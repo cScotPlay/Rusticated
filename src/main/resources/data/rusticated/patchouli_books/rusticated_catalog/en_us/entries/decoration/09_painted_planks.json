@@ -1,0 +1,27 @@
+{
+  "name": "Painted Wood",
+  "icon": "rusticated:painted_planks_pink",
+  "category": "rusticated:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Now available, we have painted wood options. Planks, Slabs, and Stairs are offered in 16 different colors.",
+      "item": "rusticated:painted_planks_white,rusticated:painted_slab_white,rusticated:painted_stairs_white,rusticated:painted_planks_orange,rusticated:painted_slab_orange,rusticated:painted_stairs_orange,rusticated:painted_planks_magenta,rusticated:painted_slab_magenta,rusticated:painted_stairs_magenta,rusticated:painted_planks_light_blue,rusticated:painted_slab_light_blue,rusticated:painted_stairs_light_blue,rusticated:painted_planks_yellow,rusticated:painted_slab_yellow,rusticated:painted_stairs_yellow,rusticated:painted_planks_lime,rusticated:painted_slab_lime,rusticated:painted_stairs_lime,rusticated:painted_planks_pink,rusticated:painted_slab_pink,rusticated:painted_stairs_pink"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:painted_planks_pink"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:painted_stairs_pink",
+      "recipe2": "rusticated:painted_stairs_pink_dyed"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:painted_slab_pink",
+      "recipe2": "rusticated:painted_slab_pink_dyed"
+    }
+  ],
+  "sortnum": 9
+}

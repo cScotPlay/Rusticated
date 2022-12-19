@@ -1,0 +1,18 @@
+{
+  "name": "Chains",
+  "icon": "rusticated:chain_copper",
+  "category": "rusticated:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Chains are decorative blocks that are climbable like ladders. Chains have the ability for horizontal and vertical placement if anchored by a solid block or more chain blocks. One can extend vertical chain runs by placing additional chains on existing chains, thus allowing one to create long lines of vertical chains.",
+      "item": "rusticated:chain_gold,rusticated:chain_gold,rusticated:chain_copper,rusticated:chain_exposed_copper,rusticated:chain_weathered_copper,rusticated:chain_oxidized_copper"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:chain_copper",
+      "recipe2": "rusticated:chain_gold"
+    }
+  ],
+  "sortnum": 5
+}

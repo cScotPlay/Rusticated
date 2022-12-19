@@ -1,0 +1,17 @@
+{
+  "name": "Iron Lattice",
+  "icon": "rusticated:iron_lattice",
+  "category": "rusticated:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Lattice is a decorative block. It will connect to adjacent lattice blocks, solid blocks, and chains. Using leaves on a lattice block will give the lattice a leafy covering. Utilize shears on the lattice block to remove the leafy covering",
+      "item": "rusticated:iron_lattice"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:iron_lattice"
+    }
+  ],
+  "sortnum": 3
+}

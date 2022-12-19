@@ -1,0 +1,18 @@
+{
+  "required": true,
+  "minVersion": "0.8",
+  "package": "net.mcs3.rusticated.mixin",
+  "compatibilityLevel": "JAVA_17",
+  "mixins": [
+    "CropBlockMixin",
+    "StemBlockMixin",
+    "AttachedStemBlockMixin",
+    "SugarCaneBlockMixin"
+  ],
+  "client": [
+    "ElixirEmporiumMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

@@ -1,0 +1,36 @@
+{
+	"textures": {
+		"top_texture": "minecraft:block/spruce_log_top",
+		"post_texture": "minecraft:block/spruce_planks",
+		"knot_texture": "rusticated:block/rope",
+		"particle": "minecraft:block/spruce_planks"
+	},
+	"elements": [
+		{
+			"name": "Post",
+			"from": [6, 0, 6],
+			"to": [10, 16, 10],
+			"faces": {
+				"north": {"uv": [12, 0, 16, 16], "texture": "#post_texture"},
+				"east": {"uv": [0, 0, 4, 16], "texture": "#post_texture"},
+				"south": {"uv": [12, 0, 16, 16], "texture": "#post_texture"},
+				"west": {"uv": [0, 0, 4, 16], "texture": "#post_texture"},
+				"up": {"uv": [6, 6, 10, 10], "texture": "#top_texture", "cullface": "up"},
+				"down": {"uv": [6, 6, 10, 10], "texture": "#top_texture", "cullface": "down"}
+			}
+		},
+		{
+			"name": "Knot",
+			"from": [5, 4, 5],
+			"to": [11, 12, 11],
+			"faces": {
+				"north": {"uv": [0, 6, 6, 14], "texture": "#knot_texture"},
+				"east": {"uv": [0, 6, 6, 14], "texture": "#knot_texture"},
+				"south": {"uv": [0, 6, 6, 14], "texture": "#knot_texture"},
+				"west": {"uv": [0, 6, 6, 14], "texture": "#knot_texture"},
+				"up": {"uv": [0, 0, 6, 6], "texture": "#knot_texture"},
+				"down": {"uv": [0, 0, 6, 6], "texture": "#knot_texture"}
+			}
+		}
+	]
+}

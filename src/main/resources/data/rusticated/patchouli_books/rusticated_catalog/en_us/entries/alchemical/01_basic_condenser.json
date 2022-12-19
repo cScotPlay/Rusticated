@@ -1,0 +1,31 @@
+{
+  "name": "Basic Condenser",
+  "icon": "rusticated:condenser",
+  "category": "rusticated:alchemical_category",
+  "pages": [
+    {
+      "type": "image",
+      "title": "Alchemical Condenser",
+      "images": [
+        "rusticated:textures/gui/catalog/condenser.png"
+      ],
+      "border": "true",
+      "text": "An Alchemical Condenser creates basic elixirs by distilling herbs into elixirs."
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:condenser",
+      "text": "To properly operate the Alchemical Condensers, it must have both Retorts attached. The Retorts connect on the left and right of the Condenser. The Retorts must face the Condenser so their tubes connect."
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:retort",
+      "text": "The Condenser has an internal tank that can be filled or emptied when interacted with a bucket. $(br2)Breaking the Condenser will destroy any fluid stored in the machine. The Condenser holds eight buckets of water."
+    },
+    {
+      "type": "text",
+      "text": "Place the Herb and associated items into the two slots on the left side of the GUI. An empty Water Bottle and Fuel are also required to distill the elixir. You should upgrade to an advanced condenser as soon as possible if you are using this basic condenser."
+    }
+  ],
+  "sortnum": 1
+}

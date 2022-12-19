@@ -1,9 +1,9 @@
 {
   "schemaVersion": 1,
-  "id": "elixiremporium",
+  "id": "rusticated",
   "version": "${version}",
 
-  "name": "Scott's Elixir Emporium",
+  "name": "Rusticated",
   "description": "This is an example description! Tell everyone what your mod is about!",
   "authors": [
     "Me!"
@@ -14,25 +14,25 @@
   },
 
   "license": "MIT",
-  "icon": "assets/elixiremporium/icon.png",
+  "icon": "assets/rusticated/icon.png",
 
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.mcs3.elixiremporium.ElixirEmporium"
+      "net.mcs3.rusticated.Rusticated"
     ],
     "client": [
-      "net.mcs3.elixiremporium.ElixirEmporiumClient"
+      "net.mcs3.rusticated.RusticatedClient"
     ],
     "fabric-datagen": [
-      "net.mcs3.elixiremporium.data.DataGenerators"
+      "net.mcs3.rusticated.data.DataGenerators"
     ],
     "jei_mod_plugin": [
-      "net.mcs3.elixiremporium.compat.jei.ElixirJEIPlugin"
+      "net.mcs3.rusticated.compat.jei.RusticatedJEIPlugin"
     ]
   },
   "mixins": [
-    "elixiremporium.mixins.json"
+    "rusticated.mixins.json"
   ],
 
   "depends": {

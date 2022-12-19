@@ -1,0 +1,28 @@
+{
+  "name": "Colored Cobblestone",
+  "icon": "rusticated:cobblestone_lime",
+  "category": "rusticated:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Cobblestone now comes in a multitude of colors.  Options for slabs, stairs, and walls are also available.",
+      "item": "rusticated:cobblestone_white,rusticated:cobblestone_slab_white,rusticated:cobblestone_stairs_white,rusticated:cobblestone_wall_white,rusticated:cobblestone_orange,rusticated:cobblestone_slab_orange,rusticated:cobblestone_stairs_orange,rusticated:cobblestone_wall_orange,rusticated:cobblestone_magenta,rusticated:cobblestone_slab_magenta,rusticated:cobblestone_stairs_magenta,rusticated:cobblestone_wall_magenta,rusticated:cobblestone_light_blue,rusticated:cobblestone_slab_light_blue,rusticated:cobblestone_stairs_light_blue,rusticated:cobblestone_wall_light_blue,rusticated:cobblestone_yellow,rusticated:cobblestone_lime,rusticated:cobblestone_pink,rusticated:cobblestone_gray,rusticated:cobblestone_light_gray,rusticated:cobblestone_cyan,rusticated:cobblestone_purple,rusticated:cobblestone_blue,rusticated:cobblestone_brown,rusticated:cobblestone_green,rusticated:cobblestone_red,rusticated:cobblestone_black"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:cobblestone_lime",
+      "recipe2": "rusticated:cobblestone_stairs_lime"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:cobblestone_stairs_lime_dyed",
+      "recipe2": "rusticated:cobblestone_slab_lime"
+    },
+    {
+      "type": "stonecutting",
+      "recipe": "rusticated:cobblestone_stairs_lime_from_cobblestone_lime_stonecutting",
+      "recipe2": "rusticated:cobblestone_slab_lime_from_cobblestone_lime_stonecutting"
+    }
+  ],
+  "sortnum": 8
+}

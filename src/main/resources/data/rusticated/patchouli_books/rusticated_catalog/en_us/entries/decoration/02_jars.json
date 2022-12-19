@@ -1,0 +1,29 @@
+{
+  "name": "Jars",
+  "icon": "rusticated:glazed_jar_2",
+  "category": "rusticated:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Pots are a decorative storage option. Fired Jars hold 4 stacks of a single item, while the Glazed Pots hold 8 stacks. Like Pots, Jars also keep their inventory when broken.",
+      "item": "rusticated:fired_jar,rusticated:glazed_jar_0,rusticated:glazed_jar_1,rusticated:glazed_jar_2,rusticated:glazed_jar_3,rusticated:glazed_jar_4"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:unfired_jar",
+      "text": "The Unfired Jar is crafted in preparation for the Fired Jar. Therefore, there is no storage associated with the Unfired Jar."
+    },
+    {
+      "type": "smelting",
+      "recipe": "rusticated:fired_jar",
+      "recipe2": "rusticated:glazed_jar_0",
+      "text": "Fired and Glazed Jars need heat from the smelter to harden their clay and provide storage."
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:glazed_jar_1",
+      "recipe2": "rusticated:glazed_jar_2"
+    }
+  ],
+  "sortnum": 2
+}

@@ -35,7 +35,7 @@ repositories {
 	}
 }
 loom {
-	accessWidenerPath = file("src/main/resources/elixiremporium.accesswidener")
+	accessWidenerPath = file("src/main/resources/rusticated.accesswidener")
 
 	runs {
 		datagen {

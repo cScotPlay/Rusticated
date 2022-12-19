@@ -1,0 +1,7 @@
+{
+  "parent": "item/generated",
+  "textures": {
+    "layer0": "rusticated:item/elixir_overlay",
+    "layer1": "rusticated:item/elixir_bottle"
+  }
+}

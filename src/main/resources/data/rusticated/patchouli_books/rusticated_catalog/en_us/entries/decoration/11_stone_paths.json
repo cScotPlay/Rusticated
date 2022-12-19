@@ -1,0 +1,23 @@
+{
+  "name": "Stone Pathways",
+  "icon": "rusticated:stone_path",
+  "category": "rusticated:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Are you tired of walking on the grass and pathways? Try out the array of stone pathway options we have at the Emporium.",
+      "item": "rusticated:cobblestone_path,rusticated:stone_path,rusticated:granite_path,rusticated:andesite_path,rusticated:diorite_path,rusticated:cobbled_deepslate_path,rusticated:blackstone_path,rusticated:nether_bricks_path"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:stone_path",
+      "recipe2": "rusticated:granite_path"
+    },
+    {
+      "type": "stonecutting",
+      "recipe": "rusticated:stone_path_from_stone_stonecutting",
+      "recipe2": "rusticated:granite_path_from_granite_stonecutting"
+    }
+  ],
+  "sortnum": 11
+}

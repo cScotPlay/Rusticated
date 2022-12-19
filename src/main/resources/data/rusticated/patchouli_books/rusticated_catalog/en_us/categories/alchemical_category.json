@@ -1,0 +1,6 @@
+{
+  "name": "Alchemical",
+  "description": "Rusticated has multiple Elixirs to assist you in your explorations and adventures. Elixir creation is through distilling herbs and other items in a Condenser.",
+  "icon": "rusticated:condenser",
+  "sortnum": 3
+}

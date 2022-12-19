@@ -1,0 +1,27 @@
+{
+  "name": "Colored Stone Blocks",
+  "icon": "rusticated:stone_light_blue",
+  "category": "rusticated:decoration_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Colored Stone, Slab, and Stairs options are available in 16 separate colors.",
+      "item": "rusticated:stone_white,rusticated:stone_slab_white,rusticated:stone_stairs_white,rusticated:stone_orange,rusticated:stone_slab_orange,rusticated:stone_stairs_orange,rusticated:stone_magenta,rusticated:stone_slab_magenta,rusticated:stone_stairs_magenta,rusticated:stone_light_blue,rusticated:stone_slab_light_blue,rusticated:stone_stairs_light_blue,rusticated:stone_yellow,rusticated:stone_lime,rusticated:stone_pink,rusticated:stone_gray,rusticated:stone_light_gray,rusticated:stone_cyan,rusticated:stone_purple,rusticated:stone_blue,rusticated:stone_brown,rusticated:stone_green,rusticated:stone_red,rusticated:stone_black"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:stone_light_blue_dyed",
+      "recipe2": "rusticated:stone_stairs_light_blue_dyed"
+    },
+    {
+      "type": "stonecutting",
+      "recipe": "rusticated:stone_stairs_light_blue_from_stone_light_blue_stonecutting",
+      "recipe2": "rusticated:stone_slab_light_blue_from_stone_light_blue_stonecutting"
+    },
+    {
+      "type": "smelting",
+      "recipe": "rusticated:stone_light_blue"
+    }
+  ],
+  "sortnum": 7
+}
