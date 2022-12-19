@@ -369,8 +369,8 @@
   "item.rusticated.elixir.effect.slow_falling": "Elixir of Slow Falling",
   "item.rusticated.elixir.effect.invisibility": "Elixir of Invisibility",
   "item.rusticated.elixir.effect.ironskin": "Elixir of Iron Skin",
-  "item.rusticated.elixir.effect.longironskin": "Elixir of Iron Skin",
-  "item.rusticated.elixir.effect.strongironskin": "Elixir of Iron Skin",
+  "item.rusticated.elixir.effect.long_ironskin": "Elixir of Iron Skin",
+  "item.rusticated.elixir.effect.strong_ironskin": "Elixir of Iron Skin",
   "item.rusticated.elixir.effect.empty": "Elixir",
 
   "item.minecraft.potion.effect.ironskin": "Potion of Iron Skin",
