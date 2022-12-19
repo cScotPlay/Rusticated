@@ -1,0 +1,9 @@
+{
+  "type": "elixiremporium:evaporating_basin",
+  "fluidbucket": {
+    "item" : "elixiremporium:ironberry_juice_bucket"
+  },
+  "result": {
+    "item": "elixiremporium:tiny_iron_dust"
+  }
+}

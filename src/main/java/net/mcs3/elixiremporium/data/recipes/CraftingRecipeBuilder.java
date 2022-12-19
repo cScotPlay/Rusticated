@@ -412,6 +412,8 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapedRecipeBuilder.shaped(ModItems.UNFIRED_EVAPORATING_BASIN).define('#', Blocks.CLAY).pattern("# #").pattern(" # ").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.UNFIRED_EVAPORATING_BASIN), ModBlocks.EVAPORATING_BASIN.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
 
+        EvaporatingBasinRecipeBuilder.evaporating(ModItems.TINY_IRON_DUST.getDefaultInstance(), ModFluids.IRONBERRY_JUICE_BUCKET.getDefaultInstance()).unlockedBy("has_bucket", has(Items.BUCKET)).save(exporter, new ResourceLocation(ModItems.TINY_IRON_DUST.toString() + "_evaporating"));
+
     }
 
     public static void coloredWoodRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {

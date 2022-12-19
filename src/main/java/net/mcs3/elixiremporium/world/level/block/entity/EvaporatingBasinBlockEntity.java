@@ -3,49 +3,39 @@ package net.mcs3.elixiremporium.world.level.block.entity;
 import net.fabricmc.fabric.api.networking.v1.PacketByteBufs;
 import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
-import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
-import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
-import net.fabricmc.fabric.api.transfer.v1.storage.Storage;
-import net.fabricmc.fabric.api.transfer.v1.storage.StorageUtil;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
-import net.fabricmc.fabric.mixin.transfer.BucketItemAccessor;
 import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.fluid.FluidStack;
 import net.mcs3.elixiremporium.network.ModNetworkSync;
 import net.mcs3.elixiremporium.world.ModContainer;
-import net.mcs3.elixiremporium.world.level.block.alchemy.AdvCondenserBlockEntity;
+import net.mcs3.elixiremporium.world.item.crafting.EvaporatingBasinRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.world.Container;
 import net.minecraft.world.ContainerHelper;
-import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Fluids;
+
+import java.util.Optional;
 
 public class EvaporatingBasinBlockEntity extends BlockEntity implements ModContainer {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
 
     protected final ContainerData dataAccess;
     private int progress = 0;
-    private int maxProgress = 120;
+    private int maxProgress = 124;
 
 
     public EvaporatingBasinBlockEntity(BlockPos blockPos, BlockState blockState) {
@@ -89,11 +79,65 @@ public class EvaporatingBasinBlockEntity extends BlockEntity implements ModConta
     }
 
     public static void serverTick(Level level, BlockPos pos, BlockState state, EvaporatingBasinBlockEntity blockEntity) {
-        //ElixirEmporium.LOGGER.info(blockEntity.fluidStorage.variant + " of " + blockEntity.fluidStorage.amount + " amount");
+
+        if(hasRecipeFluid(blockEntity)) {
+            if(blockEntity.fluidStorage.amount >= 0) {
+                evaporateFluid(blockEntity, blockEntity.fluidStorage.variant.getFluid());
+                blockEntity.progress++;
+                if(blockEntity.progress == blockEntity.maxProgress) {
+                    createEvaporatedItems(blockEntity);
+                }
+            }
+        }
     }
+
+    private void resetProgress() {
+        this.progress = 0;
+    }
+
+    private static boolean hasRecipeFluid(EvaporatingBasinBlockEntity blockEntity) {
+        Level level = blockEntity.level;
+        Container container = new SimpleContainer(1);
+        Fluid fluid = blockEntity.fluidStorage.variant.getFluid();
+        ItemStack fluidBucket = new ItemStack(fluid.getBucket());
+
+        container.setItem(0, fluidBucket);
+
+        Optional<EvaporatingBasinRecipe> match = level.getRecipeManager().getRecipeFor(EvaporatingBasinRecipe.Type.INSTANCE, container, level);
+
+        return match.isPresent() && canInsertAmountIntoOutputSlot(blockEntity)
+                && canInsertItemIntoOutputSlot(blockEntity, match.get().getResultItem());
+    }
+
+    private static void createEvaporatedItems(EvaporatingBasinBlockEntity blockEntity) {
+        Level level = blockEntity.level;
+        Container container = new SimpleContainer(1);
+        Fluid fluid = blockEntity.fluidStorage.variant.getFluid();
+        ItemStack fluidBucket = new ItemStack(fluid.getBucket());
+
+        container.setItem(0, fluidBucket);
+
+        Optional<EvaporatingBasinRecipe> match = level.getRecipeManager().getRecipeFor(EvaporatingBasinRecipe.Type.INSTANCE, container, level);
+
+        if(match.isPresent()) {
+            blockEntity.setItem(0, new ItemStack(match.get().getResultItem().getItem(), blockEntity.getItem(0).getCount() + 1));
+            blockEntity.resetProgress();
+            ElixirEmporium.LOGGER.info("Create Item " + match.get().getResultItem().getItem() + blockEntity.getItem(0).getCount());
+        }
+
+    }
+    private static boolean canInsertAmountIntoOutputSlot(Container container)
+    {
+        return container.getItem(0).getMaxStackSize() > container.getItem(0).getCount();
+    }
+
+    private static boolean canInsertItemIntoOutputSlot(Container container, ItemStack resultItem)
+    {
+        return container.getItem(0).getItem() == resultItem.getItem() || container.getItem(0).isEmpty();
+    }
+
     public ItemStack getRenderStack() {
-        return new ItemStack(Items.IRON_NUGGET);
-        //return this.getItem(1);
+        return this.getItem(0);
     }
 
     public void setInventory(NonNullList<ItemStack> inventory) {
@@ -131,7 +175,7 @@ public class EvaporatingBasinBlockEntity extends BlockEntity implements ModConta
 
         @Override
         protected long getCapacity(FluidVariant variant) {
-            return FluidStack.convertDropletsToMb(FluidConstants.BUCKET * 8);  // 6 Buckets or 6000mb of fluid
+            return FluidStack.convertDropletsToMb(FluidConstants.BUCKET * 8);  // 8 Buckets or 8000mb of fluid
         }
 
         @Override
@@ -154,7 +198,7 @@ public class EvaporatingBasinBlockEntity extends BlockEntity implements ModConta
         data.writeBlockPos(getBlockPos());
 
         for (ServerPlayer player : PlayerLookup.tracking((ServerLevel) level, getBlockPos())) {
-            ServerPlayNetworking.send(player, ModNetworkSync.EVAPORATING_SYNC, data); //TODO UPDATE FOR NEW CONTAINER
+            ServerPlayNetworking.send(player, ModNetworkSync.EVAPORATING_SYNC, data);
         }
     }
 
@@ -180,10 +224,10 @@ public class EvaporatingBasinBlockEntity extends BlockEntity implements ModConta
         }
     }
 
-    private static void extractFluid(EvaporatingBasinBlockEntity entity) {
+    private static void evaporateFluid(EvaporatingBasinBlockEntity entity, Fluid fluid) {
         try(Transaction transaction = Transaction.openOuter()) {
-            entity.fluidStorage.extract(FluidVariant.of(Fluids.WATER),
-                    500, transaction);
+            entity.fluidStorage.extract(FluidVariant.of(fluid),
+                    1, transaction);
             transaction.commit();
         }
     }
@@ -193,15 +237,17 @@ public class EvaporatingBasinBlockEntity extends BlockEntity implements ModConta
         this.fluidStorage.amount = fluidLevel;
     }
 
-    public boolean atCapacity(EvaporatingBasinBlockEntity blockEntity) {
-        return blockEntity.fluidStorage.amount >= blockEntity.fluidStorage.getCapacity();
+    public void emptyBasin(EvaporatingBasinBlockEntity entity){
+        long getFluid = entity.fluidStorage.amount;
+        try(Transaction transaction = Transaction.openOuter()) {
+            entity.fluidStorage.extract(FluidVariant.of(entity.fluidStorage.variant.getFluid()),
+                    getFluid, transaction);
+            transaction.commit();
+        }
+        entity.resetProgress();
     }
 
     public boolean canPullFluid(EvaporatingBasinBlockEntity blockEntity) {
         return blockEntity.fluidStorage.amount >= 1000;
-    }
-
-    private static boolean hasEnoughFluid(EvaporatingBasinBlockEntity blockEntity) {
-        return blockEntity.fluidStorage.amount >= 500;
     }
 }
