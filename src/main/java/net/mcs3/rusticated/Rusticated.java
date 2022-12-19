@@ -33,7 +33,7 @@ public class Rusticated implements ModInitializer {
 
 	public static CreativeModeTab ITEMGROUPHERB = FabricItemGroupBuilder.build(
 			new ResourceLocation("rusticated", "item_group_herb"),
-			() -> new ItemStack(ModItems.GRAPE_SEEDS));
+			() -> new ItemStack(ModBlocks.CONDENSER.asItem()));
 
 	@Override
 	public void onInitialize() {
