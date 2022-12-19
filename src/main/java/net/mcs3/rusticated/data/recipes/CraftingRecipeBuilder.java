@@ -12,6 +12,7 @@ import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;
 import net.minecraft.data.recipes.SimpleCookingRecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -349,6 +350,9 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapedRecipeBuilder.shaped(ModBlocks.ADV_CONDENSER).define('#', Blocks.NETHER_BRICKS).define('^', Blocks.IRON_BLOCK).define('@', Items.BUCKET).pattern("# #").pattern("^@^").pattern("#^#").unlockedBy("has_nether_bricks", has(Blocks.NETHER_BRICKS)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.ADV_RETORT).define('#', Blocks.NETHER_BRICKS).define('^', Items.IRON_INGOT).define('@', Items.BUCKET).pattern(" #").pattern("^@").pattern(" #").unlockedBy("has_nether_bricks", has(Blocks.NETHER_BRICKS)).save(exporter);
 
+        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.UNFIRED_EVAPORATING_BASIN), ModBlocks.EVAPORATING_BASIN.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.CRUSHING_TUB).define('x', ItemTags.WOODEN_SLABS).define('@', Items.IRON_INGOT).define('^', ItemTags.PLANKS).pattern("^ ^").pattern("@ @").pattern("xxx").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(exporter);
+
 
 
 
@@ -411,7 +415,6 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.TINY_IRON_DUST), Items.IRON_NUGGET, 0.0F, 25).unlockedBy("has_tiny_iron", has(ModItems.TINY_IRON_DUST)).save(exporter, new ResourceLocation(Items.IRON_NUGGET.toString() + "_smelting"));
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.TINY_IRON_DUST), Items.IRON_NUGGET, 0.0F, 25).unlockedBy("has_tiny_iron", has(ModItems.TINY_IRON_DUST)).save(exporter, new ResourceLocation(Items.IRON_NUGGET.toString() + "_blasting"));
         ShapedRecipeBuilder.shaped(ModItems.UNFIRED_EVAPORATING_BASIN).define('#', Blocks.CLAY).pattern("# #").pattern(" # ").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
-        SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.UNFIRED_EVAPORATING_BASIN), ModBlocks.EVAPORATING_BASIN.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
 
         EvaporatingBasinRecipeBuilder.evaporating(ModItems.TINY_IRON_DUST.getDefaultInstance(), ModFluids.IRONBERRY_JUICE_BUCKET.getDefaultInstance()).unlockedBy("has_bucket", has(Items.BUCKET)).save(exporter, new ResourceLocation(ModItems.TINY_IRON_DUST.toString() + "_evaporating"));
 

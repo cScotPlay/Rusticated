@@ -1,0 +1,209 @@
+{
+	"textures": {
+		"wood": "minecraft:block/spruce_planks",
+		"iron": "minecraft:block/cauldron_side",
+		"particle": "minecraft:block/spruce_planks"
+	},
+	"elements": [
+		{
+			"name": "base",
+			"from": [1.5, 0, 1.5],
+			"to": [14.5, 1, 14.5],
+			"faces": {
+				"north": {"uv": [1, 14, 14, 15], "texture": "#wood", "cullface": "north"},
+				"east": {"uv": [1, 14, 14, 15], "texture": "#wood", "cullface": "east"},
+				"south": {"uv": [1, 0, 14, 1], "texture": "#wood", "cullface": "south"},
+				"west": {"uv": [1, 0, 14, 1], "texture": "#wood", "cullface": "west"},
+				"up": {"uv": [1, 1, 14, 14], "texture": "#wood"},
+				"down": {"uv": [1, 1, 14, 14], "texture": "#wood"}
+			}
+		},
+		{
+			"name": "north_face",
+			"from": [0.5, 0, 0.5],
+			"to": [15.5, 9, 1.5],
+			"faces": {
+				"north": {"uv": [7, 0.5, 16, 15.5], "rotation": 90, "texture": "#wood"},
+				"east": {"uv": [7, 0.5, 16, 1.5], "rotation": 90, "texture": "#wood"},
+				"south": {"uv": [7, 0.5, 16, 15.5], "rotation": 90, "texture": "#wood"},
+				"west": {"uv": [7, 14.5, 16, 15.5], "rotation": 90, "texture": "#wood"},
+				"up": {"uv": [0.5, 3, 15.5, 4], "texture": "#wood"},
+				"down": {"uv": [0.5, 7, 15.5, 8], "texture": "#wood"}
+			}
+		},
+		{
+			"name": "south_face",
+			"from": [0.5, 0, 14.5],
+			"to": [15.5, 9, 15.5],
+			"faces": {
+				"north": {"uv": [7, 0.5, 16, 15.5], "rotation": 90, "texture": "#wood"},
+				"east": {"uv": [7, 14.5, 16, 15.5], "rotation": 90, "texture": "#wood"},
+				"south": {"uv": [7, 0.5, 16, 15.5], "rotation": 90, "texture": "#wood"},
+				"west": {"uv": [7, 0.5, 16, 1.5], "rotation": 90, "texture": "#wood"},
+				"up": {"uv": [0.5, 3, 15.5, 4], "texture": "#wood"},
+				"down": {"uv": [0.5, 7, 15.5, 8], "texture": "#wood"}
+			}
+		},
+		{
+			"name": "west_face",
+			"from": [0.5, 0, 1.5],
+			"to": [1.5, 9, 14.5],
+			"faces": {
+				"north": {"uv": [7, 2, 16, 3], "rotation": 90, "texture": "#wood", "cullface": "north"},
+				"east": {"uv": [7, 1.5, 16, 14.5], "rotation": 90, "texture": "#wood"},
+				"south": {"uv": [7, 13, 16, 14], "rotation": 90, "texture": "#wood", "cullface": "south"},
+				"west": {"uv": [7, 1.5, 16, 14.5], "rotation": 90, "texture": "#wood"},
+				"up": {"uv": [2.5, 3, 15.5, 4], "rotation": 90, "texture": "#wood"},
+				"down": {"uv": [1.5, 11, 14.5, 12], "rotation": 90, "texture": "#wood"}
+			}
+		},
+		{
+			"name": "east_face",
+			"from": [14.5, 0, 1.5],
+			"to": [15.5, 9, 14.5],
+			"faces": {
+				"north": {"uv": [7, 2, 16, 3], "rotation": 90, "texture": "#wood", "cullface": "north"},
+				"east": {"uv": [7, 1.5, 16, 14.5], "rotation": 90, "texture": "#wood"},
+				"south": {"uv": [7, 13, 16, 14], "rotation": 90, "texture": "#wood", "cullface": "south"},
+				"west": {"uv": [7, 1.5, 16, 14.5], "rotation": 90, "texture": "#wood"},
+				"up": {"uv": [2.5, 3, 15.5, 4], "rotation": 90, "texture": "#wood"},
+				"down": {"uv": [1.5, 11, 14.5, 12], "rotation": 90, "texture": "#wood"}
+			}
+		},
+		{
+			"name": "north_brace_1",
+			"from": [0, 1, 0],
+			"to": [16, 3, 2],
+			"faces": {
+				"north": {"uv": [0, 2, 16, 4], "texture": "#iron"},
+				"east": {"uv": [14, 2, 16, 4], "texture": "#iron"},
+				"south": {"uv": [0, 2, 16, 4], "texture": "#iron"},
+				"west": {"uv": [0, 2, 2, 4], "texture": "#iron"},
+				"up": {"uv": [0, 12, 16, 14], "texture": "#iron"},
+				"down": {"uv": [0, 12, 16, 14], "texture": "#iron"}
+			}
+		},
+		{
+			"name": "north_brace_2",
+			"from": [0, 6, 0],
+			"to": [16, 8, 2],
+			"faces": {
+				"north": {"uv": [0, 2, 16, 4], "texture": "#iron"},
+				"east": {"uv": [14, 2, 16, 4], "texture": "#iron"},
+				"south": {"uv": [0, 2, 16, 4], "texture": "#iron"},
+				"west": {"uv": [0, 2, 2, 4], "texture": "#iron"},
+				"up": {"uv": [0, 12, 16, 14], "texture": "#iron"},
+				"down": {"uv": [0, 12, 16, 14], "texture": "#iron"}
+			}
+		},
+		{
+			"name": "west_brace_1",
+			"from": [0, 1, 2],
+			"to": [2, 3, 14],
+			"faces": {
+				"north": {"uv": [0, 2, 2, 4], "texture": "#iron", "cullface": "north"},
+				"east": {"uv": [2, 2, 14, 4], "texture": "#iron"},
+				"south": {"uv": [14, 2, 16, 4], "texture": "#iron", "cullface": "south"},
+				"west": {"uv": [2, 2, 14, 4], "texture": "#iron"},
+				"up": {"uv": [1, 3, 3, 15], "texture": "#iron"},
+				"down": {"uv": [13, 3, 15, 15], "texture": "#iron"}
+			}
+		},
+		{
+			"name": "west_brace_2",
+			"from": [0, 6, 2],
+			"to": [2, 8, 14],
+			"faces": {
+				"north": {"uv": [0, 2, 2, 4], "texture": "#iron", "cullface": "north"},
+				"east": {"uv": [2, 2, 14, 4], "texture": "#iron"},
+				"south": {"uv": [14, 2, 16, 4], "texture": "#iron", "cullface": "south"},
+				"west": {"uv": [2, 2, 14, 4], "texture": "#iron"},
+				"up": {"uv": [1, 3, 3, 15], "texture": "#iron"},
+				"down": {"uv": [13, 3, 15, 15], "texture": "#iron"}
+			}
+		},
+		{
+			"name": "south_brace_1",
+			"from": [0, 1, 14],
+			"to": [16, 3, 16],
+			"faces": {
+				"north": {"uv": [0, 2, 16, 4], "texture": "#iron"},
+				"east": {"uv": [0, 2, 2, 4], "texture": "#iron"},
+				"south": {"uv": [0, 2, 16, 4], "texture": "#iron"},
+				"west": {"uv": [14, 2, 16, 4], "texture": "#iron"},
+				"up": {"uv": [0, 12, 16, 14], "texture": "#iron"},
+				"down": {"uv": [0, 12, 16, 14], "texture": "#iron"}
+			}
+		},
+		{
+			"name": "south_brace_2",
+			"from": [0, 6, 14],
+			"to": [16, 8, 16],
+			"faces": {
+				"north": {"uv": [0, 2, 16, 4], "texture": "#iron"},
+				"east": {"uv": [0, 2, 2, 4], "texture": "#iron"},
+				"south": {"uv": [0, 2, 16, 4], "texture": "#iron"},
+				"west": {"uv": [14, 2, 16, 4], "texture": "#iron"},
+				"up": {"uv": [0, 12, 16, 14], "texture": "#iron"},
+				"down": {"uv": [0, 12, 16, 14], "texture": "#iron"}
+			}
+		},
+		{
+			"name": "east_brace_1",
+			"from": [14, 1, 2],
+			"to": [16, 3, 14],
+			"faces": {
+				"north": {"uv": [0, 2, 2, 4], "texture": "#iron", "cullface": "north"},
+				"east": {"uv": [2, 2, 14, 4], "texture": "#iron"},
+				"south": {"uv": [14, 2, 16, 4], "texture": "#iron", "cullface": "south"},
+				"west": {"uv": [2, 2, 14, 4], "texture": "#iron"},
+				"up": {"uv": [1, 3, 3, 15], "texture": "#iron"},
+				"down": {"uv": [13, 3, 15, 15], "texture": "#iron"}
+			}
+		},
+		{
+			"name": "east_brace_2",
+			"from": [14, 6, 2],
+			"to": [16, 8, 14],
+			"faces": {
+				"north": {"uv": [0, 2, 2, 4], "texture": "#iron", "cullface": "north"},
+				"east": {"uv": [2, 2, 14, 4], "texture": "#iron"},
+				"south": {"uv": [14, 2, 16, 4], "texture": "#iron", "cullface": "south"},
+				"west": {"uv": [2, 2, 14, 4], "texture": "#iron"},
+				"up": {"uv": [1, 3, 3, 15], "texture": "#iron"},
+				"down": {"uv": [13, 3, 15, 15], "texture": "#iron"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"thirdperson_lefthand": {
+			"rotation": [75, 45, 0],
+			"translation": [0, 2.5, 0],
+			"scale": [0.375, 0.375, 0.375]
+		},
+		"firstperson_righthand": {
+			"rotation": [0, 45, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"firstperson_lefthand": {
+			"rotation": [0, 225, 0],
+			"scale": [0.4, 0.4, 0.4]
+		},
+		"ground": {
+			"translation": [0, 3, 0],
+			"scale": [0.25, 0.25, 0.25]
+		},
+		"gui": {
+			"rotation": [30, 225, 0],
+			"scale": [0.625, 0.625, 0.625]
+		},
+		"fixed": {
+			"scale": [0.5, 0.5, 0.5]
+		}
+	}
+}

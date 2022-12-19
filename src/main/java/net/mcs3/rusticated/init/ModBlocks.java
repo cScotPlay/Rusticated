@@ -413,6 +413,7 @@ public class ModBlocks
     ///                  Brewing Blocks                    ///
     //////////////////////////////////////////////////////////
     public static final Block EVAPORATING_BASIN = new EvaporatingBasinBlock();
+    public static final Block CRUSHING_TUB = new CrushingTubBlock();
 
 
 
@@ -777,6 +778,7 @@ public class ModBlocks
         ///               Brewing Blocks Registry              ///
         //////////////////////////////////////////////////////////
         register("evaporating_basin", EVAPORATING_BASIN, AGRICULTURAL_TAB);
+        register("crushing_tub", CRUSHING_TUB, AGRICULTURAL_TAB);
 
 
         initOxidizables();

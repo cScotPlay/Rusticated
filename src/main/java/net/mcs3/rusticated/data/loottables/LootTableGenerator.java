@@ -432,6 +432,7 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         add(ModBlocks.CONDENSER, BlockLoot::createNameableBlockEntityTable);
         add(ModBlocks.ADV_CONDENSER, BlockLoot::createNameableBlockEntityTable);
         add(ModBlocks.EVAPORATING_BASIN, BlockLoot::createNameableBlockEntityTable);
+        add(ModBlocks.CRUSHING_TUB, BlockLoot::createNameableBlockEntityTable);
 
         add(ModBlocks.TIED_STAKE, LootTableGenerator::createTiedStakeDrop);
         add(Blocks.VINE, LootTableGenerator::createGrapeSeedDrop);

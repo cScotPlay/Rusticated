@@ -95,6 +95,7 @@ public class RusticatedClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.ADV_RETORT, RenderType.cutoutMipped());
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EVAPORATING_BASIN, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRUSHING_TUB, RenderType.cutout());
 
 
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, LiquidBarrelRenderer::new);

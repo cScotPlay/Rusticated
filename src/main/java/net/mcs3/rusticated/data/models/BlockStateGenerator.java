@@ -427,6 +427,7 @@ public class BlockStateGenerator extends FabricModelProvider
 
         createEvaporatingBasin(blockStateModelGenerator, ModBlocks.EVAPORATING_BASIN);
         createUnfiredEvaporatingBasin(blockStateModelGenerator, ModItems.UNFIRED_EVAPORATING_BASIN);
+        createCrushingTub(blockStateModelGenerator, ModBlocks.CRUSHING_TUB);
 
 
     }
@@ -918,6 +919,13 @@ public class BlockStateGenerator extends FabricModelProvider
     public final void createUnfiredEvaporatingBasin(BlockModelGenerators modelGenerators, Item evaporationItem) {
         ResourceLocation condenserItemModel = new ResourceLocation(MOD_ID, "item/unfired_evaporating_basin_base");
         modelGenerators.delegateItemModel(evaporationItem, condenserItemModel);
+    }
+
+    public final void createCrushingTub(BlockModelGenerators modelGenerators, Block tubBlock) {
+        ResourceLocation tubModel = new ResourceLocation(MOD_ID, "block/crushing_tub");
+
+        modelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(tubBlock, tubModel));
+        modelGenerators.delegateItemModel(tubBlock, tubModel);
     }
 
 
