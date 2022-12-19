@@ -3,10 +3,8 @@ package net.mcs3.elixiremporium.data.recipes;
 import com.google.common.collect.Lists;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
-import net.mcs3.elixiremporium.ElixirEmporium;
 import net.mcs3.elixiremporium.init.ModItems;
 import net.mcs3.elixiremporium.world.item.crafting.AdvCondenserRecipe;
-import net.mcs3.elixiremporium.world.item.crafting.CondenserRecipe;
 import net.mcs3.elixiremporium.world.item.crafting.ModRecipes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
@@ -120,7 +118,6 @@ public class AdvCondenserRecipeBuilder implements RecipeBuilder {
             ItemStack itemResult = this.result;
 
             String potionText = itemResult.getTag().toString().substring(9, itemResult.getTag().toString().length() - 2);
-            ElixirEmporium.LOGGER.info(potionText);
             json.addProperty("potion", potionText);
 
             JsonObject jsonObject = new JsonObject();
