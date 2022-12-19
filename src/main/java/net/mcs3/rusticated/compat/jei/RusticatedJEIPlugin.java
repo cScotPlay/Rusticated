@@ -10,6 +10,7 @@ import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
 import net.mcs3.rusticated.world.item.crafting.AdvCondenserRecipe;
 import net.mcs3.rusticated.world.item.crafting.CondenserRecipe;
+import net.mcs3.rusticated.world.item.crafting.EvaporatingBasinRecipe;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -31,7 +32,8 @@ public class RusticatedJEIPlugin implements IModPlugin {
         IGuiHelper guiHelper = registration.getJeiHelpers().getGuiHelper();
         registration.addRecipeCategories(
                 new CondenserRecipeCategory(guiHelper),
-                new AdvCondenserRecipeCategory(guiHelper)
+                new AdvCondenserRecipeCategory(guiHelper),
+                new EvaporatingBasingRecipeCategory(guiHelper)
         );
     }
 
@@ -43,6 +45,9 @@ public class RusticatedJEIPlugin implements IModPlugin {
 
         List<AdvCondenserRecipe> advCondenserRecipes = rm.getAllRecipesFor(AdvCondenserRecipe.Type.INSTANCE);
         registration.addRecipes(AdvCondenserRecipeCategory.TYPE, advCondenserRecipes);
+
+        List<EvaporatingBasinRecipe> evaporatingBasinRecipes = rm.getAllRecipesFor(EvaporatingBasinRecipe.Type.INSTANCE);
+        registration.addRecipes(EvaporatingBasingRecipeCategory.TYPE, evaporatingBasinRecipes);
     }
 
 
@@ -51,6 +56,7 @@ public class RusticatedJEIPlugin implements IModPlugin {
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.CONDENSER), CondenserRecipeCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.ADV_CONDENSER), AdvCondenserRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.EVAPORATING_BASIN), EvaporatingBasingRecipeCategory.UID);
     }
 
     @Override

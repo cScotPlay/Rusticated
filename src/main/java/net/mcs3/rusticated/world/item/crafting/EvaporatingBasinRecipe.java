@@ -30,6 +30,8 @@ public class EvaporatingBasinRecipe implements Recipe<Container> {
         return ((BucketItemAccessor) bucketItem.getItem()).fabric_getFluid();
     }
 
+    public ItemStack getBucketItem() {return this.bucketItem;}
+
     @Override
     public boolean matches(Container container, Level level) {
         if(level.isClientSide()) {return false;}

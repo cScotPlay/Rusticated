@@ -1,0 +1,29 @@
+{
+  "name": "Drying Basin",
+  "icon": "rusticated:evaporating_basin",
+  "category": "rusticated:agricultural_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Drying basins extract items from fluids through the process of evaporation. They hold up to one stack of items and eight buckets of liquid. To use an evaporation basin, place it in the world. Then, insert fluid with a filled bucket in hand. Remove fluid by using an empty bucket.",
+      "item": "rusticated:evaporating_basin"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:unfired_evaporating_basin",
+      "text": "To construct the Drying Basin, one first must craft an Unfired Drying Basin using three blocks of clay to mold the basin's shape."
+    },
+    {
+      "type": "smelting",
+      "recipe": "rusticated:evaporating_basin",
+      "text": "Evaporation occurs automatically over time. Fluids in the basin evaporate at a rate of 1mb per tick. When enough fluid has evaporated, it will transform into an associated item. Extract the items using an empty hand when interacting with the Drying Basin."
+    },
+    {
+      "type": "rusticated:evaporating_basin_template",
+      "heading": "Tiny Iron Dust",
+      "recipes": "rusticated:tiny_iron_dust_evaporating",
+      "text": "Evaporating Ironberry Juice produces a small concentrated amount of iron dust. Iron dust is a smeltable product that transforms into a nugget form."
+    }
+  ],
+  "sortnum": 7
+}
