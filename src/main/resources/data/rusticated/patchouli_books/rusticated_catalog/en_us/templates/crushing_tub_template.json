@@ -1,0 +1,65 @@
+{
+  "processor": "net.mcs3.rusticated.compat.patchouli.processor.CrushingTubRecipeProcessor",
+  "components": [
+    {
+      "type": "patchouli:header",
+      "text": "#heading",
+      "x": -1,
+      "y": -1
+    },
+    {
+      "type": "patchouli:separator",
+      "x": -1,
+      "y": -1
+    },
+    {
+      "type": "patchouli:item",
+      "item": {
+        "item": "rusticated:crushing_tub"
+      },
+      "framed": "false",
+      "link_recipe": true,
+      "x": 49,
+      "y": 41
+    },
+    {
+      "type": "patchouli:image",
+      "image": "rusticated:textures/gui/catalog/evaporating_basin_overlay.png",
+      "x": 1,
+      "y": 16,
+      "width": 116,
+      "height": 106,
+      "u": 17,
+      "v": 28
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#ingredient",
+      "framed": "false",
+      "x": 20,
+      "y": 41
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#fluidbucket",
+      "framed": "false",
+      "link_recipe": true,
+      "x": 73,
+      "y": 41
+    },
+    {
+      "type": "patchouli:item",
+      "item": "#fluidbottle",
+      "framed": "false",
+      "link_recipe": true,
+      "x": 87,
+      "y": 41
+    },
+    {
+      "type": "patchouli:text",
+      "text": "#text",
+      "y": 80
+    }
+  ]
+
+}

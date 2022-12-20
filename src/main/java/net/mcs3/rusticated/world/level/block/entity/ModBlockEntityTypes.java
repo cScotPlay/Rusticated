@@ -35,6 +35,7 @@ public class ModBlockEntityTypes
     public static BlockEntityType<CondenserBlockEntity> CONDENSER_CONTAINER;
     public static BlockEntityType<AdvCondenserBlockEntity> ADV_CONDENSER_CONTAINER;
     public static BlockEntityType<EvaporatingBasinBlockEntity> EVAPORATING_BASIN_CONTAINER;
+    public static BlockEntityType<CrushingTubBlockEntity> CRUSHING_TUB_CONTAINER;
 
 
 
@@ -63,10 +64,12 @@ public class ModBlockEntityTypes
         CONDENSER_CONTAINER = register("condenser_container", ModBlocks.CONDENSER, CondenserBlockEntity::new);
         ADV_CONDENSER_CONTAINER = register("adv_condenser_container", ModBlocks.ADV_CONDENSER, AdvCondenserBlockEntity::new);
         EVAPORATING_BASIN_CONTAINER = register("evaporating_basin_container", ModBlocks.EVAPORATING_BASIN, EvaporatingBasinBlockEntity::new);
+        CRUSHING_TUB_CONTAINER = register("crushing_tub_container", ModBlocks.CRUSHING_TUB, CrushingTubBlockEntity::new);
 
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, CONDENSER_CONTAINER);
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, ADV_CONDENSER_CONTAINER);
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, EVAPORATING_BASIN_CONTAINER);
+        FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, CRUSHING_TUB_CONTAINER);
 
 
         FluidStorage.SIDED.registerSelf(LIQUID_BARREL_CONTAINER);

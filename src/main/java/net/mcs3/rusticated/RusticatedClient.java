@@ -9,6 +9,7 @@ import net.mcs3.rusticated.client.color.FluidColorRegistry;
 import net.mcs3.rusticated.client.color.ModColorProviders;
 import net.mcs3.rusticated.client.screens.inventory.AdvCondenserScreen;
 import net.mcs3.rusticated.client.screens.inventory.CondenserScreen;
+import net.mcs3.rusticated.client.screens.renderer.CrushingTubRenderer;
 import net.mcs3.rusticated.client.screens.renderer.EvaporationBasinRenderer;
 import net.mcs3.rusticated.client.screens.renderer.entity.ModEntityRenderers;
 import net.mcs3.rusticated.init.ModBlocks;
@@ -100,6 +101,7 @@ public class RusticatedClient implements ClientModInitializer
 
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, LiquidBarrelRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.EVAPORATING_BASIN_CONTAINER, EvaporationBasinRenderer::new);
+        BlockEntityRendererRegistry.register(ModBlockEntityTypes.CRUSHING_TUB_CONTAINER, CrushingTubRenderer::new);
 
         PotRenderer.register(ModBlockEntityTypes.POT_CONTAINER);
         GlazedPotRenderer.register(ModBlockEntityTypes.GLAZED_POT_0_CONTAINER);

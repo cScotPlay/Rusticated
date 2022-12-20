@@ -1,0 +1,54 @@
+{
+  "name": "Crushing Tub",
+  "icon": "rusticated:crushing_tub",
+  "category": "rusticated:agricultural_category",
+  "pages": [
+    {
+      "type": "spotlight",
+      "text": "Drying basins extract items from fluids through the process of evaporation. They hold up to one stack of items and eight buckets of liquid. To use an evaporation basin, place it in the world. Then, insert fluid with a filled bucket in hand. Remove fluid by using an empty bucket.",
+      "item": "rusticated:crushing_tub"
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:crushing_tub",
+      "text": "To construct the Drying Basin, one first must craft an Unfired Drying Basin using three blocks of clay to mold the basin's shape."
+    },
+    {
+      "type": "rusticated:crushing_tub_template",
+      "heading": "Ironberry Juice",
+      "recipes": "rusticated:iron_berries_crushed",
+      "text": "Ironberry Juice comes from crushing Iron Berries in a Crushing Tub. If drunk from a bottle, the juice paralyzes the consumer. Ironberry Juice is best for Iron Wine or Iron Dust."
+    },
+    {
+      "type": "rusticated:crushing_tub_template",
+      "heading": "Olive Oil",
+      "recipes": "rusticated:olives_crushed",
+      "text": "Crushing Olives yields Olive Oil. The best utilization of Olive Oil is in conjunction with other foods. Apply Olive Oil to the food of choice through the Crafting Table."
+    },
+    {
+      "type": "rusticated:crushing_tub_template",
+      "heading": "Grape Juice",
+      "recipes": "rusticated:grapes_crushed",
+      "text": "Grape Juice is made by crushing Grapes in a Crushing Tub. Then, drink the Grape Juice from a bottle or brew it into wine."
+    },
+    {
+      "type": "rusticated:crushing_tub_template",
+      "heading": "Liquid Honey",
+      "recipes": "rusticated:honeycomb_crushed",
+      "text": "Honey comes from crushing Honeycomb. Drink it from a bottle or brew it into Mead."
+    },
+    {
+      "type": "rusticated:crushing_tub_template",
+      "heading": "Sweet Berry Juice",
+      "recipes": "rusticated:sweet_berries_crushed",
+      "text": "Crushing Sweet Berries yields the berries' sweet juice. Drinking from a bottle provides hunger, saturation, and a regeneration buff. Sweet Berry Juice is the base ingredient for Sweet Berry Wine."
+    },
+    {
+      "type": "rusticated:crushing_tub_template",
+      "heading": "Apple Juice",
+      "recipes": "rusticated:apple_crushed",
+      "text": "Apple Juice is a product made from crushed Apples. Drink it from a bottle or brew it into Cider."
+    }
+  ],
+  "sortnum": 8
+}

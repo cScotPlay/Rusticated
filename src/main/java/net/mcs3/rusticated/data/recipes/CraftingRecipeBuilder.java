@@ -21,6 +21,7 @@ import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.Collections;
@@ -417,6 +418,15 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapedRecipeBuilder.shaped(ModItems.UNFIRED_EVAPORATING_BASIN).define('#', Blocks.CLAY).pattern("# #").pattern(" # ").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
 
         EvaporatingBasinRecipeBuilder.evaporating(ModItems.TINY_IRON_DUST.getDefaultInstance(), ModFluids.IRONBERRY_JUICE_BUCKET.getDefaultInstance()).unlockedBy("has_bucket", has(Items.BUCKET)).save(exporter, new ResourceLocation(ModItems.TINY_IRON_DUST.toString() + "_evaporating"));
+
+
+        CrushingTubRecipeBuilder.crushing(ModItems.OLIVES.getDefaultInstance(), ModFluids.OLIVE_OIL_BUCKET.getDefaultInstance(), ModItems.OLIVE_OIL_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_olives", has(ModItems.OLIVES)).save(exporter, new ResourceLocation(ModItems.OLIVES + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(ModItems.IRON_BERRIES.getDefaultInstance(), ModFluids.IRONBERRY_JUICE_BUCKET.getDefaultInstance(), ModItems.IRONBERRY_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_iron_berries", has(ModItems.IRON_BERRIES)).save(exporter, new ResourceLocation(ModItems.IRON_BERRIES + "_crushed"));
+        //CrushingTubRecipeBuilder.crushing(Items.SUGAR_CANE.getDefaultInstance(), Items.WATER_BUCKET.getDefaultInstance(), Items.POTION.getDefaultInstance(), Items.SUGAR.getDefaultInstance()).unlockedBy("has_sugar_cane", has(Items.SUGAR_CANE)).save(exporter, new ResourceLocation(Items.SUGAR_CANE + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(Items.SWEET_BERRIES.getDefaultInstance(), ModFluids.WILDBERRY_JUICE_BUCKET.getDefaultInstance(), ModItems.WILDBERRY_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_sweet_berries", has(Items.SWEET_BERRIES)).save(exporter, new ResourceLocation(Items.SWEET_BERRIES + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(ModItems.GRAPES.getDefaultInstance(), ModFluids.GRAPE_JUICE_BUCKET.getDefaultInstance(), ModItems.GRAPE_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_grapes", has(ModItems.GRAPES)).save(exporter, new ResourceLocation(ModItems.GRAPES + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(Items.APPLE.getDefaultInstance(), ModFluids.APPLE_JUICE_BUCKET.getDefaultInstance(), ModItems.APPLE_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_apples", has(Items.APPLE)).save(exporter, new ResourceLocation(Items.APPLE + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(Items.HONEYCOMB.getDefaultInstance(), ModFluids.HONEY_BUCKET.getDefaultInstance(), Items.HONEY_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_honey", has(Items.HONEYCOMB)).save(exporter, new ResourceLocation(Items.HONEYCOMB + "_crushed"));
 
     }
 

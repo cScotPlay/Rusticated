@@ -20,15 +20,19 @@ public class ModRecipes
     public static final EvaporatingBasinRecipe.Serializer EVAPORATING_RECIPE_SERIALIZER = EvaporatingBasinRecipe.Serializer.INSTANCE;
     public static final RecipeType<EvaporatingBasinRecipe> EVAPORATING_RECIPE_TYPE = EvaporatingBasinRecipe.Type.INSTANCE;
 
+    public static final CrushingTubRecipe.Serializer CRUSHING_RECIPE_SERIALIZER = CrushingTubRecipe.Serializer.INSTANCE;
+    public static final RecipeType<CrushingTubRecipe> CRUSHING_RECIPE_TYPE = CrushingTubRecipe.Type.INSTANCE;
     public static void onRecipeRegistry()
     {
         Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(MOD_ID, CondenserRecipe.Serializer.ID), CONDENSER_RECIPE_SERIALIZER);
         Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(MOD_ID, AdvCondenserRecipe.Serializer.ID), ADV_CONDENSER_RECIPE_SERIALIZER);
         Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(MOD_ID, EvaporatingBasinRecipe.Serializer.ID), EVAPORATING_RECIPE_SERIALIZER);
+        Registry.register(Registry.RECIPE_SERIALIZER, new ResourceLocation(MOD_ID, CrushingTubRecipe.Serializer.ID), CRUSHING_RECIPE_SERIALIZER);
 
         Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(MOD_ID, CondenserRecipe.Type.ID), CondenserRecipe.Type.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(MOD_ID, AdvCondenserRecipe.Type.ID), AdvCondenserRecipe.Type.INSTANCE);
         Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(MOD_ID, EvaporatingBasinRecipe.Type.ID), EvaporatingBasinRecipe.Type.INSTANCE);
+        Registry.register(Registry.RECIPE_TYPE, new ResourceLocation(MOD_ID, CrushingTubRecipe.Type.ID), CrushingTubRecipe.Type.INSTANCE);
 
     }
 }
