@@ -10,7 +10,7 @@
     "SugarCaneBlockMixin"
   ],
   "client": [
-    "ElixirEmporiumMixin"
+    "RusticatedMixin"
   ],
   "injectors": {
     "defaultRequire": 1
