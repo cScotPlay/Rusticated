@@ -24,6 +24,7 @@ import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.inventory.ContainerData;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
@@ -122,7 +123,6 @@ public class EvaporatingBasinBlockEntity extends BlockEntity implements ModConta
         if(match.isPresent()) {
             blockEntity.setItem(0, new ItemStack(match.get().getResultItem().getItem(), blockEntity.getItem(0).getCount() + 1));
             blockEntity.resetProgress();
-            Rusticated.LOGGER.info("Create Item " + match.get().getResultItem().getItem() + blockEntity.getItem(0).getCount());
         }
 
     }
@@ -144,6 +144,11 @@ public class EvaporatingBasinBlockEntity extends BlockEntity implements ModConta
         for (int i = 0; i < inventory.size(); i++) {
             this.inventory.set(i, inventory.get(i));
         }
+    }
+
+    public void update() {
+        if(this.level == null) return;
+        this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), Block.UPDATE_ALL);
     }
 
     @Override
