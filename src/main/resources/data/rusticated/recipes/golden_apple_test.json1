@@ -1,8 +1,8 @@
-{
-  "type": "elixiremporium:condenser",
+``{
+  "type": "rusticated:condenser",
   "ingredient": [
     {
-      "item": "elixiremporium:cohosh"
+      "item": "rusticated:cohosh"
     },
     {
       "item": "minecraft:honeycomb"
@@ -10,6 +10,6 @@
   ],
   "potion": "minecraft:healing",
   "result": {
-    "item": "elixiremporium:elixir"
+    "item": "rusticated:elixir"
   }
 }
