@@ -23,6 +23,12 @@
       "heading": "Tiny Iron Dust",
       "recipes": "rusticated:tiny_iron_dust_evaporating",
       "text": "Evaporating Ironberry Juice produces a small concentrated amount of iron dust. Iron dust is a smeltable product that transforms into a nugget form."
+    },
+    {
+      "type": "rusticated:evaporating_basin_template",
+      "heading": "Honey Block",
+      "recipes": "rusticated:honey_block_evaporating",
+      "text": "Evaporating Honey solidifies it into a block form."
     }
   ],
   "sortnum": 7

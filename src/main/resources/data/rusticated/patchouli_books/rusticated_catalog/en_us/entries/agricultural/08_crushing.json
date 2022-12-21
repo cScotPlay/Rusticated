@@ -5,13 +5,13 @@
   "pages": [
     {
       "type": "spotlight",
-      "text": "Drying basins extract items from fluids through the process of evaporation. They hold up to one stack of items and eight buckets of liquid. To use an evaporation basin, place it in the world. Then, insert fluid with a filled bucket in hand. Remove fluid by using an empty bucket.",
+      "text": "The Crushing Tub crushes solids into liquids. They hold up to one stack of items and eight buckets of fluid. Insert and remove items by interacting with the tub. To crush items, one needs to jump on the tub.",
       "item": "rusticated:crushing_tub"
     },
     {
       "type": "crafting",
       "recipe": "rusticated:crushing_tub",
-      "text": "To construct the Drying Basin, one first must craft an Unfired Drying Basin using three blocks of clay to mold the basin's shape."
+      "text": "Once the tub is full of fluid, it will cease to continue. Fluid removal occurs when the tub is interacted with using a Glass Bottle of Bucket. To void the fluid in the tub, crouch while interacting with the tub with an empty hand."
     },
     {
       "type": "rusticated:crushing_tub_template",

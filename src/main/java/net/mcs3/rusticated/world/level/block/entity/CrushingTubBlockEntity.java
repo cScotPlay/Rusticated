@@ -88,6 +88,7 @@ public class CrushingTubBlockEntity extends BlockEntity implements ModContainer 
                 Fluid fluid = match.get().getInputFluid(bucketItem);
                 addCrushedFluids(blockEntity, fluid);
                 Block.popResourceFromFace(level, this.getBlockPos(), Direction.UP, match.get().getExtraOutputItem());
+                level.playSound(null, this.getBlockPos(), SoundEvents.SLIME_BLOCK_FALL, SoundSource.BLOCKS, 1.0F, 1.0F);
                 resetProgress();
                 update();
             }

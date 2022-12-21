@@ -418,6 +418,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapedRecipeBuilder.shaped(ModItems.UNFIRED_EVAPORATING_BASIN).define('#', Blocks.CLAY).pattern("# #").pattern(" # ").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
 
         EvaporatingBasinRecipeBuilder.evaporating(ModItems.TINY_IRON_DUST.getDefaultInstance(), ModFluids.IRONBERRY_JUICE_BUCKET.getDefaultInstance()).unlockedBy("has_bucket", has(Items.BUCKET)).save(exporter, new ResourceLocation(ModItems.TINY_IRON_DUST.toString() + "_evaporating"));
+        EvaporatingBasinRecipeBuilder.evaporating(Blocks.HONEY_BLOCK.asItem().getDefaultInstance(), ModFluids.HONEY_BUCKET.getDefaultInstance()).unlockedBy("has_bucket", has(Items.BUCKET)).save(exporter, new ResourceLocation(Items.HONEY_BLOCK.toString() + "_evaporating"));
 
 
         CrushingTubRecipeBuilder.crushing(ModItems.OLIVES.getDefaultInstance(), ModFluids.OLIVE_OIL_BUCKET.getDefaultInstance(), ModItems.OLIVE_OIL_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_olives", has(ModItems.OLIVES)).save(exporter, new ResourceLocation(ModItems.OLIVES + "_crushed"));
