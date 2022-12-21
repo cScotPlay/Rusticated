@@ -419,11 +419,17 @@ public class BlockStateGenerator extends FabricModelProvider
 
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.OLIVE_OIL_BLOCK, Blocks.WATER);
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.IRONBERRY_JUICE_BLOCK, Blocks.WATER);
-        blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.WILDBERRY_JUICE_BLOCK, Blocks.WATER);
+        blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.SWEET_BERRY_JUICE_BLOCK, Blocks.WATER);
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.GRAPE_JUICE_BLOCK, Blocks.WATER);
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.APPLE_JUICE_BLOCK, Blocks.WATER);
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.ALE_WORT_BLOCK, Blocks.WATER);
         blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.HONEY_FLUID_BLOCK, Blocks.WATER);
+        blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.ALE_FLUID_BLOCK, Blocks.WATER);
+        blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.CIDER_FLUID_BLOCK, Blocks.WATER);
+        blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.IRON_WINE_FLUID_BLOCK, Blocks.WATER);
+        blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.MEAD_FLUID_BLOCK, Blocks.WATER);
+        blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.SWEET_BERRY_WINE_FLUID_BLOCK, Blocks.WATER);
+        blockStateModelGenerator.createNonTemplateModelBlock(ModFluids.WINE_FLUID_BLOCK, Blocks.WATER);
 
         createEvaporatingBasin(blockStateModelGenerator, ModBlocks.EVAPORATING_BASIN);
         createUnfiredEvaporatingBasin(blockStateModelGenerator, ModItems.UNFIRED_EVAPORATING_BASIN);
@@ -457,8 +463,8 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItems.OLIVE_OIL_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModFluids.IRONBERRY_JUICE_BUCKET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.IRONBERRY_JUICE_BOTTLE, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModFluids.WILDBERRY_JUICE_BUCKET, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.WILDBERRY_JUICE_BOTTLE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModFluids.SWEET_BERRY_JUICE_BUCKET, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.SWEET_BERRY_JUICE_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModFluids.GRAPE_JUICE_BUCKET, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModItems.GRAPE_JUICE_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModFluids.APPLE_JUICE_BUCKET, ModelTemplates.FLAT_ITEM);

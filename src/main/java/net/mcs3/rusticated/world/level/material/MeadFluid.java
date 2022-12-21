@@ -7,25 +7,25 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.FluidState;
 
-public abstract class WildberryFluid extends BaseFluid {
+public abstract class MeadFluid extends BaseFluid {
     @Override
     public Fluid getFlowing() {
-        return ModFluids.FLOWING_WILDBERRY_JUICE;
+        return ModFluids.FLOWING_MEAD;
     }
 
     @Override
     public Fluid getSource() {
-        return ModFluids.SOURCE_WILDBERRY_JUICE;
+        return ModFluids.SOURCE_MEAD;
     }
 
     @Override
     public Item getBucket() {
-        return ModFluids.WILDBERRY_JUICE_BUCKET;
+        return null;
     }
 
     @Override
     protected BlockState createLegacyBlock(FluidState state) {
-        return ModFluids.WILDBERRY_JUICE_BLOCK.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state));
+        return ModFluids.MEAD_FLUID_BLOCK.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state));
     }
 
     protected static int getLegacyLevel(FluidState state) {
@@ -35,7 +35,7 @@ public abstract class WildberryFluid extends BaseFluid {
         return 8 - Math.min(state.getAmount(), 8) + (state.getValue(FALLING) != false ? 8 : 0);
     }
 
-    public static class Flowing extends WildberryFluid {
+    public static class Flowing extends MeadFluid {
         @Override
         protected void createFluidStateDefinition(StateDefinition.Builder<Fluid, FluidState> builder) {
             super.createFluidStateDefinition(builder);
@@ -53,7 +53,7 @@ public abstract class WildberryFluid extends BaseFluid {
         }
     }
 
-    public static class Source extends WildberryFluid {
+    public static class Source extends MeadFluid {
         @Override
         public int getAmount(FluidState state) {
             return 8;
