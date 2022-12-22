@@ -13,6 +13,7 @@ public class ModEffects {
     private static String MODID = Rusticated.MOD_ID;
 
     public static MobEffect IRON_SKIN_EFFECT;
+    public static MobEffect TIPSY;
 
     public static MobEffect register(String name, MobEffect effect){
         return Registry.register(Registry.MOB_EFFECT, new ResourceLocation(MODID, name), effect);
@@ -20,6 +21,9 @@ public class ModEffects {
 
     public static void registerEffects() {
         IRON_SKIN_EFFECT = register("ironskin", new ModMobEffect(MobEffectCategory.BENEFICIAL, 16777148)
+                .addAttributeModifier(Attributes.ARMOR, "D666C8fD-8AC4-451D-9A06-777947832156", 3f, AttributeModifier.Operation.ADDITION)
+                .addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "D774E354-E3AB-42C4-9716-d2280CD7D988", 2f, AttributeModifier.Operation.ADDITION));
+        TIPSY = register("tipsy", new ModMobEffect(MobEffectCategory.HARMFUL, 16777148)
                 .addAttributeModifier(Attributes.ARMOR, "D666C8fD-8AC4-451D-9A06-777947832156", 3f, AttributeModifier.Operation.ADDITION)
                 .addAttributeModifier(Attributes.ARMOR_TOUGHNESS, "D774E354-E3AB-42C4-9716-d2280CD7D988", 2f, AttributeModifier.Operation.ADDITION));
     }
