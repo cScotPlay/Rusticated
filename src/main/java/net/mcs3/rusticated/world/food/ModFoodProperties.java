@@ -1,5 +1,7 @@
 package net.mcs3.rusticated.world.food;
 
+import net.mcs3.rusticated.init.ModItems;
+import net.mcs3.rusticated.world.item.BoozeItem;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;

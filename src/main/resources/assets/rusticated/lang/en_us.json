@@ -403,9 +403,16 @@
   "item.rusticated.tiny_iron_dust": "Tiny Iron Dust",
   "item.rusticated.unfired_evaporating_basin": "Unfired Evaporating Basin",
   "item.rusticated.ale_cup": "Cup of Ale",
+  "item.rusticated.cider_cup": "Cup of Cider",
+  "item.rusticated.iron_wine_cup": "Cup of Iron Wine",
+  "item.rusticated.mead_cup": "Cup of Mead",
+  "item.rusticated.sweet_berry_wine_cup": "Cup of Sweet Berry Wine",
+  "item.rusticated.wine_cup": "Cup of Wine",
 
 
   "effect.rusticated.ironskin": "Iron Skin",
+  "effect.rusticated.tipsy": "Tipsy",
+  "effect.rusticated.magic_resistance": "Resistance to Magic",
 
 
 

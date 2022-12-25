@@ -7,6 +7,7 @@ import net.mcs3.rusticated.world.item.FluidBottleItem;
 import net.mcs3.rusticated.world.item.ModBookItem;
 import net.mcs3.rusticated.world.item.ModItem;
 import net.mcs3.rusticated.world.item.alchmey.ElixirItem;
+import net.mcs3.rusticated.world.level.material.ModFluids;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;

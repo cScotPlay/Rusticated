@@ -5,6 +5,7 @@ import net.mcs3.rusticated.world.effect.ModEffects;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.item.alchemy.Potion;
 
 public class ModPotions {
@@ -14,6 +15,7 @@ public class ModPotions {
     public static Potion IRON_SKIN;
     public static Potion LONG_IRON_SKIN;
     public static Potion STRONG_IRON_SKIN;
+    public static Potion TIPSY;
 
     public static Potion register(String name, Potion potion){
         return Registry.register(Registry.POTION, new ResourceLocation(MODID, name), potion);
