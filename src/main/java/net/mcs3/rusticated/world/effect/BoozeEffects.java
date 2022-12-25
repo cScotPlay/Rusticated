@@ -1,10 +1,8 @@
 package net.mcs3.rusticated.world.effect;
 
-import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModItems;
 import net.mcs3.rusticated.world.item.BoozeItem;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.LivingEntity;
