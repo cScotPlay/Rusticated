@@ -1,7 +1,12 @@
 package net.mcs3.rusticated.world.level.block;
 
+import net.mcs3.rusticated.Rusticated;
+import net.mcs3.rusticated.world.level.block.entity.BrewingBarrelBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.CrushingTubBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.Container;
+import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.Entity;
@@ -15,6 +20,7 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -22,9 +28,12 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.List;
 import java.util.stream.Stream;
 
 public class CrushingTubBlock extends BaseEntityBlock implements EntityBlock {
+
+    public static final ResourceLocation CONTENTS;
 
     public CrushingTubBlock() {
         super(BlockBehaviour.Properties.of(Material.WOOD)
@@ -84,10 +93,44 @@ public class CrushingTubBlock extends BaseEntityBlock implements EntityBlock {
         super.fallOn(level, state, pos, entity, f);
     }
 
+    @Override
+    @SuppressWarnings("deprecation")
+    public void onRemove(BlockState state, Level level, BlockPos pos, BlockState newState, boolean isMoving) {
+        if (!state.is(newState.getBlock())) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof Container) {
+                Containers.dropContents(level, pos, (Container)blockEntity);
+                level.updateNeighbourForOutputSignal(pos, this);
+            }
+
+            super.onRemove(state, level, pos, newState, isMoving);
+        }
+    }
+
+    @Override
+    @SuppressWarnings("deprecation")
+    public List<ItemStack> getDrops(BlockState state, net.minecraft.world.level.storage.loot.LootContext.Builder builder) {
+        BlockEntity blockEntity = (BlockEntity)builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+        if (blockEntity instanceof CrushingTubBlockEntity) {
+            CrushingTubBlockEntity crushingBlockEntity = (CrushingTubBlockEntity)blockEntity;
+            builder = builder.withDynamicDrop(CONTENTS, (lootContext, consumer) -> {
+                for(int i = 0; i < crushingBlockEntity.getContainerSize(); ++i) {
+                    consumer.accept(crushingBlockEntity.getItem(i));
+                }
+
+            });
+        }
+        return super.getDrops(state, builder);
+    }
+
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
         return new CrushingTubBlockEntity(pos, state);
+    }
+
+    static {
+        CONTENTS = new ResourceLocation(Rusticated.MOD_ID,"contents");
     }
 
     private static final VoxelShape SHAPE = Stream.of(
@@ -99,20 +142,4 @@ public class CrushingTubBlock extends BaseEntityBlock implements EntityBlock {
             Block.box(14.5, 0, 1.5, 15.5, 9, 14.5),
             Block.box(0, 6, 0, 16, 8, 16)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
-
-//    private static final VoxelShape SHAPE = Stream.of(
-//            Block.box(14, 6, 2, 16, 8, 14),
-//            Block.box(1.5, 0, 1.5, 14.5, 1, 14.5),
-//            Block.box(0.5, 0, 0.5, 15.5, 9, 1.5),
-//            Block.box(0.5, 0, 14.5, 15.5, 9, 15.5),
-//            Block.box(0.5, 0, 1.5, 1.5, 9, 14.5),
-//            Block.box(14.5, 0, 1.5, 15.5, 9, 14.5),
-//            Block.box(0, 1, 0, 16, 3, 2),
-//            Block.box(0, 6, 0, 16, 8, 2),
-//            Block.box(0, 1, 2, 2, 3, 14),
-//            Block.box(0, 6, 2, 2, 8, 14),
-//            Block.box(0, 1, 14, 16, 3, 16),
-//            Block.box(0, 6, 14, 16, 8, 16),
-//            Block.box(14, 1, 2, 16, 3, 14)
-//            ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
 }
