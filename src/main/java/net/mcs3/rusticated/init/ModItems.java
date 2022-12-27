@@ -55,12 +55,12 @@ public class ModItems
     public static Item GRAPE_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.GRAPE_JUICE).stacksTo(16));
     public static Item APPLE_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.APPLE_JUICE).stacksTo(16));
     public static Item ALE_WORT_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.ALE_WORT).stacksTo(16));
-    public static Item ALE_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8));
-    public static Item CIDER_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8));
-    public static Item IRON_WINE_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8));
-    public static Item MEAD_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8));
-    public static Item SWEET_BERRY_WINE_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8));
-    public static Item WINE_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8));
+    public static Item ALE_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8), ModFluids.SOURCE_ALE);
+    public static Item CIDER_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8), ModFluids.SOURCE_CIDER);
+    public static Item IRON_WINE_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8), ModFluids.SOURCE_IRON_WINE);
+    public static Item MEAD_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8), ModFluids.SOURCE_MEAD);
+    public static Item SWEET_BERRY_WINE_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8), ModFluids.SOURCE_SWEET_BERRY_WINE);
+    public static Item WINE_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8), ModFluids.SOURCE_WINE);
 
 
     public static Item TINY_IRON_DUST = new ModItem(new Item.Properties().tab(AG_TAB));

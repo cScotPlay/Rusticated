@@ -14,6 +14,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.material.Fluid;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.List;
@@ -21,9 +22,11 @@ import java.util.List;
 public class BoozeItem extends Item {
     private float fluidQuality;
     private float inebriationChance = 0.5F;
-    public BoozeItem(Properties properties) {
+    private Fluid fluidType;
+    public BoozeItem(Properties properties, Fluid fluidType) {
         super(properties);
         fluidQuality = 0.4F;
+        this.fluidType = fluidType;
     }
 
     public boolean isEdible() {
@@ -79,6 +82,8 @@ public class BoozeItem extends Item {
     }
 
     public float getFluidQuality() {return this.fluidQuality;}
+
+    public Fluid getFluidType() {return this.fluidType;}
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {
