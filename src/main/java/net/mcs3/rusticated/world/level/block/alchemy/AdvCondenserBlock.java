@@ -97,11 +97,11 @@ public class AdvCondenserBlock extends BaseEntityBlock implements EntityBlock {
         BlockState belowState = level.getBlockState(pos.below());
         BlockState aboveState = level.getBlockState(pos.above());
 
-        if (belowState.getBlock() instanceof CondenserBlock)
+        if (belowState.getBlock() instanceof AdvCondenserBlock)
         {
             level.setBlock(pos.below(), Blocks.AIR.defaultBlockState(), 35);
             level.levelEvent(player, 2001, pos.below(), Block.getId(belowState));
-        } else if (aboveState.getBlock() instanceof CondenserBlock)
+        } else if (aboveState.getBlock() instanceof AdvCondenserBlock)
         {
             level.setBlock(pos.above(), Blocks.AIR.defaultBlockState(), 35);
             level.levelEvent(player, 2001, pos.below(), Block.getId(aboveState));
