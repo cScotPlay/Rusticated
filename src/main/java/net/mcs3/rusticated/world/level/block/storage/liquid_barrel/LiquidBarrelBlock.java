@@ -1,5 +1,6 @@
 package net.mcs3.rusticated.world.level.block.storage.liquid_barrel;
 
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.mcs3.rusticated.world.level.block.entity.ModBlockEntityTypes;
 import net.mcs3.rusticated.world.level.block.storage.AbstractStorageBlock;
 import net.minecraft.core.BlockPos;
@@ -12,6 +13,8 @@ import net.minecraft.world.level.biome.Biome;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.material.Fluid;
+import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -74,6 +77,7 @@ public class LiquidBarrelBlock extends AbstractStorageBlock implements EntityBlo
 
     @Override
     public void handlePrecipitation(BlockState state, Level level, BlockPos pos, Biome.Precipitation precipitation) {
+
 //        if (shouldHandlePrecipitation(level, precipitation)) {
 //            BlockEntity barrel = level.getBlockEntity(pos);
 //
@@ -151,8 +155,4 @@ public class LiquidBarrelBlock extends AbstractStorageBlock implements EntityBlo
             Block.box(13, 0, 1.75, 14.25, 2, 3),
             Block.box(13, 14, 1.75, 14.25, 16, 3)
     ).reduce((v1, v2) -> Shapes.join(v1, v2, BooleanOp.OR)).get();
-
-//    static {
-//        BARREL_AABB = Block.box(1.0, 0.1, 1.0, 15.0, 15.0, 15);
-//    }
 }
