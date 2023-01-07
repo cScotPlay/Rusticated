@@ -1,7 +1,6 @@
 package net.mcs3.rusticated.world.level.block;
 
 import net.mcs3.rusticated.Rusticated;
-import net.mcs3.rusticated.world.level.block.entity.BrewingBarrelBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.CrushingTubBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.resources.ResourceLocation;
