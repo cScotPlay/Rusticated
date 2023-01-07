@@ -20,12 +20,12 @@ public abstract class AppleFluid extends BaseFluid {
 
     @Override
     public Item getBucket() {
-        return ModFluids.IRONBERRY_JUICE_BUCKET;
+        return ModFluids.APPLE_JUICE_BUCKET;
     }
 
     @Override
     protected BlockState createLegacyBlock(FluidState state) {
-        return ModFluids.IRONBERRY_JUICE_BLOCK.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state));
+        return ModFluids.APPLE_JUICE_BLOCK.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state));
     }
 
     protected static int getLegacyLevel(FluidState state) {
