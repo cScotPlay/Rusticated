@@ -10,22 +10,22 @@ import net.minecraft.world.level.material.FluidState;
 public abstract class HoneyFluid extends BaseFluid {
     @Override
     public Fluid getFlowing() {
-        return ModFluids.FLOWING_IRONBERRY_JUICE;
+        return ModFluids.FLOWING_HONEY;
     }
 
     @Override
     public Fluid getSource() {
-        return ModFluids.SOURCE_IRONBERRY_JUICE;
+        return ModFluids.SOURCE_HONEY;
     }
 
     @Override
     public Item getBucket() {
-        return ModFluids.IRONBERRY_JUICE_BUCKET;
+        return ModFluids.HONEY_BUCKET;
     }
 
     @Override
     protected BlockState createLegacyBlock(FluidState state) {
-        return ModFluids.IRONBERRY_JUICE_BLOCK.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state));
+        return ModFluids.HONEY_FLUID_BLOCK.defaultBlockState().setValue(LiquidBlock.LEVEL, getLegacyLevel(state));
     }
 
     protected static int getLegacyLevel(FluidState state) {
