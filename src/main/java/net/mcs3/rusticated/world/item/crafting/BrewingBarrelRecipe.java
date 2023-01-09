@@ -90,7 +90,7 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
         public static final String ID = "brewing_barrel";
     }
 
-    public static class Serializer implements RecipeSerializer<BrewingBarrelRecipe>
+    public static class Serializer<T extends BrewingBarrelRecipe> implements RecipeSerializer<BrewingBarrelRecipe>
     {
         public static final Serializer INSTANCE = new Serializer();
         public static final String ID = "brewing_barrel";

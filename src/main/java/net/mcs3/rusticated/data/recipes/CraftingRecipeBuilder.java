@@ -429,6 +429,13 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         CrushingTubRecipeBuilder.crushing(Items.APPLE.getDefaultInstance(), ModFluids.APPLE_JUICE_BUCKET.getDefaultInstance(), ModItems.APPLE_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_apples", has(Items.APPLE)).save(exporter, new ResourceLocation(Items.APPLE + "_crushed"));
         CrushingTubRecipeBuilder.crushing(Items.HONEYCOMB.getDefaultInstance(), ModFluids.HONEY_BUCKET.getDefaultInstance(), Items.HONEY_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_honey", has(Items.HONEYCOMB)).save(exporter, new ResourceLocation(Items.HONEYCOMB + "_crushed"));
 
+        BrewingBarrelRecipeBuilder.brewing(ModItems.ALE_CUP.getDefaultInstance(), ModFluids.SOURCE_ALE_WORT.getSource(), ModFluids.SOURCE_ALE.getSource()).unlockedBy("has_iron_berries", has(ModFluids.ALE_WORT_BUCKET)).save(exporter, new ResourceLocation("brewed_ale"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.CIDER_CUP.getDefaultInstance(), ModFluids.SOURCE_APPLE_JUICE.getSource(), ModFluids.SOURCE_CIDER.getSource()).unlockedBy("has_apples", has(Items.APPLE)).save(exporter, new ResourceLocation("brewed_cider"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.IRON_WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_IRONBERRY_JUICE.getSource(), ModFluids.SOURCE_IRON_WINE.getSource()).unlockedBy("has_iron_berries", has(ModItems.IRON_BERRIES)).save(exporter, new ResourceLocation("brewed_iron_wine"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.MEAD_CUP.getDefaultInstance(), ModFluids.SOURCE_HONEY.getSource(), ModFluids.SOURCE_MEAD.getSource()).unlockedBy("has_honey", has(Items.HONEYCOMB)).save(exporter, new ResourceLocation("brewed_mead"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.SWEET_BERRY_WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_SWEET_BERRY_JUICE.getSource(), ModFluids.SOURCE_SWEET_BERRY_WINE.getSource()).unlockedBy("has_sweet_berries", has(Items.SWEET_BERRIES)).save(exporter, new ResourceLocation("brewed_sweet_berry_wine"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_GRAPE_JUICE.getSource(), ModFluids.SOURCE_WINE.getSource()).unlockedBy("has_grapes", has(ModItems.GRAPES)).save(exporter, new ResourceLocation("brewed_wine"));
+
     }
 
     public static void coloredWoodRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
