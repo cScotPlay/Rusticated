@@ -434,6 +434,7 @@ public class BlockStateGenerator extends FabricModelProvider
         createEvaporatingBasin(blockStateModelGenerator, ModBlocks.EVAPORATING_BASIN);
         createUnfiredEvaporatingBasin(blockStateModelGenerator, ModItems.UNFIRED_EVAPORATING_BASIN);
         createCrushingTub(blockStateModelGenerator, ModBlocks.CRUSHING_TUB);
+        createBrewingBarrel(blockStateModelGenerator, ModBlocks.OAK_BREWING_BARREL);
 
 
     }
@@ -927,6 +928,21 @@ public class BlockStateGenerator extends FabricModelProvider
 
         modelGenerators.blockStateOutput.accept(BlockModelGenerators.createSimpleBlock(basinBlock, basinModel));
         modelGenerators.delegateItemModel(basinBlock, basinModel);
+    }
+
+    public final void createBrewingBarrel(BlockModelGenerators modelGenerators, Block brewingBlock) {
+        ResourceLocation barrelModel = new ResourceLocation(MOD_ID, "block/oak_brewing_barrel");
+
+        modelGenerators.blockStateOutput.accept(brewingBarrelVariants(brewingBlock, barrelModel));
+        modelGenerators.delegateItemModel(brewingBlock, barrelModel);
+    }
+
+    public static MultiPartGenerator brewingBarrelVariants(Block block, ResourceLocation baseLocation) {
+        return MultiPartGenerator.multiPart(block)
+                .with((Condition)Condition.condition().term(BlockStateProperties.HORIZONTAL_FACING, Direction.NORTH), Variant.variant().with(VariantProperties.MODEL, baseLocation))
+                .with((Condition)Condition.condition().term(BlockStateProperties.HORIZONTAL_FACING, Direction.EAST), Variant.variant().with(VariantProperties.MODEL, baseLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R90))
+                .with((Condition)Condition.condition().term(BlockStateProperties.HORIZONTAL_FACING, Direction.SOUTH), Variant.variant().with(VariantProperties.MODEL, baseLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R180))
+                .with((Condition)Condition.condition().term(BlockStateProperties.HORIZONTAL_FACING, Direction.WEST), Variant.variant().with(VariantProperties.MODEL,  baseLocation).with(VariantProperties.Y_ROT, VariantProperties.Rotation.R270));
     }
 
     public final void createUnfiredEvaporatingBasin(BlockModelGenerators modelGenerators, Item evaporationItem) {

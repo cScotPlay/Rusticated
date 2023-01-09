@@ -43,10 +43,11 @@ public class Rusticated implements ModInitializer {
 		INSTANCE = this;
 
 		RegistryHandler.onBlockRegistry();
+		RegistryHandler.onFluidRegistry();
 		RegistryHandler.onItemRegistry();
 
 		RegistryHandler.onBlockEntityRegistry();
-		RegistryHandler.onFluidRegistry();
+
 
 		ModTreeFeatures.init();
 

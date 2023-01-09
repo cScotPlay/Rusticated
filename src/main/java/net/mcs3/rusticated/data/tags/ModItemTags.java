@@ -26,6 +26,8 @@ public class ModItemTags
     public static final TagKey<Item> HERBS = modItem("herbs");
     public static final TagKey<Item> ELIXIR = modItem("elixir");
 
+    public static final TagKey<Item> BREWING_FLUID = modItem("brewing_fluid");
+
 
     public static TagKey<Item> modItem(String path) {
         return TagKey.create(Registry.ITEM.key(), new ResourceLocation(Rusticated.MOD_ID, path));

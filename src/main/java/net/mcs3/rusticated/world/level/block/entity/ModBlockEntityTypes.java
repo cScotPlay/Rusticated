@@ -36,8 +36,7 @@ public class ModBlockEntityTypes
     public static BlockEntityType<AdvCondenserBlockEntity> ADV_CONDENSER_CONTAINER;
     public static BlockEntityType<EvaporatingBasinBlockEntity> EVAPORATING_BASIN_CONTAINER;
     public static BlockEntityType<CrushingTubBlockEntity> CRUSHING_TUB_CONTAINER;
-
-
+    public static BlockEntityType<BrewingBarrelBlockEntity> BREWING_BARREL_CONTAINER;
 
     public static void init()
     {
@@ -65,6 +64,7 @@ public class ModBlockEntityTypes
         ADV_CONDENSER_CONTAINER = register("adv_condenser_container", ModBlocks.ADV_CONDENSER, AdvCondenserBlockEntity::new);
         EVAPORATING_BASIN_CONTAINER = register("evaporating_basin_container", ModBlocks.EVAPORATING_BASIN, EvaporatingBasinBlockEntity::new);
         CRUSHING_TUB_CONTAINER = register("crushing_tub_container", ModBlocks.CRUSHING_TUB, CrushingTubBlockEntity::new);
+        BREWING_BARREL_CONTAINER = register("brewing_barrel_container", ModBlocks.OAK_BREWING_BARREL, BrewingBarrelBlockEntity::new);
 
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, CONDENSER_CONTAINER);
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, ADV_CONDENSER_CONTAINER);
@@ -86,7 +86,6 @@ public class ModBlockEntityTypes
 
         ModBlockItems.LIQUID_BARREL_ITEM.registerItemApi();
         ModBlockItems.FIRED_JAR_ITEM.registerItemApi();
-
     }
 
     private static <T extends BlockEntity>BlockEntityType<T> register (String name, Block block, FabricBlockEntityTypeBuilder.Factory<T> factory)

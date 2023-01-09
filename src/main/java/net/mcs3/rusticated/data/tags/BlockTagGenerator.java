@@ -145,7 +145,8 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.LIQUID_BARREL,
                 ModBlocks.CROP_STAKE,
                 ModBlocks.TIED_STAKE,
-                ModBlocks.CRUSHING_TUB
+                ModBlocks.CRUSHING_TUB,
+                ModBlocks.OAK_BREWING_BARREL
         );
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)

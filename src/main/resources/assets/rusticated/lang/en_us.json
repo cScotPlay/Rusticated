@@ -341,6 +341,23 @@
 
   "block.rusticated.evaporating_basin": "Drying Basin",
   "block.rusticated.crushing_tub": "Crushing Tub",
+  "block.rusticated.oak_brewing_barrel": "Oak Brewing Barrel",
+
+
+  "block.rusticated.olive_oil_block": "Olive Oil",
+  "block.rusticated.ironberry_juice_block": "Ironberry Juice",
+  "block.rusticated.sweet_berry_juice_block": "Sweet Berry Juice",
+  "block.rusticated.grape_juice_block": "Grape Juice",
+  "block.rusticated.apple_juice_block": "Apple Juice",
+  "block.rusticated.ale_wort_block": "Ale Wort",
+  "block.rusticated.honey_fluid_block": "Liquid Honey",
+  "block.rusticated.ale_fluid_block": "Ale",
+  "block.rusticated.cider_fluid_block": "Cider",
+  "block.rusticated.iron_wine_fluid_block": "Iron Wine",
+  "block.rusticated.mead_fluid_block": "Mead",
+  "block.rusticated.sweet_berry_wine_fluid_block": "Sweet Berry Wine",
+  "block.rusticated.wine_fluid_block": "Wine",
+
 
   "item.rusticated.catalog": "Rusticated Catalog",
   "item.rusticated.iron_berries": "Iron Berries",
@@ -395,8 +412,8 @@
   "item.rusticated.sweet_berry_juice_bottle": "Bottle of Sweet Berry Juice",
   "item.rusticated.grape_juice_bucket": "Grape Juice Bucket",
   "item.rusticated.grape_juice_bottle": "Bottle of Grape Juice",
-  "item.rusticated.apple_juice_bucket": "Grape Apple Bucket",
-  "item.rusticated.apple_juice_bottle": "Bottl`e of Apple Juice",
+  "item.rusticated.apple_juice_bucket": "Apple Juice Bucket",
+  "item.rusticated.apple_juice_bottle": "Bottle of Apple Juice",
   "item.rusticated.ale_wort_bucket": "Ale Wort Bucket",
   "item.rusticated.ale_wort_bottle": "Bottle of Ale Wort",
   "item.rusticated.honey_bucket": "Honey Bucket",
@@ -421,6 +438,8 @@
   "book.rusticated.landingtext": "All Your Needs in One Place",
 
   "tooltip.rusticated.liquid.amount.with.capacity": "%s / %s mB",
-  "tooltip.rusticated.liquid.amount": "%s mB"
+  "tooltip.rusticated.liquid.amount": "%s mB",
+  "tooltip.rusticated.liquid.quality": "Quality = %s",
+  "tooltip.rusticated.primer.quality": "Primer Quality = %s"
 
 }

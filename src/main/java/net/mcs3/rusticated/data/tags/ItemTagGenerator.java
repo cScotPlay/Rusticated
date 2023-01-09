@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.rusticated.init.ModBlockItems;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
+import net.mcs3.rusticated.world.level.material.ModFluids;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 
@@ -401,6 +402,22 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
 
         tag(ModItemTags.ELIXIR).add(
                 ModItems.ELIXIR
+        );
+
+        tag(ModItemTags.BREWING_FLUID).add(
+                ModFluids.ALE_WORT_BUCKET,
+                ModFluids.APPLE_JUICE_BUCKET,
+                ModFluids.GRAPE_JUICE_BUCKET,
+                ModFluids.HONEY_BUCKET,
+                ModFluids.SWEET_BERRY_JUICE_BUCKET,
+                ModFluids.IRONBERRY_JUICE_BUCKET,
+
+                ModItems.ALE_CUP,
+                ModItems.CIDER_CUP,
+                ModItems.IRON_WINE_CUP,
+                ModItems.MEAD_CUP,
+                ModItems.SWEET_BERRY_WINE_CUP,
+                ModItems.WINE_CUP
         );
 
 

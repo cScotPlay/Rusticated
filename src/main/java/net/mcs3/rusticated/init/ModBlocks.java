@@ -414,6 +414,7 @@ public class ModBlocks
     //////////////////////////////////////////////////////////
     public static final Block EVAPORATING_BASIN = new EvaporatingBasinBlock();
     public static final Block CRUSHING_TUB = new CrushingTubBlock();
+    public static final Block OAK_BREWING_BARREL = new OakBrewingBarrel();
 
 
 
@@ -779,6 +780,7 @@ public class ModBlocks
         //////////////////////////////////////////////////////////
         register("evaporating_basin", EVAPORATING_BASIN, AGRICULTURAL_TAB);
         register("crushing_tub", CRUSHING_TUB, AGRICULTURAL_TAB);
+        register("oak_brewing_barrel", OAK_BREWING_BARREL, AGRICULTURAL_TAB);
 
 
         initOxidizables();

@@ -8,6 +8,7 @@ import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
 import net.mcs3.rusticated.client.color.FluidColorRegistry;
 import net.mcs3.rusticated.client.color.ModColorProviders;
 import net.mcs3.rusticated.client.screens.inventory.AdvCondenserScreen;
+import net.mcs3.rusticated.client.screens.inventory.BrewingBarrelScreen;
 import net.mcs3.rusticated.client.screens.inventory.CondenserScreen;
 import net.mcs3.rusticated.client.screens.renderer.CrushingTubRenderer;
 import net.mcs3.rusticated.client.screens.renderer.EvaporationBasinRenderer;
@@ -97,6 +98,7 @@ public class RusticatedClient implements ClientModInitializer
 
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.EVAPORATING_BASIN, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRUSHING_TUB, RenderType.cutout());
+        BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OAK_BREWING_BARREL, RenderType.cutoutMipped());
 
 
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, LiquidBarrelRenderer::new);
@@ -116,6 +118,7 @@ public class RusticatedClient implements ClientModInitializer
     {
         MenuScreens.register(ModMenuTypes.CONDENSER_MENU_TYPE, CondenserScreen::new);
         MenuScreens.register(ModMenuTypes.ADV_CONDENSER_MENU_TYPE, AdvCondenserScreen::new);
+        MenuScreens.register(ModMenuTypes.BREWING_BARREL_MENU_TYPE, BrewingBarrelScreen::new);
     }
 
     private void registerLayers() {

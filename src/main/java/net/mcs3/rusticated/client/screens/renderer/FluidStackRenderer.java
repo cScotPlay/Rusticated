@@ -29,20 +29,27 @@ public class FluidStackRenderer implements IIngredientRenderer<FluidStack> {
     private final TooltipMode tooltipMode;
     private final int width;
     private final int height;
+    private final int fluidQuality;
+
+
 
     enum TooltipMode {
         SHOW_AMOUNT,
         SHOW_AMOUNT_AND_CAPACITY,
-        ITEM_LIST
+        ITEM_LIST,
+        SHOW_QUALITY
     }
 
     public FluidStackRenderer() {
         this(FluidStack.convertDropletsToMb(FluidConstants.BUCKET), TooltipMode.SHOW_AMOUNT_AND_CAPACITY, 16, 16);
     }
 
-
     public FluidStackRenderer(long capacityMb, boolean showCapacity, int width, int height) {
         this(capacityMb, showCapacity ? TooltipMode.SHOW_AMOUNT_AND_CAPACITY : TooltipMode.SHOW_AMOUNT, width, height);
+    }
+
+    public FluidStackRenderer(long capacityMb, int width, int height, int fluidQuality) {
+        this(capacityMb, TooltipMode.SHOW_QUALITY, width, height, fluidQuality);
     }
 
     @SuppressWarnings("DeprecatedIsStillUsed")
@@ -59,6 +66,18 @@ public class FluidStackRenderer implements IIngredientRenderer<FluidStack> {
         this.tooltipMode = tooltipMode;
         this.width = width;
         this.height = height;
+        this.fluidQuality = 0;
+    }
+
+    private FluidStackRenderer(long capacityMb, TooltipMode tooltipMode, int width, int height, int fluidQuality) {
+        Preconditions.checkArgument(capacityMb > 0, "capacity must be > 0");
+        Preconditions.checkArgument(width > 0, "width must be > 0");
+        Preconditions.checkArgument(height > 0, "height must be > 0");
+        this.capacityMb = capacityMb;
+        this.tooltipMode = tooltipMode;
+        this.width = width;
+        this.height = height;
+        this.fluidQuality = fluidQuality;
     }
 
     /*
@@ -104,24 +123,61 @@ public class FluidStackRenderer implements IIngredientRenderer<FluidStack> {
                 return tooltip;
             }
 
-            Component displayName = new TranslatableComponent("Water");
+            fluidType.getFluid().defaultFluidState().createLegacyBlock().getBlock().getDescriptionId();
+
+            Component displayName = new TranslatableComponent(fluidType.getFluid().defaultFluidState().createLegacyBlock().getBlock().getDescriptionId());
             tooltip.add(displayName);
 
             long amount = fluidStack.getAmount();
 
             if (tooltipMode == TooltipMode.SHOW_AMOUNT_AND_CAPACITY) {
-                MutableComponent amountString = new TranslatableComponent("tooltip.elixiremporium.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
+                MutableComponent amountString = new TranslatableComponent("tooltip.rusticated.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
                 tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
             } else if (tooltipMode == TooltipMode.SHOW_AMOUNT) {
-                MutableComponent amountString = new TranslatableComponent("tooltip.elixiremporium.liquid.amount", nf.format(amount));
+                MutableComponent amountString = new TranslatableComponent("tooltip.rusticated.liquid.amount", nf.format(amount));
                 tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
+            } else if (tooltipMode == TooltipMode.SHOW_QUALITY) {
+                MutableComponent amountString = new TranslatableComponent("tooltip.rusticated.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
+                tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
+                if(fluidQuality > 0) {
+                    MutableComponent amountQuality = new TranslatableComponent("tooltip.rusticated.liquid.quality", (float) fluidQuality / 100);
+                    tooltip.add(amountQuality.withStyle(ChatFormatting.GOLD));}
             }
         } catch (RuntimeException e) {
             Rusticated.LOGGER.error("Failed to get tooltip for fluid: " + e);
         }
-
         return tooltip;
     }
+
+    public List<Component> getFluidTooltip(FluidStack fluidStack, int quality) {
+        List<Component> tooltip = new ArrayList<>();
+
+        FluidVariant fluidType = fluidStack.getFluidVariant();
+        try {
+            if (fluidType == null) {
+                return tooltip;
+            }
+
+            fluidType.getFluid().defaultFluidState().createLegacyBlock().getBlock().getDescriptionId();
+
+            Component displayName = new TranslatableComponent(fluidType.getFluid().defaultFluidState().createLegacyBlock().getBlock().getDescriptionId());
+            tooltip.add(displayName);
+
+            long amount = fluidStack.getAmount();
+
+            MutableComponent amountString = new TranslatableComponent("tooltip.rusticated.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
+            tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
+            if(quality > 0) {
+                MutableComponent amountQuality = new TranslatableComponent("tooltip.rusticated.liquid.quality", (float) quality / 100);
+                tooltip.add(amountQuality.withStyle(ChatFormatting.GOLD));
+            }
+        } catch (RuntimeException e) {
+            Rusticated.LOGGER.error("Failed to get tooltip for fluid: " + e);
+        }
+        return tooltip;
+    }
+
+
 
     @Override
     public int getWidth() {

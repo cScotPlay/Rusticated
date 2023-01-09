@@ -1,9 +1,11 @@
 package net.mcs3.rusticated.world.item;
 
 import net.mcs3.rusticated.world.effect.BoozeEffects;
+import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
@@ -20,13 +22,12 @@ import org.jetbrains.annotations.Nullable;
 import java.util.List;
 
 public class BoozeItem extends Item {
-    private float fluidQuality;
+    public float fluidQuality;
     private float inebriationChance = 0.5F;
     private Fluid fluidType;
-    public BoozeItem(Properties properties, Fluid fluidType) {
+    public BoozeItem(Properties properties, Fluid inputFluid) {
         super(properties);
-        fluidQuality = 0.4F;
-        this.fluidType = fluidType;
+        this.fluidType = inputFluid;
     }
 
     public boolean isEdible() {
@@ -81,7 +82,17 @@ public class BoozeItem extends Item {
         return SoundEvents.WITCH_DRINK;
     }
 
-    public float getFluidQuality() {return this.fluidQuality;}
+    public void addCompoundTag(ItemStack stack, float quality) {
+        CompoundTag qualityTag = new CompoundTag();
+        qualityTag.putFloat("rusticated.result_quality", quality);
+        stack.setTag(qualityTag);
+    }
+
+    @Override
+    public void onCraftedBy(ItemStack stack, Level level, Player player) {
+        super.onCraftedBy(stack, level, player);
+        addCompoundTag(stack, fluidQuality);
+    }
 
     public Fluid getFluidType() {return this.fluidType;}
 
@@ -92,16 +103,9 @@ public class BoozeItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
-        String fluid_quality = stack.getOrCreateTagElement("rusticated.fluid_quality").toString();
-        tooltipComponents.add(new TranslatableComponent("Fluid Levels Quality" + fluid_quality));
-        //PotionUtils.addPotionTooltip(stack, tooltipComponents, 1.0F);
-    }
+        float fluid_quality = stack.getOrCreateTag().getFloat("rusticated.fluid_quality");
 
-    public ItemStack setQuality(ItemStack itemStack) {
-        CompoundTag qualityTag = new CompoundTag();
-        qualityTag.putFloat("rusticated.fluid_quality", fluidQuality);
-        itemStack.setTag(qualityTag);
-
-        return new ItemStack(itemStack.getItem());
+        MutableComponent amountQuality = new TranslatableComponent("tooltip.rusticated.primer.quality", fluid_quality);
+        tooltipComponents.add(amountQuality.withStyle(ChatFormatting.GOLD));
     }
 }

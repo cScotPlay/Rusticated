@@ -1,0 +1,9 @@
+{
+  "type": "rusticated:brewing_barrel",
+  "result": {
+    "item" : "rusticated:cider_cup"
+  },
+  "primer_used": true,
+  "input_fluid": "rusticated:apple_juice",
+  "primer_fluid": "rusticated:cider_fluid"
+}
