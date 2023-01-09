@@ -2,7 +2,6 @@ package net.mcs3.rusticated.data.recipes;
 
 import com.google.gson.JsonObject;
 import net.mcs3.rusticated.world.item.crafting.BrewingBarrelRecipe;
-import net.mcs3.rusticated.world.item.crafting.CrushingTubRecipe;
 import net.mcs3.rusticated.world.item.crafting.ModRecipes;
 import net.minecraft.advancements.Advancement;
 import net.minecraft.advancements.AdvancementRewards;
