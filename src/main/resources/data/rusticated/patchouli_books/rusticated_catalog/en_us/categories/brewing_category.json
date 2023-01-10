@@ -1,0 +1,6 @@
+{
+  "name": "Brewing",
+  "description": "Rusticated offers a way to turn local fluids into a more exotic concoction.",
+  "icon": "rusticated:oak_brewing_barrel",
+  "sortnum": 4
+}
