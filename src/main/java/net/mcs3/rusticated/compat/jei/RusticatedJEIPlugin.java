@@ -5,13 +5,11 @@ import mezz.jei.api.helpers.IGuiHelper;
 import mezz.jei.api.registration.*;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.client.screens.inventory.AdvCondenserScreen;
+import net.mcs3.rusticated.client.screens.inventory.BrewingBarrelScreen;
 import net.mcs3.rusticated.client.screens.inventory.CondenserScreen;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
-import net.mcs3.rusticated.world.item.crafting.AdvCondenserRecipe;
-import net.mcs3.rusticated.world.item.crafting.CondenserRecipe;
-import net.mcs3.rusticated.world.item.crafting.CrushingTubRecipe;
-import net.mcs3.rusticated.world.item.crafting.EvaporatingBasinRecipe;
+import net.mcs3.rusticated.world.item.crafting.*;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
@@ -35,7 +33,8 @@ public class RusticatedJEIPlugin implements IModPlugin {
                 new CondenserRecipeCategory(guiHelper),
                 new AdvCondenserRecipeCategory(guiHelper),
                 new EvaporatingBasingRecipeCategory(guiHelper),
-                new CrushingTubRecipeCategory(guiHelper)
+                new CrushingTubRecipeCategory(guiHelper),
+                new BrewingBarrelRecipeCategory(guiHelper)
         );
     }
 
@@ -53,6 +52,9 @@ public class RusticatedJEIPlugin implements IModPlugin {
 
         List<CrushingTubRecipe> crushingTubRecipes = rm.getAllRecipesFor(CrushingTubRecipe.Type.INSTANCE);
         registration.addRecipes(CrushingTubRecipeCategory.TYPE, crushingTubRecipes);
+
+        List<BrewingBarrelRecipe> brewingBarrelRecipes = rm.getAllRecipesFor(BrewingBarrelRecipe.Type.INSTANCE);
+        registration.addRecipes(BrewingBarrelRecipeCategory.TYPE, brewingBarrelRecipes);
     }
 
 
@@ -63,12 +65,14 @@ public class RusticatedJEIPlugin implements IModPlugin {
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.ADV_CONDENSER), AdvCondenserRecipeCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.EVAPORATING_BASIN), EvaporatingBasingRecipeCategory.UID);
         registration.addRecipeCatalyst(new ItemStack(ModBlocks.CRUSHING_TUB), CrushingTubRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.OAK_BREWING_BARREL), BrewingBarrelRecipeCategory.UID);
     }
 
     @Override
     public void registerGuiHandlers(IGuiHandlerRegistration registration) {
         registration.addRecipeClickArea(CondenserScreen.class, 44, 29, 50, 28, CondenserRecipeCategory.TYPE);
         registration.addRecipeClickArea(AdvCondenserScreen.class, 44, 29, 50, 28, AdvCondenserRecipeCategory.TYPE);
+        registration.addRecipeClickArea(BrewingBarrelScreen.class, 85, 14, 40, 40, BrewingBarrelRecipeCategory.TYPE);
     }
 
     @Override

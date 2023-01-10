@@ -1,6 +1,7 @@
 package net.mcs3.rusticated.world.item.crafting;
 
 import com.google.gson.JsonObject;
+import net.mcs3.rusticated.world.item.BoozeItem;
 import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -68,6 +69,8 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
     public Fluid getPrimerFluid() {
         return primerFluid;
     }
+
+    public Fluid getResultFluid() {return ((BoozeItem) (this.getResultItem().getItem())).getFluidType();}
 
     @Override
     public ResourceLocation getId() {
