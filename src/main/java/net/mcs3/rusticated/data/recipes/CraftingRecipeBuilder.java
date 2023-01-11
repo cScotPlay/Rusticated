@@ -353,6 +353,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
 
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItems.UNFIRED_EVAPORATING_BASIN), ModBlocks.EVAPORATING_BASIN.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.CRUSHING_TUB).define('x', ItemTags.WOODEN_SLABS).define('@', Items.IRON_INGOT).define('^', ItemTags.PLANKS).pattern("^ ^").pattern("@ @").pattern("xxx").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.OAK_BREWING_BARREL).define('x', Items.OAK_SLAB).define('@', Items.IRON_INGOT).define('^', Items.OAK_PLANKS).pattern("^@^").pattern("x x").pattern("^@^").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(exporter);
 
 
 
