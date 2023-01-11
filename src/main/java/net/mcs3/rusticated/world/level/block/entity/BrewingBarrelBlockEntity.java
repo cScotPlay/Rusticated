@@ -199,7 +199,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
             if(primerRecipeFluid == primerBarrelFluid) {
                 if(recipeFluid == barrelFluid) {
 
-                    int primerAdditionalQuality = rand.nextInt(24);
+                    int primerAdditionalQuality = rand.nextInt(15);
                     int qualityWithPrimer = Math.max(Math.min(primerAdditionalQuality + blockEntity.primerQuality, 99), 0);
 
                     blockEntity.resultQuality = qualityWithPrimer;
