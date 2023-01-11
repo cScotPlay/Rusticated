@@ -420,8 +420,13 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModItems.WINE_CUP
         );
 
-
-
-
+        tag(ModItemTags.BOOZE_ITEMS).add(
+                ModItems.ALE_CUP,
+                ModItems.CIDER_CUP,
+                ModItems.IRON_WINE_CUP,
+                ModItems.MEAD_CUP,
+                ModItems.SWEET_BERRY_WINE_CUP,
+                ModItems.WINE_CUP
+        );
     }
 }

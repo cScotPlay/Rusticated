@@ -27,6 +27,7 @@ public class ModItemTags
     public static final TagKey<Item> ELIXIR = modItem("elixir");
 
     public static final TagKey<Item> BREWING_FLUID = modItem("brewing_fluid");
+    public static final TagKey<Item> BOOZE_ITEMS = modItem("booze_items");
 
 
     public static TagKey<Item> modItem(String path) {
