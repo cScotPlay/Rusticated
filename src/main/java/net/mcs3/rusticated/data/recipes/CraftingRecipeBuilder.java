@@ -436,6 +436,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         BrewingBarrelRecipeBuilder.brewing(ModItems.MEAD_CUP.getDefaultInstance(), ModFluids.SOURCE_HONEY.getSource(), ModFluids.SOURCE_MEAD.getSource()).unlockedBy("has_honey", has(Items.HONEYCOMB)).save(exporter, new ResourceLocation("brewed_mead"));
         BrewingBarrelRecipeBuilder.brewing(ModItems.SWEET_BERRY_WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_SWEET_BERRY_JUICE.getSource(), ModFluids.SOURCE_SWEET_BERRY_WINE.getSource()).unlockedBy("has_sweet_berries", has(Items.SWEET_BERRIES)).save(exporter, new ResourceLocation("brewed_sweet_berry_wine"));
         BrewingBarrelRecipeBuilder.brewing(ModItems.WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_GRAPE_JUICE.getSource(), ModFluids.SOURCE_WINE.getSource()).unlockedBy("has_grapes", has(ModItems.GRAPES)).save(exporter, new ResourceLocation("brewed_wine"));
+        ShapelessRecipeBuilder.shapeless(Items.GLASS_BOTTLE).requires(ModItemTags.BOOZE_ITEMS).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation("alcoholic_drink_to_glass_bottle"));
 
     }
 

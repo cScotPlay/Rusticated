@@ -62,6 +62,8 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
         return inputFluid;
     }
 
+    public ItemStack getInputFluidBucket() {return inputFluid.getBucket().getDefaultInstance();}
+
     public boolean isPrimerUsed() {
         return primerUsed;
     }

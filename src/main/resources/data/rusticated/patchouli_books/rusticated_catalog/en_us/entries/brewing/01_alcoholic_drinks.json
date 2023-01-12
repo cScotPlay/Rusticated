@@ -1,0 +1,63 @@
+{
+  "name": "Alcoholic Drinks",
+  "icon": "rusticated:ale_cup",
+  "category": "rusticated:brewing_category",
+  "pages": [
+    {
+      "type": "rusticated:text_template",
+      "heading": "Alcoholic Beverages",
+      "text": "Brewing fluids create alcoholic beverages in an Oak Brewing Barrel. These beverages provide unique and powerful effects if used correctly, but they also may lead to disastrous consequences if misused. All drinks have a quality between 0 and 1. Drinks with a quality of at least 0.5 have positive effects, while drinks with a quality below 0.5 result in adverse effects."
+    },
+    {
+      "type": "text",
+      "text": "The quality determines the drink's strength and duration. Therefore, its recommended to consume beverages with a quality above 0.5. For convenience, place an alcoholic drink on the crafting table to return a glass bottle."
+    },
+    {
+      "type": "rusticated:text_template",
+      "heading": "Inebriation",
+      "text": "There is always a chance that drinking an alcoholic beverage will inebriate one regardless of the quality. Inebriation is not curable with milk; if continued drinking, the effect will increase. Inebriation inflicts slowness, blindness, and nausea on the consumer.  "
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:ale_wort_bucket",
+      "text": "Ale Wort is the base fluid for Ale. To create Ale Wort, combine a Water Bucket, Bread, and Sugar on a Crafting Table."
+    },
+    {
+      "type": "rusticated:brewing_barrel_template",
+      "heading": "Ale",
+      "recipes": "rusticated:brewed_ale",
+      "text": "Ale is a very saturating drink and applies the Full Stomach effect, decreasing damage from starvation."
+    },
+    {
+      "type": "rusticated:brewing_barrel_template",
+      "heading": "Cider",
+      "recipes": "rusticated:brewed_cider",
+      "text": "Cider applies a magic resistance effect, reducing damage from magical sources, including poison."
+    },
+    {
+      "type": "rusticated:brewing_barrel_template",
+      "heading": "Iron Wine",
+      "recipes": "rusticated:brewed_iron_wine",
+      "text": "Iron Wine grants the drinker absorption hearts with no time limit, up to ten extra hearts."
+    },
+    {
+      "type": "rusticated:brewing_barrel_template",
+      "heading": "Mead",
+      "recipes": "rusticated:brewed_mead",
+      "text": "Mead applies the wither ward effect, reducing damage from the wither effect."
+    },
+    {
+      "type": "rusticated:brewing_barrel_template",
+      "heading": "Sweet Berry Wine",
+      "recipes": "rusticated:brewed_sweet_berry_wine",
+      "text": "Sweet Berry Wine increases the level of all positive effects up to level III."
+    },
+    {
+      "type": "rusticated:brewing_barrel_template",
+      "heading": "Wine",
+      "recipes": "rusticated:brewed_wine",
+      "text": "Wine increases the duration of all positive effects by up to ten minutes."
+    }
+  ],
+  "sortnum": 1
+}

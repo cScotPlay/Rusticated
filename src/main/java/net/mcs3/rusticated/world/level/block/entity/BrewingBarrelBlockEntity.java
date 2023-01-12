@@ -206,7 +206,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
 
                     insertFluids(blockEntity, blockEntity.resultFluidStorage, FluidVariant.of(resultFluid), inputFluidAmount);
                     blockEntity.extractFluids(blockEntity, blockEntity.inputFluidStorage, blockEntity.inputFluidStorage.variant, inputFluidAmount);
-                    blockEntity.extractFluids(blockEntity, blockEntity.primerFluidStorage, blockEntity.primerFluidStorage.variant, blockEntity.primerFluidStorage.amount);
+                    //blockEntity.extractFluids(blockEntity, blockEntity.primerFluidStorage, blockEntity.primerFluidStorage.variant, blockEntity.primerFluidStorage.amount);
                     resetProgress(blockEntity);
                 }
             }

@@ -1,0 +1,37 @@
+{
+  "name": "Basics of Brewing",
+  "icon": "rusticated:oak_brewing_barrel",
+  "category": "rusticated:brewing_category",
+  "pages": [
+    {
+      "type": "rusticated:text_template",
+      "heading": "Brewing Basics",
+      "text": "Brewing is fermenting fluids to get alcohol in an Oak Brewing Barrel. The brewing process involves up to three fluids: the input, the output, and the starter culture fluid optionally. Starter Culture Fluids are only usable with the same output fluid. The Brewing Barrel's interface has three tanks for holding these fluids and a slot above and below each tank."
+    },
+    {
+      "type": "crafting",
+      "recipe": "rusticated:oak_brewing_barrel",
+      "text": "The Oak Brewing Barrel is the vessel used to brew alcohol. Craft it with a combination of oak planks, oak slabs, and iron ingots."
+    },
+    {
+      "type": "image",
+      "images": [
+        "rusticated:textures/gui/catalog/brewing_screen_catalog.png"
+      ],
+      "border": "false"
+    },
+    {
+      "type": "text",
+      "text": "The slots above the tanks are for inserting and retrieving fluids from the tanks below. Place a fluid container in the slots to add or subtract the liquid. $(br2)$(l)Fluid Tanks$() $(li)Left Tank is for the Starter Culture $(li)Middle Tank is for input fluids $(li)Right Tank is for the Brewed Fluid"
+    },
+    {
+      "type": "text",
+      "text": "The brewing process takes half a day (10 minutes) to produce alcohol. The barrel commences as soon as a valid fluid is in the input tank. Brewing without fluid in the starter culture tank will produce an output with a random quality between 0.05 and 0.75.$(br2)Brewing with a starter culture can negate the randomness and ensures that the quality of the output is no less than the quality of the starter culture and could increase in quality by plus 0.15."
+    },
+    {
+      "type": "text",
+      "text": "$(l)$(o)Example $()$(br)Honey is in the input tank and Mead is in the Starter Culture tank with a quality of 0.48. The brewed result will yield a Mead with a quality between 0.48 and 0.63. $(br2)Fluid in the Starter Culture tank is not consumed in the brewing process. $(br2)The best way to go about brewing is to continue making alcohol with random qualities until you get something with a fluid quality around 0.5."
+    }
+  ],
+  "sortnum": 0
+}
