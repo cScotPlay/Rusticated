@@ -426,6 +426,47 @@
   "item.rusticated.sweet_berry_wine_cup": "Cup of Sweet Berry Wine",
   "item.rusticated.wine_cup": "Cup of Wine",
 
+  "item.rusticated.oiled_apple": "Apple",
+  "item.rusticated.oiled_baked_potato": "Baked Potato",
+  "item.rusticated.oiled_beef": "Beef",
+  "item.rusticated.oiled_beetroot": "Beetroot",
+  "item.rusticated.oiled_beetroot_soup": "Beetroot Soup",
+  "item.rusticated.oiled_bread": "Bread",
+  "item.rusticated.oiled_carrot": "Carrot",
+  "item.rusticated.oiled_chicken": "Chicken",
+  "item.rusticated.oiled_chorus_fruit": "Chorus Fruit",
+  "item.rusticated.oiled_cod": "Cod",
+  "item.rusticated.oiled_cooked_beef": "Cooked Beef",
+  "item.rusticated.oiled_cooked_chicken": "Cooked Chicken",
+  "item.rusticated.oiled_cooked_cod": "Cooked Cod",
+  "item.rusticated.oiled_cooked_mutton": "CookedMutton",
+  "item.rusticated.oiled_cooked_porkchop": "Cooked Porkchop",
+  "item.rusticated.oiled_cooked_rabbit": "CookedRabbit",
+  "item.rusticated.oiled_cooked_salmon": "Cooked Salmon",
+  "item.rusticated.oiled_cookie": "Cookie",
+  "item.rusticated.oiled_dried_kelp": "DriedKelp",
+  "item.rusticated.oiled_golden_apple": "Golden Apple",
+  "item.rusticated.oiled_golden_carrot": "Golden Carrot",
+  "item.rusticated.oiled_melon_slice": "Melon Slice",
+  "item.rusticated.oiled_mushroom_stew": "MushroomStew",
+  "item.rusticated.oiled_mutton": "Mutton",
+  "item.rusticated.oiled_poisonous_potato": "Poisonous Potato",
+  "item.rusticated.oiled_porkchop": "Porkchop",
+  "item.rusticated.oiled_potato": "Potato",
+  "item.rusticated.oiled_pufferfish": "Pufferfish",
+  "item.rusticated.oiled_pumpkin_pie": "Pumpkin Pie",
+  "item.rusticated.oiled_rabbit": "Rabbit",
+  "item.rusticated.oiled_rabbit_stew": "RabbitStew",
+  "item.rusticated.oiled_rotten_flesh": "RottenFlesh",
+  "item.rusticated.oiled_salmon": "Salmon",
+  "item.rusticated.oiled_spider_eye": "Spider Eye",
+  "item.rusticated.oiled_suspicious_stew": "Suspicious Stew",
+  "item.rusticated.oiled_sweet_berries": "Sweet Berries",
+  "item.rusticated.oiled_glow_berries": "Glow Berries",
+  "item.rusticated.oiled_tropical_fish": "Tropical Fish",
+
+
+
 
   "effect.rusticated.ironskin": "Iron Skin",
   "effect.rusticated.tipsy": "Tipsy",
@@ -440,6 +481,8 @@
   "tooltip.rusticated.liquid.amount.with.capacity": "%s / %s mB",
   "tooltip.rusticated.liquid.amount": "%s mB",
   "tooltip.rusticated.liquid.quality": "Quality = %s",
-  "tooltip.rusticated.primer.quality": "Primer Quality = %s"
+  "tooltip.rusticated.primer.quality": "Primer Quality = %s",
+
+  "tooltip.rusticated.oiled_food": "Oiled"
 
 }

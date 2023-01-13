@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
+import net.mcs3.rusticated.world.item.OliveOilFoodItem;
 import net.mcs3.rusticated.world.level.block.LatticeBlock;
 import net.mcs3.rusticated.world.level.block.RopeBlock;
 import net.mcs3.rusticated.world.level.block.TiedStakeBlock;
@@ -20,6 +21,7 @@ import net.minecraft.data.models.blockstates.*;
 import net.minecraft.data.models.model.*;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
@@ -483,7 +485,47 @@ public class BlockStateGenerator extends FabricModelProvider
 
         itemModelGenerator.generateFlatItem(ModItems.TINY_IRON_DUST, ModelTemplates.FLAT_ITEM);
 
+        itemModelGenerator.generateFlatItem(ModItems.OILED_APPLE, Items.APPLE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_BAKED_POTATO, Items.BAKED_POTATO, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_BEEF, Items.BEEF, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_BEETROOT, Items.BEETROOT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_BEETROOT_SOUP, Items.BEETROOT_SOUP, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_BREAD, Items.BREAD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_CARROT, Items.CARROT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_CHICKEN, Items.CHICKEN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_CHORUS_FRUIT, Items.CHORUS_FRUIT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_COD, Items.COD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_COOKED_BEEF, Items.COOKED_BEEF, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_COOKED_CHICKEN, Items.COOKED_CHICKEN, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_COOKED_COD, Items.COOKED_COD, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_COOKED_MUTTON, Items.COOKED_MUTTON, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_COOKED_PORKCHOP, Items.COOKED_PORKCHOP, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_COOKED_RABBIT, Items.COOKED_RABBIT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_COOKED_SALMON, Items.COOKED_SALMON, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_COOKIE, Items.COOKIE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_DRIED_KELP, Items.DRIED_KELP, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_GOLDEN_APPLE, Items.GOLDEN_APPLE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_GOLDEN_CARROT, Items.GOLDEN_CARROT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_MELON_SLICE, Items.MELON_SLICE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_MUSHROOM_STEW, Items.MUSHROOM_STEW, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_MUTTON, Items.MUTTON, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_POISONOUS_POTATO, Items.POISONOUS_POTATO, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_PORKCHOP, Items.PORKCHOP, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_POTATO, Items.POTATO, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_PUFFERFISH, Items.PUFFERFISH, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_PUMPKIN_PIE, Items.PUMPKIN_PIE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_RABBIT, Items.RABBIT, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_RABBIT_STEW, Items.RABBIT_STEW, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_ROTTEN_FLESH, Items.ROTTEN_FLESH, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_SALMON, Items.SALMON, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_SPIDER_EYE, Items.SPIDER_EYE, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_SUSPICIOUS_STEW, Items.SUSPICIOUS_STEW, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_SWEET_BERRIES, Items.SWEET_BERRIES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_GLOW_BERRIES, Items.GLOW_BERRIES, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModItems.OILED_TROPICAL_FISH, Items.TROPICAL_FISH, ModelTemplates.FLAT_ITEM);
+
     }
+
 
     public static void createStairsModels(BlockModelGenerators modelGenerator, Block block, Block parentTextureBlock)
     {
