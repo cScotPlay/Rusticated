@@ -50,7 +50,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
 
     protected final ContainerData dataAccess;
     private int progress = 0;
-    private int maxProgress = 120;  //TODO Set to 12000
+    private int maxProgress = 12000;
     private int primerQuality = 0;
     private int resultQuality = 0;
 
