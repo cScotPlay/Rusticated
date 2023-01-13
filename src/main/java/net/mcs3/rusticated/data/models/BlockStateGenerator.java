@@ -7,7 +7,6 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
-import net.mcs3.rusticated.world.item.OliveOilFoodItem;
 import net.mcs3.rusticated.world.level.block.LatticeBlock;
 import net.mcs3.rusticated.world.level.block.RopeBlock;
 import net.mcs3.rusticated.world.level.block.TiedStakeBlock;
