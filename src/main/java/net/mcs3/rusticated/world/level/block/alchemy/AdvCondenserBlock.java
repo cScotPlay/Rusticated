@@ -328,7 +328,7 @@ public class AdvCondenserBlock extends BaseEntityBlock implements EntityBlock {
         double k = axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52 : h;
         level.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
         level.addParticle(ParticleTypes.FLAME, d + i, e + j, f + k, 0.0, 0.0, 0.0);
-//TODO UPDATE THIS
+//TODO UPDATE THIS FOR COLORED SMOKE
         if(direction == Direction.NORTH) {
             level.addParticle(ParticleTypes.SMOKE, d - 1.0D, e + 0.95D, f, 0, 0.125, 0);
             level.addParticle(ParticleTypes.SMOKE, d + 1.0D, e + 0.95D, f, 0, 0.125, 0);
