@@ -96,7 +96,6 @@ public class LiquidBarrelItem extends BlockItem
 
         @Override
         protected ItemVariant getUpdatedVariant(ItemVariant currentVariant, FluidVariant newResource, long newAmount) {
-            // TODO: Note that any enchantment or custom name is nuked, fix this?
             ItemStack stack = new ItemStack(currentVariant.getItem());
             if (!newResource.isBlank() && newAmount > 0) {
                 setFluid(stack, newResource);
