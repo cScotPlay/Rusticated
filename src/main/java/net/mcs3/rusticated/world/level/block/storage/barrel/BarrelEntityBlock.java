@@ -18,7 +18,6 @@ import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
 
-//TODO Erase if not needed
 public class BarrelEntityBlock extends BlockEntity implements MenuProvider, ModContainer
 {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(27, ItemStack.EMPTY);
