@@ -6,7 +6,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.world.ContainerHelper;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
@@ -39,16 +40,19 @@ public class BarrelEntityBlock extends BlockEntity implements MenuProvider, ModC
 
     @Override
     public Component getDisplayName() {
-        return new TranslatableComponent(getBlockState().getBlock().getDescriptionId());
+        return new TextComponent("Storage Barrel");
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
+        ContainerHelper.loadAllItems(tag, inventory);
+
     }
 
     @Override
     protected void saveAdditional(CompoundTag tag) {
+        ContainerHelper.saveAllItems(tag, inventory);
         super.saveAdditional(tag);
     }
 }

@@ -333,7 +333,7 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         add(ModBlocks.STONE_SLAB_RED, BlockLoot::createSlabItemTable);
         add(ModBlocks.STONE_SLAB_BLACK, BlockLoot::createSlabItemTable);
 
-        this.add(ModBlocks.STORAGE_BARREL, LootTableGenerator::createBarrelDrop);
+
 
         add(ModBlocks.IRONWOOD_LEAVES, (block -> {
             return createLeavesDropswithItem(ModBlocks.IRONWOOD_LEAVES, ModBlocks.IRONWOOD_SAPLING, ModItems.IRON_BERRIES, NORMAL_LEAVES_SAPLING_CHANCES);
@@ -429,6 +429,8 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
             return createSingleItemTable(ModItems.MARSHMALLOW);
         }));
 
+        add(ModBlocks.STORAGE_BARREL, BlockLoot::createNameableBlockEntityTable);
+
         add(ModBlocks.CONDENSER, BlockLoot::createNameableBlockEntityTable);
         add(ModBlocks.ADV_CONDENSER, BlockLoot::createNameableBlockEntityTable);
         add(ModBlocks.EVAPORATING_BASIN, BlockLoot::createNameableBlockEntityTable);
@@ -442,10 +444,6 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
 
     public static LootTable.Builder createLeavesDropswithItem(Block leavesBlock, Block saplingBlock, Item droppedItem, float... chances) {
         return createLeavesDrops(leavesBlock, saplingBlock, chances).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(((net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer.Builder)applyExplosionCondition(leavesBlock, LootItem.lootTableItem(droppedItem))).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, new float[]{0.1F, 0.025F, 0.06F, 0.025F, 0.3F}))));
-    }
-
-    public static LootTable.Builder createBarrelDrop(Block barrelBlock) {
-        return LootTable.lootTable().withPool((net.minecraft.world.level.storage.loot.LootPool.Builder)applyExplosionCondition(barrelBlock, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(barrelBlock).apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY)).apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY).copy("Lock", "BlockEntityTag.Lock").copy("LootTable", "BlockEntityTag.LootTable").copy("LootTableSeed", "BlockEntityTag.LootTableSeed")).apply(SetContainerContents.setContents(ModBlockEntityTypes.BARREL_CONTAINER).withEntry(DynamicLoot.dynamicEntry(BarrelBlock.CONTENTS))))));
     }
 
     public static LootTable.Builder createTiedStakeDrop(Block block){
