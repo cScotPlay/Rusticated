@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "spotlight",
-      "text": "Pots are a decorative storage option. Fired Pots hold 8 stacks of a single item, while the Glazed Pots hold 16 stacks. The stored item is represented on the lip of the pot. Pots also keep their inventory when broken.",
+      "text": "Pots are a decorative storage option. Fired Pots hold 8 stacks of a single item, while the Glazed Pots hold 16 stacks. The stored item is represented on the lip of the pot. Pots also keep their inventory when broken. Add items through the top of the pot.",
       "item": "rusticated:fired_pot,rusticated:glazed_pot_0,rusticated:glazed_pot_1,rusticated:glazed_pot_2,rusticated:glazed_pot_3,rusticated:glazed_pot_4"
     },
     {

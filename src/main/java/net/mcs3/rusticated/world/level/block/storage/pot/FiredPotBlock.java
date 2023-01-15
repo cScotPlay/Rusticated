@@ -91,7 +91,7 @@ public class FiredPotBlock extends AbstractStorageBlock implements EntityBlock
 
                         transaction.commit();
                         if (world.isClientSide()) {
-                            updateDestroyDelay();
+                            //updateDestroyDelay();
                         }
                     }
                     return InteractionResult.sidedSuccess(world.isClientSide);
