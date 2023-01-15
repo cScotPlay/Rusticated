@@ -1,8 +1,0 @@
-{
-  "type": "rusticated:brewing_barrel",
-  "result": {
-    "item" : "rusticated:ale_cup"
-  },
-  "primer_used": false,
-  "input_fluid": "rusticated:ale_wort"
-}

@@ -1,9 +1,0 @@
-{
-  "type": "rusticated:evaporating_basin",
-  "fluidbucket": {
-    "item" : "rusticated:ironberry_juice_bucket"
-  },
-  "result": {
-    "item": "rusticated:tiny_iron_dust"
-  }
-}
