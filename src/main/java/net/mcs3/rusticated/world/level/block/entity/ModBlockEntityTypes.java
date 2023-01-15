@@ -50,7 +50,7 @@ public class ModBlockEntityTypes
         EntityBlock factoryGlazedPot3 = (pos, state) -> new PotEntityBlock(GLAZED_POT_3_CONTAINER, pos, state, 16);
         EntityBlock factoryGlazedPot4 = (pos, state) -> new PotEntityBlock(GLAZED_POT_4_CONTAINER, pos, state, 16);
 
-        BARREL_CONTAINER = register("barrel_container", ModBlocks.BARREL, BarrelEntityBlock::new);
+        BARREL_CONTAINER = register("barrel_container", ModBlocks.STORAGE_BARREL, BarrelEntityBlock::new);
         LIQUID_BARREL_CONTAINER = register("liquid_barrel_container", ModBlocks.LIQUID_BARREL, factoryBarrel::newBlockEntity);
         JAR_CONTAINER = register("jar_container", ModBlocks.FIRED_JAR, factoryJar::newBlockEntity);
         GLAZED_JAR_0_CONTAINER = register("glazed_jar_0_container", ModBlocks.GLAZED_JAR_0, factoryGlazedJar::newBlockEntity);

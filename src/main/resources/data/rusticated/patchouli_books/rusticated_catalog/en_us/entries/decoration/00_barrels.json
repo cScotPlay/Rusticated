@@ -1,16 +1,16 @@
 {
   "name": "Barrels",
-  "icon": "rusticated:barrel",
+  "icon": "rusticated:storage_barrel",
   "category": "rusticated:decoration_category",
   "pages": [
     {
       "type": "spotlight",
       "text": "Barrels are a decorative storage option. They provide another opportunity to store both items and fluids.",
-      "item": "rusticated:barrel"
+      "item": "rusticated:storage_barrel"
     },
     {
       "type": "crafting",
-      "recipe": "rusticated:barrel",
+      "recipe": "rusticated:storage_barrel",
       "text": "Storage Barrel can hold up to 27 stacks of items. Thus, acting in the same manner as a single chest."
     },
     {

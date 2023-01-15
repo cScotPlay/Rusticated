@@ -2,6 +2,7 @@ package net.mcs3.rusticated.init;
 
 import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
+import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.world.level.block.*;
 import net.mcs3.rusticated.world.level.block.alchemy.AdvCondenserBlock;
@@ -41,7 +42,7 @@ public class ModBlocks
     public static CreativeModeTab AGRICULTURAL_TAB = Rusticated.ITEMGROUPAG;
     public static CreativeModeTab HERB_TAB = Rusticated.ITEMGROUPHERB;
 
-    public static final BarrelBlock BARREL = new BarrelBlock();
+    public static final BarrelBlock STORAGE_BARREL = new BarrelBlock();
     public static final Block LIQUID_BARREL = new LiquidBarrelBlock();
 
     public static final Block UNFIRED_JAR = new ModBlock(Properties.of(Material.CLAY).instabreak().noOcclusion());
@@ -422,7 +423,7 @@ public class ModBlocks
 
     public static void init()
     {
-        register("barrel", BARREL, DECORATION_TAB);
+        register("storage_barrel", STORAGE_BARREL, DECORATION_TAB);
         registerSpecial("liquid_barrel", LIQUID_BARREL, ModBlockItems.LIQUID_BARREL_ITEM, DECORATION_TAB);
 
         register("unfired_jar", UNFIRED_JAR, DECORATION_TAB);
@@ -812,11 +813,15 @@ public class ModBlocks
 
     public static void initStrippableWoods()
     {
-        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
-        AxeItem.STRIPPABLES.put(ModBlocks.IRONWOOD_LOG, ModBlocks.STRIPPED_IRONWOOD_LOG);
-        AxeItem.STRIPPABLES.put(ModBlocks.IRONWOOD_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
-        AxeItem.STRIPPABLES.put(ModBlocks.OLIVE_LOG, ModBlocks.STRIPPED_OLIVE_LOG);
-        AxeItem.STRIPPABLES.put(ModBlocks.OLIVE_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
+        StrippableBlockRegistry.register(ModBlocks.IRONWOOD_LOG, ModBlocks.STRIPPED_IRONWOOD_LOG);
+        StrippableBlockRegistry.register(ModBlocks.IRONWOOD_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
+        StrippableBlockRegistry.register(ModBlocks.OLIVE_LOG, ModBlocks.STRIPPED_OLIVE_LOG);
+        StrippableBlockRegistry.register(ModBlocks.OLIVE_WOOD, ModBlocks.STRIPPED_OLIVE_WOOD);
+//        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
+//        AxeItem.STRIPPABLES.put(ModBlocks.IRONWOOD_LOG, ModBlocks.STRIPPED_IRONWOOD_LOG);
+//        AxeItem.STRIPPABLES.put(ModBlocks.IRONWOOD_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
+//        AxeItem.STRIPPABLES.put(ModBlocks.OLIVE_LOG, ModBlocks.STRIPPED_OLIVE_LOG);
+//        AxeItem.STRIPPABLES.put(ModBlocks.OLIVE_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
     }
 
     static <T extends Block> T register(String name, T anyBlock, CreativeModeTab tab)

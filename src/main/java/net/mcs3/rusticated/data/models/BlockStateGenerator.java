@@ -164,7 +164,7 @@ public class BlockStateGenerator extends FabricModelProvider
         createChainStates(blockStateModelGenerator, ModBlocks.CHAIN_WAXED_WEATHERED_COPPER, ModBlocks.CHAIN_WEATHERED_COPPER);
         createChainStates(blockStateModelGenerator, ModBlocks.CHAIN_WAXED_OXIDIZED_COPPER, ModBlocks.CHAIN_OXIDIZED_COPPER);
 
-        createBarrelStates(blockStateModelGenerator, ModBlocks.BARREL, BARREL);
+        createBarrelStates(blockStateModelGenerator, ModBlocks.STORAGE_BARREL, BARREL);
         createBarrelStates(blockStateModelGenerator, ModBlocks.LIQUID_BARREL, LIQUID_BARREL);
 
         createJarStates(blockStateModelGenerator, ModBlocks.UNFIRED_JAR, JAR);

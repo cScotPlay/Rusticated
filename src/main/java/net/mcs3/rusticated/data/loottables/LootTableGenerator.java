@@ -333,7 +333,7 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         add(ModBlocks.STONE_SLAB_RED, BlockLoot::createSlabItemTable);
         add(ModBlocks.STONE_SLAB_BLACK, BlockLoot::createSlabItemTable);
 
-        this.add(ModBlocks.BARREL, LootTableGenerator::createBarrelDrop);
+        this.add(ModBlocks.STORAGE_BARREL, LootTableGenerator::createBarrelDrop);
 
         add(ModBlocks.IRONWOOD_LEAVES, (block -> {
             return createLeavesDropswithItem(ModBlocks.IRONWOOD_LEAVES, ModBlocks.IRONWOOD_SAPLING, ModItems.IRON_BERRIES, NORMAL_LEAVES_SAPLING_CHANCES);

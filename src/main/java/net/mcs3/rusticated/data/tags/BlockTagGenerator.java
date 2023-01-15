@@ -141,7 +141,7 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
 
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).add(
-                ModBlocks.BARREL,
+                ModBlocks.STORAGE_BARREL,
                 ModBlocks.LIQUID_BARREL,
                 ModBlocks.CROP_STAKE,
                 ModBlocks.TIED_STAKE,
