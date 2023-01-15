@@ -37,7 +37,7 @@ public class FluidColorRegistry {
                 new SimpleFluidRenderHandler(
                         new ResourceLocation("minecraft:block/water_still"),
                         new ResourceLocation("minecraft:block/water_flow"),
-                        0XA8334903
+                        0XA8661285
                 ));
         FluidRenderHandlerRegistry.INSTANCE.register(ModFluids.SOURCE_APPLE_JUICE, ModFluids.FLOWING_APPLE_JUICE,
                 new SimpleFluidRenderHandler(

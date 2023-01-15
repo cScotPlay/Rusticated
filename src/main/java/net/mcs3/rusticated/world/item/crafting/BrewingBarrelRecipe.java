@@ -17,6 +17,7 @@ import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
 
+import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -29,7 +30,7 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
 
     public static Map<ResourceLocation, BrewingBarrelRecipe> recipes = new HashMap<>();
 
-    public BrewingBarrelRecipe(ResourceLocation id, ItemStack outputItem, boolean primerUsed, Fluid inputFluid, Fluid primerFluid) {
+    public BrewingBarrelRecipe(ResourceLocation id, ItemStack outputItem, boolean primerUsed, Fluid inputFluid, @Nullable Fluid primerFluid) {
         this.id = id;
         this.outputItem = outputItem;
         this.primerUsed = primerUsed;
@@ -114,7 +115,7 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
                 String primer = GsonHelper.getAsString(jsonObject, "primer_fluid");
                 ResourceLocation resourceLocation = new ResourceLocation(primer);
                 primerFluid = Registry.FLUID.get(resourceLocation);
-                Rusticated.LOGGER.info(primer);
+//                Rusticated.LOGGER.info(primer);
 //                primerFluid = Registry.FLUID.get(new ResourceLocation(GsonHelper.getAsJsonObject(jsonObject, "primer").get("fluid").toString()));
 //                primerFluid = Registry.FLUID.get(new ResourceLocation(GsonHelper.getAsString(jsonObject, "primer_fluid")));
             }

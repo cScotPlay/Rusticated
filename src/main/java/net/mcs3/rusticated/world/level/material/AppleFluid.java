@@ -10,12 +10,12 @@ import net.minecraft.world.level.material.FluidState;
 public abstract class AppleFluid extends BaseFluid {
     @Override
     public Fluid getFlowing() {
-        return ModFluids.FLOWING_IRONBERRY_JUICE;
+        return ModFluids.FLOWING_APPLE_JUICE;
     }
 
     @Override
     public Fluid getSource() {
-        return ModFluids.SOURCE_IRONBERRY_JUICE;
+        return ModFluids.SOURCE_APPLE_JUICE;
     }
 
     @Override

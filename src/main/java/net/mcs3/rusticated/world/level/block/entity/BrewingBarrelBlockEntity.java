@@ -383,7 +383,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
 
     public static void transferPrimerFluidToStorage(BrewingBarrelBlockEntity blockEntity) {
         try(Transaction transaction = Transaction.openOuter()) {
-            if(blockEntity.getItem(0).getItem() == Items.GLASS_BOTTLE && blockEntity.getItem(3).isEmpty()) {
+            if(blockEntity.getItem(0).getItem() == Items.GLASS_BOTTLE && blockEntity.getItem(3).isEmpty() && !blockEntity.primerFluidStorage.variant.isBlank()) {
                 Fluid barrelFluid = blockEntity.primerFluidStorage.variant.getFluid();
                 List<BrewingBarrelRecipe> matchAll = blockEntity.level.getRecipeManager().getAllRecipesFor(BrewingBarrelRecipe.Type.INSTANCE);
                 if (!matchAll.isEmpty()) {
@@ -410,7 +410,8 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
                 blockEntity.update();
             }
 
-            else if(blockEntity.primerFluidStorage.getCapacity() > blockEntity.primerFluidStorage.amount) {
+//            else if(blockEntity.primerFluidStorage.getCapacity() > blockEntity.primerFluidStorage.amount && !blockEntity.primerFluidStorage.variant.isBlank())
+            else if(blockEntity.primerFluidStorage.variant.isBlank()) {
                 BoozeItem cupItem = (BoozeItem) blockEntity.getItem(0).getItem();
                 Fluid fluid = cupItem.getFluidType();
                 int cupQuality = (int) (blockEntity.getItem(0).getOrCreateTag().getFloat("rusticated.fluid_quality") * 100);

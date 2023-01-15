@@ -112,9 +112,9 @@ public class BrewingBarrelRecipeBuilder implements RecipeBuilder {
             jsonObject.addProperty("item", Registry.ITEM.getKey(resultItem.getItem()).toString());
             json.add("result", jsonObject);
 
-            json.addProperty("primerused", true);
-            json.addProperty("inputfluid", String.valueOf(Registry.FLUID.getKey(this.inputFluid)));
-            json.addProperty("primerfluid", String.valueOf(Registry.FLUID.getKey(this.primerFluid)));
+            json.addProperty("primer_used", false);
+            json.addProperty("input_fluid", String.valueOf(Registry.FLUID.getKey(this.inputFluid)));
+//            json.addProperty("primerfluid", String.valueOf(Registry.FLUID.getKey(this.primerFluid)));
         }
 
         @Override
@@ -174,9 +174,9 @@ public class BrewingBarrelRecipeBuilder implements RecipeBuilder {
             jsonObject.addProperty("item", Registry.ITEM.getKey(resultItem.getItem()).toString());
             json.add("result", jsonObject);
 
-            json.addProperty("primer_used", false);
+            json.addProperty("primer_used", true);
             json.addProperty("input_fluid", String.valueOf(Registry.FLUID.getKey(this.inputFluid)));
-//            json.addProperty("primer_fluid", String.valueOf(Registry.FLUID.getKey(this.primerFluid)));
+            json.addProperty("primer_fluid", String.valueOf(Registry.FLUID.getKey(this.primerFluid)));
         }
 
         @Override
@@ -192,7 +192,7 @@ public class BrewingBarrelRecipeBuilder implements RecipeBuilder {
         @Nullable
         @Override
         public JsonObject serializeAdvancement() {
-            return this.advancement.serializeToJson();
+            return null;
         }
 
         @Nullable
