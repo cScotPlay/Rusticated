@@ -49,7 +49,7 @@ public class CrushingTubRenderer implements BlockEntityRenderer<CrushingTubBlock
         for(int i = 1; i <= count; i++) {
             poseStack.translate(0.0, -0.03125f, 0.0);
             poseStack.pushPose();
-            poseStack.mulPose(Vector3f.YP.rotationDegrees(i * 10));
+            poseStack.mulPose(Vector3f.YP.rotationDegrees(i * 3));
             poseStack.mulPose(Vector3f.XP.rotationDegrees(-90));
             itemRenderer.renderStatic(resultItem, ItemTransforms.TransformType.GUI, getLightLevel(blockEntity.getLevel(), blockEntity.getBlockPos()), OverlayTexture.WHITE_OVERLAY_V, poseStack, bufferSource, 1);
             poseStack.popPose();
