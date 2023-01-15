@@ -1,6 +1,8 @@
 package net.mcs3.rusticated.world.item.crafting;
 
 import com.google.gson.JsonObject;
+import net.mcs3.rusticated.Rusticated;
+import net.mcs3.rusticated.RusticatedClient;
 import net.mcs3.rusticated.world.item.BoozeItem;
 import net.minecraft.core.Registry;
 import net.minecraft.network.FriendlyByteBuf;
@@ -109,7 +111,12 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
             Fluid primerFluid = null;
 
             if(primerUsed) {
-                primerFluid = Registry.FLUID.get(new ResourceLocation(GsonHelper.getAsString(jsonObject, "primer_fluid")));
+                String primer = GsonHelper.getAsString(jsonObject, "primer_fluid");
+                ResourceLocation resourceLocation = new ResourceLocation(primer);
+                primerFluid = Registry.FLUID.get(resourceLocation);
+                Rusticated.LOGGER.info(primer);
+//                primerFluid = Registry.FLUID.get(new ResourceLocation(GsonHelper.getAsJsonObject(jsonObject, "primer").get("fluid").toString()));
+//                primerFluid = Registry.FLUID.get(new ResourceLocation(GsonHelper.getAsString(jsonObject, "primer_fluid")));
             }
 
             return new BrewingBarrelRecipe(recipeId, output, primerUsed, inputFluid, primerFluid);
@@ -121,7 +128,8 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
             ItemStack output = buffer.readItem();
             boolean primerUsed = buffer.readBoolean();
             Fluid inputFluid = Registry.FLUID.byId(buffer.readVarInt());
-            Fluid primerFluid = Registry.FLUID.byId(buffer.readVarInt());
+            Fluid primerFluid = null;
+//            Fluid primerFluid = Registry.FLUID.byId(buffer.readVarInt());
 
             if(primerUsed) {
                 primerFluid = Registry.FLUID.byId(buffer.readVarInt());
@@ -136,7 +144,10 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
             buffer.writeItem(recipe.outputItem);
             buffer.writeBoolean(recipe.primerUsed);
             buffer.writeVarInt(Registry.FLUID.getId(recipe.inputFluid));
-            buffer.writeVarInt(Registry.FLUID.getId(recipe.primerFluid));
+            if(recipe.primerUsed){
+                buffer.writeVarInt(Registry.FLUID.getId(recipe.primerFluid));
+            }
+
         }
     }
 }

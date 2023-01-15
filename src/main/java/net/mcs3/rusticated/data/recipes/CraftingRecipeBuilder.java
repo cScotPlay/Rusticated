@@ -2,6 +2,7 @@ package net.mcs3.rusticated.data.recipes;
 
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricRecipeProvider;
+import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
 import net.mcs3.rusticated.data.tags.ModItemTags;
@@ -25,8 +26,8 @@ import org.jetbrains.annotations.Nullable;
 import java.util.Collections;
 import java.util.function.Consumer;
 
-public class CraftingRecipeBuilder extends FabricRecipeProvider
-{
+public class CraftingRecipeBuilder extends FabricRecipeProvider {
+    public String MODID = Rusticated.MOD_ID;
     public CraftingRecipeBuilder(FabricDataGenerator dataGenerator) {
         super(dataGenerator);
     }
@@ -216,12 +217,12 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         pathRecipe(exporter, ModBlocks.BLACKSTONE_PATH, Blocks.BLACKSTONE_SLAB, Blocks.BLACKSTONE);
         pathRecipe(exporter, ModBlocks.NETHER_BRICKS_PATH, Blocks.NETHER_BRICK_SLAB, Blocks.NETHER_BRICKS);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.CHANDELIER_IRON, 2).define('#', Items.IRON_INGOT).define('X', Items.CHAIN).pattern(" # ").pattern("X X").pattern("###").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(exporter);
-        ShapedRecipeBuilder.shaped(ModBlocks.CHANDELIER_GOLD, 2).define('#', Items.GOLD_INGOT).define('X', ModBlocks.CHAIN_GOLD.asItem()).pattern(" # ").pattern("X X").pattern("###").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(exporter);
-        ShapedRecipeBuilder.shaped(ModBlocks.CHANDELIER_COPPER, 2).define('#', Items.COPPER_INGOT).define('X', ModBlocks.CHAIN_COPPER.asItem()).pattern(" # ").pattern("X X").pattern("###").unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.CHANDELIER_IRON, 2).define('#', Items.IRON_INGOT).define('x', Items.CHAIN).pattern(" # ").pattern("x x").pattern("###").unlockedBy("has_iron", has(Items.IRON_INGOT)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.CHANDELIER_GOLD, 2).define('#', Items.GOLD_INGOT).define('x', ModBlocks.CHAIN_GOLD.asItem()).pattern(" # ").pattern("x x").pattern("###").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.CHANDELIER_COPPER, 2).define('#', Items.COPPER_INGOT).define('x', ModBlocks.CHAIN_COPPER.asItem()).pattern(" # ").pattern("x x").pattern("###").unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.CHAIN_GOLD).define('#', Items.GOLD_INGOT).define('X', Items.GOLD_NUGGET).pattern("X").pattern("#").pattern("X").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(exporter);
-        ShapedRecipeBuilder.shaped(ModBlocks.CHAIN_COPPER).define('#', Items.COPPER_INGOT).define('X', ModItems.COPPER_NUGGET).pattern("X").pattern("#").pattern("X").unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.CHAIN_GOLD).define('#', Items.GOLD_INGOT).define('x', Items.GOLD_NUGGET).pattern("x").pattern("#").pattern("x").unlockedBy("has_gold", has(Items.GOLD_INGOT)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.CHAIN_COPPER).define('#', Items.COPPER_INGOT).define('x', ModItems.COPPER_NUGGET).pattern("x").pattern("#").pattern("x").unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter);
 
         ShapelessRecipeBuilder.shapeless(ModBlocks.CHAIN_WAXED_COPPER).requires(ModBlocks.CHAIN_COPPER).requires(Items.HONEYCOMB).unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModBlocks.CHAIN_WAXED_EXPOSED_COPPER).requires(ModBlocks.CHAIN_EXPOSED_COPPER).requires(Items.HONEYCOMB).unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter);
@@ -232,10 +233,10 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapelessRecipeBuilder.shapeless(ModBlocks.CHANDELIER_WAXED_WEATHERED_COPPER).requires(ModBlocks.CHANDELIER_WEATHERED_COPPER).requires(Items.HONEYCOMB).unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModBlocks.CHANDELIER_WAXED_OXIDIZED_COPPER).requires(ModBlocks.CHANDELIER_OXIDIZED_COPPER).requires(Items.HONEYCOMB).unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.BARREL).define('#', Items.IRON_INGOT).define('X', ItemTags.WOODEN_SLABS).define('P', ItemTags.PLANKS).pattern("PXP").pattern("# #").pattern("PXP").unlockedBy("has_wood", has(Blocks.OAK_PLANKS)).save(exporter);
-        ShapedRecipeBuilder.shaped(ModBlocks.LIQUID_BARREL).define('#', Items.IRON_INGOT).define('X', ItemTags.WOODEN_SLABS).define('P', ItemTags.PLANKS).pattern("P P").pattern("# #").pattern("PXP").unlockedBy("has_wood", has(Blocks.OAK_PLANKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.STORAGE_BARREL).define('#', Items.IRON_INGOT).define('x', ItemTags.WOODEN_SLABS).define('p', ItemTags.PLANKS).pattern("pxp").pattern("# #").pattern("pxp").unlockedBy("has_wood", has(Blocks.OAK_PLANKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.LIQUID_BARREL).define('#', Items.IRON_INGOT).define('x', ItemTags.WOODEN_SLABS).define('p', ItemTags.PLANKS).pattern("p p").pattern("# #").pattern("pxp").unlockedBy("has_wood", has(Blocks.OAK_PLANKS)).save(exporter);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.UNFIRED_JAR).define('#', Items.CLAY_BALL).define('X', Items.CLAY).pattern(" # ").pattern("# #").pattern("XXX").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.UNFIRED_JAR).define('#', Items.CLAY_BALL).define('x', Items.CLAY).pattern(" # ").pattern("# #").pattern("xxx").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.UNFIRED_JAR.asItem()), ModBlocks.FIRED_JAR.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.FIRED_JAR.asItem()), ModBlocks.GLAZED_JAR_0.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItemTags.JARS), ModBlocks.GLAZED_JAR_0.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter, new ResourceLocation("glazed_jar_from_glazed_jar"));
@@ -244,7 +245,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_JAR_3).requires(ModItemTags.JARS).requires(Items.BROWN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModBlocks.GLAZED_JAR_4).requires(ModItemTags.JARS).requires(Items.GREEN_DYE).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.UNFIRED_POT).define('#', Items.CLAY_BALL).define('X', Items.CLAY).pattern("# #").pattern("X X").pattern("XXX").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.UNFIRED_POT).define('#', Items.CLAY_BALL).define('x', Items.CLAY).pattern("# #").pattern("x x").pattern("xxx").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.UNFIRED_POT.asItem()), ModBlocks.FIRED_POT.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModBlocks.FIRED_POT.asItem()), ModBlocks.GLAZED_POT_0.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter);
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(ModItemTags.POTS), ModBlocks.GLAZED_POT_0.asItem(), 0.0F, 1600).unlockedBy("has_clay", has(Items.CLAY)).save(exporter, new ResourceLocation("glazed_pot_from_glazed_pot"));
@@ -323,7 +324,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_RED, Items.RED_WOOL);
         frameLeftDiagRecipe(exporter, ModBlocks.FRAMED_WALL_LEFT_DIAG_BLACK, Items.BLACK_WOOL);
 
-        ShapedRecipeBuilder.shaped(ModBlocks.FERTILE_SOIL).define('#', Blocks.DIRT).define('X', Items.GREEN_DYE).define('T', Items.BONE_MEAL).pattern(" X ").pattern("T#T").unlockedBy("has_dirt", has(Blocks.DIRT)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModBlocks.FERTILE_SOIL).define('#', Blocks.DIRT).define('x', Items.GREEN_DYE).define('t', Items.BONE_MEAL).pattern(" x ").pattern("t#t").unlockedBy("has_dirt", has(Blocks.DIRT)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.IRONWOOD_WOOD).define('#', ModBlocks.IRONWOOD_LOG).pattern("##").pattern("##").unlockedBy("has_log", has(ModBlocks.IRONWOOD_LOG)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.STRIPPED_IRONWOOD_WOOD).define('#', ModBlocks.STRIPPED_IRONWOOD_LOG).pattern("##").pattern("##").unlockedBy("has_log", has(ModBlocks.STRIPPED_IRONWOOD_LOG)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModBlocks.IRONWOOD_PLANKS, 4).requires(ModBlocks.IRONWOOD_LOG).unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_LOG)).save(exporter);
@@ -361,54 +362,54 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         ////////////////////////////////////////////////////
         /////                  ITEMS                   /////
         ////////////////////////////////////////////////////
-        ShapedRecipeBuilder.shaped(ModItems.CATALOG).define('#', Items.BOOK).define('X', Items.IRON_NUGGET).define('T', ModItems.OLIVES).pattern(" T ").pattern("X#X").pattern(" X ").unlockedBy("has_catalog", has(ModItems.CATALOG)).save(exporter);
+        ShapedRecipeBuilder.shaped(ModItems.CATALOG).define('#', Items.BOOK).define('x', Items.IRON_NUGGET).define('t', ModItems.OLIVES).pattern(" t ").pattern("x#x").pattern(" x ").unlockedBy("has_catalog", has(ModItems.CATALOG)).save(exporter);
         ShapelessRecipeBuilder.shapeless(ModItems.COPPER_NUGGET, 9).requires(Items.COPPER_INGOT).unlockedBy("has_copper", has(Items.COPPER_INGOT)).save(exporter, new ResourceLocation("copper_nugget_from_copper_ingot"));
         ShapedRecipeBuilder.shaped(Items.COPPER_INGOT).define('#', ModItems.COPPER_NUGGET).pattern("###").pattern("###").pattern("###").unlockedBy("has_catalog", has(ModItems.CATALOG)).save(exporter, new ResourceLocation("copper_ingot_from_copper_nugget"));
 
-        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.ALOE_VERA, Items.BEEF)), Elixirs.HEALING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.HEALING_ELIXIR.getName("elixir_")));
-        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.BLOOD_ORCHID, Items.HONEYCOMB)), Elixirs.REGENERATION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.REGENERATION_ELIXIR.getName("elixir_")));
-        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.NIGHTSHROOM, Items.CARROT)), Elixirs.NIGHT_VISION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.NIGHT_VISION_ELIXIR.getName("elixir_")));
-        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.WIND_THISTLE, Items.SUGAR)), Elixirs.SWIFTNESS_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.SWIFTNESS_ELIXIR.getName("elixir_")));
-        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GREEN_SPORED_ASBESTOS, Items.WEEPING_VINES)), Elixirs.FIRE_RESISTANCE_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.FIRE_RESISTANCE_ELIXIR.getName("elixir_")));
-        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GINSENG, Items.BONE)), Elixirs.STRENGTH_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.STRENGTH_ELIXIR.getName("elixir_")));
-        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CORE_ROOT, Items.KELP)), Elixirs.WATER_BREATHING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.WATER_BREATHING_ELIXIR.getName("elixir_")));
-        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CLOUD_LILY, Items.FEATHER)), Elixirs.SLOW_FALLING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.SLOW_FALLING_ELIXIR.getName("elixir_")));
-        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CHAMOMILE, Items.GLOW_BERRIES)), Elixirs.INVISIBILITY_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.INVISIBILITY_ELIXIR.getName("elixir_")));
-        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES)), Elixirs.IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.IRONSKIN_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.ALOE_VERA, Items.BEEF)), Elixirs.HEALING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.HEALING_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.BLOOD_ORCHID, Items.HONEYCOMB)), Elixirs.REGENERATION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.REGENERATION_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.NIGHTSHROOM, Items.CARROT)), Elixirs.NIGHT_VISION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.NIGHT_VISION_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.WIND_THISTLE, Items.SUGAR)), Elixirs.SWIFTNESS_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.SWIFTNESS_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GREEN_SPORED_ASBESTOS, Items.WEEPING_VINES)), Elixirs.FIRE_RESISTANCE_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.FIRE_RESISTANCE_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GINSENG, Items.BONE)), Elixirs.STRENGTH_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.STRENGTH_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CORE_ROOT, Items.KELP)), Elixirs.WATER_BREATHING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.WATER_BREATHING_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CLOUD_LILY, Items.FEATHER)), Elixirs.SLOW_FALLING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.SLOW_FALLING_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CHAMOMILE, Items.GLOW_BERRIES)), Elixirs.INVISIBILITY_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.INVISIBILITY_ELIXIR.getName("elixir_")));
+        CondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES)), Elixirs.IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.IRONSKIN_ELIXIR.getName("elixir_")));
 
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.ALOE_VERA, Items.BEEF)), Elixirs.HEALING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.HEALING_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.ALOE_VERA, Items.BEEF, ModItems.HORSETAIL)), Elixirs.HEALING_STRONG_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.HEALING_STRONG_ELIXIR.getName("elixir_adv_strong_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.ALOE_VERA, Items.BEEF)), Elixirs.HEALING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.HEALING_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.ALOE_VERA, Items.BEEF, ModItems.HORSETAIL)), Elixirs.HEALING_STRONG_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.HEALING_STRONG_ELIXIR.getName("elixir_adv_strong_")));
 
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.BLOOD_ORCHID, Items.HONEYCOMB)), Elixirs.REGENERATION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.REGENERATION_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.BLOOD_ORCHID, Items.HONEYCOMB, ModItems.MARSHMALLOW)), Elixirs.LONG_REGENERATION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_REGENERATION_ELIXIR.getName("elixir_adv_long_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.BLOOD_ORCHID, Items.HONEYCOMB, ModItems.HORSETAIL)), Elixirs.STRONG_REGENERATION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.STRONG_REGENERATION_ELIXIR.getName("elixir_adv_strong_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.BLOOD_ORCHID, Items.HONEYCOMB)), Elixirs.REGENERATION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.REGENERATION_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.BLOOD_ORCHID, Items.HONEYCOMB, ModItems.MARSHMALLOW)), Elixirs.LONG_REGENERATION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.LONG_REGENERATION_ELIXIR.getName("elixir_adv_long_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.BLOOD_ORCHID, Items.HONEYCOMB, ModItems.HORSETAIL)), Elixirs.STRONG_REGENERATION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.STRONG_REGENERATION_ELIXIR.getName("elixir_adv_strong_")));
 
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.NIGHTSHROOM, Items.CARROT)), Elixirs.NIGHT_VISION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.NIGHT_VISION_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.NIGHTSHROOM, Items.CARROT, ModItems.MARSHMALLOW)), Elixirs.LONG_NIGHT_VISION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_NIGHT_VISION_ELIXIR.getName("elixir_adv_long_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.NIGHTSHROOM, Items.CARROT)), Elixirs.NIGHT_VISION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.NIGHT_VISION_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.NIGHTSHROOM, Items.CARROT, ModItems.MARSHMALLOW)), Elixirs.LONG_NIGHT_VISION_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.LONG_NIGHT_VISION_ELIXIR.getName("elixir_adv_long_")));
 
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.WIND_THISTLE, Items.SUGAR)), Elixirs.SWIFTNESS_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.SWIFTNESS_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.WIND_THISTLE, Items.SUGAR, ModItems.MARSHMALLOW)), Elixirs.LONG_SWIFTNESS_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_SWIFTNESS_ELIXIR.getName("elixir_adv_long_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.WIND_THISTLE, Items.SUGAR, ModItems.HORSETAIL)), Elixirs.STRONG_SWIFTNESS_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.STRONG_SWIFTNESS_ELIXIR.getName("elixir_adv_strong_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.WIND_THISTLE, Items.SUGAR)), Elixirs.SWIFTNESS_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.SWIFTNESS_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.WIND_THISTLE, Items.SUGAR, ModItems.MARSHMALLOW)), Elixirs.LONG_SWIFTNESS_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.LONG_SWIFTNESS_ELIXIR.getName("elixir_adv_long_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.WIND_THISTLE, Items.SUGAR, ModItems.HORSETAIL)), Elixirs.STRONG_SWIFTNESS_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.STRONG_SWIFTNESS_ELIXIR.getName("elixir_adv_strong_")));
 
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GREEN_SPORED_ASBESTOS, Items.WEEPING_VINES)), Elixirs.FIRE_RESISTANCE_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.FIRE_RESISTANCE_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GREEN_SPORED_ASBESTOS, Items.WEEPING_VINES, ModItems.MARSHMALLOW)), Elixirs.LONG_FIRE_RESISTANCE_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_FIRE_RESISTANCE_ELIXIR.getName("elixir_adv_long_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GREEN_SPORED_ASBESTOS, Items.WEEPING_VINES)), Elixirs.FIRE_RESISTANCE_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.FIRE_RESISTANCE_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GREEN_SPORED_ASBESTOS, Items.WEEPING_VINES, ModItems.MARSHMALLOW)), Elixirs.LONG_FIRE_RESISTANCE_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.LONG_FIRE_RESISTANCE_ELIXIR.getName("elixir_adv_long_")));
 
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GINSENG, Items.BONE)), Elixirs.STRENGTH_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.STRENGTH_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GINSENG, Items.BONE, ModItems.MARSHMALLOW)), Elixirs.LONG_STRENGTH_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_STRENGTH_ELIXIR.getName("elixir_adv_long_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GINSENG, Items.BONE, ModItems.HORSETAIL)), Elixirs.STRONG_STRENGTH_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.STRONG_STRENGTH_ELIXIR.getName("elixir_adv_strong_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GINSENG, Items.BONE)), Elixirs.STRENGTH_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.STRENGTH_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GINSENG, Items.BONE, ModItems.MARSHMALLOW)), Elixirs.LONG_STRENGTH_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.LONG_STRENGTH_ELIXIR.getName("elixir_adv_long_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.GINSENG, Items.BONE, ModItems.HORSETAIL)), Elixirs.STRONG_STRENGTH_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.STRONG_STRENGTH_ELIXIR.getName("elixir_adv_strong_")));
 
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CORE_ROOT, Items.KELP)), Elixirs.WATER_BREATHING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.WATER_BREATHING_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CORE_ROOT, Items.KELP, ModItems.MARSHMALLOW)), Elixirs.LONG_WATER_BREATHING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_WATER_BREATHING_ELIXIR.getName("elixir_adv_long_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CORE_ROOT, Items.KELP)), Elixirs.WATER_BREATHING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.WATER_BREATHING_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CORE_ROOT, Items.KELP, ModItems.MARSHMALLOW)), Elixirs.LONG_WATER_BREATHING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.LONG_WATER_BREATHING_ELIXIR.getName("elixir_adv_long_")));
 
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CLOUD_LILY, Items.FEATHER)), Elixirs.SLOW_FALLING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.SLOW_FALLING_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CLOUD_LILY, Items.FEATHER, ModItems.MARSHMALLOW)), Elixirs.LONG_SLOW_FALLING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_SLOW_FALLING_ELIXIR.getName("elixir_adv_long_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CLOUD_LILY, Items.FEATHER)), Elixirs.SLOW_FALLING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.SLOW_FALLING_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CLOUD_LILY, Items.FEATHER, ModItems.MARSHMALLOW)), Elixirs.LONG_SLOW_FALLING_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.LONG_SLOW_FALLING_ELIXIR.getName("elixir_adv_long_")));
 
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CHAMOMILE, Items.GLOW_BERRIES)), Elixirs.INVISIBILITY_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.INVISIBILITY_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CHAMOMILE, Items.GLOW_BERRIES, ModItems.MARSHMALLOW)), Elixirs.LONG_INVISIBILITY_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_INVISIBILITY_ELIXIR.getName("elixir_adv_long_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CHAMOMILE, Items.GLOW_BERRIES)), Elixirs.INVISIBILITY_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.INVISIBILITY_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.CHAMOMILE, Items.GLOW_BERRIES, ModItems.MARSHMALLOW)), Elixirs.LONG_INVISIBILITY_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.LONG_INVISIBILITY_ELIXIR.getName("elixir_adv_long_")));
 
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES)), Elixirs.IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.IRONSKIN_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES, ModItems.MARSHMALLOW)), Elixirs.LONG_IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.LONG_IRONSKIN_ELIXIR.getName("elixir_adv_")));
-        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES, ModItems.HORSETAIL)), Elixirs.STRONG_IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(Elixirs.STRONG_IRONSKIN_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES)), Elixirs.IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.IRONSKIN_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES, ModItems.MARSHMALLOW)), Elixirs.LONG_IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.LONG_IRONSKIN_ELIXIR.getName("elixir_adv_")));
+        AdvCondenserRecipeBuilder.condenser(Collections.singletonList(Ingredient.of(ModItems.COHOSH, ModItems.IRON_BERRIES, ModItems.HORSETAIL)), Elixirs.STRONG_IRONSKIN_ELIXIR).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, Elixirs.STRONG_IRONSKIN_ELIXIR.getName("elixir_adv_")));
 
         ShapedRecipeBuilder.shaped(ModFluids.ALE_WORT_BUCKET).define('#', Items.BREAD).define('^', Items.SUGAR).define('@', Items.WATER_BUCKET).pattern("#^").pattern("@ ").unlockedBy("has_sugar", has(Items.SUGAR)).save(exporter);
 
@@ -416,25 +417,25 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
         SimpleCookingRecipeBuilder.blasting(Ingredient.of(ModItems.TINY_IRON_DUST), Items.IRON_NUGGET, 0.0F, 25).unlockedBy("has_tiny_iron", has(ModItems.TINY_IRON_DUST)).save(exporter, new ResourceLocation(Items.IRON_NUGGET.toString() + "_blasting"));
         ShapedRecipeBuilder.shaped(ModItems.UNFIRED_EVAPORATING_BASIN).define('#', Blocks.CLAY).pattern("# #").pattern(" # ").unlockedBy("has_clay", has(Blocks.CLAY)).save(exporter);
 
-        EvaporatingBasinRecipeBuilder.evaporating(ModItems.TINY_IRON_DUST.getDefaultInstance(), ModFluids.IRONBERRY_JUICE_BUCKET.getDefaultInstance()).unlockedBy("has_bucket", has(Items.BUCKET)).save(exporter, new ResourceLocation(ModItems.TINY_IRON_DUST.toString() + "_evaporating"));
-        EvaporatingBasinRecipeBuilder.evaporating(Blocks.HONEY_BLOCK.asItem().getDefaultInstance(), ModFluids.HONEY_BUCKET.getDefaultInstance()).unlockedBy("has_bucket", has(Items.BUCKET)).save(exporter, new ResourceLocation(Items.HONEY_BLOCK.toString() + "_evaporating"));
+        EvaporatingBasinRecipeBuilder.evaporating(ModItems.TINY_IRON_DUST.getDefaultInstance(), ModFluids.IRONBERRY_JUICE_BUCKET.getDefaultInstance()).unlockedBy("has_bucket", has(Items.BUCKET)).save(exporter, new ResourceLocation(MODID, ModItems.TINY_IRON_DUST.toString() + "_evaporating"));
+        EvaporatingBasinRecipeBuilder.evaporating(Blocks.HONEY_BLOCK.asItem().getDefaultInstance(), ModFluids.HONEY_BUCKET.getDefaultInstance()).unlockedBy("has_bucket", has(Items.BUCKET)).save(exporter, new ResourceLocation(MODID, Items.HONEY_BLOCK.toString() + "_evaporating"));
 
 
-        CrushingTubRecipeBuilder.crushing(ModItems.OLIVES.getDefaultInstance(), ModFluids.OLIVE_OIL_BUCKET.getDefaultInstance(), ModItems.OLIVE_OIL_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_olives", has(ModItems.OLIVES)).save(exporter, new ResourceLocation(ModItems.OLIVES + "_crushed"));
-        CrushingTubRecipeBuilder.crushing(ModItems.IRON_BERRIES.getDefaultInstance(), ModFluids.IRONBERRY_JUICE_BUCKET.getDefaultInstance(), ModItems.IRONBERRY_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_iron_berries", has(ModItems.IRON_BERRIES)).save(exporter, new ResourceLocation(ModItems.IRON_BERRIES + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(ModItems.OLIVES.getDefaultInstance(), ModFluids.OLIVE_OIL_BUCKET.getDefaultInstance(), ModItems.OLIVE_OIL_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_olives", has(ModItems.OLIVES)).save(exporter, new ResourceLocation(MODID, ModItems.OLIVES + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(ModItems.IRON_BERRIES.getDefaultInstance(), ModFluids.IRONBERRY_JUICE_BUCKET.getDefaultInstance(), ModItems.IRONBERRY_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_iron_berries", has(ModItems.IRON_BERRIES)).save(exporter, new ResourceLocation(MODID, ModItems.IRON_BERRIES + "_crushed"));
         //CrushingTubRecipeBuilder.crushing(Items.SUGAR_CANE.getDefaultInstance(), Items.WATER_BUCKET.getDefaultInstance(), Items.POTION.getDefaultInstance(), Items.SUGAR.getDefaultInstance()).unlockedBy("has_sugar_cane", has(Items.SUGAR_CANE)).save(exporter, new ResourceLocation(Items.SUGAR_CANE + "_crushed"));
-        CrushingTubRecipeBuilder.crushing(Items.SWEET_BERRIES.getDefaultInstance(), ModFluids.SWEET_BERRY_JUICE_BUCKET.getDefaultInstance(), ModItems.SWEET_BERRY_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_sweet_berries", has(Items.SWEET_BERRIES)).save(exporter, new ResourceLocation(Items.SWEET_BERRIES + "_crushed"));
-        CrushingTubRecipeBuilder.crushing(ModItems.GRAPES.getDefaultInstance(), ModFluids.GRAPE_JUICE_BUCKET.getDefaultInstance(), ModItems.GRAPE_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_grapes", has(ModItems.GRAPES)).save(exporter, new ResourceLocation(ModItems.GRAPES + "_crushed"));
-        CrushingTubRecipeBuilder.crushing(Items.APPLE.getDefaultInstance(), ModFluids.APPLE_JUICE_BUCKET.getDefaultInstance(), ModItems.APPLE_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_apples", has(Items.APPLE)).save(exporter, new ResourceLocation(Items.APPLE + "_crushed"));
-        CrushingTubRecipeBuilder.crushing(Items.HONEYCOMB.getDefaultInstance(), ModFluids.HONEY_BUCKET.getDefaultInstance(), Items.HONEY_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_honey", has(Items.HONEYCOMB)).save(exporter, new ResourceLocation(Items.HONEYCOMB + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(Items.SWEET_BERRIES.getDefaultInstance(), ModFluids.SWEET_BERRY_JUICE_BUCKET.getDefaultInstance(), ModItems.SWEET_BERRY_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_sweet_berries", has(Items.SWEET_BERRIES)).save(exporter, new ResourceLocation(MODID, Items.SWEET_BERRIES + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(ModItems.GRAPES.getDefaultInstance(), ModFluids.GRAPE_JUICE_BUCKET.getDefaultInstance(), ModItems.GRAPE_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_grapes", has(ModItems.GRAPES)).save(exporter, new ResourceLocation(MODID, ModItems.GRAPES + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(Items.APPLE.getDefaultInstance(), ModFluids.APPLE_JUICE_BUCKET.getDefaultInstance(), ModItems.APPLE_JUICE_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_apples", has(Items.APPLE)).save(exporter, new ResourceLocation(MODID, Items.APPLE + "_crushed"));
+        CrushingTubRecipeBuilder.crushing(Items.HONEYCOMB.getDefaultInstance(), ModFluids.HONEY_BUCKET.getDefaultInstance(), Items.HONEY_BOTTLE.getDefaultInstance(), Items.AIR.getDefaultInstance()).unlockedBy("has_honey", has(Items.HONEYCOMB)).save(exporter, new ResourceLocation(MODID, Items.HONEYCOMB + "_crushed"));
 
-        BrewingBarrelRecipeBuilder.brewing(ModItems.ALE_CUP.getDefaultInstance(), ModFluids.SOURCE_ALE_WORT.getSource(), ModFluids.SOURCE_ALE.getSource()).unlockedBy("has_iron_berries", has(ModFluids.ALE_WORT_BUCKET)).save(exporter, new ResourceLocation("brewed_ale"));
-        BrewingBarrelRecipeBuilder.brewing(ModItems.CIDER_CUP.getDefaultInstance(), ModFluids.SOURCE_APPLE_JUICE.getSource(), ModFluids.SOURCE_CIDER.getSource()).unlockedBy("has_apples", has(Items.APPLE)).save(exporter, new ResourceLocation("brewed_cider"));
-        BrewingBarrelRecipeBuilder.brewing(ModItems.IRON_WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_IRONBERRY_JUICE.getSource(), ModFluids.SOURCE_IRON_WINE.getSource()).unlockedBy("has_iron_berries", has(ModItems.IRON_BERRIES)).save(exporter, new ResourceLocation("brewed_iron_wine"));
-        BrewingBarrelRecipeBuilder.brewing(ModItems.MEAD_CUP.getDefaultInstance(), ModFluids.SOURCE_HONEY.getSource(), ModFluids.SOURCE_MEAD.getSource()).unlockedBy("has_honey", has(Items.HONEYCOMB)).save(exporter, new ResourceLocation("brewed_mead"));
-        BrewingBarrelRecipeBuilder.brewing(ModItems.SWEET_BERRY_WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_SWEET_BERRY_JUICE.getSource(), ModFluids.SOURCE_SWEET_BERRY_WINE.getSource()).unlockedBy("has_sweet_berries", has(Items.SWEET_BERRIES)).save(exporter, new ResourceLocation("brewed_sweet_berry_wine"));
-        BrewingBarrelRecipeBuilder.brewing(ModItems.WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_GRAPE_JUICE.getSource(), ModFluids.SOURCE_WINE.getSource()).unlockedBy("has_grapes", has(ModItems.GRAPES)).save(exporter, new ResourceLocation("brewed_wine"));
-        ShapelessRecipeBuilder.shapeless(Items.GLASS_BOTTLE).requires(ModItemTags.BOOZE_ITEMS).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation("alcoholic_drink_to_glass_bottle"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.ALE_CUP.getDefaultInstance(), ModFluids.SOURCE_ALE_WORT.getSource(), ModFluids.SOURCE_ALE.getSource()).unlockedBy("has_iron_berries", has(ModFluids.ALE_WORT_BUCKET)).save(exporter, new ResourceLocation(MODID, "brewed_ale"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.CIDER_CUP.getDefaultInstance(), ModFluids.SOURCE_APPLE_JUICE.getSource(), ModFluids.SOURCE_CIDER.getSource()).unlockedBy("has_apples", has(Items.APPLE)).save(exporter, new ResourceLocation(MODID,"brewed_cider"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.IRON_WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_IRONBERRY_JUICE.getSource(), ModFluids.SOURCE_IRON_WINE.getSource()).unlockedBy("has_iron_berries", has(ModItems.IRON_BERRIES)).save(exporter, new ResourceLocation(MODID,"brewed_iron_wine"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.MEAD_CUP.getDefaultInstance(), ModFluids.SOURCE_HONEY.getSource(), ModFluids.SOURCE_MEAD.getSource()).unlockedBy("has_honey", has(Items.HONEYCOMB)).save(exporter, new ResourceLocation(MODID,"brewed_mead"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.SWEET_BERRY_WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_SWEET_BERRY_JUICE.getSource(), ModFluids.SOURCE_SWEET_BERRY_WINE.getSource()).unlockedBy("has_sweet_berries", has(Items.SWEET_BERRIES)).save(exporter, new ResourceLocation(MODID,"brewed_sweet_berry_wine"));
+        BrewingBarrelRecipeBuilder.brewing(ModItems.WINE_CUP.getDefaultInstance(), ModFluids.SOURCE_GRAPE_JUICE.getSource(), ModFluids.SOURCE_WINE.getSource()).unlockedBy("has_grapes", has(ModItems.GRAPES)).save(exporter, new ResourceLocation(MODID,"brewed_wine"));
+        ShapelessRecipeBuilder.shapeless(Items.GLASS_BOTTLE).requires(ModItemTags.BOOZE_ITEMS).unlockedBy("has_bottle", has(Items.GLASS_BOTTLE)).save(exporter, new ResourceLocation(MODID, "alcoholic_drink_to_glass_bottle"));
 
         ShapedRecipeBuilder.shaped(ModItems.OILED_APPLE).define('#', Items.APPLE).define('^', ModItems.OLIVE_OIL_BOTTLE).pattern("#^").unlockedBy("has_olive_oil", has(ModItems.OLIVE_OIL_BOTTLE)).save(exporter, new ResourceLocation("oiled_" + Items.APPLE));
         ShapedRecipeBuilder.shaped(ModItems.OILED_BAKED_POTATO).define('#', Items.BAKED_POTATO).define('^', ModItems.OLIVE_OIL_BOTTLE).pattern("#^").unlockedBy("has_olive_oil", has(ModItems.OLIVE_OIL_BOTTLE)).save(exporter, new ResourceLocation("oiled_" + Items.BAKED_POTATO));
@@ -476,67 +477,67 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider
     }
 
     public static void coloredWoodRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
-        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).pattern("###").pattern("#X#").pattern("###").group("painted_wood").unlockedBy("has_plank", has(Blocks.OAK_PLANKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('x', input).pattern("###").pattern("#x#").pattern("###").group("painted_wood").unlockedBy("has_plank", has(Blocks.OAK_PLANKS)).save(exporter);
     }
 
     public static void coloredStairsRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input, ItemLike dyeInput, @Nullable String dyedRecipeName)
     {
         stairBuilder(output, Ingredient.of(new ItemLike[]{input})).group("painted_stairs").unlockedBy("has_stairs", has(Blocks.OAK_PLANKS)).save(exporter);
-        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.WOODEN_STAIRS).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("painted_stairs").unlockedBy("has_stair", has(Blocks.OAK_PLANKS)).save(exporter, new ResourceLocation(dyedRecipeName));
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.WOODEN_STAIRS).define('x', dyeInput).pattern("###").pattern("#x#").pattern("###").group("painted_stairs").unlockedBy("has_stair", has(Blocks.OAK_PLANKS)).save(exporter, new ResourceLocation(dyedRecipeName));
     }
 
     public static void coloredStoneSlabRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike inputCutter, ItemLike dyeInput,TagKey<Item> itemTagKey, @Nullable String dyedRecipeName)
     {
         ShapedRecipeBuilder.shaped(output, 6).define('#', inputCutter).pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter);
-        ShapedRecipeBuilder.shaped(output, 8).define('#', itemTagKey).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter, new ResourceLocation(dyedRecipeName));
+        ShapedRecipeBuilder.shaped(output, 8).define('#', itemTagKey).define('x', dyeInput).pattern("###").pattern("#x#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter, new ResourceLocation(dyedRecipeName));
         stonecutterResultFromBase(exporter, output, inputCutter, 2);
     }
 
     public static void coloredStoneRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike dyeInput, ItemLike cobbleItem, @Nullable String dyedRecipeName)
     {
-        ShapedRecipeBuilder.shaped(output, 8).define('#', ModItemTags.COLORED_STONE).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter, new ResourceLocation(dyedRecipeName));
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ModItemTags.COLORED_STONE).define('x', dyeInput).pattern("###").pattern("#x#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter, new ResourceLocation(dyedRecipeName));
         SimpleCookingRecipeBuilder.smelting(Ingredient.of(cobbleItem), output, 0.0F, 200).unlockedBy("has_stone", has(Items.STONE)).save(exporter);
     }
 
     public static void coloredCobbleStoneRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike dyeInput)
     {
-        ShapedRecipeBuilder.shaped(output, 8).define('#', ModItemTags.COLORED_COBBLESTONE).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter);
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ModItemTags.COLORED_COBBLESTONE).define('x', dyeInput).pattern("###").pattern("#x#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter);
     }
 
     public static void coloredStoneStairsRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike inputCutter, ItemLike dyeInput, TagKey<Item> itemTagKey, @Nullable String dyedRecipeName)
     {
         ShapedRecipeBuilder.shaped(output, 4).define('#', inputCutter).pattern("#  ").pattern("## ").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter);
-        ShapedRecipeBuilder.shaped(output, 8).define('#', itemTagKey).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter, new ResourceLocation(dyedRecipeName));
+        ShapedRecipeBuilder.shaped(output, 8).define('#', itemTagKey).define('x', dyeInput).pattern("###").pattern("#x#").pattern("###").group("colored_cobblestone").unlockedBy("is_cobblestone", has(Blocks.COBBLESTONE)).save(exporter, new ResourceLocation(dyedRecipeName));
         stonecutterResultFromBase(exporter, output, inputCutter, 1);
     }
 
     public static void coloredStoneWallRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike inputCutter, TagKey<Item> itemTagKey, ItemLike dyeInput, Block materialBlock, @Nullable String dyedRecipeName)
     {
         ShapedRecipeBuilder.shaped(output, 6).define('#', inputCutter).pattern("###").pattern("###").unlockedBy(getHasName(materialBlock), has(materialBlock)).save(exporter);
-        ShapedRecipeBuilder.shaped(output, 8).define('#', itemTagKey).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("colored_cobblestone").unlockedBy(getHasName(materialBlock), has(materialBlock)).save(exporter, new ResourceLocation(dyedRecipeName));
+        ShapedRecipeBuilder.shaped(output, 8).define('#', itemTagKey).define('x', dyeInput).pattern("###").pattern("#x#").pattern("###").group("colored_cobblestone").unlockedBy(getHasName(materialBlock), has(materialBlock)).save(exporter, new ResourceLocation(dyedRecipeName));
         stonecutterResultFromBase(exporter, output, inputCutter);
     }
 
     public static void coloredSlabRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input, ItemLike dyeInput, @Nullable String dyedRecipeName)
     {
         slab(exporter, output, input);
-        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.WOODEN_SLABS).define('X', dyeInput).pattern("###").pattern("#X#").pattern("###").group("painted_slabs").unlockedBy("has_slab", has(Blocks.OAK_PLANKS)).save(exporter, new ResourceLocation(dyedRecipeName));
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.WOODEN_SLABS).define('x', dyeInput).pattern("###").pattern("#x#").pattern("###").group("painted_slabs").unlockedBy("has_slab", has(Blocks.OAK_PLANKS)).save(exporter, new ResourceLocation(dyedRecipeName));
     }
 
     public static void frameCrossedRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
-        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).define('T', Items.STICK).pattern("#T#").pattern("TXT").pattern("#T#").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('x', input).define('t', Items.STICK).pattern("#t#").pattern("txt").pattern("#t#").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
     }
 
     public static void frameRtDiagRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
-        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).define('T', Items.STICK).pattern("# #").pattern(" XT").pattern("#T#").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('x', input).define('t', Items.STICK).pattern("# #").pattern(" xt").pattern("#t#").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
     }
 
     public static void frameLeftDiagRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
-        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).define('T', Items.STICK).pattern("# #").pattern("TX ").pattern("#T#").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('x', input).define('t', Items.STICK).pattern("# #").pattern("tx ").pattern("#t#").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
     }
 
     public static void frameWallRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input) {
-        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('X', input).pattern("# #").pattern(" X ").pattern("# #").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
+        ShapedRecipeBuilder.shaped(output, 8).define('#', ItemTags.PLANKS).define('x', input).pattern("# #").pattern(" x ").pattern("# #").group("framed_walls").unlockedBy("has_wool", has(Blocks.OAK_PLANKS)).save(exporter);
     }
 
     public static void pathRecipe(Consumer<FinishedRecipe> exporter, ItemLike output, ItemLike input, ItemLike inputCutter)

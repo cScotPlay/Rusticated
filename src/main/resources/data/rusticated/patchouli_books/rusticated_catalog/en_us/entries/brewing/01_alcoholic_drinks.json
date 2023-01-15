@@ -25,37 +25,37 @@
     {
       "type": "rusticated:brewing_barrel_template",
       "heading": "Ale",
-      "recipes": "rusticated:brewed_ale",
+      "recipes": "rusticated:brewed_ale_primed",
       "text": "Ale is a very saturating drink and applies the Full Stomach effect, decreasing damage from starvation."
     },
     {
       "type": "rusticated:brewing_barrel_template",
       "heading": "Cider",
-      "recipes": "rusticated:brewed_cider",
+      "recipes": "rusticated:brewed_cider_primed",
       "text": "Cider applies a magic resistance effect, reducing damage from magical sources, including poison."
     },
     {
       "type": "rusticated:brewing_barrel_template",
       "heading": "Iron Wine",
-      "recipes": "rusticated:brewed_iron_wine",
+      "recipes": "rusticated:brewed_iron_wine_primed",
       "text": "Iron Wine grants the drinker absorption hearts with no time limit, up to ten extra hearts."
     },
     {
       "type": "rusticated:brewing_barrel_template",
       "heading": "Mead",
-      "recipes": "rusticated:brewed_mead",
+      "recipes": "rusticated:brewed_mead_primed",
       "text": "Mead applies the wither ward effect, reducing damage from the wither effect."
     },
     {
       "type": "rusticated:brewing_barrel_template",
       "heading": "Sweet Berry Wine",
-      "recipes": "rusticated:brewed_sweet_berry_wine",
+      "recipes": "rusticated:brewed_sweet_berry_wine_primed",
       "text": "Sweet Berry Wine increases the level of all positive effects up to level III."
     },
     {
       "type": "rusticated:brewing_barrel_template",
       "heading": "Wine",
-      "recipes": "rusticated:brewed_wine",
+      "recipes": "rusticated:brewed_wine_primed",
       "text": "Wine increases the duration of all positive effects by up to ten minutes."
     }
   ],
