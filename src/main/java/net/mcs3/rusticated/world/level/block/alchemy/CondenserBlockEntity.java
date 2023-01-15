@@ -42,7 +42,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class CondenserBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ModContainer //MenuProvider, ModContainer
+public class CondenserBlockEntity extends BlockEntity implements ExtendedScreenHandlerFactory, ModContainer
 {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(5, ItemStack.EMPTY);
 
@@ -308,7 +308,6 @@ public class CondenserBlockEntity extends BlockEntity implements ExtendedScreenH
             entity.fluidStorage.insert(FluidVariant.of(Fluids.WATER),
                     FluidStack.convertDropletsToMb(FluidConstants.BUCKET), transaction);
             transaction.commit();
-            //entity.setItem(0, new ItemStack(Items.BUCKET));
         }
     }
 
@@ -336,10 +335,4 @@ public class CondenserBlockEntity extends BlockEntity implements ExtendedScreenH
     private static boolean hasEnoughFluid(CondenserBlockEntity blockEntity) {
         return blockEntity.fluidStorage.amount >= 500;
     }
-
-//        boolean hasItemInFirstSlot = blockEntity.getItem(0).getItem() == ModItems.COHOSH;
-//        boolean hasItemInSecondSlot = blockEntity.getItem(1).getItem() == Items.HONEYCOMB;
-//        boolean hasItemInThridSlot = blockEntity.getItem(2).getItem() == Items.GLASS_BOTTLE;
-//        boolean hasItemInFourthSlot = blockEntity.getItem(3).getItem() == Items.COAL;
-//        boolean hasItemInFifthSlot = blockEntity.getItem(4).getItem() == Items.WATER_BUCKET;\
 }
