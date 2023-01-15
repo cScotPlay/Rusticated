@@ -410,8 +410,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
                 blockEntity.update();
             }
 
-//            else if(blockEntity.primerFluidStorage.getCapacity() > blockEntity.primerFluidStorage.amount && !blockEntity.primerFluidStorage.variant.isBlank())
-            else if(blockEntity.primerFluidStorage.variant.isBlank()) {
+            else if(blockEntity.primerFluidStorage.variant.isBlank() && blockEntity.getItem(0).getItem() instanceof BoozeItem) {
                 BoozeItem cupItem = (BoozeItem) blockEntity.getItem(0).getItem();
                 Fluid fluid = cupItem.getFluidType();
                 int cupQuality = (int) (blockEntity.getItem(0).getOrCreateTag().getFloat("rusticated.fluid_quality") * 100);

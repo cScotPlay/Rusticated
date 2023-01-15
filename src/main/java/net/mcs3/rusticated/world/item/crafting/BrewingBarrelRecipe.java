@@ -115,9 +115,6 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
                 String primer = GsonHelper.getAsString(jsonObject, "primer_fluid");
                 ResourceLocation resourceLocation = new ResourceLocation(primer);
                 primerFluid = Registry.FLUID.get(resourceLocation);
-//                Rusticated.LOGGER.info(primer);
-//                primerFluid = Registry.FLUID.get(new ResourceLocation(GsonHelper.getAsJsonObject(jsonObject, "primer").get("fluid").toString()));
-//                primerFluid = Registry.FLUID.get(new ResourceLocation(GsonHelper.getAsString(jsonObject, "primer_fluid")));
             }
 
             return new BrewingBarrelRecipe(recipeId, output, primerUsed, inputFluid, primerFluid);
