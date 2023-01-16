@@ -71,13 +71,13 @@ public class LatticeBlock extends Block
         Block heldBlock = Block.byItem(heldItem.getItem());
         if(heldBlock != null && heldBlock instanceof LeavesBlock && !state.getValue(LEAVES)){
 
-            Rusticated.LOGGER.info("Set Leave State");
+            //Rusticated.LOGGER.info("Set Leave State");
             level.setBlockAndUpdate(pos, state.setValue(LEAVES, true));
             player.getMainHandItem().shrink(1);
             return InteractionResult.CONSUME;
         }else if (heldItem.is(Items.SHEARS) && state.getValue(LEAVES)) {
 
-            Rusticated.LOGGER.info("Remove Leave State");
+            //Rusticated.LOGGER.info("Remove Leave State");
             level.setBlockAndUpdate(pos, state.setValue(LEAVES, false));
             return InteractionResult.CONSUME;
         }

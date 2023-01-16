@@ -4,14 +4,15 @@
   "version": "${version}",
 
   "name": "Rusticated",
-  "description": "Rusticated is the newest and reinvigorate version of our beloved mod Rustic.",
+  "description": "Rusticated is an updated and reinvigorated mod based on our beloved, Rustic.",
   "authors": [
-    "cScotP",
+    "cScotPlay",
     "cadaverous-eris (Original Mastermind)"
   ],
   "contact": {
     "homepage": "https://www.curseforge.com/minecraft/mc-mods/rusticated",
-    "sources": "https://github.com/FabricMC/fabric-example-mod"
+    "sources": "https://github.com/cScotPlay/Rusticated",
+    "issues": "https://github.com/cScotPlay/Rusticated/issues"
   },
 
   "license": "MIT",

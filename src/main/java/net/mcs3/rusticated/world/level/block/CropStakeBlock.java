@@ -48,7 +48,7 @@ public class CropStakeBlock extends Block
             ItemStack itemStack = player.getItemInHand(hand);
             if (itemStack.getItem() instanceof ModItem)//TODO update for Crops
             {
-                Rusticated.LOGGER.info("Added Crops to Crop Stake");
+                //Rusticated.LOGGER.info("Added Crops to Crop Stake");
                 //return InteractionResult.SUCCESS;
             }
             else if (itemStack.is(ModBlocks.ROPE.asItem()))

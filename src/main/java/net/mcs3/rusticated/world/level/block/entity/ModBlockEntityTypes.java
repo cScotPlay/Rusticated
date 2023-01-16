@@ -19,7 +19,6 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 
-//TODO Erase if not needed
 public class ModBlockEntityTypes
 {
     public static BlockEntityType<BarrelEntityBlock> BARREL_CONTAINER;

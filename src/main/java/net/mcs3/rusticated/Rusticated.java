@@ -41,6 +41,7 @@ public class Rusticated implements ModInitializer {
 		// However, some things (like resources) may still be uninitialized.
 		// Proceed with mild caution.
 		INSTANCE = this;
+		LOGGER.info("Loading Rusticated");
 
 		RegistryHandler.onBlockRegistry();
 		RegistryHandler.onFluidRegistry();
@@ -48,10 +49,9 @@ public class Rusticated implements ModInitializer {
 
 		RegistryHandler.onBlockEntityRegistry();
 
+		RegistryHandler.onTreeFeatureRegistry();
+		RegistryHandler.onGenerateWorldRegistry();
 
-		ModTreeFeatures.init();
-
-		WorldGeneration.generateWorld();
 
 
 		ModRecipes.onRecipeRegistry();
@@ -61,6 +61,6 @@ public class Rusticated implements ModInitializer {
 		ModPotions.registerPotions();
 		Elixirs.initElixirs();
 
-		LOGGER.info("Rusticated loaded!");
+		LOGGER.info("Rusticated Successfully Loaded");
 	}
 }
