@@ -1,6 +1,7 @@
-package net.mcs3.rusticated.world.level.material;
+package net.mcs3.rusticated.init;
 
 import net.mcs3.rusticated.Rusticated;
+import net.mcs3.rusticated.world.level.material.*;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.BucketItem;

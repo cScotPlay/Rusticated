@@ -3,7 +3,7 @@ package net.mcs3.rusticated.client.color;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
 import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.client.render.fluid.v1.SimpleFluidRenderHandler;
-import net.mcs3.rusticated.world.level.material.ModFluids;
+import net.mcs3.rusticated.init.ModFluids;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.resources.ResourceLocation;
 

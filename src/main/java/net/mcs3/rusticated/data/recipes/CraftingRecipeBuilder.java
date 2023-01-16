@@ -7,7 +7,7 @@ import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
 import net.mcs3.rusticated.data.tags.ModItemTags;
 import net.mcs3.rusticated.world.item.alchmey.Elixirs;
-import net.mcs3.rusticated.world.level.material.ModFluids;
+import net.mcs3.rusticated.init.ModFluids;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.ShapedRecipeBuilder;
 import net.minecraft.data.recipes.ShapelessRecipeBuilder;

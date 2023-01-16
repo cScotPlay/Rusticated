@@ -1,5 +1,6 @@
 package net.mcs3.rusticated.world.level.material;
 
+import net.mcs3.rusticated.init.ModFluids;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.level.block.LiquidBlock;
 import net.minecraft.world.level.block.state.BlockState;

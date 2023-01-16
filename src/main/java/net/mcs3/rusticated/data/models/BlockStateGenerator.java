@@ -11,7 +11,7 @@ import net.mcs3.rusticated.world.level.block.LatticeBlock;
 import net.mcs3.rusticated.world.level.block.RopeBlock;
 import net.mcs3.rusticated.world.level.block.TiedStakeBlock;
 import net.mcs3.rusticated.world.level.block.crop.GrapeLeavesBlock;
-import net.mcs3.rusticated.world.level.material.ModFluids;
+import net.mcs3.rusticated.init.ModFluids;
 import net.minecraft.client.model.Model;
 import net.minecraft.core.Direction;
 import net.minecraft.data.models.BlockModelGenerators;

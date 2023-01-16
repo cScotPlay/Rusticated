@@ -5,7 +5,7 @@ import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.rusticated.init.ModBlockItems;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
-import net.mcs3.rusticated.world.level.material.ModFluids;
+import net.mcs3.rusticated.init.ModFluids;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 

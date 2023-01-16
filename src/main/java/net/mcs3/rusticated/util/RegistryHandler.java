@@ -4,7 +4,7 @@ import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
 import net.mcs3.rusticated.world.level.block.entity.ModBlockEntityTypes;
-import net.mcs3.rusticated.world.level.material.ModFluids;
+import net.mcs3.rusticated.init.ModFluids;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 

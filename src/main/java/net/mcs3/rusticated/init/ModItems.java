@@ -4,7 +4,6 @@ import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.world.food.ModFoodProperties;
 import net.mcs3.rusticated.world.item.*;
 import net.mcs3.rusticated.world.item.alchmey.ElixirItem;
-import net.mcs3.rusticated.world.level.material.ModFluids;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.*;
