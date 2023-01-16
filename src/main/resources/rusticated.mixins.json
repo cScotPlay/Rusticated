@@ -10,7 +10,7 @@
     "SugarCaneBlockMixin"
   ],
   "client": [
-    "RusticatedMixin"
+
   ],
   "injectors": {
     "defaultRequire": 1
