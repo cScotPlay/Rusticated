@@ -4,12 +4,13 @@
   "version": "${version}",
 
   "name": "Rusticated",
-  "description": "This is an example description! Tell everyone what your mod is about!",
+  "description": "Rusticated is the newest and reinvigorate version of our beloved mod Rustic.",
   "authors": [
-    "Me!"
+    "cScotP",
+    "cadaverous-eris (Original Mastermind)"
   ],
   "contact": {
-    "homepage": "https://fabricmc.net/",
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/rusticated",
     "sources": "https://github.com/FabricMC/fabric-example-mod"
   },
 
