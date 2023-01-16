@@ -10,6 +10,7 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
 import net.minecraft.world.Container;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.Potion;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.crafting.*;
@@ -48,18 +49,35 @@ public class AdvCondenserRecipe implements Recipe<Container> {
     public boolean matches(Container container, Level level) {
         if (level.isClientSide()){return false;}
 
-        if(container.getItem(2).is(Blocks.AIR.asItem()))
-        {
+        if(arraySize == 3) {
+            if(recipeItems.get(2).test(container.getItem(2))) {
+                if(recipeItems.get(0).test(container.getItem(0))) {
+                    return recipeItems.get(1).test(container.getItem(1));
+                }
+        }
+//        if(!container.getItem(2).isEmpty()) {
+//            if(recipeItems.get(2).test(container.getItem(2))) {
+//                if(recipeItems.get(0).test(container.getItem(0))) {
+//                    return recipeItems.get(1).test(container.getItem(1));
+//                }
+//            }
+        }else if(arraySize == 2) {
             if(recipeItems.get(0).test(container.getItem(0))) {
                 return recipeItems.get(1).test(container.getItem(1));
             }
-        }else {
-            if(recipeItems.get(0).test(container.getItem(0))) {
-                if(recipeItems.get(1).test(container.getItem(1))) {
-                    return recipeItems.get(2).test(container.getItem(2));
-                }
-            }
         }
+//        if(container.getItem(2).is(Blocks.AIR.asItem()))
+//        {
+//            if(recipeItems.get(0).test(container.getItem(0))) {
+//                return recipeItems.get(1).test(container.getItem(1));
+//            }
+//        }else {
+//            if(recipeItems.get(0).test(container.getItem(0))) {
+//                if(recipeItems.get(1).test(container.getItem(1))) {
+//                    return recipeItems.get(2).test(container.getItem(2));
+//                }
+//            }
+//        }
         return false;
     }
 
@@ -144,11 +162,18 @@ public class AdvCondenserRecipe implements Recipe<Container> {
         public AdvCondenserRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
         {
             NonNullList<Ingredient> inputs = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY);
-            int arraySize = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY).size();
+            int arraySize = buffer.readInt();
+//            int arraySize = NonNullList.withSize(buffer.readInt(), Ingredient.EMPTY).size();
 
-            for (int i = 0; i < inputs.size(); i++)
-            {
-                inputs.set(i, Ingredient.fromNetwork(buffer));
+            if(arraySize == 2) {
+                inputs.set(0, Ingredient.fromNetwork(buffer));
+                inputs.set(1, Ingredient.fromNetwork(buffer));
+//                inputs.set(2, Ingredient.of(Blocks.AIR.asItem()));
+            }else {
+                for (int i = 0; i < inputs.size(); i++)
+                {
+                    inputs.set(i, Ingredient.fromNetwork(buffer));
+                }
             }
 
             Potion potion = PotionUtils.getPotion(buffer.readNbt());
@@ -161,9 +186,24 @@ public class AdvCondenserRecipe implements Recipe<Container> {
         public void toNetwork(FriendlyByteBuf buffer, AdvCondenserRecipe recipe)
         {
             buffer.writeInt(recipe.getIngredients().size());
-            for (Ingredient ingredient : recipe.getIngredients())
-            {
-                ingredient.toNetwork(buffer);
+            buffer.writeInt(recipe.arraySize);
+
+
+            if(recipe.arraySize == 2){
+                Ingredient ingredient0 = recipe.getIngredients().get(0);
+                Ingredient ingredient1 = recipe.getIngredients().get(1);
+//                Ingredient ingredient2 = Ingredient.of(Blocks.AIR.asItem());
+
+                ingredient0.toNetwork(buffer);
+                ingredient1.toNetwork(buffer);
+//                ingredient2.toNetwork(buffer);
+//                buffer.writeItem(recipe.getIngredients().get(0));
+//                Ingredient ingredient;
+//                ingredient.toNetwork(recipe.getIngredients().get(0));
+            }else if (recipe.arraySize == 3) {
+                for (Ingredient ingredient : recipe.getIngredients()) {
+                    ingredient.toNetwork(buffer);
+                }
             }
             buffer.writeNbt(recipe.outputItem.getTag());
             buffer.writeItem(recipe.outputItem);

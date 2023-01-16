@@ -94,7 +94,7 @@ public class AdvCondenserRecipeCategory implements IRecipeCategory<AdvCondenserR
         builder.addSlot(RecipeIngredientRole.INPUT, 26, 36).addIngredients(recipe.getIngredients().get(1));
         builder.addSlot(RecipeIngredientRole.INPUT, 26, 56).addIngredients(recipe.getIngredients().get(2));
         builder.addSlot(RecipeIngredientRole.INPUT, 71, 63).addIngredients(Ingredient.of((ItemTags.COALS)));
-        builder.addSlot(RecipeIngredientRole.INPUT, 134, 55).addFluidStack(Fluids.WATER, 20250L).setFluidRenderer(250L, false, 16, 4);
+        builder.addSlot(RecipeIngredientRole.INPUT, 134, 55).addFluidStack(Fluids.WATER, 40500L).setFluidRenderer(500L, false, 16, 4);
 
         builder.addSlot(RecipeIngredientRole.OUTPUT, 107, 35).addItemStack(recipe.getResultItem());
     }
