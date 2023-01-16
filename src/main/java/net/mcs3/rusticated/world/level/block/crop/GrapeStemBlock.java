@@ -75,7 +75,7 @@ public class GrapeStemBlock extends CropBlock
         }
         level.setBlock(pos, this.getStateForAge(i), 2);
         Direction.Axis axis = level.getBlockState(pos.above()).getValue(RopeBlock.AXIS);
-        level.setBlock(pos.above(), ModBlocks.GRAPE_LEAVES.defaultBlockState().setValue(GrapeLeavesBlock.DISTANCE, 0), 3);
+        level.setBlock(pos.above(), ModBlocks.GRAPE_LEAVES.defaultBlockState().setValue(GrapeLeavesBlock.DISTANCE, 0).setValue(GrapeLeavesBlock.AXIS, axis), 3);
 
     }
 
