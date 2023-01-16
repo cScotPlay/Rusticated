@@ -41,10 +41,11 @@ public class BoozeItem extends Item {
             ServerPlayer serverPlayer = (ServerPlayer)livingEntity;
             CriteriaTriggers.CONSUME_ITEM.trigger(serverPlayer, stack);
         }
+        float brewedQuality = stack.getOrCreateTag().getFloat("rusticated.fluid_quality");
 
         if (!level.isClientSide) {
-            BoozeEffects.drinkBooze(livingEntity, stack, fluidQuality);
-            BoozeEffects.inebriate(level, livingEntity, inebriationChance, fluidQuality);
+            BoozeEffects.drinkBooze(livingEntity, stack, brewedQuality);
+            BoozeEffects.inebriate(level, livingEntity, inebriationChance, brewedQuality);
             stack.shrink(1);
 
         }
