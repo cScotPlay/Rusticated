@@ -10,12 +10,16 @@ import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.fluid.FluidStack;
 import net.mcs3.rusticated.network.ModNetworkSync;
+import net.mcs3.rusticated.util.FastBlockEntity;
 import net.mcs3.rusticated.world.ModContainer;
 import net.mcs3.rusticated.world.item.crafting.EvaporatingBasinRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.Container;
@@ -28,10 +32,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class EvaporatingBasinBlockEntity extends BlockEntity implements ModContainer {
+public class EvaporatingBasinBlockEntity extends FastBlockEntity implements ModContainer {
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
 
     protected final ContainerData dataAccess;
@@ -171,6 +176,23 @@ public class EvaporatingBasinBlockEntity extends BlockEntity implements ModConta
         tag.putLong("FluidLevel", fluidStorage.amount);
     }
 
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    public void onChanged() {
+        setChanged();
+        if (!level.isClientSide)
+            sync();
+    }
+
     /////FLUID HANDLING///////////
     public final SingleVariantStorage<FluidVariant> fluidStorage = new SingleVariantStorage<FluidVariant>() {
         @Override
@@ -185,7 +207,7 @@ public class EvaporatingBasinBlockEntity extends BlockEntity implements ModConta
 
         @Override
         protected void onFinalCommit() {
-            setChanged();
+            onChanged();
             if(!level.isClientSide()) {
                 sendEvaporatingPacket();
             }

@@ -21,7 +21,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -112,7 +111,7 @@ public class AdvCondenserBlockEntity extends BlockEntity implements ExtendedScre
 
     @Override
     public Component getDisplayName() {
-        return new TextComponent("Advanced Alchemical Condenser");
+        return Component.translatable("block.rusticated.adv_condenser");
     }
 
     @Nullable

@@ -77,7 +77,9 @@ public class CrushingTubBlock extends BaseEntityBlock implements EntityBlock {
             if(itemStack.is(Items.BUCKET) || itemStack.is(Items.GLASS_BOTTLE)) {
                 blockEntity.givePlayerFluid(blockEntity, player, hand, itemStack);
             }
-        } return InteractionResult.SUCCESS;
+            blockEntity.update();
+            level.blockEntityChanged(pos);}
+        return InteractionResult.SUCCESS;
     }
 
     @Override

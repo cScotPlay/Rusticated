@@ -3,6 +3,7 @@ package net.mcs3.rusticated.world.level.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -59,10 +60,9 @@ public class ChandelierBlock extends FallingBlock
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random)
-    {
-        if (isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinBuildHeight() && !suspended(level, pos)) {
-            FallingBlockEntity fallingBlockEntity = FallingBlockEntity.fall(level, pos, state);
+    public void tick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
+        if (isFree(serverLevel.getBlockState(blockPos.below())) && blockPos.getY() >= serverLevel.getMinBuildHeight() && !suspended(serverLevel, blockPos)) {
+            FallingBlockEntity fallingBlockEntity = FallingBlockEntity.fall(serverLevel, blockPos, blockState);
             this.falling(fallingBlockEntity);
         }
     }

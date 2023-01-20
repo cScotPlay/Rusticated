@@ -15,8 +15,8 @@ import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.world.item.crafting.AdvCondenserRecipe;
+import net.mcs3.rusticated.world.item.crafting.ModRecipes;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
@@ -41,7 +41,7 @@ public class AdvCondenserRecipeCategory implements IRecipeCategory<AdvCondenserR
 
     public AdvCondenserRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 86);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(ModBlocks.ADV_CONDENSER.asItem()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.ADV_CONDENSER.asItem()));
 
         IDrawableStatic progressDrawable = helper.drawableBuilder(TEXTURE, 176, 14, 55, 43).addPadding(23, 0, 45, 0).build();
         this.progress = helper.createAnimatedDrawable(progressDrawable, 80, IDrawableAnimated.StartDirection.LEFT, false);
@@ -54,20 +54,13 @@ public class AdvCondenserRecipeCategory implements IRecipeCategory<AdvCondenserR
     }
 
     @Override
-    @SuppressWarnings("Deprecated")
-    public ResourceLocation getUid() {
-        return UID;
-    }
-
-    @Override
-    @SuppressWarnings("Deprecated")
-    public Class<? extends AdvCondenserRecipe> getRecipeClass() {
-        return AdvCondenserRecipe.class;
+    public RecipeType<AdvCondenserRecipe> getRecipeType() {
+        return TYPE;
     }
 
     @Override
     public Component getTitle() {
-        return new TextComponent("Advanced Alchemical Condenser");
+        return Component.translatable("block.rusticated.adv_condenser");
     }
 
     @Override

@@ -17,7 +17,7 @@ import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.network.ModNetworkSync;
 import net.mcs3.rusticated.world.inventory.ModMenuTypes;
 import net.mcs3.rusticated.world.level.block.entity.ModBlockEntityTypes;
-import net.mcs3.rusticated.world.level.block.storage.liquid_barrel.LiquidBarrelRenderer;
+import net.mcs3.rusticated.client.screens.renderer.LiquidBarrelRenderer;
 import net.mcs3.rusticated.world.level.block.storage.pot.GlazedPotRenderer;
 import net.mcs3.rusticated.world.level.block.storage.pot.PotRenderer;
 import net.mcs3.rusticated.world.level.block.storage.pot.PotToolTipData;

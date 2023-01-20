@@ -61,11 +61,11 @@ public class RusticatedJEIPlugin implements IModPlugin {
     @Override
     @SuppressWarnings("Deprecated")
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration) {
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.CONDENSER), CondenserRecipeCategory.UID);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ADV_CONDENSER), AdvCondenserRecipeCategory.UID);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.EVAPORATING_BASIN), EvaporatingBasingRecipeCategory.UID);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.CRUSHING_TUB), CrushingTubRecipeCategory.UID);
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.OAK_BREWING_BARREL), BrewingBarrelRecipeCategory.UID);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.CONDENSER), CondenserRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.ADV_CONDENSER), AdvCondenserRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.EVAPORATING_BASIN), EvaporatingBasingRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.CRUSHING_TUB), CrushingTubRecipeCategory.TYPE);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.OAK_BREWING_BARREL), BrewingBarrelRecipeCategory.TYPE);
     }
 
     @Override

@@ -7,6 +7,7 @@ import net.mcs3.rusticated.world.level.block.RopeBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
@@ -74,30 +75,29 @@ public class GrapeLeavesBlock extends RopeBlock implements BonemealableBlock
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
-        super.randomTick(state, level, pos, random);
-        if (!this.isBlockSupported(level, pos, state))
+    public void randomTick(BlockState blockState, ServerLevel serverLevel, BlockPos blockPos, RandomSource randomSource) {
+        super.randomTick(blockState, serverLevel, blockPos, randomSource);
+        if (!this.isBlockSupported(serverLevel, blockPos, blockState))
         {
-            level.destroyBlock(pos, false);
+            serverLevel.destroyBlock(blockPos, false);
         }
-        if(level.getRawBrightness(pos, 0) >= 9)
+        if(serverLevel.getRawBrightness(blockPos, 0) >= 9)
         {
-            int distance = state.getValue(DISTANCE);
+            int distance = blockState.getValue(DISTANCE);
             float f;
-            if(distance > 0 && !state.getValue(GRAPES) && level.getBlockState(pos.below()).getBlock() == Blocks.AIR)
+            if(distance > 0 && !blockState.getValue(GRAPES) && serverLevel.getBlockState(blockPos.below()).getBlock() == Blocks.AIR)
             {
-                if(random.nextInt((int)(25.0f / (f = getGrowthSpeed(this, level, pos))) + 1) == 0)
+                if(randomSource.nextInt((int)(25.0f / (f = getGrowthSpeed(this, serverLevel, blockPos))) + 1) == 0)
                 {
-                    Direction.Axis axis = state.getValue(AXIS);
-                    level.setBlock(pos, ModBlocks.GRAPE_LEAVES.defaultBlockState().setValue(AXIS, axis).setValue(DISTANCE, 1).setValue(GRAPES,true), 3);
+                    Direction.Axis axis = blockState.getValue(AXIS);
+                    serverLevel.setBlock(blockPos, ModBlocks.GRAPE_LEAVES.defaultBlockState().setValue(AXIS, axis).setValue(DISTANCE, 1).setValue(GRAPES,true), 3);
                 }
             }
-            else if(distance < 1 && canSpread(level, pos, state))
+            else if(distance < 1 && canSpread(serverLevel, blockPos, blockState))
             {
-                if(random.nextInt((int)(25.0f / (f = getGrowthSpeed(this, level, pos))) + 1) == 0)
+                if(randomSource.nextInt((int)(25.0f / (f = getGrowthSpeed(this, serverLevel, blockPos))) + 1) == 0)
                 {
-                    spread(level, pos, state);
+                    spread(serverLevel, blockPos, blockState);
                 }
             }
         }
@@ -205,12 +205,12 @@ public class GrapeLeavesBlock extends RopeBlock implements BonemealableBlock
     }
 
     @Override
-    public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, RandomSource randomSource, BlockPos blockPos, BlockState blockState) {
         return true;
     }
 
     @Override
-    public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
         this.growCrops(level, pos, state);
     }
 

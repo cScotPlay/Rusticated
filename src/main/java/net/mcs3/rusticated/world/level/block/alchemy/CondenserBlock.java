@@ -7,6 +7,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.*;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -277,32 +278,32 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
     }
 
     @Override
-    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
-        if (!state.getValue(LIT))
+    public void animateTick(BlockState blockState, Level level, BlockPos blockPos, RandomSource randomSource) {
+        if (!blockState.getValue(LIT))
         {
-            if(level.getBlockState(pos.below()).getBlock() instanceof CondenserBlock && level.getBlockState(pos.below()).getValue(LIT))
+            if(level.getBlockState(blockPos.below()).getBlock() instanceof CondenserBlock && level.getBlockState(blockPos.below()).getValue(LIT))
             {
-                double d = (double)pos.getX() + 0.5;
-                double e = pos.getY();
-                double f = (double)pos.getZ() + 0.5;
+                double d = (double)blockPos.getX() + 0.5;
+                double e = blockPos.getY();
+                double f = (double)blockPos.getZ() + 0.5;
 
                 level.addParticle(ParticleTypes.SMOKE, d, e + 0.4, f, 0.0, 0.0, 0.0);
             }
             else
                 return;
         }
-        double d = (double)pos.getX() + 0.5;
-        double e = pos.getY();
-        double f = (double)pos.getZ() + 0.5;
-        if (random.nextDouble() < 0.1) {
+        double d = (double)blockPos.getX() + 0.5;
+        double e = blockPos.getY();
+        double f = (double)blockPos.getZ() + 0.5;
+        if (randomSource.nextDouble() < 0.1) {
             level.playLocalSound(d, e, f, SoundEvents.BLASTFURNACE_FIRE_CRACKLE, SoundSource.BLOCKS, 1.0f, 1.0f, false);
         }
-        Direction direction = state.getValue(FACING);
+        Direction direction = blockState.getValue(FACING);
         Direction.Axis axis = direction.getAxis();
         double g = 0.52;
-        double h = random.nextDouble() * 0.6 - 0.3;
+        double h = randomSource.nextDouble() * 0.6 - 0.3;
         double i = axis == Direction.Axis.X ? (double)direction.getStepX() * 0.52 : h;
-        double j = random.nextDouble() * 16.0 / 16.0;
+        double j = randomSource.nextDouble() * 16.0 / 16.0;
         double k = axis == Direction.Axis.Z ? (double)direction.getStepZ() * 0.52 : h;
         level.addParticle(ParticleTypes.SMOKE, d + i, e + j, f + k, 0.0, 0.0, 0.0);
         level.addParticle(ParticleTypes.FLAME, d + i, e + j, f + k, 0.0, 0.0, 0.0);
@@ -314,6 +315,8 @@ public class CondenserBlock extends BaseEntityBlock implements EntityBlock
             level.addParticle(ParticleTypes.SMOKE, d, e + 0.95D, f + 1.0D, 0, 0.125, 0);
             level.addParticle(ParticleTypes.SMOKE, d, e + 0.95D, f - 1.0D, 0, 0.125, 0);
         }
+
+        super.animateTick(blockState, level, blockPos, randomSource);
     }
 
     private static final VoxelShape SHAPE_TOP = Stream.of(

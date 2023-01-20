@@ -1,6 +1,5 @@
 package net.mcs3.rusticated.init;
 
-import com.google.common.collect.Maps;
 import net.fabricmc.fabric.api.registry.OxidizableBlocksRegistry;
 import net.fabricmc.fabric.api.registry.StrippableBlockRegistry;
 import net.mcs3.rusticated.Rusticated;
@@ -15,13 +14,12 @@ import net.mcs3.rusticated.world.level.block.grower.OliveTreeGrower;
 import net.mcs3.rusticated.world.level.block.storage.barrel.BarrelBlock;
 import net.mcs3.rusticated.world.level.block.storage.jar.FiredJarBlock;
 import net.mcs3.rusticated.world.level.block.storage.jar.GlazedJarBlock;
-import net.mcs3.rusticated.world.level.block.storage.liquid_barrel.LiquidBarrelBlock;
+import net.mcs3.rusticated.world.level.block.storage.LiquidBarrelBlock;
 import net.mcs3.rusticated.world.level.block.storage.pot.*;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.world.item.AxeItem;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;

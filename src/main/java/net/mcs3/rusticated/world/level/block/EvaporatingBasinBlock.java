@@ -58,7 +58,7 @@ public class EvaporatingBasinBlock extends BaseEntityBlock implements EntityBloc
         ItemStack itemStack = player.getItemInHand(hand);
         EvaporatingBasinBlockEntity blockEntity = (EvaporatingBasinBlockEntity) level.getBlockEntity(pos);
 
-        if(!level.isClientSide) {
+//        if(!level.isClientSide) {
             if(player.isCrouching() && player.getMainHandItem().isEmpty() && blockEntity.fluidStorage.amount != 0) {
                 blockEntity.emptyBasin(blockEntity);
             }
@@ -66,6 +66,7 @@ public class EvaporatingBasinBlock extends BaseEntityBlock implements EntityBloc
                 player.getInventory().add(new ItemStack(blockEntity.getItem(0).getItem(), blockEntity.getItem(0).getCount()));
                 blockEntity.removeItemNoUpdate(0);
                 blockEntity.update();
+                //return InteractionResult.sidedSuccess(level.isClientSide);
             }
             if (blockEntity.getBlockState().getBlock() instanceof EvaporatingBasinBlock && itemStack.getItem() instanceof BucketItem bucketItem) {
                 if(itemStack.getItem() == Items.BUCKET && blockEntity.fluidStorage.amount != 0 && blockEntity.canPullFluid(blockEntity)) {
@@ -73,15 +74,21 @@ public class EvaporatingBasinBlock extends BaseEntityBlock implements EntityBloc
                     blockEntity.onPlayerRemoveFluid(blockEntity, entityFluid);
                     level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
                     player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(entityFluid.getBucket())));
+                    blockEntity.update();
+                    //return InteractionResult.sidedSuccess(level.isClientSide);
 
                 } else if (blockEntity.fluidStorage.amount != blockEntity.fluidStorage.getCapacity() && itemStack.getItem() != Items.BUCKET){
                     Fluid bucketFluid = ((BucketItemAccessor) bucketItem).fabric_getFluid();
                     blockEntity.onPlayerAddFluid(bucketFluid);
                     level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.0f);
                     player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.BUCKET)));
+                    blockEntity.update();
+                    //return InteractionResult.sidedSuccess(level.isClientSide);
                 }
             }
-        }
+//        }
+        blockEntity.update();
+        level.blockEntityChanged(pos);
         return InteractionResult.SUCCESS;
         }
 

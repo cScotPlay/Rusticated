@@ -5,7 +5,6 @@ import net.fabricmc.fabric.api.transfer.v1.storage.StoragePreconditions;
 import net.fabricmc.fabric.api.transfer.v1.storage.StorageView;
 import net.fabricmc.fabric.api.transfer.v1.storage.TransferVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.ResourceAmount;
-import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleViewIterator;
 import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
 import net.fabricmc.fabric.api.transfer.v1.transaction.base.SnapshotParticipant;
 import net.mcs3.rusticated.util.FastBlockEntity;
@@ -121,10 +120,15 @@ public abstract class AbstractStorageBlockEntity<T extends TransferVariant<?>> e
 
     public abstract long getCapacityForResource(T resource);
 
-    @Override
-    public Iterator<StorageView<T>> iterator(TransactionContext transaction) {
-        return SingleViewIterator.create(this, transaction);
+    @Override  //TODO IteratorLook at if this is needed for storage blocks
+    public Iterator<StorageView<T>> iterator() {
+        return null;
     }
+//
+//    @Override
+//    public Iterator<StorageView<T>> iterator(TransactionContext transaction) {
+//        return SingleViewIterator.create(this, transaction);
+//    }
 
 
 

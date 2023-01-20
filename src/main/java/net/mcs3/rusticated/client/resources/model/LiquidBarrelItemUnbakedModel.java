@@ -1,10 +1,11 @@
-package net.mcs3.rusticated.world.level.block.storage.liquid_barrel;
+package net.mcs3.rusticated.client.resources.model;
 
 import com.mojang.datafixers.util.Pair;
 import net.fabricmc.fabric.api.renderer.v1.Renderer;
 import net.fabricmc.fabric.api.renderer.v1.RendererAccess;
 import net.fabricmc.fabric.api.renderer.v1.material.BlendMode;
 import net.mcs3.rusticated.Rusticated;
+import net.mcs3.rusticated.client.resources.model.LiquidBarrelItemBakedModel;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.client.resources.model.*;
 import net.minecraft.resources.ResourceLocation;

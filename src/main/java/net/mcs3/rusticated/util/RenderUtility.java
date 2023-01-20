@@ -169,7 +169,7 @@ public class RenderUtility
         bufferBuilder.vertex(model, x1, y0, z).color(r, g, b, 1).uv(u1, v0).endVertex();
         bufferBuilder.vertex(model, x0, y0, z).color(r, g, b, 1).uv(u0, v0).endVertex();
         bufferBuilder.end();
-        BufferUploader.end(bufferBuilder);
+        BufferUploader.draw(bufferBuilder.end()); //TODO Check that this worked
 
         RenderSystem.enableDepthTest();
     }
@@ -294,7 +294,7 @@ public class RenderUtility
         bufferBuilder.vertex(matrix, (float) x2, (float) y1, 0.0F).color(g, h, k, f).endVertex();
         bufferBuilder.vertex(matrix, (float) x1, (float) y1, 0.0F).color(g, h, k, f).endVertex();
         bufferBuilder.end();
-        BufferUploader.end(bufferBuilder);
+        BufferUploader.draw(bufferBuilder.end());  //TODO Check that this worked
         RenderSystem.enableTexture();
         RenderSystem.disableBlend();
     }

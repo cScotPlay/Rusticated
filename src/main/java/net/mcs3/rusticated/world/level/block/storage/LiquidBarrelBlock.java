@@ -1,12 +1,15 @@
-package net.mcs3.rusticated.world.level.block.storage.liquid_barrel;
+package net.mcs3.rusticated.world.level.block.storage;
 
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
-import net.mcs3.rusticated.world.level.block.entity.ModBlockEntityTypes;
-import net.mcs3.rusticated.world.level.block.storage.AbstractStorageBlock;
+import net.fabricmc.fabric.mixin.transfer.BucketItemAccessor;
+import net.mcs3.rusticated.world.level.block.entity.LiquidBarrelBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
@@ -25,9 +28,7 @@ import org.jetbrains.annotations.Nullable;
 
 import java.util.stream.Stream;
 
-public class LiquidBarrelBlock extends AbstractStorageBlock implements EntityBlock
-{
-    //protected static final VoxelShape BARREL_AABB;
+public class LiquidBarrelBlock extends BaseEntityBlock implements EntityBlock {
 
     public LiquidBarrelBlock() {
         super(Properties.of(Material.WOOD)
@@ -39,7 +40,7 @@ public class LiquidBarrelBlock extends AbstractStorageBlock implements EntityBlo
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new LiquidBarrelEntityBlock(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, pos, state, 16);
+        return new LiquidBarrelBlockEntity(pos, state);
     }
 
     @Override
@@ -58,16 +59,36 @@ public class LiquidBarrelBlock extends AbstractStorageBlock implements EntityBlo
     @Override
     @SuppressWarnings("deprecation")
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
-        if (((LiquidBarrelEntityBlock) level.getBlockEntity(pos)).onPlayerUse(player))
-        {
-            return InteractionResult.sidedSuccess(level.isClientSide);
+        ItemStack itemStack = player.getItemInHand(hand);
+        LiquidBarrelBlockEntity blockEntity = (LiquidBarrelBlockEntity) level.getBlockEntity(pos);
+
+        if(blockEntity.getBlockState().getBlock() instanceof LiquidBarrelBlock) {
+            if(itemStack.is(Items.BUCKET) && blockEntity.fluidStorage.amount >= 1000) {
+                Item filledBucketItem = blockEntity.fluidStorage.variant.getFluid().getBucket();
+                blockEntity.removeFluidFromFluidStorage(blockEntity);
+                level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
+                player.setItemInHand(hand, filledBucketItem.getDefaultInstance());
+                return InteractionResult.sidedSuccess(level.isClientSide);
+
+            } else if(itemStack.getItem() instanceof BucketItem && !itemStack.is(Items.BUCKET) &&
+                    !((LiquidBarrelBlockEntity) level.getBlockEntity(pos)).atCapacity(blockEntity) &&
+                    (blockEntity.fluidStorage.getCapacity() - blockEntity.fluidStorage.amount) > 1000) {
+                BucketItem bucketItem = (BucketItem) itemStack.getItem();
+                Fluid fluid = ((BucketItemAccessor) bucketItem).fabric_getFluid();
+                blockEntity.transferFluidToFluidStorage(blockEntity, FluidVariant.of(fluid), 1000);
+                level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.0f);
+                player.setItemInHand(hand, new ItemStack(Items.BUCKET));
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
         }
-        return super.use(state, level, pos, player, hand, hit);
+        blockEntity.update();
+        level.blockEntityChanged(pos);
+        return InteractionResult.PASS;
     }
 
     protected static boolean shouldHandlePrecipitation(Level level, Biome.Precipitation precipitation) {
         if (precipitation == Biome.Precipitation.RAIN) {
-            return level.getRandom().nextFloat() < 1.00F;
+            return level.getRandom().nextFloat() < 0.05F;
         } else if (precipitation == Biome.Precipitation.SNOW) {
             return level.getRandom().nextFloat() < 0.1F;
         } else {
@@ -77,36 +98,17 @@ public class LiquidBarrelBlock extends AbstractStorageBlock implements EntityBlo
 
     @Override
     public void handlePrecipitation(BlockState state, Level level, BlockPos pos, Biome.Precipitation precipitation) {
-
-//        if (shouldHandlePrecipitation(level, precipitation)) {
-//            BlockEntity barrel = level.getBlockEntity(pos);
-//
-//            if (barrel instanceof LiquidBarrelEntityBlock)
-//            {
-//
-//                level.setBlockAndUpdate(pos, ModBlocks.LIQUID_BARREL);
-//                ElixirEmporium.LOGGER.info("This is a Liquid Barrel");
-//                LiquidBarrelEntityBlock liquidBarrel = (LiquidBarrelEntityBlock) barrel;
-//                FluidVariant water = FluidVariant.of(Fluids.WATER);
-//
-//                if(liquidBarrel.getAmount() < liquidBarrel.getCapacity())
-//                {
-//                    ElixirEmporium.LOGGER.info(liquidBarrel.getAmount() + " is in Barrel");
-//                }
-//                liquidBarrel.getCapacity();
-//
-//                liquidBarrel.insert(water, FluidConstants.BUCKET, null);
-//                ElixirEmporium.LOGGER.info(water.getFluid() + " was filed");
-//
-//            }
-////            if (precipitation == Biome.Precipitation.RAIN) {
-////                level.setBlockAndUpdate(pos, ModBlocks.LIQUID_BARREL.defaultBlockState());
-////                level.gameEvent((Entity)null, GameEvent.FLUID_PLACE, pos);
-////            } else if (precipitation == Biome.Precipitation.SNOW) {
-////                level.setBlockAndUpdate(pos, ModBlocks.LIQUID_BARREL.defaultBlockState());
-////                level.gameEvent((Entity)null, GameEvent.FLUID_PLACE, pos);
-////            }
-//        }
+        if(shouldHandlePrecipitation(level, precipitation)) {
+            BlockEntity blockEntity = level.getBlockEntity(pos);
+            if (blockEntity instanceof LiquidBarrelBlockEntity) {
+                LiquidBarrelBlockEntity barrelEntity = (LiquidBarrelBlockEntity) blockEntity;
+                if (barrelEntity.fluidStorage.variant == FluidVariant.of(Fluids.WATER) &&
+                        !((LiquidBarrelBlockEntity) level.getBlockEntity(pos)).atCapacity(barrelEntity) &&
+                        (barrelEntity.fluidStorage.getCapacity() - barrelEntity.fluidStorage.amount) > 1000) {
+                    barrelEntity.transferFluidToFluidStorage(barrelEntity, FluidVariant.of(Fluids.WATER), 100);
+                }
+            }
+        }
     }
     protected static final VoxelShape BARREL_AABB = Stream.of(
             Block.box(2, 1, 2, 14, 2, 14),

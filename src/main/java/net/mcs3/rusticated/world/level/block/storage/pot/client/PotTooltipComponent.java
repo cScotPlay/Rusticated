@@ -12,7 +12,6 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.network.chat.TextComponent;
 
 public record PotTooltipComponent(PotToolTipData data) implements ClientTooltipComponent {
 
@@ -48,9 +47,9 @@ public record PotTooltipComponent(PotToolTipData data) implements ClientTooltipC
         Component itemNumber;
 
         if (maxCount == 1 || Screen.hasShiftDown()) {
-            itemNumber = new TextComponent(String.format("%d of %d Stacks", stackNumber, stackCapacity)).setStyle(TextUtility.GREEN);
+            itemNumber = Component.translatable("tooltip.rusticated.pot.stacks_numbers", stackNumber, stackCapacity).setStyle(TextUtility.GREEN);
         } else {
-            itemNumber = new TextComponent(String.format("%d of %d (%d Stack Capacity)", amount, stackCapacity * maxCount, stackCapacity))
+            itemNumber = Component.translatable("tooltip.rusticated.pot.percent_stacks", amount, stackCapacity * maxCount, stackCapacity)
                     .setStyle(TextUtility.GREEN);
         }
         return itemNumber;

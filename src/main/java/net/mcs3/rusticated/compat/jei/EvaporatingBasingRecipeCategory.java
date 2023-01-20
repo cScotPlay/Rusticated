@@ -14,16 +14,11 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
-import net.mcs3.rusticated.world.item.crafting.CondenserRecipe;
+import net.mcs3.rusticated.world.item.crafting.AdvCondenserRecipe;
 import net.mcs3.rusticated.world.item.crafting.EvaporatingBasinRecipe;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.tags.ItemTags;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.crafting.Ingredient;
-import net.minecraft.world.level.material.Fluids;
 
 import javax.annotation.Nonnull;
 
@@ -41,7 +36,7 @@ public class EvaporatingBasingRecipeCategory implements IRecipeCategory<Evaporat
 
     public EvaporatingBasingRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 86);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(ModBlocks.EVAPORATING_BASIN.asItem()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.EVAPORATING_BASIN.asItem()));
 
         IDrawableStatic progressDrawable = helper.drawableBuilder(TEXTURE, 176, 0, 27, 15).addPadding(36, 0, 74, 0).build();
         this.progress = helper.createAnimatedDrawable(progressDrawable, 80, IDrawableAnimated.StartDirection.LEFT, false);
@@ -49,20 +44,12 @@ public class EvaporatingBasingRecipeCategory implements IRecipeCategory<Evaporat
     }
 
     @Override
-    @SuppressWarnings("Deprecated")
-    public ResourceLocation getUid() {
-        return UID;
+    public RecipeType<EvaporatingBasinRecipe> getRecipeType() {
+        return TYPE;
     }
-
-    @Override
-    @SuppressWarnings("Deprecated")
-    public Class<? extends EvaporatingBasinRecipe> getRecipeClass() {
-        return EvaporatingBasinRecipe.class;
-    }
-
     @Override
     public Component getTitle() {
-        return new TextComponent("Drying Basin");
+        return Component.translatable("block.rusticated.evaporating_basin");
     }
 
     @Override

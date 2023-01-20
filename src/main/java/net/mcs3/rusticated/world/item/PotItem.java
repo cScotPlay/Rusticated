@@ -6,7 +6,6 @@ import net.mcs3.rusticated.world.level.block.storage.pot.PotToolTipData;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.Style;
 import net.minecraft.network.chat.TextColor;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.entity.SlotAccess;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.ClickAction;
@@ -40,8 +39,8 @@ public class PotItem extends BlockItem implements ItemContainingItemHandler
     public void appendHoverText(ItemStack stack, Level world, List<Component> tooltip, TooltipFlag context) {
         Style style = Style.EMPTY.withColor(TextColor.fromRgb(0xa9a9a9)).withItalic(false);
         if (isEmpty(stack)) {
-            tooltip.add(new TranslatableComponent("Empty").setStyle(style));
-            tooltip.add(new TranslatableComponent("Can store up to " + stackCapacity + " stacks").setStyle(TextUtility.GREEN));
+            tooltip.add(Component.translatable("Empty").setStyle(style));
+            tooltip.add(Component.translatable("Can store up to " + stackCapacity + " stacks").setStyle(TextUtility.GREEN)); //TODO Look at this for lang file
         }
     }
 

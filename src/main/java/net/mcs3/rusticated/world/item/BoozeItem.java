@@ -6,7 +6,6 @@ import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
@@ -106,7 +105,7 @@ public class BoozeItem extends Item {
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
         float fluid_quality = stack.getOrCreateTag().getFloat("rusticated.fluid_quality");
 
-        MutableComponent amountQuality = new TranslatableComponent("tooltip.rusticated.primer.quality", fluid_quality);
+        MutableComponent amountQuality = Component.translatable("tooltip.rusticated.primer.quality", fluid_quality);
         tooltipComponents.add(amountQuality.withStyle(ChatFormatting.GOLD));
     }
 }

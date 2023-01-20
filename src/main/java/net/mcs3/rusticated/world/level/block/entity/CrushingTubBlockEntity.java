@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.mcs3.rusticated.fluid.FluidStack;
 import net.mcs3.rusticated.network.ModNetworkSync;
+import net.mcs3.rusticated.util.FastBlockEntity;
 import net.mcs3.rusticated.world.ModContainer;
 import net.mcs3.rusticated.world.item.crafting.CrushingTubRecipe;
 import net.minecraft.core.BlockPos;
@@ -16,6 +17,9 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
+import net.minecraft.network.protocol.Packet;
+import net.minecraft.network.protocol.game.ClientGamePacketListener;
+import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundEvents;
@@ -33,10 +37,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.Nullable;
 
 import java.util.Optional;
 
-public class CrushingTubBlockEntity extends BlockEntity implements ModContainer {
+public class CrushingTubBlockEntity extends FastBlockEntity implements ModContainer {
 
     private final NonNullList<ItemStack> inventory = NonNullList.withSize(1, ItemStack.EMPTY);
     private int progress = 0;
@@ -169,6 +174,23 @@ public class CrushingTubBlockEntity extends BlockEntity implements ModContainer 
         this.level.sendBlockUpdated(this.worldPosition, this.getBlockState(), this.getBlockState(), Block.UPDATE_ALL);
     }
 
+    @Override
+    public CompoundTag getUpdateTag() {
+        return saveWithoutMetadata();
+    }
+
+    @Nullable
+    @Override
+    public Packet<ClientGamePacketListener> getUpdatePacket() {
+        return ClientboundBlockEntityDataPacket.create(this);
+    }
+
+    public void onChanged() {
+        setChanged();
+        if (!level.isClientSide)
+            sync();
+    }
+
 
 
     /////FLUID HANDLING///////////
@@ -185,7 +207,7 @@ public class CrushingTubBlockEntity extends BlockEntity implements ModContainer 
 
         @Override
         protected void onFinalCommit() {
-            setChanged();
+            onChanged();
             if(!level.isClientSide()) {
                 sendCrushingPacket();
             }

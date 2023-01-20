@@ -9,8 +9,6 @@ import net.mcs3.rusticated.init.ModBlockItems;
 import net.mcs3.rusticated.world.level.block.alchemy.AdvCondenserBlockEntity;
 import net.mcs3.rusticated.world.level.block.alchemy.CondenserBlockEntity;
 import net.mcs3.rusticated.world.level.block.storage.barrel.BarrelEntityBlock;
-import net.mcs3.rusticated.world.level.block.storage.jar.JarEntityBlock;
-import net.mcs3.rusticated.world.level.block.storage.liquid_barrel.LiquidBarrelEntityBlock;
 import net.mcs3.rusticated.world.level.block.storage.pot.PotEntityBlock;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceLocation;
@@ -22,9 +20,9 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 public class ModBlockEntityTypes
 {
     public static BlockEntityType<BarrelEntityBlock> BARREL_CONTAINER;
-    public static BlockEntityType<BlockEntity> LIQUID_BARREL_CONTAINER;
-    public static BlockEntityType<BlockEntity> JAR_CONTAINER;
-    public static BlockEntityType<BlockEntity> GLAZED_JAR_0_CONTAINER;
+    public static BlockEntityType<LiquidBarrelBlockEntity> LIQUID_BARREL_CONTAINER;
+    public static BlockEntityType<JarBlockEntity> JAR_CONTAINER;
+    public static BlockEntityType<JarBlockEntity> GLAZED_JAR_CONTAINER;
     public static BlockEntityType<BlockEntity> POT_CONTAINER;
     public static BlockEntityType<BlockEntity> GLAZED_POT_0_CONTAINER;
     public static BlockEntityType<BlockEntity> GLAZED_POT_1_CONTAINER;
@@ -39,9 +37,9 @@ public class ModBlockEntityTypes
 
     public static void init()
     {
-        EntityBlock factoryBarrel = (pos, state) -> new LiquidBarrelEntityBlock(LIQUID_BARREL_CONTAINER, pos, state, 16);
-        EntityBlock factoryJar = (pos, state) -> new JarEntityBlock(JAR_CONTAINER, pos, state, 4);
-        EntityBlock factoryGlazedJar = (pos, state) -> new JarEntityBlock(GLAZED_JAR_0_CONTAINER, pos, state, 8);
+        //EntityBlock factoryBarrel = (pos, state) -> new LiquidBarrelEntityBlock(LIQUID_BARREL_CONTAINER, pos, state, 16);
+        //EntityBlock factoryJar = (pos, state) -> new JarBlockEntity(JAR_CONTAINER, pos, state, 4);
+        //EntityBlock factoryGlazedJar = (pos, state) -> new JarBlockEntity(GLAZED_JAR_0_CONTAINER, pos, state, 8);
         EntityBlock factoryPot = (pos, state) -> new PotEntityBlock(POT_CONTAINER, pos, state, 8);
         EntityBlock factoryGlazedPot = (pos, state) -> new PotEntityBlock(GLAZED_POT_0_CONTAINER, pos, state, 16);
         EntityBlock factoryGlazedPot1 = (pos, state) -> new PotEntityBlock(GLAZED_POT_1_CONTAINER, pos, state, 16);
@@ -50,9 +48,9 @@ public class ModBlockEntityTypes
         EntityBlock factoryGlazedPot4 = (pos, state) -> new PotEntityBlock(GLAZED_POT_4_CONTAINER, pos, state, 16);
 
         BARREL_CONTAINER = register("barrel_container", ModBlocks.STORAGE_BARREL, BarrelEntityBlock::new);
-        LIQUID_BARREL_CONTAINER = register("liquid_barrel_container", ModBlocks.LIQUID_BARREL, factoryBarrel::newBlockEntity);
-        JAR_CONTAINER = register("jar_container", ModBlocks.FIRED_JAR, factoryJar::newBlockEntity);
-        GLAZED_JAR_0_CONTAINER = register("glazed_jar_0_container", ModBlocks.GLAZED_JAR_0, factoryGlazedJar::newBlockEntity);
+        LIQUID_BARREL_CONTAINER = register("liquid_barrel_container", ModBlocks.LIQUID_BARREL, LiquidBarrelBlockEntity::new);
+        JAR_CONTAINER = register("jar_container", ModBlocks.FIRED_JAR, JarBlockEntity::new);
+        GLAZED_JAR_CONTAINER = register("glazed_jar_0_container", ModBlocks.GLAZED_JAR_0, JarBlockEntity::new);
         POT_CONTAINER = register("pot_container", ModBlocks.FIRED_POT, factoryPot::newBlockEntity);
         GLAZED_POT_0_CONTAINER = register("glazed_pot_0_container", ModBlocks.GLAZED_POT_0, factoryGlazedPot::newBlockEntity);
         GLAZED_POT_1_CONTAINER = register("glazed_pot_1_container", ModBlocks.GLAZED_POT_1, factoryGlazedPot1::newBlockEntity);
@@ -65,15 +63,18 @@ public class ModBlockEntityTypes
         CRUSHING_TUB_CONTAINER = register("crushing_tub_container", ModBlocks.CRUSHING_TUB, CrushingTubBlockEntity::new);
         BREWING_BARREL_CONTAINER = register("brewing_barrel_container", ModBlocks.OAK_BREWING_BARREL, BrewingBarrelBlockEntity::new);
 
+        FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, LIQUID_BARREL_CONTAINER);
+        FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, JAR_CONTAINER);
+        FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, GLAZED_JAR_CONTAINER);
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, CONDENSER_CONTAINER);
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, ADV_CONDENSER_CONTAINER);
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, EVAPORATING_BASIN_CONTAINER);
         FluidStorage.SIDED.registerForBlockEntity((blockEntity, direction) -> blockEntity.fluidStorage, CRUSHING_TUB_CONTAINER);
 
 
-        FluidStorage.SIDED.registerSelf(LIQUID_BARREL_CONTAINER);
-        FluidStorage.SIDED.registerSelf(JAR_CONTAINER);
-        FluidStorage.SIDED.registerSelf(GLAZED_JAR_0_CONTAINER);
+        //FluidStorage.SIDED.registerSelf(LIQUID_BARREL_CONTAINER);
+        //FluidStorage.SIDED.registerSelf(JAR_CONTAINER);
+        //FluidStorage.SIDED.registerSelf(GLAZED_JAR_0_CONTAINER);
 
         ItemStorage.SIDED.registerSelf(POT_CONTAINER);
         ItemStorage.SIDED.registerSelf(GLAZED_POT_0_CONTAINER);

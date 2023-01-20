@@ -65,7 +65,7 @@ public class ElixirItem extends Item {
                 player.getInventory().add(new ItemStack(Items.GLASS_BOTTLE));
             }
         }
-        level.gameEvent((Entity)livingEntity, GameEvent.DRINKING_FINISH, livingEntity.eyeBlockPosition());
+        livingEntity.gameEvent(GameEvent.DRINK);
         return stack;
     }
 
@@ -111,7 +111,7 @@ public class ElixirItem extends Item {
 
     @Override
     public void fillItemCategory(CreativeModeTab category, NonNullList<ItemStack> items) {
-        if (this.allowdedIn(category)) {
+        if (this.allowedIn(category)) {
             for (Potion potion : Elixirs.ELIXIRS) {
                 if (potion == Potions.EMPTY) continue;{
                     items.add(PotionUtils.setPotion(new ItemStack(this), potion));

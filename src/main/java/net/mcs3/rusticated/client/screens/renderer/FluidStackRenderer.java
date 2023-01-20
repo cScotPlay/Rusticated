@@ -125,22 +125,22 @@ public class FluidStackRenderer implements IIngredientRenderer<FluidStack> {
 
             fluidType.getFluid().defaultFluidState().createLegacyBlock().getBlock().getDescriptionId();
 
-            Component displayName = new TranslatableComponent(fluidType.getFluid().defaultFluidState().createLegacyBlock().getBlock().getDescriptionId());
+            Component displayName = Component.translatable(fluidType.getFluid().defaultFluidState().createLegacyBlock().getBlock().getDescriptionId());
             tooltip.add(displayName);
 
             long amount = fluidStack.getAmount();
 
             if (tooltipMode == TooltipMode.SHOW_AMOUNT_AND_CAPACITY) {
-                MutableComponent amountString = new TranslatableComponent("tooltip.rusticated.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
+                MutableComponent amountString = Component.translatable("tooltip.rusticated.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
                 tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
             } else if (tooltipMode == TooltipMode.SHOW_AMOUNT) {
-                MutableComponent amountString = new TranslatableComponent("tooltip.rusticated.liquid.amount", nf.format(amount));
+                MutableComponent amountString = Component.translatable("tooltip.rusticated.liquid.amount", nf.format(amount));
                 tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
             } else if (tooltipMode == TooltipMode.SHOW_QUALITY) {
-                MutableComponent amountString = new TranslatableComponent("tooltip.rusticated.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
+                MutableComponent amountString = Component.translatable("tooltip.rusticated.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
                 tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
                 if(fluidQuality > 0) {
-                    MutableComponent amountQuality = new TranslatableComponent("tooltip.rusticated.liquid.quality", (float) fluidQuality / 100);
+                    MutableComponent amountQuality = Component.translatable("tooltip.rusticated.liquid.quality", (float) fluidQuality / 100);
                     tooltip.add(amountQuality.withStyle(ChatFormatting.GOLD));}
             }
         } catch (RuntimeException e) {
@@ -160,15 +160,15 @@ public class FluidStackRenderer implements IIngredientRenderer<FluidStack> {
 
             fluidType.getFluid().defaultFluidState().createLegacyBlock().getBlock().getDescriptionId();
 
-            Component displayName = new TranslatableComponent(fluidType.getFluid().defaultFluidState().createLegacyBlock().getBlock().getDescriptionId());
+            Component displayName = Component.translatable(fluidType.getFluid().defaultFluidState().createLegacyBlock().getBlock().getDescriptionId());
             tooltip.add(displayName);
 
             long amount = fluidStack.getAmount();
 
-            MutableComponent amountString = new TranslatableComponent("tooltip.rusticated.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
+            MutableComponent amountString = Component.translatable("tooltip.rusticated.liquid.amount.with.capacity", nf.format(amount), nf.format(capacityMb));
             tooltip.add(amountString.withStyle(ChatFormatting.GRAY));
             if(quality > 0) {
-                MutableComponent amountQuality = new TranslatableComponent("tooltip.rusticated.liquid.quality", (float) quality / 100);
+                MutableComponent amountQuality = Component.translatable("tooltip.rusticated.liquid.quality", (float) quality / 100);
                 tooltip.add(amountQuality.withStyle(ChatFormatting.GOLD));
             }
         } catch (RuntimeException e) {

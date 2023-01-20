@@ -483,6 +483,8 @@
   "tooltip.rusticated.liquid.amount": "%s mB",
   "tooltip.rusticated.liquid.quality": "Quality = %s",
   "tooltip.rusticated.primer.quality": "Primer Quality = %s",
+  "tooltip.rusticated.pot.percent_stacks": "%d of %d (%d Stack Capacity)",
+  "tooltip.rusticated.pot.stacks_numbers": "%d of %d Stacks",
 
   "tooltip.rusticated.oiled_food": "Oiled"
 

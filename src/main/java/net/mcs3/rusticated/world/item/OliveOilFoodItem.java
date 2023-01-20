@@ -5,7 +5,6 @@ import net.minecraft.ChatFormatting;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.chat.MutableComponent;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -47,7 +46,7 @@ public class OliveOilFoodItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, @Nullable Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
-        MutableComponent amountQuality = new TranslatableComponent("tooltip.rusticated.oiled_food");
+        MutableComponent amountQuality = Component.translatable("tooltip.rusticated.oiled_food");
         tooltipComponents.add(amountQuality.withStyle(ChatFormatting.GREEN));
     }
 }

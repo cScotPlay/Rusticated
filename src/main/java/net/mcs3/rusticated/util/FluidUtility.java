@@ -19,7 +19,7 @@ public class FluidUtility
     public static Component getFluidName(FluidVariant fluid, boolean grayIfEmpty) {
         if (fluid.isBlank()) {
             Style style = grayIfEmpty ? Style.EMPTY.withColor(TextColor.fromRgb(0xa9a9a9)).withItalic(false) : Style.EMPTY;
-            return new TranslatableComponent("Empty").setStyle(style);
+            return Component.translatable("Empty").setStyle(style);
         } else {
             return FluidVariantAttributes.getName(fluid);
         }
@@ -50,11 +50,11 @@ public class FluidUtility
     public static MutableComponent getFluidAmount(long amount, long capacity) {
         if (capacity < 100 * FluidConstants.BUCKET || Screen.hasShiftDown()) {
             String text = FluidTextUtility.getUnicodeMillibuckets(amount, false) + " / " + capacity / 81;
-            return new TextComponent(text + " mB");
+            return Component.translatable(text + " mB");
         } else {
             var maxedAmount = TextUtility.getMaxedAmount((double) amount / FluidConstants.BUCKET,
                     (double) capacity / FluidConstants.BUCKET);
-            return new TextComponent(maxedAmount.digit() + " / " + maxedAmount.maxDigit() + " " + maxedAmount.unit() + "B");
+            return Component.translatable(maxedAmount.digit() + " / " + maxedAmount.maxDigit() + " " + maxedAmount.unit() + "B");
         }
 
     }
@@ -63,10 +63,10 @@ public class FluidUtility
     public static MutableComponent getFluidAmount(long amount) {
         if (amount < 100 * FluidConstants.BUCKET || Screen.hasShiftDown()) {
             String text = FluidTextUtility.getUnicodeMillibuckets(amount, false);
-            return new TextComponent(text + " mB");
+            return Component.translatable(text + " mB");
         } else {
             var amountUnit = TextUtility.getAmount((double) amount / FluidConstants.BUCKET);
-            return new TextComponent(amountUnit.digit() + " " + amountUnit.unit() + "B");
+            return Component.translatable(amountUnit.digit() + " " + amountUnit.unit() + "B");
         }
     }
 

@@ -14,9 +14,9 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
+import net.mcs3.rusticated.world.item.crafting.AdvCondenserRecipe;
 import net.mcs3.rusticated.world.item.crafting.BrewingBarrelRecipe;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -39,7 +39,7 @@ public class BrewingBarrelRecipeCategory implements IRecipeCategory<BrewingBarre
 
     public BrewingBarrelRecipeCategory(IGuiHelper helper) {
         this.background = helper.createDrawable(TEXTURE, 0, 0, 176, 86);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM, new ItemStack(ModBlocks.OAK_BREWING_BARREL.asItem()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.OAK_BREWING_BARREL.asItem()));
 
         IDrawableStatic progressDrawable = helper.drawableBuilder(TEXTURE, 176, 28, 41, 15).addPadding(39, 0, 85, 0).build();
         this.progress = helper.createAnimatedDrawable(progressDrawable, 80, IDrawableAnimated.StartDirection.LEFT, false);
@@ -52,20 +52,13 @@ public class BrewingBarrelRecipeCategory implements IRecipeCategory<BrewingBarre
     }
 
     @Override
-    @SuppressWarnings("Deprecated")
-    public ResourceLocation getUid() {
-        return UID;
-    }
-
-    @Override
-    @SuppressWarnings("Deprecated")
-    public Class<? extends BrewingBarrelRecipe> getRecipeClass() {
-        return BrewingBarrelRecipe.class;
+    public RecipeType<BrewingBarrelRecipe> getRecipeType() {
+        return TYPE;
     }
 
     @Override
     public Component getTitle() {
-        return new TextComponent("Brewing Barrel");
+        return Component.translatable("block.rusticated.oak_brewing_barrel");
     }
 
     @Override

@@ -21,7 +21,6 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TextComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.ContainerHelper;
@@ -117,7 +116,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
 
     @Override
     public Component getDisplayName() {
-        return new TextComponent("");
+        return Component.translatable("block.rusticated.oak_brewing_barrel");
     }
 
     @Nullable
