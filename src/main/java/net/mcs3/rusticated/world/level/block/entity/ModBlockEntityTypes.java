@@ -22,7 +22,7 @@ public class ModBlockEntityTypes
     public static BlockEntityType<BarrelEntityBlock> BARREL_CONTAINER;
     public static BlockEntityType<LiquidBarrelBlockEntity> LIQUID_BARREL_CONTAINER;
     public static BlockEntityType<JarBlockEntity> JAR_CONTAINER;
-    public static BlockEntityType<JarBlockEntity> GLAZED_JAR_CONTAINER;
+    public static BlockEntityType<GlaszedJarBlockEntity> GLAZED_JAR_CONTAINER;
     public static BlockEntityType<BlockEntity> POT_CONTAINER;
     public static BlockEntityType<BlockEntity> GLAZED_POT_0_CONTAINER;
     public static BlockEntityType<BlockEntity> GLAZED_POT_1_CONTAINER;
@@ -50,7 +50,7 @@ public class ModBlockEntityTypes
         BARREL_CONTAINER = register("barrel_container", ModBlocks.STORAGE_BARREL, BarrelEntityBlock::new);
         LIQUID_BARREL_CONTAINER = register("liquid_barrel_container", ModBlocks.LIQUID_BARREL, LiquidBarrelBlockEntity::new);
         JAR_CONTAINER = register("jar_container", ModBlocks.FIRED_JAR, JarBlockEntity::new);
-        GLAZED_JAR_CONTAINER = register("glazed_jar_0_container", ModBlocks.GLAZED_JAR_0, JarBlockEntity::new);
+        GLAZED_JAR_CONTAINER = register("glazed_jar_0_container", ModBlocks.GLAZED_JAR_0, GlaszedJarBlockEntity::new);
         POT_CONTAINER = register("pot_container", ModBlocks.FIRED_POT, factoryPot::newBlockEntity);
         GLAZED_POT_0_CONTAINER = register("glazed_pot_0_container", ModBlocks.GLAZED_POT_0, factoryGlazedPot::newBlockEntity);
         GLAZED_POT_1_CONTAINER = register("glazed_pot_1_container", ModBlocks.GLAZED_POT_1, factoryGlazedPot1::newBlockEntity);

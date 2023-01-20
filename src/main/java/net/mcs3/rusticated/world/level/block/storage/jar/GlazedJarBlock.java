@@ -2,6 +2,7 @@ package net.mcs3.rusticated.world.level.block.storage.jar;
 
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.mixin.transfer.BucketItemAccessor;
+import net.mcs3.rusticated.world.level.block.entity.GlaszedJarBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.JarBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.LiquidBarrelBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.ModBlockEntityTypes;
@@ -51,7 +52,7 @@ public class GlazedJarBlock extends BaseEntityBlock implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new JarBlockEntity(ModBlockEntityTypes.GLAZED_JAR_CONTAINER, pos, state, 8);
+        return new GlaszedJarBlockEntity(pos, state);
     }
 
     @Override
@@ -71,7 +72,7 @@ public class GlazedJarBlock extends BaseEntityBlock implements EntityBlock {
     @SuppressWarnings("deprecation")
     public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack itemStack = player.getItemInHand(hand);
-        JarBlockEntity blockEntity = (JarBlockEntity) level.getBlockEntity(pos);
+        GlaszedJarBlockEntity blockEntity = (GlaszedJarBlockEntity) level.getBlockEntity(pos);
 
         if(blockEntity.getBlockState().getBlock() instanceof GlazedJarBlock) {
             if(itemStack.is(Items.BUCKET) && blockEntity.fluidStorage.amount >= 1000) {
@@ -82,11 +83,12 @@ public class GlazedJarBlock extends BaseEntityBlock implements EntityBlock {
                 return InteractionResult.sidedSuccess(level.isClientSide);
 
             } else if(itemStack.getItem() instanceof BucketItem && !itemStack.is(Items.BUCKET) &&
-                    !((JarBlockEntity) level.getBlockEntity(pos)).atCapacity(blockEntity) &&
+                    !((GlaszedJarBlockEntity) level.getBlockEntity(pos)).atCapacity(blockEntity) &&
                     (blockEntity.fluidStorage.getCapacity() - blockEntity.fluidStorage.amount) > 1000) {
                 BucketItem bucketItem = (BucketItem) itemStack.getItem();
                 Fluid fluid = ((BucketItemAccessor) bucketItem).fabric_getFluid();
                 blockEntity.transferFluidToFluidStorage(blockEntity, FluidVariant.of(fluid), 1000);
+
                 player.setItemInHand(hand, new ItemStack(Items.BUCKET));
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
@@ -97,7 +99,7 @@ public class GlazedJarBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     protected ItemStack getStack(BlockEntity entity) {
-        var storageBlockEntity = (JarBlockEntity) entity;
+        var storageBlockEntity = (GlaszedJarBlockEntity) entity;
         ItemStack stack = new ItemStack(this.asItem());
         if (!storageBlockEntity.isEmpty()) {
             CompoundTag tag = new CompoundTag();

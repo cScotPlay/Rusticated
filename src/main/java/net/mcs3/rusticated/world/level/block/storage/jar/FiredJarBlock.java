@@ -52,7 +52,7 @@ public class FiredJarBlock extends BaseEntityBlock implements EntityBlock {
     @Nullable
     @Override
     public BlockEntity newBlockEntity(BlockPos pos, BlockState state) {
-        return new JarBlockEntity(ModBlockEntityTypes.JAR_CONTAINER, pos, state, 4);
+        return new JarBlockEntity(pos, state);
     }
 
     @Override
@@ -89,6 +89,7 @@ public class FiredJarBlock extends BaseEntityBlock implements EntityBlock {
                 BucketItem bucketItem = (BucketItem) itemStack.getItem();
                 Fluid fluid = ((BucketItemAccessor) bucketItem).fabric_getFluid();
                 blockEntity.transferFluidToFluidStorage(blockEntity, FluidVariant.of(fluid), 1000);
+
                 player.setItemInHand(hand, new ItemStack(Items.BUCKET));
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }

@@ -5,10 +5,8 @@ import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
-import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleSlotStorage;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
-import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
 import net.mcs3.rusticated.fluid.FluidStack;
 import net.mcs3.rusticated.network.ModNetworkSync;
 import net.mcs3.rusticated.util.FastBlockEntity;
@@ -25,12 +23,12 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class JarBlockEntity extends FastBlockEntity {
+public class GlaszedJarBlockEntity extends FastBlockEntity {
 
-    long capacity = 4;
+    long capacity = 8;
 
-    public JarBlockEntity(BlockPos blockPos, BlockState blockState) {
-        super(ModBlockEntityTypes.JAR_CONTAINER, blockPos, blockState);
+    public GlaszedJarBlockEntity(BlockPos blockPos, BlockState blockState) {
+        super(ModBlockEntityTypes.GLAZED_JAR_CONTAINER, blockPos, blockState);
     }
 
     @Override
@@ -111,11 +109,11 @@ public class JarBlockEntity extends FastBlockEntity {
         this.fluidStorage.amount = fluidLevel;
     }
 
-    public boolean atCapacity(JarBlockEntity blockEntity) {
+    public boolean atCapacity(GlaszedJarBlockEntity blockEntity) {
         return blockEntity.fluidStorage.amount >= blockEntity.fluidStorage.getCapacity();
     }
 
-    public void transferFluidToFluidStorage(JarBlockEntity entity, FluidVariant fluidVariant, long fluidAmount) {
+    public void transferFluidToFluidStorage(GlaszedJarBlockEntity entity, FluidVariant fluidVariant, long fluidAmount) {
         try(Transaction transaction = Transaction.openOuter()) {
             entity.fluidStorage.insert(fluidVariant,
                     FluidStack.convertDropletsToMb(FluidConstants.BUCKET), transaction);
@@ -124,7 +122,7 @@ public class JarBlockEntity extends FastBlockEntity {
         }
     }
 
-    public void removeFluidFromFluidStorage(JarBlockEntity entity) {
+    public void removeFluidFromFluidStorage(GlaszedJarBlockEntity entity) {
         try(Transaction transaction = Transaction.openOuter()) {
             entity.fluidStorage.extract(entity.fluidStorage.variant,
                     1000, transaction);
