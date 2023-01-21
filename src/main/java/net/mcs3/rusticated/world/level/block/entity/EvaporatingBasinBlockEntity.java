@@ -9,6 +9,7 @@ import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.fluid.FluidStack;
+import net.mcs3.rusticated.init.ModFluids;
 import net.mcs3.rusticated.network.ModNetworkSync;
 import net.mcs3.rusticated.util.FastBlockEntity;
 import net.mcs3.rusticated.world.ModContainer;
@@ -90,6 +91,9 @@ public class EvaporatingBasinBlockEntity extends FastBlockEntity implements ModC
             if(blockEntity.fluidStorage.amount >= 0) {
                 evaporateFluid(blockEntity, blockEntity.fluidStorage.variant.getFluid());
                 blockEntity.progress++;
+                if(blockEntity.fluidStorage.variant.getFluid() == ModFluids.SOURCE_HONEY) {
+                    blockEntity.maxProgress = 999;
+                }
                 if(blockEntity.progress == blockEntity.maxProgress) {
                     createEvaporatedItems(blockEntity);
                 }
