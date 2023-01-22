@@ -119,6 +119,8 @@ public class RootBlock extends CropBlock
     {
         if(this == ModBlocks.CORE_ROOT) return ModItems.CORE_ROOT;
         if(this == ModBlocks.GINSENG) return ModItems.GINSENG;
+        if(this == ModBlocks.MARSHMALLOW) return ModItems.MARSHMALLOW;
+
         else return null;
     }
 
