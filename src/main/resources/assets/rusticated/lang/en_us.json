@@ -293,6 +293,7 @@
 
   "block.rusticated.fertile_soil": "Fertile Soil",
   "block.rusticated.ironwood_sapling": "Ironwood Sapling",
+  "block.rusticated.potted_ironwood_sapling": "Potted Ironwood Sapling",
   "block.rusticated.ironwood_leaves": "Ironwood Leaves",
   "block.rusticated.ironwood_log": "Ironwood Log",
   "block.rusticated.ironwood_wood": "Ironwood Wood",
@@ -305,6 +306,7 @@
   "block.rusticated.ironwood_gate": "Ironwood Gate",
 
   "block.rusticated.olive_sapling": "Olive Tree Sapling",
+  "block.rusticated.potted_olive_sapling": "Potted Olive Sapling",
   "block.rusticated.olive_leaves": "Olive Leaves",
   "block.rusticated.olive_log": "Olive Log",
   "block.rusticated.olive_wood": "Olive Wood",
@@ -392,16 +394,16 @@
   "item.rusticated.elixir.effect.empty": "Elixir",
 
   "item.minecraft.potion.effect.ironskin": "Potion of Iron Skin",
-  "item.minecraft.potion.effect.longironskin": "Potion of Iron Skin",
-  "item.minecraft.potion.effect.strongironskin": "Potion of Iron Skin",
+  "item.minecraft.potion.effect.long_ironskin": "Potion of Iron Skin",
+  "item.minecraft.potion.effect.strong_ironskin": "Potion of Iron Skin",
 
   "item.minecraft.splash_potion.effect.ironskin": "Splash Potion of Iron Skin",
-  "item.minecraft.splash_potion.effect.longironskin": "Splash Potion of Iron Skin",
-  "item.minecraft.splash_potion.effect.strongironskin": "Splash Potion of Iron Skin",
+  "item.minecraft.splash_potion.effect.long_ironskin": "Splash Potion of Iron Skin",
+  "item.minecraft.splash_potion.effect.strong_ironskin": "Splash Potion of Iron Skin",
 
   "item.minecraft.lingering_potion.effect.ironskin": "Lingering Potion of Iron Skin",
-  "item.minecraft.lingering_potion.effect.longironskin": "Lingering Potion of Iron Skin",
-  "item.minecraft.lingering_potion.effect.strongironskin": "Lingering Potion of Iron Skin",
+  "item.minecraft.lingering_potion.effect.long_ironskin": "Lingering Potion of Iron Skin",
+  "item.minecraft.lingering_potion.effect.strong_ironskin": "Lingering Potion of Iron Skin",
 
   "item.rusticated.copper_nugget": "Copper Nugget",
   "item.rusticated.olive_oil_bucket": "Olive Oil Bucket",
