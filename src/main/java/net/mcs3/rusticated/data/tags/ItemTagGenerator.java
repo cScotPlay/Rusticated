@@ -428,5 +428,20 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModItems.SWEET_BERRY_WINE_CUP,
                 ModItems.WINE_CUP
         );
+
+        tag(ModItemTags.FLUID_BOTTLES).add(
+                ModItems.ALE_WORT_BOTTLE,
+                ModItems.APPLE_JUICE_BOTTLE,
+                ModItems.GRAPE_JUICE_BOTTLE,
+                ModItems.SWEET_BERRY_JUICE_BOTTLE,
+                ModItems.IRONBERRY_JUICE_BOTTLE,
+                ModItems.OLIVE_OIL_BOTTLE,
+                ModItems.ALE_CUP,
+                ModItems.CIDER_CUP,
+                ModItems.IRON_WINE_CUP,
+                ModItems.MEAD_CUP,
+                ModItems.SWEET_BERRY_WINE_CUP,
+                ModItems.WINE_CUP
+        );
     }
 }

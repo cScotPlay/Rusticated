@@ -11,13 +11,16 @@ import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.fabricmc.fabric.mixin.transfer.BucketItemAccessor;
 import net.mcs3.rusticated.data.tags.ModItemTags;
 import net.mcs3.rusticated.fluid.FluidStack;
+import net.mcs3.rusticated.init.ModFluids;
 import net.mcs3.rusticated.network.ModNetworkSync;
 import net.mcs3.rusticated.world.ModContainer;
 import net.mcs3.rusticated.world.inventory.BrewingBarrelMenu;
 import net.mcs3.rusticated.world.item.BoozeItem;
+import net.mcs3.rusticated.world.item.FluidBottleItem;
 import net.mcs3.rusticated.world.item.crafting.BrewingBarrelRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -28,10 +31,7 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -356,7 +356,12 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
     }
 
     private static boolean hasFluidSourceInSlot(BrewingBarrelBlockEntity entity, int slotNumber) {
-        return entity.getItem(slotNumber).is(ModItemTags.BREWING_FLUID) || entity.getItem(0).getItem() == Items.GLASS_BOTTLE || entity.getItem(1).getItem() == Items.BUCKET || entity.getItem(2).getItem() == Items.GLASS_BOTTLE;
+        return entity.getItem(slotNumber).is(ModItemTags.BREWING_FLUID) ||
+                entity.getItem(0).getItem() == Items.GLASS_BOTTLE ||
+                entity.getItem(1).getItem() == Items.BUCKET ||
+                entity.getItem(1).getItem() == Items.GLASS_BOTTLE ||
+                entity.getItem(1).is(ModItemTags.FLUID_BOTTLES) ||
+                entity.getItem(2).getItem() == Items.GLASS_BOTTLE;
     }
 
     private static void transferFluidsToFluidStorage(BrewingBarrelBlockEntity blockEntity) {
@@ -429,10 +434,11 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
 
     public static void transferImportFluidToStorage(BrewingBarrelBlockEntity blockEntity) {
         try(Transaction transaction = Transaction.openOuter()) {
-            BucketItem fluidBucketItem = (BucketItem) blockEntity.getItem(1).getItem();
-            Fluid fluid = ((BucketItemAccessor) fluidBucketItem).fabric_getFluid();
+            //BucketItem fluidBucketItem = (BucketItem) blockEntity.getItem(1).getItem();
+            Item fluidItem = blockEntity.getItem(1).getItem();
+            //Fluid fluid = ((BucketItemAccessor) fluidBucketItem).fabric_getFluid();
 
-            if(fluidBucketItem == Items.BUCKET) {
+            if(fluidItem == Items.BUCKET) {
                 if(blockEntity.inputFluidStorage.amount >= 1000) {
                     FluidVariant storageFluid = blockEntity.inputFluidStorage.variant;
                     blockEntity.inputFluidStorage.extract(storageFluid, FluidStack.convertDropletsToMb(FluidConstants.BUCKET), transaction);
@@ -444,11 +450,78 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
                     resetProgress(blockEntity);
                     blockEntity.update();
                 }
-                return;
+            }
+            else if(fluidItem == Items.GLASS_BOTTLE && blockEntity.inputFluidStorage.amount >= 250) {
+                Fluid entityFluid = blockEntity.inputFluidStorage.variant.getFluid();
+                if(entityFluid == ModFluids.SOURCE_HONEY.getSource()) {
+                    if(blockEntity.getItem(4).getItem() == Items.HONEY_BOTTLE || blockEntity.getItem(4).isEmpty()) {
+                        blockEntity.removeItem(1, 1);
+                        int bottleCount = blockEntity.getItem(4).getCount();
+                        blockEntity.setItem(4, new ItemStack(Items.HONEY_BOTTLE, bottleCount + 1));
+                        blockEntity.inputFluidStorage.extract(blockEntity.inputFluidStorage.variant, 250, transaction);
+                        transaction.commit();
+                        resetProgress(blockEntity);
+                        blockEntity.update();
+                    }
+                }
+                else {
+                    for(Item fluidBottle : Registry.ITEM.stream().toList()) {
+                        if(fluidBottle.getDefaultInstance().is(ModItemTags.FLUID_BOTTLES)) {
+                            }if (fluidBottle instanceof FluidBottleItem) {
+                                FluidBottleItem fluidBottleItem = (FluidBottleItem) fluidBottle;
+                                if(fluidBottleItem.getFluidType() == entityFluid) {
+                                    if(blockEntity.getItem(4).isEmpty() || blockEntity.getItem(4).is(fluidBottleItem)) {
+                                       blockEntity.removeItem(1, 1);
+                                        int bottleCount = blockEntity.getItem(4).getCount();
+                                        blockEntity.setItem(4, new ItemStack(fluidBottleItem, bottleCount + 1));
+                                        blockEntity.inputFluidStorage.extract(blockEntity.inputFluidStorage.variant, 250, transaction);
+                                        transaction.commit();
+                                        resetProgress(blockEntity);
+                                        blockEntity.update();
+                                    }
+                                }
+                            }
+                        }
+                    }
+            }
+            else if (fluidItem.getDefaultInstance().is(ModItemTags.FLUID_BOTTLES) &&
+                    blockEntity.getItem(4).isEmpty() ||
+                    blockEntity.getItem(4).getItem() == Items.GLASS_BOTTLE &&
+                            blockEntity.inputFluidStorage.getCapacity() > blockEntity.inputFluidStorage.amount &&
+                            (blockEntity.inputFluidStorage.getCapacity() - blockEntity.inputFluidStorage.amount) > 250) {
+                if(fluidItem instanceof FluidBottleItem) {
+                    FluidBottleItem fluidBottleItem = (FluidBottleItem) fluidItem;
+                    Fluid fluid = fluidBottleItem.getFluidType();
+
+                    blockEntity.inputFluidStorage.insert(FluidVariant.of(fluid),
+                            250, transaction);
+                    transaction.commit();
+                    blockEntity.removeItem(1, 1);
+                    int count = blockEntity.getItem(4).getCount();
+                    blockEntity.setItem(4, new ItemStack(Items.GLASS_BOTTLE, count + 1));
+                    resetProgress(blockEntity);
+                    blockEntity.update();
+                }
+                else if (fluidItem instanceof BoozeItem) {
+                    BoozeItem boozeItem = (BoozeItem) fluidItem;
+                    Fluid fluid = boozeItem.getFluidType();
+
+                    blockEntity.inputFluidStorage.insert(FluidVariant.of(fluid),
+                            250, transaction);
+                    transaction.commit();
+                    blockEntity.removeItem(1, 1);
+                    int count = blockEntity.getItem(4).getCount();
+                    blockEntity.setItem(4, new ItemStack(Items.GLASS_BOTTLE, count + 1));
+                    resetProgress(blockEntity);
+                    blockEntity.update();
+                }
             }
 
             else if(blockEntity.inputFluidStorage.getCapacity() > blockEntity.inputFluidStorage.amount &&
-                    (blockEntity.inputFluidStorage.getCapacity() - blockEntity.inputFluidStorage.amount) > 1000) {
+                    (blockEntity.inputFluidStorage.getCapacity() - blockEntity.inputFluidStorage.amount) > 1000 &&
+                    !fluidItem.getDefaultInstance().is(ModItemTags.FLUID_BOTTLES)) {
+                BucketItem bucketItem = (BucketItem) fluidItem;
+                Fluid fluid = ((BucketItemAccessor) bucketItem).fabric_getFluid();
                 blockEntity.inputFluidStorage.insert(FluidVariant.of(fluid),
                         FluidStack.convertDropletsToMb(FluidConstants.BUCKET), transaction);
                 transaction.commit();

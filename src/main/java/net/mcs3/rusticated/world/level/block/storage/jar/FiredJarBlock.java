@@ -2,6 +2,9 @@ package net.mcs3.rusticated.world.level.block.storage.jar;
 
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.mixin.transfer.BucketItemAccessor;
+import net.mcs3.rusticated.world.item.BoozeItem;
+import net.mcs3.rusticated.world.item.FluidBottleItem;
+import net.mcs3.rusticated.world.level.block.entity.GlazedJarBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.JarBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.LiquidBarrelBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.ModBlockEntityTypes;
@@ -10,13 +13,12 @@ import net.mcs3.rusticated.world.level.block.storage.AbstractStorageBlockEntity;
 import net.mcs3.rusticated.world.level.block.storage.LiquidBarrelBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.BucketItem;
-import net.minecraft.world.item.Item;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.*;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.BaseEntityBlock;
@@ -25,6 +27,7 @@ import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.storage.loot.LootContext;
@@ -76,9 +79,38 @@ public class FiredJarBlock extends BaseEntityBlock implements EntityBlock {
         JarBlockEntity blockEntity = (JarBlockEntity) level.getBlockEntity(pos);
 
         if(blockEntity.getBlockState().getBlock() instanceof FiredJarBlock) {
-            if(itemStack.is(Items.BUCKET) && blockEntity.fluidStorage.amount >= 1000) {
+
+            if(itemStack.is(Items.GLASS_BOTTLE) && blockEntity.fluidStorage.amount >= 250) {
+                blockEntity.givePlayerFluid(blockEntity, player, hand, itemStack);
+                blockEntity.removeFluidFromFluidStorage(blockEntity, 250);
+                level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_FILL, SoundSource.NEUTRAL, 1.0F, 1.0F);
+                level.gameEvent(player, GameEvent.FLUID_PICKUP, pos);
+                return InteractionResult.sidedSuccess(level.isClientSide);
+            }
+            else if (itemStack.getItem() instanceof FluidBottleItem || itemStack.getItem() instanceof BoozeItem) {
+                if(!((JarBlockEntity) level.getBlockEntity(pos)).atCapacity(blockEntity) &&
+                        (blockEntity.fluidStorage.getCapacity() - blockEntity.fluidStorage.amount) > 250) {
+                    if(itemStack.getItem() instanceof FluidBottleItem) {
+                        FluidBottleItem fluidBottleItem = (FluidBottleItem) itemStack.getItem();
+                        Fluid fluid = fluidBottleItem.getFluidType();
+                        blockEntity.transferFluidToFluidStorage(blockEntity, FluidVariant.of(fluid), 250);
+                        level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.NEUTRAL, 1.0F, 1.0F);
+                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.GLASS_BOTTLE)));
+                        return InteractionResult.sidedSuccess(level.isClientSide);
+
+                    } else if (itemStack.getItem() instanceof BoozeItem) {
+                        BoozeItem boozeItem = (BoozeItem) itemStack.getItem();
+                        Fluid fluid = boozeItem.getFluidType();
+                        blockEntity.transferFluidToFluidStorage(blockEntity, FluidVariant.of(fluid), 250);
+                        level.playSound(player, player.getX(), player.getY(), player.getZ(), SoundEvents.BOTTLE_EMPTY, SoundSource.NEUTRAL, 1.0F, 1.0F);
+                        player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.GLASS_BOTTLE)));
+                        return InteractionResult.sidedSuccess(level.isClientSide);
+                    }
+                }
+            }
+            else if(itemStack.is(Items.BUCKET) && blockEntity.fluidStorage.amount >= 1000) {
                 Item filledBucketItem = blockEntity.fluidStorage.variant.getFluid().getBucket();
-                blockEntity.removeFluidFromFluidStorage(blockEntity);
+                blockEntity.removeFluidFromFluidStorage(blockEntity, 1000);
 
                 player.setItemInHand(hand, filledBucketItem.getDefaultInstance());
                 return InteractionResult.sidedSuccess(level.isClientSide);
