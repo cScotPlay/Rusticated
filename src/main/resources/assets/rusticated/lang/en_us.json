@@ -343,7 +343,6 @@
   "block.rusticated.crushing_tub": "Crushing Tub",
   "block.rusticated.oak_brewing_barrel": "Oak Brewing Barrel",
 
-
   "block.rusticated.olive_oil_block": "Olive Oil",
   "block.rusticated.ironberry_juice_block": "Ironberry Juice",
   "block.rusticated.sweet_berry_juice_block": "Sweet Berry Juice",
@@ -358,7 +357,9 @@
   "block.rusticated.sweet_berry_wine_fluid_block": "Sweet Berry Wine",
   "block.rusticated.wine_fluid_block": "Wine",
 
-
+  "block.rusticated.potted_ironwood_sapling": "Potted Ironwood Sapling",
+  "block.rusticated.potted_olive_sapling": "Potted Olive Sapling",
+  
   "item.rusticated.catalog": "Rusticated Catalog",
   "item.rusticated.iron_berries": "Iron Berries",
   "item.rusticated.olives": "Olives",
@@ -392,16 +393,20 @@
   "item.rusticated.elixir.effect.empty": "Elixir",
 
   "item.minecraft.potion.effect.ironskin": "Potion of Iron Skin",
-  "item.minecraft.potion.effect.longironskin": "Potion of Iron Skin",
-  "item.minecraft.potion.effect.strongironskin": "Potion of Iron Skin",
+  "item.minecraft.potion.effect.long_ironskin": "Potion of Iron Skin",
+  "item.minecraft.potion.effect.strong_ironskin": "Potion of Iron Skin",
 
   "item.minecraft.splash_potion.effect.ironskin": "Splash Potion of Iron Skin",
-  "item.minecraft.splash_potion.effect.longironskin": "Splash Potion of Iron Skin",
-  "item.minecraft.splash_potion.effect.strongironskin": "Splash Potion of Iron Skin",
+  "item.minecraft.splash_potion.effect.long_ironskin": "Splash Potion of Iron Skin",
+  "item.minecraft.splash_potion.effect.strong_ironskin": "Splash Potion of Iron Skin",
 
   "item.minecraft.lingering_potion.effect.ironskin": "Lingering Potion of Iron Skin",
-  "item.minecraft.lingering_potion.effect.longironskin": "Lingering Potion of Iron Skin",
-  "item.minecraft.lingering_potion.effect.strongironskin": "Lingering Potion of Iron Skin",
+  "item.minecraft.lingering_potion.effect.long_ironskin": "Lingering Potion of Iron Skin",
+  "item.minecraft.lingering_potion.effect.strong_ironskin": "Lingering Potion of Iron Skin",
+
+  "item.minecraft.tipped_arrow.effect.ironskin": "Lingering Potion of Iron Skin",
+  "item.minecraft.tipped_arrow.effect.long_ironskin": "Lingering Potion of Iron Skin",
+  "item.minecraft.tipped_arrow.effect.strong_ironskin": "Lingering Potion of Iron Skin",
 
   "item.rusticated.copper_nugget": "Copper Nugget",
   "item.rusticated.olive_oil_bucket": "Olive Oil Bucket",
