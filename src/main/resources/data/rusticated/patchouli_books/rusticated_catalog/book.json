@@ -2,8 +2,7 @@
   "name": "book.rusticated.title",
   "landing_text": "book.rusticated.landingtext",
   "subtitle": "book.rusticated.subtitle",
-  "model": "rusticated:catalog",
   "custom_book_item": "rusticated:catalog",
-  "creative_tab": "null",
+  "dont_generate_book": true,
   "show_progress": false
 }
