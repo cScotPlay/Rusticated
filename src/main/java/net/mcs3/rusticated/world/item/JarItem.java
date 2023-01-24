@@ -4,6 +4,7 @@ import net.fabricmc.fabric.api.transfer.v1.context.ContainerItemContext;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidStorage;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
+import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariantAttributes;
 import net.fabricmc.fabric.api.transfer.v1.item.ItemVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantItemStorage;
 import net.mcs3.rusticated.Rusticated;
@@ -11,6 +12,7 @@ import net.mcs3.rusticated.util.FluidUtility;
 import net.mcs3.rusticated.util.NbtUtility;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -52,11 +54,11 @@ public class JarItem extends BlockItem
     }
 
     public FluidVariant getFluid(ItemStack stack) {
-        return NbtUtility.getFluidCompatible(stack.getTagElement("BlockEntityTag"), "fluid");
+        return NbtUtility.getFluidCompatible(stack.getTagElement("BlockEntityTag"), "fluidVariant");
     }
 
     private void setFluid(ItemStack stack, FluidVariant fluid) {
-        NbtUtility.putFluid(stack.getOrCreateTagElement("BlockEntityTag"), "fluid", fluid);
+        NbtUtility.putFluid(stack.getOrCreateTagElement("BlockEntityTag"), "fluidVariant", fluid);
     }
 
     public long getAmount(ItemStack stack) {
@@ -67,11 +69,11 @@ public class JarItem extends BlockItem
         if (tag == null)
             return 0;
         else
-            return tag.getLong("amt");
+            return tag.getLong("fluidLevel");
     }
 
     private void setAmount(ItemStack stack, long amount) {
-        stack.getOrCreateTagElement("BlockEntityTag").putLong("amt", amount);
+        stack.getOrCreateTagElement("BlockEntityTag").putLong("fluidLevel", amount);
     }
 
     @Override
@@ -79,7 +81,12 @@ public class JarItem extends BlockItem
         if (isEmpty(stack)) {
             tooltip.addAll(FluidUtility.getTooltipForFluidStorage(FluidVariant.blank(), 0, capacity));
         } else {
-            tooltip.addAll(FluidUtility.getTooltipForFluidStorage(getFluid(stack), getAmount(stack), capacity));
+            long amount = stack.getOrCreateTagElement("BlockEntityTag").getLong("fluidLevel");
+            FluidVariant fluidVariant = FluidVariant.fromNbt((CompoundTag) stack.getOrCreateTagElement("BlockEntityTag").get("fluidVariant"));
+
+            tooltip.add(FluidVariantAttributes.getName(fluidVariant));
+            tooltip.add(new TranslatableComponent(amount + " / " + (capacity / 81) + " mB"));
+
         }
     }
 

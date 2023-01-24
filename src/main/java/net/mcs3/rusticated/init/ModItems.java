@@ -45,12 +45,12 @@ public class ModItems
 
     public static Item UNFIRED_EVAPORATING_BASIN = new ModItem(new Item.Properties().tab(AG_TAB));
 
-    public static Item OLIVE_OIL_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.OLIVE_OIL).stacksTo(16));
-    public static Item IRONBERRY_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.IRONBERRY_JUICE).stacksTo(16));
-    public static Item SWEET_BERRY_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.SWEET_BERRY_JUICE).stacksTo(16));
-    public static Item GRAPE_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.GRAPE_JUICE).stacksTo(16));
-    public static Item APPLE_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.APPLE_JUICE).stacksTo(16));
-    public static Item ALE_WORT_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.ALE_WORT).stacksTo(16));
+    public static Item OLIVE_OIL_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.OLIVE_OIL).stacksTo(16), ModFluids.SOURCE_OLIVE_OIL);
+    public static Item IRONBERRY_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.IRONBERRY_JUICE).stacksTo(16), ModFluids.SOURCE_IRONBERRY_JUICE);
+    public static Item SWEET_BERRY_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.SWEET_BERRY_JUICE).stacksTo(16), ModFluids.SOURCE_SWEET_BERRY_JUICE);
+    public static Item GRAPE_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.GRAPE_JUICE).stacksTo(16), ModFluids.SOURCE_GRAPE_JUICE);
+    public static Item APPLE_JUICE_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.APPLE_JUICE).stacksTo(16), ModFluids.SOURCE_APPLE_JUICE);
+    public static Item ALE_WORT_BOTTLE = new FluidBottleItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).food(ModFoodProperties.ALE_WORT).stacksTo(16), ModFluids.SOURCE_ALE_WORT);
     public static Item ALE_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8), ModFluids.SOURCE_ALE);
     public static Item CIDER_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8), ModFluids.SOURCE_CIDER);
     public static Item IRON_WINE_CUP = new BoozeItem(new Item.Properties().craftRemainder(Items.GLASS_BOTTLE).tab(AG_TAB).stacksTo(8), ModFluids.SOURCE_IRON_WINE);

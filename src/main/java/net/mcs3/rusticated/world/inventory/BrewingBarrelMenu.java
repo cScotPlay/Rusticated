@@ -1,10 +1,7 @@
 package net.mcs3.rusticated.world.inventory;
 
 import net.mcs3.rusticated.fluid.FluidStack;
-import net.mcs3.rusticated.world.inventory.slots.ModBottleSlot;
-import net.mcs3.rusticated.world.inventory.slots.ModBucketSlot;
-import net.mcs3.rusticated.world.inventory.slots.ModCupSlot;
-import net.mcs3.rusticated.world.inventory.slots.ModResultSlot;
+import net.mcs3.rusticated.world.inventory.slots.*;
 import net.mcs3.rusticated.world.level.block.entity.BrewingBarrelBlockEntity;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.world.Container;
@@ -38,7 +35,7 @@ public class BrewingBarrelMenu extends AbstractContainerMenu {
 
 
         this.addSlot(new ModCupSlot(container, 0, 26, 15));
-        this.addSlot(new ModBucketSlot(container, 1, 62, 7));
+        this.addSlot(new ModBucketBottleSlot(container, 1, 62, 7));
         this.addSlot(new ModBottleSlot(container, 2, 134, 7));
         this.addSlot(new ModResultSlot(container, 3, 26, 55));
         this.addSlot(new ModResultSlot(container, 4, 62, 63));
