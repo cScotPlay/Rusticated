@@ -392,16 +392,16 @@
   "item.rusticated.elixir.effect.empty": "Elixir",
 
   "item.minecraft.potion.effect.ironskin": "Potion of Iron Skin",
-  "item.minecraft.potion.effect.longironskin": "Potion of Iron Skin",
-  "item.minecraft.potion.effect.strongironskin": "Potion of Iron Skin",
+  "item.minecraft.potion.effect.long_ironskin": "Potion of Iron Skin",
+  "item.minecraft.potion.effect.strong_ironskin": "Potion of Iron Skin",
 
   "item.minecraft.splash_potion.effect.ironskin": "Splash Potion of Iron Skin",
-  "item.minecraft.splash_potion.effect.longironskin": "Splash Potion of Iron Skin",
-  "item.minecraft.splash_potion.effect.strongironskin": "Splash Potion of Iron Skin",
+  "item.minecraft.splash_potion.effect.long_ironskin": "Splash Potion of Iron Skin",
+  "item.minecraft.splash_potion.effect.strong_ironskin": "Splash Potion of Iron Skin",
 
   "item.minecraft.lingering_potion.effect.ironskin": "Lingering Potion of Iron Skin",
-  "item.minecraft.lingering_potion.effect.longironskin": "Lingering Potion of Iron Skin",
-  "item.minecraft.lingering_potion.effect.strongironskin": "Lingering Potion of Iron Skin",
+  "item.minecraft.lingering_potion.effect.long_ironskin": "Lingering Potion of Iron Skin",
+  "item.minecraft.lingering_potion.effect.strong_ironskin": "Lingering Potion of Iron Skin",
 
   "item.rusticated.copper_nugget": "Copper Nugget",
   "item.rusticated.olive_oil_bucket": "Olive Oil Bucket",
