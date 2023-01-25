@@ -5,7 +5,7 @@
   "pages": [
     {
       "type": "spotlight",
-      "text": "Pots are a decorative storage option. Fired Jars hold 4 stacks of a single item, while the Glazed Pots hold 8 stacks. Like Pots, Jars also keep their inventory when broken.",
+      "text": "Jars offer a decorative option for storing fluids. Fired Jars hold 4 buckets of a single fluid, while the Glazed Pots hold 8 buckets. Like Pots, Jars also keep their inventory when broken.",
       "item": "rusticated:fired_jar,rusticated:glazed_jar_0,rusticated:glazed_jar_1,rusticated:glazed_jar_2,rusticated:glazed_jar_3,rusticated:glazed_jar_4"
     },
     {
