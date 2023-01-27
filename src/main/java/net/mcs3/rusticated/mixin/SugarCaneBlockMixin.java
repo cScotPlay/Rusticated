@@ -23,29 +23,11 @@ public class SugarCaneBlockMixin
     @Inject(at = @At("HEAD"), method = "canSurvive", cancellable = true)
     public void canSurvive(BlockState state, LevelReader level, BlockPos pos, CallbackInfoReturnable<Boolean> cir)
     {
-        Boolean cirValue;
-
         BlockState blockState = level.getBlockState(pos.below());
-        if (blockState.is(Blocks.SUGAR_CANE)) {
-            cir.setReturnValue(true);
-        } else if (blockState.getBlock() instanceof FertileSoilBlock)
-        {
-            cir.setReturnValue(true);
-        } else {
-            if (blockState.is(BlockTags.DIRT) || blockState.is(Blocks.SAND) || blockState.is(Blocks.RED_SAND)) {
-                BlockPos blockPos = pos.below();
-                Iterator var6 = Direction.Plane.HORIZONTAL.iterator();
 
-                while(var6.hasNext()) {
-                    Direction direction = (Direction)var6.next();
-                    BlockState blockState2 = level.getBlockState(blockPos.relative(direction));
-                    FluidState fluidState = level.getFluidState(blockPos.relative(direction));
-                    if (fluidState.is(FluidTags.WATER) || blockState2.is(Blocks.FROSTED_ICE)) {
-                        cir.setReturnValue(true);
-                    }
-                }
-            }
-            cir.setReturnValue(false);
+        if (blockState.getBlock() instanceof FertileSoilBlock) {
+            cir.setReturnValue(true);
+            cir.cancel();
         }
     }
 }
