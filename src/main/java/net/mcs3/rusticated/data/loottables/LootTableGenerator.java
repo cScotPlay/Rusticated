@@ -410,7 +410,7 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         add(ModBlocks.HORSETAIL, (block -> {
             return createSingleItemTable(ModItems.HORSETAIL);
         }));
-        add(ModBlocks.HORSETAIL, (block -> {
+        add(ModBlocks.WIND_THISTLE, (block -> {
             return createSingleItemTable(ModItems.WIND_THISTLE);
         }));
         add(ModBlocks.NIGHTSHROOM, (block -> {
