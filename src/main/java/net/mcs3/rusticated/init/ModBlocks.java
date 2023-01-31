@@ -736,34 +736,34 @@ public class ModBlocks
 
         register("fertile_soil", FERTILE_SOIL, AGRICULTURAL_TAB);
         register("ironwood_sapling", IRONWOOD_SAPLING, AGRICULTURAL_TAB);
-        register("potted_ironwood_sapling", POTTED_IRONWOOD_SAPLING, null);
+        registerBlocksOnly("potted_ironwood_sapling", POTTED_IRONWOOD_SAPLING);
         register("ironwood_leaves", IRONWOOD_LEAVES, AGRICULTURAL_TAB);
 
         register("olive_sapling", OLIVE_SAPLING, AGRICULTURAL_TAB);
-        register("potted_olive_sapling", POTTED_OLIVE_SAPLING, null);
+        registerBlocksOnly("potted_olive_sapling", POTTED_OLIVE_SAPLING);
         register("olive_leaves", OLIVE_LEAVES, AGRICULTURAL_TAB);
 
         register("crop_stake", CROP_STAKE, AGRICULTURAL_TAB);
-        register("tied_stake", TIED_STAKE, null);
+        registerBlocksOnly("tied_stake", TIED_STAKE);
         register("rope", ROPE, AGRICULTURAL_TAB);
-        register("grape_stem", GRAPE_STEM, null);
-        register("grape_leaves", GRAPE_LEAVES, null);
+        registerBlocksOnly("grape_stem", GRAPE_STEM);
+        registerBlocksOnly("grape_leaves", GRAPE_LEAVES);
 
         //////////////////////////////////////////////////////////
         ///               Herbal Blocks Registry               ///
         //////////////////////////////////////////////////////////
-        registerHerbs("aloe_vera", ALOE_VERA);
-        registerHerbs("blood_orchid", BLOOD_ORCHID);
-        registerHerbs("chamomile", CHAMOMILE);
-        registerHerbs("cloud_lily", CLOUD_LILY);
-        registerHerbs("cohosh", COHOSH);
-        registerHerbs("horsetail", HORSETAIL);
-        registerHerbs("wind_thistle", WIND_THISTLE);
-        registerHerbs("nightshroom", NIGHTSHROOM);
-        registerHerbs("green_spored_asbestos", GREEN_SPORED_ASBESTOS);
-        registerHerbs("core_root", CORE_ROOT);
-        registerHerbs("ginseng", GINSENG);
-        registerHerbs("marshmallow", MARSHMALLOW);
+        registerBlocksOnly("aloe_vera", ALOE_VERA);
+        registerBlocksOnly("blood_orchid", BLOOD_ORCHID);
+        registerBlocksOnly("chamomile", CHAMOMILE);
+        registerBlocksOnly("cloud_lily", CLOUD_LILY);
+        registerBlocksOnly("cohosh", COHOSH);
+        registerBlocksOnly("horsetail", HORSETAIL);
+        registerBlocksOnly("wind_thistle", WIND_THISTLE);
+        registerBlocksOnly("nightshroom", NIGHTSHROOM);
+        registerBlocksOnly("green_spored_asbestos", GREEN_SPORED_ASBESTOS);
+        registerBlocksOnly("core_root", CORE_ROOT);
+        registerBlocksOnly("ginseng", GINSENG);
+        registerBlocksOnly("marshmallow", MARSHMALLOW);
 
 
         //////////////////////////////////////////////////////////
@@ -815,11 +815,6 @@ public class ModBlocks
         StrippableBlockRegistry.register(ModBlocks.IRONWOOD_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
         StrippableBlockRegistry.register(ModBlocks.OLIVE_LOG, ModBlocks.STRIPPED_OLIVE_LOG);
         StrippableBlockRegistry.register(ModBlocks.OLIVE_WOOD, ModBlocks.STRIPPED_OLIVE_WOOD);
-//        AxeItem.STRIPPABLES = Maps.newHashMap(AxeItem.STRIPPABLES);
-//        AxeItem.STRIPPABLES.put(ModBlocks.IRONWOOD_LOG, ModBlocks.STRIPPED_IRONWOOD_LOG);
-//        AxeItem.STRIPPABLES.put(ModBlocks.IRONWOOD_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
-//        AxeItem.STRIPPABLES.put(ModBlocks.OLIVE_LOG, ModBlocks.STRIPPED_OLIVE_LOG);
-//        AxeItem.STRIPPABLES.put(ModBlocks.OLIVE_WOOD, ModBlocks.STRIPPED_IRONWOOD_WOOD);
     }
 
     static <T extends Block> T register(String name, T anyBlock, CreativeModeTab tab)
@@ -843,13 +838,10 @@ public class ModBlocks
         return anyBlock;
     }
 
-    static <T extends Block> T registerHerbs(String name, T anyBlock)
+    static <T extends Block> T registerBlocksOnly(String name, T anyBlock)
     {
         T block = Registry.register(Registry.BLOCK, new ResourceLocation(Rusticated.MOD_ID, name), anyBlock);
         BLOCKS.put(new ResourceLocation(Rusticated.MOD_ID, name), block);
-        //BlockItem blockItem = new BlockItem(block, new Item.Properties().tab(tab));
-
-        //Registry.register(Registry.ITEM, new ResourceLocation(ElixirEmporium.MOD_ID, name), blockItem);
 
         return anyBlock;
     }
