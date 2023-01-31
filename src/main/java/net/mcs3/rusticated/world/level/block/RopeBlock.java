@@ -40,7 +40,7 @@ public class RopeBlock extends ChainBlock
 
     public RopeBlock()
     {
-        super(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).strength(0.5F).instabreak().sound(SoundType.WOOL));
+        super(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).strength(0.1F).sound(SoundType.WOOL));
         this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(WATERLOGGED, false)).setValue(AXIS, Direction.Axis.Y).setValue(DANGLE, false));
     }
 

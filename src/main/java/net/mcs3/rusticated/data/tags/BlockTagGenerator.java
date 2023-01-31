@@ -149,6 +149,10 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.OAK_BREWING_BARREL
         );
 
+        getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(
+                ModBlocks.GRAPE_LEAVES
+        );
+
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
                 .add(registry.stream().filter(b -> b instanceof FramedWallBlocks).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
