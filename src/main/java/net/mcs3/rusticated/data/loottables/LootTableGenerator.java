@@ -4,8 +4,6 @@ import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
-import net.mcs3.rusticated.world.level.block.storage.barrel.BarrelBlock;
-import net.mcs3.rusticated.world.level.block.entity.ModBlockEntityTypes;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
 import net.minecraft.data.loot.BlockLoot;
@@ -17,7 +15,6 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
-import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
@@ -25,7 +22,6 @@ import net.minecraft.world.level.storage.loot.functions.*;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
-import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 import java.util.stream.Stream;
@@ -334,13 +330,24 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         add(ModBlocks.STONE_SLAB_BLACK, BlockLoot::createSlabItemTable);
 
 
-
         add(ModBlocks.IRONWOOD_LEAVES, (block -> {
             return createLeavesDropswithItem(ModBlocks.IRONWOOD_LEAVES, ModBlocks.IRONWOOD_SAPLING, ModItems.IRON_BERRIES, NORMAL_LEAVES_SAPLING_CHANCES);
         }));
 
         add(ModBlocks.OLIVE_LEAVES, (block -> {
             return createLeavesDropswithItem(ModBlocks.OLIVE_LEAVES, ModBlocks.OLIVE_SAPLING, ModItems.OLIVES, NORMAL_LEAVES_SAPLING_CHANCES);
+        }));
+
+        add(ModBlocks.GRAPE_LEAVES, (block -> {
+            return createGrapeLeafDrop(ModBlocks.GRAPE_LEAVES);
+        }));
+
+        add(ModBlocks.POTTED_IRONWOOD_SAPLING, (block -> {
+            return createPotFlowerItemTable(ModBlocks.IRONWOOD_SAPLING.asItem());
+        }));
+
+        add(ModBlocks.POTTED_OLIVE_SAPLING, (block -> {
+            return createPotFlowerItemTable(ModBlocks.OLIVE_SAPLING.asItem());
         }));
 
         add(ModBlocks.STONE_WHITE, (blockx) -> {
@@ -450,9 +457,14 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
         return LootTable.lootTable().withPool(BlockLoot.applyExplosionCondition(ModBlocks.TIED_STAKE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.CROP_STAKE)))).withPool(BlockLoot.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
     }
 
+    public static LootTable.Builder createGrapeLeafDrop(Block block){
+        return LootTable.lootTable().withPool(BlockLoot.applyExplosionCondition(ModItems.GRAPE_SEEDS, LootPool.lootPool().setRolls(ConstantValue.exactly(0.025f)).add(LootItem.lootTableItem(ModItems.GRAPE_SEEDS)))).withPool(BlockLoot.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
+    }
+
     public static LootTable.Builder createGrapeSeedDrop(Block block) {
         return BlockLoot.createShearsDispatchTable(block, (LootPoolEntryContainer.Builder)BlockLoot.applyExplosionDecay(block, ((LootPoolSingletonContainer.Builder)LootItem.lootTableItem(ModItems.GRAPE_SEEDS.asItem()).when(LootItemRandomChanceCondition.randomChance(0.250f))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2))));
     }
+
 
     static {
         HAS_SILK_TOUCH = MatchTool.toolMatches(net.minecraft.advancements.critereon.ItemPredicate.Builder.item().hasEnchantment(new EnchantmentPredicate(Enchantments.SILK_TOUCH, MinMaxBounds.Ints.atLeast(1))));
