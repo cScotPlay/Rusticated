@@ -4,8 +4,10 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.mixin.transfer.BucketItemAccessor;
 import net.mcs3.rusticated.world.item.BoozeItem;
 import net.mcs3.rusticated.world.item.FluidBottleItem;
+import net.mcs3.rusticated.world.level.block.entity.JarBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.LiquidBarrelBlockEntity;
 import net.minecraft.core.BlockPos;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -22,6 +24,9 @@ import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
+import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -29,6 +34,8 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
+import java.util.Arrays;
+import java.util.List;
 import java.util.stream.Stream;
 
 public class LiquidBarrelBlock extends BaseEntityBlock implements EntityBlock {
@@ -141,6 +148,29 @@ public class LiquidBarrelBlock extends BaseEntityBlock implements EntityBlock {
                 }
             }
         }
+    }
+
+    protected ItemStack getStack(BlockEntity entity) {
+        var storageBlockEntity = (LiquidBarrelBlockEntity) entity;
+        ItemStack stack = new ItemStack(this.asItem());
+        if (!storageBlockEntity.isEmpty()) {
+            CompoundTag tag = new CompoundTag();
+            tag.put("BlockEntityTag", storageBlockEntity.saveWithoutMetadata());
+            stack.setTag(tag);
+        }
+        return stack;
+    }
+
+    @SuppressWarnings("deprecation")
+    @Override
+    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
+        LootContext lootContext = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+        return Arrays.asList(getStack(lootContext.getParamOrNull(LootContextParams.BLOCK_ENTITY)));
+    }
+
+    @Override
+    public ItemStack getCloneItemStack(BlockGetter world, BlockPos pos, BlockState state) {
+        return getStack(world.getBlockEntity(pos));
     }
     protected static final VoxelShape BARREL_AABB = Stream.of(
             Block.box(2, 1, 2, 14, 2, 14),

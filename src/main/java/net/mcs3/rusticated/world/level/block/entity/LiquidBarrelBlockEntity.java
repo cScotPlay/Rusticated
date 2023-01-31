@@ -103,15 +103,15 @@ public class LiquidBarrelBlockEntity extends FastBlockEntity implements SingleSl
     @Override
     protected void saveAdditional(CompoundTag tag) {
         super.saveAdditional(tag);
-        tag.put("FluidVariant", fluidStorage.variant.toNbt());
-        tag.putLong("FluidLevel", fluidStorage.amount);
+        tag.put("fluidVariant", fluidStorage.variant.toNbt());
+        tag.putLong("fluidLevel", fluidStorage.amount);
     }
 
     @Override
     public void load(CompoundTag tag) {
         super.load(tag);
-        this.fluidStorage.variant = FluidVariant.fromNbt((CompoundTag) tag.get("FluidVariant"));
-        this.fluidStorage.amount = tag.getLong("FluidLevel");
+        this.fluidStorage.variant = FluidVariant.fromNbt((CompoundTag) tag.get("fluidVariant"));
+        this.fluidStorage.amount = tag.getLong("fluidLevel");
     }
 
     @Override
@@ -217,5 +217,9 @@ public class LiquidBarrelBlockEntity extends FastBlockEntity implements SingleSl
     @Override
     public long getCapacity() {
         return this.fluidStorage.getCapacity();
+    }
+
+    public boolean isEmpty() {
+        return fluidStorage.amount == 0;
     }
 }
