@@ -57,14 +57,18 @@ public class CrushingTubBlock extends BaseEntityBlock implements EntityBlock {
         ItemStack itemStack = player.getItemInHand(hand);
         CrushingTubBlockEntity blockEntity = (CrushingTubBlockEntity) level.getBlockEntity(pos);
 
-        if(!level.isClientSide) {
+//        if(!level.isClientSide) {
             if(player.isCrouching() && player.getMainHandItem().isEmpty() && blockEntity.fluidStorage.amount != 0) { //Remove All Fluids
                 blockEntity.emptyTub(blockEntity);
+                blockEntity.update();
+                return InteractionResult.sidedSuccess(level.isClientSide);
             }
             if (player.getMainHandItem().isEmpty() && !blockEntity.getItem(0).isEmpty() && !player.isCrouching()) {  //Pulls Items from tub
                 player.getInventory().add(new ItemStack(blockEntity.getItem(0).getItem(), blockEntity.getItem(0).getCount()));
-                blockEntity.removeItem(0, blockEntity.getItem(0).getCount());
+//                blockEntity.removeItem(0, blockEntity.getItem(0).getCount());
+                blockEntity.removeItemNoUpdate(0);
                 blockEntity.update();
+//                return InteractionResult.sidedSuccess(level.isClientSide);
             }
             if(!player.getMainHandItem().isEmpty() && !itemStack.is(Items.BUCKET) || !itemStack.is(Items.GLASS_BOTTLE)) {
                 if(blockEntity.canInsertItem(blockEntity, itemStack)) {
@@ -72,13 +76,16 @@ public class CrushingTubBlock extends BaseEntityBlock implements EntityBlock {
                     ItemStack addItems = itemStack.copy();
                     blockEntity.setItem(0, addItems);
                     itemStack.shrink(itemCount);
+//                    return InteractionResult.sidedSuccess(level.isClientSide);
                 }
             }
             if(itemStack.is(Items.BUCKET) || itemStack.is(Items.GLASS_BOTTLE)) {
                 blockEntity.givePlayerFluid(blockEntity, player, hand, itemStack);
+//                return InteractionResult.sidedSuccess(level.isClientSide);
             }
             blockEntity.update();
-            level.blockEntityChanged(pos);}
+            level.blockEntityChanged(pos);
+//    }
         return InteractionResult.SUCCESS;
     }
 

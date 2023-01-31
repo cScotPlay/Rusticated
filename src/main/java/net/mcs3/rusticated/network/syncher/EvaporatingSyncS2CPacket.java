@@ -26,6 +26,7 @@ public class EvaporatingSyncS2CPacket {
 
         if(client.level.getBlockEntity(position) instanceof EvaporatingBasinBlockEntity blockEntity) {
             blockEntity.setFluidLevel(variant, fluidLevel);
-            blockEntity.setInventory(list);        }
+            blockEntity.setInventory(list);
+        }
     }
 }
