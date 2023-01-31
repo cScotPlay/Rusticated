@@ -343,6 +343,18 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
             return createLeavesDropswithItem(ModBlocks.OLIVE_LEAVES, ModBlocks.OLIVE_SAPLING, ModItems.OLIVES, NORMAL_LEAVES_SAPLING_CHANCES);
         }));
 
+        add(ModBlocks.GRAPE_LEAVES, (block -> {
+            return createGrapeLeafDrop(ModBlocks.GRAPE_LEAVES);
+        }));
+
+        add(ModBlocks.POTTED_IRONWOOD_SAPLING, (block -> {
+            return createPotFlowerItemTable(ModBlocks.IRONWOOD_SAPLING.asItem());
+        }));
+
+        add(ModBlocks.POTTED_OLIVE_SAPLING, (block -> {
+            return createPotFlowerItemTable(ModBlocks.OLIVE_SAPLING.asItem());
+        }));
+
         add(ModBlocks.STONE_WHITE, (blockx) -> {
             return createSingleItemTableWithSilkTouch(blockx, ModBlocks.COBBLESTONE_WHITE);
         });
@@ -448,6 +460,10 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
 
     public static LootTable.Builder createTiedStakeDrop(Block block){
         return LootTable.lootTable().withPool(BlockLoot.applyExplosionCondition(ModBlocks.TIED_STAKE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.CROP_STAKE)))).withPool(BlockLoot.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
+    }
+
+    public static LootTable.Builder createGrapeLeafDrop(Block block){
+        return LootTable.lootTable().withPool(BlockLoot.applyExplosionCondition(ModItems.GRAPE_SEEDS, LootPool.lootPool().setRolls(ConstantValue.exactly(0.025f)).add(LootItem.lootTableItem(ModItems.GRAPE_SEEDS)))).withPool(BlockLoot.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
     }
 
     public static LootTable.Builder createGrapeSeedDrop(Block block) {
