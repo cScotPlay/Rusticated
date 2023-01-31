@@ -40,7 +40,7 @@ public class GrapeLeavesBlock extends RopeBlock implements BonemealableBlock
 
     public GrapeLeavesBlock()
     {
-        super(BlockBehaviour.Properties.of(Material.LEAVES).randomTicks().sound(SoundType.GRASS));
+        super(BlockBehaviour.Properties.of(Material.LEAVES).strength(0.2F).randomTicks().sound(SoundType.GRASS));
         this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(WATERLOGGED, false).setValue(getDistanceProperty(), 0).setValue(DISTANCE, 0).setValue(AXIS, Direction.Axis.X).setValue(GRAPES, false));
     }
     @Override
