@@ -327,7 +327,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider {
         ShapedRecipeBuilder.shaped(ModBlocks.FERTILE_SOIL).define('#', Blocks.DIRT).define('x', Items.GREEN_DYE).define('t', Items.BONE_MEAL).pattern(" x ").pattern("t#t").unlockedBy("has_dirt", has(Blocks.DIRT)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.IRONWOOD_WOOD).define('#', ModBlocks.IRONWOOD_LOG).pattern("##").pattern("##").unlockedBy("has_log", has(ModBlocks.IRONWOOD_LOG)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.STRIPPED_IRONWOOD_WOOD).define('#', ModBlocks.STRIPPED_IRONWOOD_LOG).pattern("##").pattern("##").unlockedBy("has_log", has(ModBlocks.STRIPPED_IRONWOOD_LOG)).save(exporter);
-        ShapelessRecipeBuilder.shapeless(ModBlocks.IRONWOOD_PLANKS, 4).requires(ModBlocks.IRONWOOD_LOG).unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_LOG)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.IRONWOOD_PLANKS, 4).requires(ModItemTags.IRONWOOD_LOGS).unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_LOG)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.IRONWOOD_SLAB, 6).define('#', ModBlocks.IRONWOOD_PLANKS).pattern("###").unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_PLANKS)).save(exporter);
         stairBuilder(ModBlocks.IRONWOOD_STAIRS, Ingredient.of(new ItemLike[]{ModBlocks.IRONWOOD_PLANKS})).unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_PLANKS)).save(exporter);
         fenceBuilder(ModBlocks.IRONWOOD_FENCE, Ingredient.of(new ItemLike[]{ModBlocks.IRONWOOD_PLANKS})).unlockedBy("has_ironwood", has(ModBlocks.IRONWOOD_PLANKS)).save(exporter);
@@ -335,7 +335,7 @@ public class CraftingRecipeBuilder extends FabricRecipeProvider {
 
         ShapedRecipeBuilder.shaped(ModBlocks.OLIVE_WOOD).define('#', ModBlocks.OLIVE_LOG).pattern("##").pattern("##").unlockedBy("has_log", has(ModBlocks.OLIVE_LOG)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.STRIPPED_OLIVE_WOOD).define('#', ModBlocks.STRIPPED_OLIVE_LOG).pattern("##").pattern("##").unlockedBy("has_log", has(ModBlocks.STRIPPED_OLIVE_LOG)).save(exporter);
-        ShapelessRecipeBuilder.shapeless(ModBlocks.OLIVE_PLANKS, 4).requires(ModBlocks.OLIVE_LOG).unlockedBy("has_olive", has(ModBlocks.OLIVE_LOG)).save(exporter);
+        ShapelessRecipeBuilder.shapeless(ModBlocks.OLIVE_PLANKS, 4).requires(ModItemTags.OLIVE_LOGS).unlockedBy("has_olive", has(ModBlocks.OLIVE_LOG)).save(exporter);
         ShapedRecipeBuilder.shaped(ModBlocks.OLIVE_SLAB, 6).define('#', ModBlocks.OLIVE_PLANKS).pattern("###").unlockedBy("has_olive", has(ModBlocks.OLIVE_PLANKS)).save(exporter);
         stairBuilder(ModBlocks.OLIVE_STAIRS, Ingredient.of(new ItemLike[]{ModBlocks.OLIVE_PLANKS})).unlockedBy("has_olive", has(ModBlocks.OLIVE_PLANKS)).save(exporter);
         fenceBuilder(ModBlocks.OLIVE_FENCE, Ingredient.of(new ItemLike[]{ModBlocks.OLIVE_PLANKS})).unlockedBy("has_olive", has(ModBlocks.OLIVE_PLANKS)).save(exporter);
