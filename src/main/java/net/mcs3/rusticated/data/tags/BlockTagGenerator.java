@@ -1,5 +1,6 @@
 package net.mcs3.rusticated.data.tags;
 
+import com.terraformersmc.modmenu.util.mod.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.rusticated.Rusticated;
@@ -73,7 +74,8 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
 
         getOrCreateTagBuilder(BlockTags.LEAVES).add(
                 ModBlocks.IRONWOOD_LEAVES,
-                ModBlocks.OLIVE_LEAVES);
+                ModBlocks.OLIVE_LEAVES,
+                ModBlocks.GRAPE_LEAVES);
 
         getOrCreateTagBuilder(BlockTags.LOGS).add(
                 ModBlocks.IRONWOOD_LOG,
@@ -134,7 +136,20 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.RETORT,
                 ModBlocks.ADV_CONDENSER,
                 ModBlocks.ADV_RETORT,
-                ModBlocks.EVAPORATING_BASIN);
+                ModBlocks.EVAPORATING_BASIN,
+                ModBlocks.FIRED_JAR,
+                ModBlocks.GLAZED_JAR_0,
+                ModBlocks.GLAZED_JAR_1,
+                ModBlocks.GLAZED_JAR_2,
+                ModBlocks.GLAZED_JAR_3,
+                ModBlocks.GLAZED_JAR_4,
+                ModBlocks.FIRED_POT,
+                ModBlocks.GLAZED_POT_0,
+                ModBlocks.GLAZED_POT_1,
+                ModBlocks.GLAZED_POT_2,
+                ModBlocks.GLAZED_POT_3,
+                ModBlocks.GLAZED_POT_4
+                );
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
                 .add(registry.stream().filter(b -> b instanceof WeatheringCopperChandelierBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
@@ -150,6 +165,13 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
         );
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_HOE).add(
+                ModBlocks.GRAPE_LEAVES,
+                ModBlocks.IRONWOOD_LEAVES,
+                ModBlocks.OLIVE_LEAVES
+        );
+
+        getOrCreateTagBuilder(BlockTags.CROPS).add(
+                ModBlocks.GRAPE_STEM,
                 ModBlocks.GRAPE_LEAVES
         );
 
@@ -162,6 +184,22 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
 
         getOrCreateTagBuilder(BlockTags.MUSHROOM_GROW_BLOCK).add(
                 ModBlocks.FERTILE_SOIL
+        );
+
+        getOrCreateTagBuilder(BlockTags.FLOWER_POTS).add(
+                ModBlocks.POTTED_IRONWOOD_SAPLING,
+                ModBlocks.POTTED_OLIVE_SAPLING
+        );
+        getOrCreateTagBuilder(BlockTags.BEE_GROWABLES).add(
+                ModBlocks.ALOE_VERA,
+                ModBlocks.BLOOD_ORCHID,
+                ModBlocks.CHAMOMILE,
+                ModBlocks.CLOUD_LILY,
+                ModBlocks.COHOSH,
+                ModBlocks.HORSETAIL,
+                ModBlocks.WIND_THISTLE,
+                ModBlocks.GRAPE_LEAVES,
+                ModBlocks.GRAPE_STEM
         );
 
         // ***************************************************************************** //
