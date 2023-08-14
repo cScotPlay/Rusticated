@@ -67,9 +67,6 @@ dependencies {
 
 	modImplementation "vazkii.patchouli:Patchouli:${project.patchouli_version}"
 
-	modCompileOnly "mcp.mobius.waila:wthit-api:fabric-${project.wthit_version}"
-	modRuntimeOnly "mcp.mobius.waila:wthit:fabric-${project.wthit_version}"
-
 	modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 
