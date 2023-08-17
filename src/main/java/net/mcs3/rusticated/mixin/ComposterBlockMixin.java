@@ -1,7 +1,6 @@
 package net.mcs3.rusticated.mixin;
 
 import it.unimi.dsi.fastutil.objects.Object2FloatMap;
-import net.mcs3.rusticated.init.ModItems;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.block.ComposterBlock;
 import org.objectweb.asm.Opcodes;
