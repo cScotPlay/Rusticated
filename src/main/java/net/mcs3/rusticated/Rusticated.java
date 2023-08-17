@@ -4,6 +4,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.mcs3.rusticated.data.worldgen.features.ModTreeFeatures;
 import net.mcs3.rusticated.init.ModBlocks;
+import net.mcs3.rusticated.init.ModCompostable;
 import net.mcs3.rusticated.init.ModItems;
 import net.mcs3.rusticated.util.RegistryHandler;
 import net.mcs3.rusticated.world.effect.ModEffects;
@@ -59,6 +60,7 @@ public class Rusticated implements ModInitializer {
 
 		ModEffects.registerEffects();
 		ModPotions.registerPotions();
+		ModCompostable.registerCompostables();
 		Elixirs.initElixirs();
 
 		LOGGER.info("Rusticated Successfully Loaded");

@@ -7,6 +7,7 @@
     "CropBlockMixin",
     "StemBlockMixin",
     "AttachedStemBlockMixin",
+    "ComposterBlockMixin",
     "SugarCaneBlockMixin"
   ],
   "client": [
