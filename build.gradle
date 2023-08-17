@@ -11,7 +11,6 @@ version = project.mod_version
 group = project.maven_group
 
 repositories {
-	maven { url "https://bai.jfrog.io/artifactory/maven" }
 	maven { url 'https://jitpack.io' }
 	maven { url "https://maven.shedaniel.me/" }
 	maven { url 'https://maven.terraformersmc.com/releases/' }
@@ -33,6 +32,9 @@ repositories {
 		name = "ModMaven"
 		url = "https://modmaven.dev"
 	}
+	maven {
+		name = "WTHIT"
+		url "https://maven.bai.lol" }
 }
 loom {
 	accessWidenerPath = file("src/main/resources/rusticated.accesswidener")
@@ -70,6 +72,7 @@ dependencies {
 	modCompileOnly "mcp.mobius.waila:wthit-api:fabric-${project.wthit_version}"
 	modRuntimeOnly "mcp.mobius.waila:wthit:fabric-${project.wthit_version}"
 
+
 	modCompileOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 	modRuntimeOnly "com.terraformersmc:modmenu:${project.modmenu_version}"
 
@@ -85,22 +88,6 @@ dependencies {
 sourceSets.main.resources {
 	srcDirs += 'src/main/generated'
 }
-//sourceSets {
-////	// Add a data gen sourceset
-////	datagen {
-////		compileClasspath += main.compileClasspath
-////		runtimeClasspath += main.runtimeClasspath
-////		compileClasspath += main.output
-////		runtimeClasspath += main.output
-////	}
-//	elixiremporium {
-//		resources {
-//			srcDirs += [
-//					'src/testmod/generated'
-//			]
-//		}
-//	}
-//}
 
 processResources {
 	inputs.property "version", project.version
@@ -109,12 +96,6 @@ processResources {
 		expand "version": project.version
 	}
 }
-
-
-//runDatagen {
-//	// Doesn't re-run the task when its up-to date
-//	outputs.dir('src/main/generated')
-//}
 
 tasks.withType(JavaCompile).configureEach {
 	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
