@@ -458,11 +458,11 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
     }
 
     public static LootTable.Builder createGrapeLeafDrop(Block block){
-        return LootTable.lootTable().withPool(BlockLoot.applyExplosionCondition(ModItems.GRAPE_SEEDS, LootPool.lootPool().setRolls(ConstantValue.exactly(0.025f)).add(LootItem.lootTableItem(ModItems.GRAPE_SEEDS)))).withPool(BlockLoot.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
+        return LootTable.lootTable().withPool(BlockLoot.applyExplosionCondition(ModItems.GRAPE_SEEDS, LootPool.lootPool().setRolls(ConstantValue.exactly(0.125f)).add(LootItem.lootTableItem(ModItems.GRAPE_SEEDS)))).withPool(BlockLoot.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
     }
 
     public static LootTable.Builder createGrapeSeedDrop(Block block) {
-        return BlockLoot.createShearsDispatchTable(block, (LootPoolEntryContainer.Builder)BlockLoot.applyExplosionDecay(block, ((LootPoolSingletonContainer.Builder)LootItem.lootTableItem(ModItems.GRAPE_SEEDS.asItem()).when(LootItemRandomChanceCondition.randomChance(0.250f))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2))));
+        return BlockLoot.createShearsDispatchTable(block, (LootPoolEntryContainer.Builder)BlockLoot.applyExplosionDecay(block, ((LootPoolSingletonContainer.Builder)LootItem.lootTableItem(ModItems.GRAPE_SEEDS.asItem()).when(LootItemRandomChanceCondition.randomChance(0.0625f))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2))));
     }
 
 
