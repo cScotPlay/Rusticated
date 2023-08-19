@@ -4,7 +4,6 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.mixin.transfer.BucketItemAccessor;
 import net.mcs3.rusticated.world.item.BoozeItem;
 import net.mcs3.rusticated.world.item.FluidBottleItem;
-import net.mcs3.rusticated.world.level.block.entity.JarBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.LiquidBarrelBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -103,20 +102,19 @@ public class LiquidBarrelBlock extends BaseEntityBlock implements EntityBlock {
                 }
             }
             else if(itemStack.is(Items.BUCKET) && blockEntity.fluidStorage.amount >= 1000) {
-                Item filledBucketItem = blockEntity.fluidStorage.variant.getFluid().getBucket();
                 blockEntity.removeFluidFromFluidStorage(blockEntity, 1000);
                 level.playSound(null, pos, SoundEvents.BUCKET_FILL, SoundSource.BLOCKS, 1.0f, 1.0f);
-                player.setItemInHand(hand, filledBucketItem.getDefaultInstance());
+                player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.WATER_BUCKET)));
                 return InteractionResult.sidedSuccess(level.isClientSide);
 
             } else if(itemStack.getItem() instanceof BucketItem && !itemStack.is(Items.BUCKET) &&
                     !((LiquidBarrelBlockEntity) level.getBlockEntity(pos)).atCapacity(blockEntity) &&
-                    (blockEntity.fluidStorage.getCapacity() - blockEntity.fluidStorage.amount) > 1000) {
+                    (blockEntity.fluidStorage.getCapacity() - blockEntity.fluidStorage.amount) >= 1000) {
                 BucketItem bucketItem = (BucketItem) itemStack.getItem();
                 Fluid fluid = ((BucketItemAccessor) bucketItem).fabric_getFluid();
                 blockEntity.transferFluidToFluidStorage(blockEntity, FluidVariant.of(fluid), 1000);
                 level.playSound(null, pos, SoundEvents.BUCKET_EMPTY, SoundSource.BLOCKS, 1.0f, 1.0f);
-                player.setItemInHand(hand, new ItemStack(Items.BUCKET));
+                player.setItemInHand(hand, ItemUtils.createFilledResult(itemStack, player, new ItemStack(Items.BUCKET)));
                 return InteractionResult.sidedSuccess(level.isClientSide);
             }
         }
