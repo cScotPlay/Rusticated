@@ -34,7 +34,8 @@ repositories {
 	}
 	maven {
 		name = "WTHIT"
-		url "https://maven.bai.lol" }
+		url "https://maven.bai.lol"
+	}
 }
 loom {
 	accessWidenerPath = file("src/main/resources/rusticated.accesswidener")
@@ -84,6 +85,7 @@ dependencies {
 	modCompileOnlyApi("mezz.jei:jei-${minecraft_version}-fabric-api:${jei_version}")
 	// at runtime, use the full JEI jar for Fabric
 	modRuntimeOnly("mezz.jei:jei-${minecraft_version}-fabric:${jei_version}")
+
 }
 sourceSets.main.resources {
 	srcDirs += 'src/main/generated'

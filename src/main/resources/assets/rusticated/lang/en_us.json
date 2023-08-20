@@ -488,6 +488,12 @@
   "tooltip.rusticated.pot.percent_stacks": "%d of %d (%d Stack Capacity)",
   "tooltip.rusticated.pot.stacks_numbers": "%d of %d Stacks",
 
-  "tooltip.rusticated.oiled_food": "Oiled"
+  "tooltip.rusticated.oiled_food": "Oiled",
+
+  "header.rusticated.warning_screen" : "Warning -- Sodium was detected on your game client",
+  "message.rusticated.warning_screen" : "Rusticated is known to have game crashing issues caused by the use of Sodium without Indium.  Install Indium from one of the links below or proceed with caution.",
+  "curseforge.rusticated.warning_screen" : "CurseForge",
+  "modrinth.rusticated.warning_screen" : "Modrinth",
+  "proceed.rusticated.warning_screen" : "Proceed to Title Menu"
 
 }

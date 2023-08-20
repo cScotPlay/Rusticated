@@ -2,11 +2,14 @@ package net.mcs3.rusticated;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.blockrenderlayer.v1.BlockRenderLayerMap;
+import net.fabricmc.fabric.api.client.event.lifecycle.v1.ClientLifecycleEvents;
 import net.fabricmc.fabric.api.client.rendering.v1.BlockEntityRendererRegistry;
 import net.fabricmc.fabric.api.client.rendering.v1.LivingEntityFeatureRendererRegistrationCallback;
 import net.fabricmc.fabric.api.client.rendering.v1.TooltipComponentCallback;
+import net.fabricmc.loader.api.FabricLoader;
 import net.mcs3.rusticated.client.color.FluidColorRegistry;
 import net.mcs3.rusticated.client.color.ModColorProviders;
+import net.mcs3.rusticated.client.screens.SodiumWarningScreen;
 import net.mcs3.rusticated.client.screens.inventory.AdvCondenserScreen;
 import net.mcs3.rusticated.client.screens.inventory.BrewingBarrelScreen;
 import net.mcs3.rusticated.client.screens.inventory.CondenserScreen;
@@ -36,6 +39,7 @@ public class RusticatedClient implements ClientModInitializer
     @Override
     public void onInitializeClient()
     {
+        checkForIndium();
         registerRenderTypes();
         ModColorProviders.registerBlockColorProviders();
         ModColorProviders.registerItemColorProviders();
@@ -44,6 +48,14 @@ public class RusticatedClient implements ClientModInitializer
         registerScreenTypes();
         setupTooltips();
         registerLayers();
+    }
+
+    private static void checkForIndium() {
+        ClientLifecycleEvents.CLIENT_STARTED.register(client -> {
+            if (FabricLoader.getInstance().isModLoaded("sodium") && !FabricLoader.getInstance().isModLoaded("indium")) {
+                client.setScreen(new SodiumWarningScreen());
+            }
+        });
     }
 
     private static void registerRenderTypes()

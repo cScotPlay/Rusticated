@@ -14,6 +14,7 @@ import net.fabricmc.fabric.api.renderer.v1.mesh.QuadEmitter;
 import net.fabricmc.fabric.api.transfer.v1.client.fluid.FluidVariantRendering;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariantAttributes;
+import net.mcs3.rusticated.compat.Sodium.SodiumCompat;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.RenderType;
@@ -103,7 +104,7 @@ public class RenderUtility
         float g = ((color >> 8) & 255) / 256f;
         float b = (color & 255) / 256f;
 
-        //SodiumCompat.markSpriteActive(sprite);
+        SodiumCompat.markSpriteActive(sprite);
 
         // Make sure fill is within [TANK_W, 1 - TANK_W]
         fill = TANK_W + (1 - 2 * TANK_W) * Math.min(1, Math.max(fill, 0));
