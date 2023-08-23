@@ -2,7 +2,6 @@ package net.mcs3.rusticated;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
-import net.mcs3.rusticated.data.worldgen.features.ModTreeFeatures;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModCompostable;
 import net.mcs3.rusticated.init.ModItems;
@@ -12,7 +11,6 @@ import net.mcs3.rusticated.world.inventory.ModMenuTypes;
 import net.mcs3.rusticated.world.item.alchmey.Elixirs;
 import net.mcs3.rusticated.world.item.alchmey.ModPotions;
 import net.mcs3.rusticated.world.item.crafting.ModRecipes;
-import net.mcs3.rusticated.world.level.levelgen.WorldGeneration;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.ItemStack;
@@ -64,5 +62,9 @@ public class Rusticated implements ModInitializer {
 		Elixirs.initElixirs();
 
 		LOGGER.info("Rusticated Successfully Loaded");
+	}
+
+	public static String loc (String name) {
+		return "rusticated:" + name;
 	}
 }
