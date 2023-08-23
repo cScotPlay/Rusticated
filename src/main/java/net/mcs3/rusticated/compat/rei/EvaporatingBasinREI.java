@@ -12,7 +12,6 @@ import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
 import net.mcs3.rusticated.init.ModBlocks;
-import net.mcs3.rusticated.world.item.crafting.CrushingTubRecipe;
 import net.mcs3.rusticated.world.item.crafting.EvaporatingBasinRecipe;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
