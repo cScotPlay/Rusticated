@@ -45,6 +45,10 @@ public class AdvCondenserRecipe implements Recipe<Container> {
         return getOutputItem().getOrCreateTag();
     }
 
+    public int getArraySize() {
+        return arraySize;
+    }
+
     @Override
     public boolean matches(Container container, Level level) {
         if (level.isClientSide()){return false;}

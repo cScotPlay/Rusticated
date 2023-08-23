@@ -31,6 +31,9 @@
     ],
     "jei_mod_plugin": [
       "net.mcs3.rusticated.compat.jei.RusticatedJEIPlugin"
+    ],
+    "rei_client": [
+      "net.mcs3.rusticated.compat.rei.RusticatedREIPlugin"
     ]
   },
   "mixins": [
