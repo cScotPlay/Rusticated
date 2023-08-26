@@ -7,6 +7,7 @@ import net.fabricmc.fabric.api.transfer.v1.storage.TransferVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.ResourceAmount;
 import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
 import net.fabricmc.fabric.api.transfer.v1.transaction.base.SnapshotParticipant;
+import net.fabricmc.fabric.impl.transfer.TransferApiImpl;
 import net.mcs3.rusticated.util.FastBlockEntity;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
@@ -120,16 +121,10 @@ public abstract class AbstractStorageBlockEntity<T extends TransferVariant<?>> e
 
     public abstract long getCapacityForResource(T resource);
 
-    @Override  //TODO IteratorLook at if this is needed for storage blocks
+    @Override
     public Iterator<StorageView<T>> iterator() {
-        return null;
+        return TransferApiImpl.singletonIterator(this);
     }
-//
-//    @Override
-//    public Iterator<StorageView<T>> iterator(TransactionContext transaction) {
-//        return SingleViewIterator.create(this, transaction);
-//    }
-
 
 
     private class ResourceParticipant extends SnapshotParticipant<ResourceAmount<T>> {
