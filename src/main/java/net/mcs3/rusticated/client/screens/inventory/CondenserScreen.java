@@ -8,6 +8,7 @@ import net.mcs3.rusticated.client.screens.renderer.FluidStackRenderer;
 import net.mcs3.rusticated.fluid.FluidStack;
 import net.mcs3.rusticated.util.MouseUtil;
 import net.mcs3.rusticated.world.inventory.CondenserMenu;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -35,60 +36,57 @@ public class CondenserScreen extends AbstractContainerScreen<CondenserMenu>
     }
 
     @Override
-    protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        renderFluidAreaTooltips(poseStack, mouseX, mouseY, x, y, menu.fluidStack, 134, 27, fluidStackRenderer);
-
+        renderFluidAreaTooltips(guiGraphics, mouseX, mouseY, x, y, menu.fluidStack, 134, 27, fluidStackRenderer);
     }
 
-    private void renderFluidAreaTooltips(PoseStack pPoseStack, int pMouseX, int pMouseY, int x, int y, FluidStack fluidStack, int offsetX, int offsetY, FluidStackRenderer renderer) {
+    private void renderFluidAreaTooltips(GuiGraphics guiGraphics, int pMouseX, int pMouseY, int x, int y, FluidStack fluidStack, int offsetX, int offsetY, FluidStackRenderer renderer) {
         if(isMouseAboveArea(pMouseX, pMouseY, x, y, offsetX, offsetY, renderer)) {
-            renderTooltip(pPoseStack, renderer.getTooltip(fluidStack, TooltipFlag.Default.NORMAL),
-                    Optional.empty(), pMouseX - x, pMouseY - y);
+            renderTooltip(guiGraphics, pMouseX - x, pMouseY - y);
         }
     }
 
-    @Override //Renders Background
-    protected void renderBg(PoseStack poseStack, float partialTick, int mouseX, int mouseY)
-    {
+    @Override
+    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int m;
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, CONDENSER_GUI_TEXTURE);
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
-        this.blit(poseStack, i, j, 0, 0, this.imageWidth, this.imageHeight);
+        guiGraphics.blit(CONDENSER_GUI_TEXTURE, i, j, 0, 0, this.imageWidth, this.imageHeight);
 
         if(menu.isCrafting())
         {
             //Draws Progress Arrow in GUI
-            blit(poseStack, i + 45, j + 30, 176, 14, menu.getScaledProgress(), 28);
+            guiGraphics.blit(CONDENSER_GUI_TEXTURE, i + 45, j + 30, 176, 14, menu.getScaledProgress(), 28);
             //Draws Bubbles in GUI
             m = menu.getScaledProgress();
             int n = (int)(28.0f * (1.0f - (float)m / 72.0f));
             if ((n = BUBBLELENGTHS[m / 2 % 7]) > 0) {
-                this.blit(poseStack, i + 74, j + 14 + 28 - n, 176, 71 - n, 11, n);
+                guiGraphics.blit(CONDENSER_GUI_TEXTURE, i + 74, j + 14 + 28 - n, 176, 71 - n, 11, n);
             }
         }
 
         if(menu.hasFuel())
         {
-            blit(poseStack, i + 71, j + 46 + 14 - menu.getScaledFuelProgress(), 176,
+            guiGraphics.blit(CONDENSER_GUI_TEXTURE, i + 71, j + 46 + 14 - menu.getScaledFuelProgress(), 176,
                     14 - menu.getScaledFuelProgress(), 14, menu.getScaledFuelProgress());
         }
 
         //Draws Fluid in GUI
-        fluidStackRenderer.drawFluid(poseStack, menu.fluidStack, i + 134, j + 27, 16, 32,
+        fluidStackRenderer.drawFluid(guiGraphics, menu.fluidStack, i + 134, j + 27, 16, 32,
                 FluidStack.convertDropletsToMb(FluidConstants.BUCKET) * 8);
     }
 
     @Override
-    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(poseStack);
-        super.render(poseStack, mouseX, mouseY, partialTick);
-        this.renderTooltip(poseStack, mouseX, mouseY);
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        this.renderBackground(guiGraphics);
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
     private void assignFluidStackRenderer() {

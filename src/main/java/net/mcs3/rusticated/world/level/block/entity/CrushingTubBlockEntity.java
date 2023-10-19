@@ -74,7 +74,7 @@ public class CrushingTubBlockEntity extends FastBlockEntity implements ModContai
         Optional<CrushingTubRecipe> match = level.getRecipeManager().getRecipeFor(CrushingTubRecipe.Type.INSTANCE, container, level);
 
         return match.isPresent() && canInsertAmountIntoInputSlot(blockEntity)
-                && canInsertItemIntoInputSlot(blockEntity, match.get().getResultItem());
+                && canInsertItemIntoInputSlot(blockEntity, match.get().getResultItem(blockEntity.getLevel().registryAccess()));
     }
 
     public void crushItems(CrushingTubBlockEntity blockEntity) {

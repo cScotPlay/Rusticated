@@ -116,7 +116,7 @@ public class EvaporatingBasinBlockEntity extends FastBlockEntity implements ModC
         Optional<EvaporatingBasinRecipe> match = level.getRecipeManager().getRecipeFor(EvaporatingBasinRecipe.Type.INSTANCE, container, level);
 
         return match.isPresent() && canInsertAmountIntoOutputSlot(blockEntity)
-                && canInsertItemIntoOutputSlot(blockEntity, match.get().getResultItem());
+                && canInsertItemIntoOutputSlot(blockEntity, match.get().getResultItem(blockEntity.getLevel().registryAccess()));
     }
 
     private static void createEvaporatedItems(EvaporatingBasinBlockEntity blockEntity) {
@@ -130,7 +130,7 @@ public class EvaporatingBasinBlockEntity extends FastBlockEntity implements ModC
         Optional<EvaporatingBasinRecipe> match = level.getRecipeManager().getRecipeFor(EvaporatingBasinRecipe.Type.INSTANCE, container, level);
 
         if(match.isPresent()) {
-            blockEntity.setItem(0, new ItemStack(match.get().getResultItem().getItem(), blockEntity.getItem(0).getCount() + 1));
+            blockEntity.setItem(0, new ItemStack(match.get().getResultItem(blockEntity.getLevel().registryAccess()).getItem(), blockEntity.getItem(0).getCount() + 1));
             blockEntity.resetProgress();
         }
 

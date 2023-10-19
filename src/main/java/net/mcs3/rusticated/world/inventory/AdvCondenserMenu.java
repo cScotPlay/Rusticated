@@ -20,7 +20,7 @@ public class AdvCondenserMenu extends AbstractContainerMenu {
     public AdvCondenserBlockEntity blockEntity;
 
     protected AdvCondenserMenu(int i, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-        this(i, (AdvCondenserBlockEntity) inventory.player.level.getBlockEntity(friendlyByteBuf.readBlockPos()), inventory, new SimpleContainer(6), new SimpleContainerData(6));
+        this(i, (AdvCondenserBlockEntity) inventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()), inventory, new SimpleContainer(6), new SimpleContainerData(6));
     }
 
     public AdvCondenserMenu(int i, AdvCondenserBlockEntity blockEntity, Inventory inventory, Container container, ContainerData containerData) {

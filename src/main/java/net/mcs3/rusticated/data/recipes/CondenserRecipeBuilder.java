@@ -12,6 +12,7 @@ import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -71,7 +72,8 @@ public class CondenserRecipeBuilder implements RecipeBuilder {
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
         this.ensureValid(recipeId);
         this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
-        finishedRecipeConsumer.accept(new CondenserRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.ingredients, this.elixirEffect, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + this.result.getItem().getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()), this.serializer));
+        finishedRecipeConsumer.accept(new CondenserRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.ingredients, this.elixirEffect, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + recipeId.getPath()), this.serializer));
+//        finishedRecipeConsumer.accept(new CondenserRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.ingredients, this.elixirEffect, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + this.result.getItem().getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()), this.serializer));
     }
 
     /**
@@ -121,7 +123,7 @@ public class CondenserRecipeBuilder implements RecipeBuilder {
             json.addProperty("potion", potionText);
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("item", Registry.ITEM.getKey(itemResult.getItem()).toString());
+            jsonObject.addProperty("item", BuiltInRegistries.ITEM.getKey(itemResult.getItem()).toString());
             json.add("result", jsonObject);
         }
 

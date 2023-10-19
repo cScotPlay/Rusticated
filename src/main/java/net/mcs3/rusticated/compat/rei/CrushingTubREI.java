@@ -8,6 +8,7 @@ import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
+import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
@@ -78,7 +79,7 @@ public class CrushingTubREI {
         private final Optional<ResourceLocation> location;
 
         public CrushingTubDisplay(CrushingTubRecipe recipe) {
-            this(EntryIngredients.of(recipe.getResultItem()), EntryIngredients.of(recipe.getBucketItem().getItem()), Optional.ofNullable(recipe.getId()));
+            this(EntryIngredients.of(recipe.getResultItem(BasicDisplay.registryAccess())), EntryIngredients.of(recipe.getBucketItem().getItem()), Optional.ofNullable(recipe.getId()));
         }
 
         public CrushingTubDisplay(EntryIngredient inputs, EntryIngredient outputs, Optional<ResourceLocation> location) {

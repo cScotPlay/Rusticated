@@ -3,6 +3,7 @@ package net.mcs3.rusticated.world.item.alchmey;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.world.effect.ModEffects;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
@@ -18,7 +19,7 @@ public class ModPotions {
     public static Potion TIPSY;
 
     public static Potion register(String name, Potion potion){
-        return Registry.register(Registry.POTION, new ResourceLocation(MODID, name), potion);
+        return Registry.register(BuiltInRegistries.POTION, new ResourceLocation(MODID, name), potion);
     }
 
     public static void registerPotions() {

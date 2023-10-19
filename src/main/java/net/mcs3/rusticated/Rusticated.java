@@ -1,9 +1,9 @@
 package net.mcs3.rusticated;
 
 import net.fabricmc.api.ModInitializer;
-import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModCompostable;
+import net.mcs3.rusticated.init.ModFluids;
 import net.mcs3.rusticated.init.ModItems;
 import net.mcs3.rusticated.util.RegistryHandler;
 import net.mcs3.rusticated.world.effect.ModEffects;
@@ -11,9 +11,10 @@ import net.mcs3.rusticated.world.inventory.ModMenuTypes;
 import net.mcs3.rusticated.world.item.alchmey.Elixirs;
 import net.mcs3.rusticated.world.item.alchmey.ModPotions;
 import net.mcs3.rusticated.world.item.crafting.ModRecipes;
-import net.minecraft.resources.ResourceLocation;
+import net.mcs3.rusticated.world.item.creativetabs.RusticatedCreativeTabs;
+import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.world.item.CreativeModeTab;
-import net.minecraft.world.item.ItemStack;
 import org.apache.logging.log4j.LogManager;
 
 public class Rusticated implements ModInitializer {
@@ -21,18 +22,6 @@ public class Rusticated implements ModInitializer {
 	public static final String MOD_ID = "rusticated";
 	public static final org.apache.logging.log4j.Logger LOGGER = LogManager.getLogger(MOD_ID);
 	public static Rusticated INSTANCE;
-
-	public static CreativeModeTab ITEMGROUPDECO = FabricItemGroupBuilder.build(
-			new ResourceLocation("rusticated", "item_group_deco"),
-			() -> new ItemStack(ModBlocks.GLAZED_POT_4.asItem()));
-
-	public static CreativeModeTab ITEMGROUPAG = FabricItemGroupBuilder.build(
-			new ResourceLocation("rusticated", "item_group_ag"),
-			() -> new ItemStack(ModItems.GRAPES));
-
-	public static CreativeModeTab ITEMGROUPHERB = FabricItemGroupBuilder.build(
-			new ResourceLocation("rusticated", "item_group_herb"),
-			() -> new ItemStack(ModBlocks.CONDENSER.asItem()));
 
 	@Override
 	public void onInitialize() {
@@ -42,24 +31,30 @@ public class Rusticated implements ModInitializer {
 		INSTANCE = this;
 		LOGGER.info("Loading Rusticated");
 
+		RusticatedCreativeTabs.registerItemGroup();
+		Elixirs.initElixirs();
+
+
 		RegistryHandler.onBlockRegistry();
 		RegistryHandler.onFluidRegistry();
 		RegistryHandler.onItemRegistry();
 
 		RegistryHandler.onBlockEntityRegistry();
 
-		RegistryHandler.onTreeFeatureRegistry();
 		RegistryHandler.onGenerateWorldRegistry();
-
-
-
-		ModRecipes.onRecipeRegistry();
-		ModMenuTypes.registerAllMenuTypes();
 
 		ModEffects.registerEffects();
 		ModPotions.registerPotions();
+
+
+
+		ModMenuTypes.registerAllMenuTypes();
+
+
+
 		ModCompostable.registerCompostables();
 		Elixirs.initElixirs();
+		ModRecipes.onRecipeRegistry();
 
 		LOGGER.info("Rusticated Successfully Loaded");
 	}

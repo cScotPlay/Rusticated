@@ -14,13 +14,11 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
-import net.mcs3.rusticated.world.item.crafting.AdvCondenserRecipe;
 import net.mcs3.rusticated.world.item.crafting.CrushingTubRecipe;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-
-import javax.annotation.Nonnull;
 
 public class CrushingTubRecipeCategory implements IRecipeCategory<CrushingTubRecipe> {
 
@@ -64,13 +62,13 @@ public class CrushingTubRecipeCategory implements IRecipeCategory<CrushingTubRec
     }
 
     @Override
-    public void draw(CrushingTubRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
-        this.progress.draw(stack);
+    public void draw(CrushingTubRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        this.progress.draw(guiGraphics);
     }
 
     @Override
-    public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull CrushingTubRecipe recipe, @Nonnull IFocusGroup focusGroup) {
-        builder.addSlot(RecipeIngredientRole.INPUT, 80, 15).addItemStack(recipe.getResultItem());
+    public void setRecipe(IRecipeLayoutBuilder builder, CrushingTubRecipe recipe, IFocusGroup focusGroup) {
+        builder.addSlot(RecipeIngredientRole.INPUT, 80, 15).addItemStack(recipe.getResultItem(null));
         builder.addSlot(RecipeIngredientRole.OUTPUT, 80, 60).addItemStack(recipe.getBucketItem());
     }
 }

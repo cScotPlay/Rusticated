@@ -1,7 +1,7 @@
 package net.mcs3.rusticated.client.screens.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.mcs3.rusticated.util.RenderUtility;
@@ -9,16 +9,15 @@ import net.mcs3.rusticated.world.level.block.entity.CrushingTubBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
-
 
 public class CrushingTubRenderer implements BlockEntityRenderer<CrushingTubBlockEntity> {
 
@@ -49,9 +48,10 @@ public class CrushingTubRenderer implements BlockEntityRenderer<CrushingTubBlock
         for(int i = 1; i <= count; i++) {
             poseStack.translate(0.0, -0.03125f, 0.0);
             poseStack.pushPose();
-            poseStack.mulPose(Vector3f.YP.rotationDegrees(i * 3));
-            poseStack.mulPose(Vector3f.XP.rotationDegrees(-90));
-            itemRenderer.renderStatic(resultItem, ItemTransforms.TransformType.GUI, getLightLevel(blockEntity.getLevel(), blockEntity.getBlockPos()), OverlayTexture.WHITE_OVERLAY_V, poseStack, bufferSource, 1);
+            poseStack.mulPose(Axis.YP.rotationDegrees(i * 3));
+            poseStack.mulPose(Axis.XP.rotationDegrees(-90));
+//            renderStatic(ItemStack itemStack, ItemDisplayContext itemDisplayContext, int i, int j, PoseStack poseStack, MultiBufferSource multiBufferSource, @Nullable Level level, int k)  OverlayTexture.WHITE_OVERLAY_V
+            itemRenderer.renderStatic(resultItem, ItemDisplayContext.GUI, getLightLevel(blockEntity.getLevel(), blockEntity.getBlockPos()), OverlayTexture.WHITE_OVERLAY_V, poseStack, bufferSource, blockEntity.getLevel(), 1);
             poseStack.popPose();
         }
         poseStack.popPose();

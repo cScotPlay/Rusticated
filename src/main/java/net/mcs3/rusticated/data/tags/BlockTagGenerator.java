@@ -2,6 +2,7 @@ package net.mcs3.rusticated.data.tags;
 
 import com.terraformersmc.modmenu.util.mod.Mod;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
@@ -9,56 +10,59 @@ import net.mcs3.rusticated.world.level.block.*;
 import net.mcs3.rusticated.world.level.block.crop.HerbPerennialBlock;
 import net.mcs3.rusticated.world.level.block.crop.ModMushroomBlock;
 import net.mcs3.rusticated.world.level.block.crop.RootBlock;
+import net.minecraft.core.HolderLookup;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.ChainBlock;
 
 import java.util.Comparator;
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 
 public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
 {
     protected final Predicate<Block> BLOCKS = registry -> Rusticated.MOD_ID.equals(registry.asItem().toString());
 
-    public BlockTagGenerator(FabricDataGenerator dataGenerator) {
-        super(dataGenerator);
+    public BlockTagGenerator(FabricDataOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        super(packOutput, registriesFuture);
     }
 
     @Override
-    protected void generateTags()
-    {
+    protected void addTags(HolderLookup.Provider arg) {
+
         // ***************************************************************************** //
         //  Vanilla Tags
         // ***************************************************************************** //
         getOrCreateTagBuilder(BlockTags.PLANKS)
-                .add(registry.stream().filter(b -> b instanceof PlanksBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof PlanksBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.STAIRS)
-                .add(registry.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.STAIRS)
-                .add(registry.stream().filter(b -> b instanceof ColoredStoneStairBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ColoredStoneStairBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.WOODEN_STAIRS)
-                .add(registry.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.SLABS)
-                .add(registry.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.SLABS)
-                .add(registry.stream().filter(b -> b instanceof ColoredStoneSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ColoredStoneSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.WOODEN_SLABS)
-                .add(registry.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.WALLS)
-                .add(registry.stream().filter(b -> b instanceof ColoredStoneWallBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ColoredStoneWallBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.CLIMBABLE)
-                .add(registry.stream().filter(b -> b instanceof ModChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ModChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.CLIMBABLE)
-                .add(registry.stream().filter(b -> b instanceof WeatheringCopperChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof WeatheringCopperChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.CLIMBABLE).add(
                 ModBlocks.ROPE,
@@ -66,7 +70,7 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.IRON_LATTICE);
 
         getOrCreateTagBuilder(BlockTags.CLIMBABLE)
-                .add(registry.stream().filter(b -> b instanceof TiedStakeBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof TiedStakeBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.SAPLINGS).add(
                 ModBlocks.IRONWOOD_SAPLING,
@@ -101,31 +105,31 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
 
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(registry.stream().filter(b -> b instanceof PathBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof PathBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(registry.stream().filter(b -> b instanceof ChandelierBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ChandelierBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(registry.stream().filter(b -> b instanceof ChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(registry.stream().filter(b -> b instanceof WeatheringCopperChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof WeatheringCopperChainBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(registry.stream().filter(b -> b instanceof ColoredStoneBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ColoredStoneBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(registry.stream().filter(b -> b instanceof ColoredStoneSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ColoredStoneSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(registry.stream().filter(b -> b instanceof ColoredStoneStairBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ColoredStoneStairBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(registry.stream().filter(b -> b instanceof ColoredStoneWallBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ColoredStoneWallBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(registry.stream().filter(b -> b instanceof LatticeBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof LatticeBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE).add(
                 ModBlocks.CHANDELIER_WAXED_COPPER,
@@ -152,7 +156,7 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 );
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_PICKAXE)
-                .add(registry.stream().filter(b -> b instanceof WeatheringCopperChandelierBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof WeatheringCopperChandelierBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE).add(
@@ -176,7 +180,7 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
         );
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_AXE)
-                .add(registry.stream().filter(b -> b instanceof FramedWallBlocks).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof FramedWallBlocks).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(BlockTags.MINEABLE_WITH_SHOVEL).add(
                 ModBlocks.FERTILE_SOIL
@@ -219,21 +223,23 @@ public class BlockTagGenerator extends FabricTagProvider.BlockTagProvider
                 ModBlocks.STRIPPED_OLIVE_WOOD);
 
         getOrCreateTagBuilder(ModBlockTags.FRAMED_WALLS)
-                .add(registry.stream().filter(b -> b instanceof FramedWallBlocks).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof FramedWallBlocks).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(ModBlockTags.FLAMMABLE_BLOCK)
-                .add(registry.stream().filter(b -> b instanceof PlanksBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof PlanksBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(ModBlockTags.FLAMMABLE_BLOCK)
-                .add(registry.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ModStairsBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(ModBlockTags.FLAMMABLE_BLOCK)
-                .add(registry.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ModSlabBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
         getOrCreateTagBuilder(ModBlockTags.HERBS)
-                .add(registry.stream().filter(b -> b instanceof HerbPerennialBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new))
-                .add(registry.stream().filter(b -> b instanceof ModMushroomBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new))
-                .add(registry.stream().filter(b -> b instanceof RootBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof HerbPerennialBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new))
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof ModMushroomBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new))
+                .add(BuiltInRegistries.BLOCK.stream().filter(b -> b instanceof RootBlock).sorted(Comparator.comparing(Block::getDescriptionId)).toArray(Block[]::new));
 
     }
+
+
 }

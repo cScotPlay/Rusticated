@@ -46,6 +46,7 @@ public class LiquidBarrelItemBakedModel implements FabricBakedModel, BakedModel 
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void emitItemQuads(ItemStack stack, Supplier<RandomSource> randomSupplier, RenderContext context) {
         context.fallbackConsumer().accept(blockModel);
 

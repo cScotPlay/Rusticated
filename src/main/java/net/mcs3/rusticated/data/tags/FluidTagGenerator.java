@@ -1,24 +1,26 @@
 package net.mcs3.rusticated.data.tags;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModFluids;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.world.level.material.Fluid;
 
+import java.util.concurrent.CompletableFuture;
 import java.util.function.Predicate;
 
 public class FluidTagGenerator extends FabricTagProvider.FluidTagProvider{
 
     protected final Predicate<Fluid> BLOCKS = registry -> Rusticated.MOD_ID.equals(registry.defaultFluidState().toString());
 
-    public FluidTagGenerator(FabricDataGenerator dataGenerator) {
-        super(dataGenerator);
+    public FluidTagGenerator(FabricDataOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        super(packOutput, registriesFuture);
     }
 
     @Override
-    protected void generateTags() {
+    protected void addTags(HolderLookup.Provider arg) {
 
         getOrCreateTagBuilder(FluidTags.WATER).add(
                 ModFluids.SOURCE_ALE_WORT,

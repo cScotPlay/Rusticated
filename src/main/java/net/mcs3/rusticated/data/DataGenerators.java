@@ -8,18 +8,32 @@ import net.mcs3.rusticated.data.recipes.CraftingRecipeBuilder;
 import net.mcs3.rusticated.data.tags.BlockTagGenerator;
 import net.mcs3.rusticated.data.tags.FluidTagGenerator;
 import net.mcs3.rusticated.data.tags.ItemTagGenerator;
+import net.mcs3.rusticated.data.worldgen.WorldGenerator;
+import net.mcs3.rusticated.data.worldgen.features.ModTreeFeatures;
+import net.mcs3.rusticated.data.worldgen.features.ModVegetationFeatures;
+import net.mcs3.rusticated.data.worldgen.placement.ModVegetationPlacement;
+import net.minecraft.core.RegistrySetBuilder;
+import net.minecraft.core.registries.Registries;
 
-public class DataGenerators implements DataGeneratorEntrypoint
-{
+public class DataGenerators implements DataGeneratorEntrypoint {
 
     @Override
-    public void onInitializeDataGenerator(FabricDataGenerator dataGenerator)
-    {
-        dataGenerator.addProvider(CraftingRecipeBuilder::new);
-        dataGenerator.addProvider(BlockStateGenerator::new);
-        dataGenerator.addProvider(LootTableGenerator::new);
-        dataGenerator.addProvider(BlockTagGenerator::new);
-        dataGenerator.addProvider(ItemTagGenerator::new);
-        dataGenerator.addProvider(FluidTagGenerator::new);
+    public void onInitializeDataGenerator(FabricDataGenerator dataGenerator) {
+        FabricDataGenerator.Pack pack = dataGenerator.createPack();
+
+        pack.addProvider(CraftingRecipeBuilder::new);
+        pack.addProvider(BlockStateGenerator::new);
+        pack.addProvider(LootTableGenerator::new);
+        pack.addProvider(BlockTagGenerator::new);
+        pack.addProvider(ItemTagGenerator::new);
+        pack.addProvider(FluidTagGenerator::new);
+        pack.addProvider(WorldGenerator::new);
+    }
+
+    @Override
+    public void buildRegistry(RegistrySetBuilder registryBuilder) {
+        registryBuilder.add(Registries.CONFIGURED_FEATURE, ModTreeFeatures::bootstrap);
+        registryBuilder.add(Registries.CONFIGURED_FEATURE, ModVegetationFeatures::bootstrap);
+        registryBuilder.add(Registries.PLACED_FEATURE, ModVegetationPlacement::bootstrap);
     }
 }

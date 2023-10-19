@@ -11,7 +11,10 @@ import net.minecraft.world.Containers;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -21,8 +24,7 @@ import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -36,7 +38,7 @@ public class EvaporatingBasinBlock extends BaseEntityBlock implements EntityBloc
 
 
     public EvaporatingBasinBlock() {
-        super(BlockBehaviour.Properties.of(Material.STONE, MaterialColor.COLOR_ORANGE)
+        super(BlockBehaviour.Properties.of().mapColor(MapColor.STONE).mapColor(MapColor.COLOR_ORANGE)
                 .requiresCorrectToolForDrops()
                 .strength(1.25f, 4.2f)
                 .sound(SoundType.STONE));

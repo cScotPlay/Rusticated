@@ -12,7 +12,10 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.biome.Biome;
@@ -22,8 +25,8 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -40,7 +43,7 @@ import java.util.stream.Stream;
 public class LiquidBarrelBlock extends BaseEntityBlock implements EntityBlock {
 
     public LiquidBarrelBlock() {
-        super(Properties.of(Material.WOOD)
+        super(Properties.of().mapColor(MapColor.WOOD)
                 .noOcclusion()
                 .strength(2.0f, 3.0f)
                 .sound(SoundType.WOOD));
@@ -159,10 +162,9 @@ public class LiquidBarrelBlock extends BaseEntityBlock implements EntityBlock {
         return stack;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
-    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        LootContext lootContext = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        LootParams lootContext = params.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
         return Arrays.asList(getStack(lootContext.getParamOrNull(LootContextParams.BLOCK_ENTITY)));
     }
 

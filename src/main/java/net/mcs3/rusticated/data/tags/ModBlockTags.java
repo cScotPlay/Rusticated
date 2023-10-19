@@ -1,7 +1,7 @@
 package net.mcs3.rusticated.data.tags;
 
 import net.mcs3.rusticated.Rusticated;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.level.block.Block;
@@ -15,6 +15,6 @@ public class ModBlockTags
     public static final TagKey<Block> HERBS = create("herbs");
 
     private static TagKey<Block> create(String name) {
-        return TagKey.create(Registry.BLOCK_REGISTRY, new ResourceLocation(Rusticated.MOD_ID, name));
+        return TagKey.create(Registries.BLOCK, new ResourceLocation(Rusticated.MOD_ID, name));
     }
 }

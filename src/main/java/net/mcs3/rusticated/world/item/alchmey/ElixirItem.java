@@ -3,6 +3,7 @@ package net.mcs3.rusticated.world.item.alchmey;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.util.NbtUtility;
 import net.minecraft.advancements.CriteriaTriggers;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.core.NonNullList;
 import net.minecraft.network.chat.Component;
 import net.minecraft.server.level.ServerPlayer;
@@ -26,7 +27,7 @@ import java.util.List;
 
 public class ElixirItem extends Item {
     public ElixirItem() {
-        super(new Item.Properties().stacksTo(16).tab(Rusticated.ITEMGROUPHERB));
+        super(new Item.Properties().stacksTo(16));
     }
 
     @Override
@@ -109,16 +110,28 @@ public class ElixirItem extends Item {
         return stack.hasTag() ? NbtUtility.getString(stack, "elixir", "none") : "none";
     }
 
-    @Override
-    public void fillItemCategory(CreativeModeTab category, NonNullList<ItemStack> items) {
-        if (this.allowedIn(category)) {
-            for (Potion potion : Elixirs.ELIXIRS) {
-                if (potion == Potions.EMPTY) continue;{
-                    items.add(PotionUtils.setPotion(new ItemStack(this), potion));
-                }
 
-            }
-        }
+//    @Override
+//    public void fillItemCategory(CreativeModeTab category, NonNullList<ItemStack> items) {
+//        if (this.allowedIn(category)) {
+//            for (Potion potion : Elixirs.ELIXIRS) {
+//                if (potion == Potions.EMPTY) continue;{
+//                    items.add(PotionUtils.setPotion(new ItemStack(this), potion));
+//                }
+//
+//            }
+//        }
+//    }
+//TODO update this for elixors
+
+    private static void generatePotionEffectTypes(CreativeModeTab.Output output, HolderLookup<Potion> potions, Item potionItem, CreativeModeTab.TabVisibility tabVisibility) {
+        potions.listElements().filter((reference) -> {
+            return !reference.is(Potions.EMPTY_ID);
+        }).map((reference) -> {
+            return PotionUtils.setPotion(new ItemStack(potionItem), (Potion)reference.value());
+        }).forEach((itemStack) -> {
+            output.accept(itemStack, tabVisibility);
+        });
     }
 
 

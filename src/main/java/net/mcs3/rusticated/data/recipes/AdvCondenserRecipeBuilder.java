@@ -12,6 +12,7 @@ import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -33,21 +34,21 @@ public class AdvCondenserRecipeBuilder implements RecipeBuilder {
     private final Advancement.Builder advancement = Advancement.Builder.advancement();
     @Nullable
     private String group;
-    private final RecipeSerializer<? extends AdvCondenserRecipe.Serializer> serializer;
+    private final RecipeSerializer<?> serializer = AdvCondenserRecipe.Serializer.INSTANCE;
 
-    private AdvCondenserRecipeBuilder(Potion elixir, List<Ingredient> ingredients, RecipeSerializer<? extends AdvCondenserRecipe.Serializer> condenserCookingSerializer) {
+    private AdvCondenserRecipeBuilder(Potion elixir, List<Ingredient> ingredients) {
         this.elixirEffect = elixir;
         this.ingredients = Lists.newArrayList(ingredients);
-        this.serializer = condenserCookingSerializer;
+//        this.serializer;
         this.result = PotionUtils.setPotion(new ItemStack(ModItems.ELIXIR), elixir);
     }
 
-    public static AdvCondenserRecipeBuilder cooking(List<Ingredient> ingredient, Potion elixirEffect, RecipeSerializer<? extends AdvCondenserRecipe.Serializer> serializer) {
-        return new AdvCondenserRecipeBuilder(elixirEffect, ingredient, serializer);
+    public static AdvCondenserRecipeBuilder cooking(List<Ingredient> ingredient, Potion elixirEffect) {
+        return new AdvCondenserRecipeBuilder(elixirEffect, ingredient);
     }
 
     public static AdvCondenserRecipeBuilder condenser(List<Ingredient> ingredient, Potion elixirEffect) {
-        return AdvCondenserRecipeBuilder.cooking(ingredient, elixirEffect, ModRecipes.ADV_CONDENSER_RECIPE_SERIALIZER);
+        return AdvCondenserRecipeBuilder.cooking(ingredient, elixirEffect);
     }
 
     @Override
@@ -71,7 +72,8 @@ public class AdvCondenserRecipeBuilder implements RecipeBuilder {
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
         this.ensureValid(recipeId);
         this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
-        finishedRecipeConsumer.accept(new AdvCondenserRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.ingredients, this.elixirEffect, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + this.result.getItem().getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()), this.serializer));
+        finishedRecipeConsumer.accept(new AdvCondenserRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.ingredients, this.elixirEffect, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/"  + recipeId.getPath()), this.serializer));
+//        finishedRecipeConsumer.accept(new AdvCondenserRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.ingredients, this.elixirEffect, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + this.result.getItem().getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()), this.serializer));
     }
 
     /**
@@ -91,9 +93,9 @@ public class AdvCondenserRecipeBuilder implements RecipeBuilder {
         private final Potion elixir;
         private final Advancement.Builder advancement;
         private final ResourceLocation advancementId;
-        private final RecipeSerializer<? extends AdvCondenserRecipe.Serializer> serializer;
+        private final RecipeSerializer<?> serializer;
 
-        public Result(ResourceLocation resourceLocation, String string, List<Ingredient> ingredients, Potion elixir, Advancement.Builder builder, ResourceLocation resourceLocation2, RecipeSerializer<? extends AdvCondenserRecipe.Serializer> recipeSerializer) {
+        public Result(ResourceLocation resourceLocation, String string, List<Ingredient> ingredients, Potion elixir, Advancement.Builder builder, ResourceLocation resourceLocation2, RecipeSerializer<?> recipeSerializer) {
             this.id = resourceLocation;
             this.group = string;
             this.ingredients = ingredients;
@@ -121,7 +123,7 @@ public class AdvCondenserRecipeBuilder implements RecipeBuilder {
             json.addProperty("potion", potionText);
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("item", Registry.ITEM.getKey(itemResult.getItem()).toString());
+            jsonObject.addProperty("item", BuiltInRegistries.ITEM.getKey(itemResult.getItem()).toString());
             json.add("result", jsonObject);
         }
 
@@ -130,9 +132,13 @@ public class AdvCondenserRecipeBuilder implements RecipeBuilder {
             return this.id;
         }
 
+        public RecipeSerializer<?> getSerializer() {
+            return AdvCondenserRecipe.Serializer.INSTANCE;
+        }
+
         @Override
         public RecipeSerializer<?> getType() {
-            return ModRecipes.ADV_CONDENSER_RECIPE_SERIALIZER;
+            return AdvCondenserRecipe.Serializer.INSTANCE;
         }
 
         @Nullable

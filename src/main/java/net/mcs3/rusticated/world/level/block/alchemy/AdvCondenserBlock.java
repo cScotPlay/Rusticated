@@ -30,7 +30,7 @@ import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -39,7 +39,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import org.jetbrains.annotations.Nullable;
 
-import java.util.Random;
 import java.util.stream.Stream;
 
 public class AdvCondenserBlock extends BaseEntityBlock implements EntityBlock {
@@ -48,7 +47,7 @@ public class AdvCondenserBlock extends BaseEntityBlock implements EntityBlock {
     public static final BooleanProperty BOTTOM = BlockStateProperties.BOTTOM;
 
     public AdvCondenserBlock() {
-        super(Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(3.5f).sound(SoundType.STONE).lightLevel(blockState -> blockState.getValue(BlockStateProperties.LIT) ? 13 : 0).noOcclusion());
+        super(Properties.of().mapColor(MapColor.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.BLOCK).strength(3.5f).sound(SoundType.STONE).lightLevel(blockState -> blockState.getValue(BlockStateProperties.LIT) ? 13 : 0).noOcclusion());
         this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(FACING, Direction.NORTH)).setValue(LIT, false).setValue(BOTTOM, true));
     }
 
@@ -136,11 +135,6 @@ public class AdvCondenserBlock extends BaseEntityBlock implements EntityBlock {
     @Override
     public void setPlacedBy(Level level, BlockPos pos, BlockState state, LivingEntity placer, ItemStack stack) {
         level.setBlock(pos.above(), (BlockState)state.setValue(FACING, state.getValue(FACING)).setValue(LIT, false).setValue(BOTTOM, false), 3);
-    }
-
-    @Override
-    public PushReaction getPistonPushReaction(BlockState state) {
-        return PushReaction.BLOCK;
     }
 
     @Nullable

@@ -15,7 +15,7 @@ import net.mcs3.rusticated.util.FastBlockEntity;
 import net.mcs3.rusticated.world.item.BoozeItem;
 import net.mcs3.rusticated.world.item.FluidBottleItem;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
@@ -61,7 +61,7 @@ public class JarBlockEntity extends FastBlockEntity {
             return;
         }
 
-        for(Item fluidItem : Registry.ITEM.stream().toList()) {
+        for(Item fluidItem : BuiltInRegistries.ITEM.stream().toList()) {
             if(fluidItem.getDefaultInstance().is(ModItemTags.FLUID_BOTTLES)) {
                 if(fluidItem instanceof BoozeItem) {
                     BoozeItem boozeItem = (BoozeItem) fluidItem;

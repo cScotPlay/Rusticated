@@ -15,14 +15,13 @@ import net.mcs3.rusticated.client.screens.inventory.BrewingBarrelScreen;
 import net.mcs3.rusticated.client.screens.inventory.CondenserScreen;
 import net.mcs3.rusticated.client.screens.renderer.CrushingTubRenderer;
 import net.mcs3.rusticated.client.screens.renderer.EvaporationBasinRenderer;
+import net.mcs3.rusticated.client.screens.renderer.LiquidBarrelRenderer;
+import net.mcs3.rusticated.client.screens.renderer.PotRenderer;
 import net.mcs3.rusticated.client.screens.renderer.entity.ModEntityRenderers;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.network.ModNetworkSync;
 import net.mcs3.rusticated.world.inventory.ModMenuTypes;
 import net.mcs3.rusticated.world.level.block.entity.ModBlockEntityTypes;
-import net.mcs3.rusticated.client.screens.renderer.LiquidBarrelRenderer;
-import net.mcs3.rusticated.world.level.block.storage.pot.GlazedPotRenderer;
-import net.mcs3.rusticated.world.level.block.storage.pot.PotRenderer;
 import net.mcs3.rusticated.world.level.block.storage.pot.PotToolTipData;
 import net.mcs3.rusticated.world.level.block.storage.pot.client.PotTooltipComponent;
 import net.minecraft.client.gui.screens.MenuScreens;
@@ -46,7 +45,6 @@ public class RusticatedClient implements ClientModInitializer
         FluidColorRegistry.registerClientFluids();
         ModNetworkSync.registerS2CPackets();
         registerScreenTypes();
-        setupTooltips();
         registerLayers();
     }
 
@@ -112,18 +110,11 @@ public class RusticatedClient implements ClientModInitializer
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.CRUSHING_TUB, RenderType.cutout());
         BlockRenderLayerMap.INSTANCE.putBlock(ModBlocks.OAK_BREWING_BARREL, RenderType.cutoutMipped());
 
-
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.LIQUID_BARREL_CONTAINER, LiquidBarrelRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.EVAPORATING_BASIN_CONTAINER, EvaporationBasinRenderer::new);
         BlockEntityRendererRegistry.register(ModBlockEntityTypes.CRUSHING_TUB_CONTAINER, CrushingTubRenderer::new);
 
-        PotRenderer.register(ModBlockEntityTypes.POT_CONTAINER);
-        GlazedPotRenderer.register(ModBlockEntityTypes.GLAZED_POT_0_CONTAINER);
-        GlazedPotRenderer.register(ModBlockEntityTypes.GLAZED_POT_1_CONTAINER);
-        GlazedPotRenderer.register(ModBlockEntityTypes.GLAZED_POT_2_CONTAINER);
-        GlazedPotRenderer.register(ModBlockEntityTypes.GLAZED_POT_3_CONTAINER);
-        GlazedPotRenderer.register(ModBlockEntityTypes.GLAZED_POT_4_CONTAINER);
-
+        BlockEntityRendererRegistry.register(ModBlockEntityTypes.POT_BLOCK_ENTITY, PotRenderer::new);
     }
 
     private static void registerScreenTypes()

@@ -8,6 +8,7 @@ import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
+import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
@@ -96,7 +97,7 @@ public class AdvCondenserREI {
         private final int arraySize;
 
         public AdvCondenserDisplay(AdvCondenserRecipe recipe) {
-            this(EntryIngredients.ofIngredients(recipe.getIngredients()), EntryIngredients.of(recipe.getResultItem()), recipe.getArraySize(), Optional.ofNullable(recipe.getId()));
+            this(EntryIngredients.ofIngredients(recipe.getIngredients()), EntryIngredients.of(recipe.getResultItem(BasicDisplay.registryAccess())), recipe.getArraySize(), Optional.ofNullable(recipe.getId()));
         }
 
         public AdvCondenserDisplay(List<EntryIngredient> inputs, EntryIngredient output, int arraySize, Optional<ResourceLocation> location) {

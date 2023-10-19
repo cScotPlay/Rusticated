@@ -32,16 +32,24 @@ public class LiquidBarrelItemUnbakedModel implements UnbakedModel
     }
 
     @Override
-    public Collection<Material> getMaterials(Function<ResourceLocation, UnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors){
-        return modelGetter.apply(blockModel).getMaterials(modelGetter, missingTextureErrors);
+    public void resolveParents(Function<ResourceLocation, UnbakedModel> function) {
+
     }
 
     @Nullable
     @Override
-    public BakedModel bake(ModelBakery modelBakery, Function<net.minecraft.client.resources.model.Material, TextureAtlasSprite> spriteGetter, ModelState transform, ResourceLocation location) {
-        var blockModel = modelBakery.bake(this.blockModel, transform);
+    public BakedModel bake(ModelBaker modelBaker, Function<Material, TextureAtlasSprite> function, ModelState modelState, ResourceLocation resourceLocation) {
+        var blockModel = modelBaker.bake(this.blockModel, modelState);
         Renderer renderer = RendererAccess.INSTANCE.getRenderer();
         var translucentMaterial = renderer.materialFinder().blendMode(0, BlendMode.TRANSLUCENT).emissive(0, true).find();
         return new LiquidBarrelItemBakedModel(blockModel, translucentMaterial);
     }
+
+
+//    @Override
+//    public Collection<Material> getMaterials(Function<ResourceLocation, UnbakedModel> modelGetter, Set<Pair<String, String>> missingTextureErrors){
+//        return modelGetter.apply(blockModel).getMaterials(modelGetter, missingTextureErrors);
+//    }
+
+
 }

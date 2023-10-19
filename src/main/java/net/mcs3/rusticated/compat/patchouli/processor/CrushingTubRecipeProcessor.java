@@ -5,6 +5,7 @@ import net.mcs3.rusticated.world.item.crafting.EvaporatingBasinRecipe;
 import net.mcs3.rusticated.world.item.crafting.ModRecipes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariable;
 import vazkii.patchouli.api.IVariableProvider;
@@ -14,9 +15,8 @@ import java.util.List;
 public class CrushingTubRecipeProcessor implements IComponentProcessor {
     private CrushingTubRecipe recipe;
 
-
     @Override
-    public void setup(IVariableProvider variables) {
+    public void setup(Level level, IVariableProvider variables) {
         ResourceLocation id = new ResourceLocation(variables.get("recipes").asString());
         List<CrushingTubRecipe> recipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipes.CRUSHING_RECIPE_TYPE);
         for(CrushingTubRecipe r : recipes) {
@@ -30,10 +30,9 @@ public class CrushingTubRecipeProcessor implements IComponentProcessor {
     }
 
     @Override
-    public IVariable process(String key) {
-
+    public IVariable process(Level level, String key) {
         if (key.equals("ingredient")) {
-            return IVariable.from(recipe.getResultItem());
+            return IVariable.from(recipe.getResultItem(null));
         }
         if(key.equals("fluidbucket")) {
             return IVariable.from(recipe.getBucketItem());

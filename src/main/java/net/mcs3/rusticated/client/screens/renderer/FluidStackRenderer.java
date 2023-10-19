@@ -1,20 +1,29 @@
 package net.mcs3.rusticated.client.screens.renderer;
 
 import com.google.common.base.Preconditions;
+import com.mojang.authlib.minecraft.client.MinecraftClient;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.blaze3d.vertex.*;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandler;
+import net.fabricmc.fabric.api.client.render.fluid.v1.FluidRenderHandlerRegistry;
 import net.fabricmc.fabric.api.transfer.v1.client.fluid.FluidVariantRendering;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.fluid.FluidStack;
 import net.minecraft.ChatFormatting;
-import net.minecraft.client.gui.GuiComponent;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.GuiGraphics;
+import net.minecraft.client.particle.ParticleProvider;
+import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
-import net.minecraft.network.chat.*;
+import net.minecraft.core.BlockPos;
+import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.MutableComponent;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.level.material.Fluids;
+import org.joml.Matrix4f;
 
 import java.text.NumberFormat;
 import java.util.ArrayList;
@@ -83,34 +92,40 @@ public class FluidStackRenderer implements IIngredientRenderer<FluidStack> {
     /*
      * METHOD FROM https://github.com/TechReborn/TechReborn
      * UNDER MIT LICENSE: https://github.com/TechReborn/TechReborn/blob/1.19/LICENSE.md
+     * https://github.com/TechReborn/TechReborn/blob/1.20/src/client/java/techreborn/client/compat/rei/ReiPlugin.java
      */
-    public void drawFluid(PoseStack matrixStack, FluidStack fluid, int x, int y, int width, int height, long maxCapacity) {
-        if (fluid.getFluidVariant().getFluid() == Fluids.EMPTY) {
+    public void drawFluid(GuiGraphics guiGraphics, FluidStack fluid, int x, int y, int width, int height, long maxCapacity) {
+
+        y += height;
+
+        FluidRenderHandler handler = FluidRenderHandlerRegistry.INSTANCE.get(fluid.fluidVariant.getFluid());
+
+        // If registry can't find it, don't render.
+        if (handler == null) {
             return;
         }
-        RenderSystem.setShaderTexture(0, InventoryMenu.BLOCK_ATLAS);
-        y += height;
-        final TextureAtlasSprite sprite = FluidVariantRendering.getSprite(fluid.getFluidVariant());
-        int color = FluidVariantRendering.getColor(fluid.getFluidVariant());
 
-        final int drawHeight = (int) (fluid.getAmount() / (maxCapacity * 1F) * height);
-        final int iconHeight = sprite.getHeight();
-        int offsetHeight = drawHeight;
+        final TextureAtlasSprite sprite = handler.getFluidSprites(Minecraft.getInstance().level, BlockPos.ZERO, fluid.getFluidVariant().getFluid().defaultFluidState())[0];
+        int color = FluidRenderHandlerRegistry.INSTANCE.get(fluid.getFluidVariant().getFluid()).getFluidColor(Minecraft.getInstance().level, BlockPos.ZERO, fluid.getFluidVariant().getFluid().defaultFluidState());
+
+        final int iconHeight = sprite.contents().height();
+        int offsetHeight = height;
 
         RenderSystem.setShaderColor((color >> 16 & 255) / 255.0F, (float) (color >> 8 & 255) / 255.0F, (float) (color & 255) / 255.0F, 1F);
 
         int iteration = 0;
         while (offsetHeight != 0) {
-            final int curHeight = offsetHeight < iconHeight ? offsetHeight : iconHeight;
+            final int curHeight = Math.min(offsetHeight, iconHeight);
 
-            GuiComponent.blit(matrixStack, x, y - offsetHeight, 0, width, curHeight, sprite);
+            guiGraphics.blit(x, y - offsetHeight, 0, width, curHeight, sprite);
             offsetHeight -= curHeight;
             iteration++;
             if (iteration > 50) {
                 break;
             }
         }
-        RenderSystem.setShaderColor(1F, 1F, 1F, 1F);
+        RenderSystem.setShaderColor(1, 1, 1, 1);
+
     }
 
     @Override

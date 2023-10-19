@@ -26,7 +26,7 @@ public class LiquidBarrelItem extends BlockItem
     public final long capacity;
 
     public LiquidBarrelItem(Block block, long capacity) {
-        super(block, new Item.Properties().tab(Rusticated.ITEMGROUPDECO));
+        super(block, new Item.Properties());
         this.capacity = FluidConstants.BUCKET * capacity;
     }
 

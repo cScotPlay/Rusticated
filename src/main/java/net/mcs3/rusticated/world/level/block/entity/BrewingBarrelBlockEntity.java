@@ -20,7 +20,7 @@ import net.mcs3.rusticated.world.item.FluidBottleItem;
 import net.mcs3.rusticated.world.item.crafting.BrewingBarrelRecipe;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.chat.Component;
@@ -31,7 +31,10 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.ContainerData;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BucketItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.entity.BlockEntity;
@@ -50,6 +53,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
     protected final ContainerData dataAccess;
     private int progress = 0;
     private int maxProgress = 12000;
+//    private int maxProgress = 120; TODO Chnage this back
     private int primerQuality = 0;
     private int resultQuality = 0;
 
@@ -185,7 +189,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
     private static void tryToBrewFluids(BrewingBarrelBlockEntity blockEntity, BrewingBarrelRecipe brewingRecipe) {
         Fluid recipeFluid = brewingRecipe.getInputFluid();
         Fluid barrelFluid = blockEntity.inputFluidStorage.variant.getFluid();
-        BoozeItem boozeItem = (BoozeItem) brewingRecipe.getResultItem().getItem();
+        BoozeItem boozeItem = (BoozeItem) brewingRecipe.getResultItem(blockEntity.getLevel().registryAccess()).getItem();
         Fluid resultFluid = boozeItem.getFluidType();
         long inputFluidAmount = blockEntity.inputFluidStorage.amount;
 
@@ -393,7 +397,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
                 if (!matchAll.isEmpty()) {
                     for (int i = 0; i < matchAll.size(); i++) {
                         BrewingBarrelRecipe tryRecipe = matchAll.get(i);
-                        BoozeItem boozeItem = (BoozeItem) tryRecipe.getResultItem().getItem();
+                        BoozeItem boozeItem = (BoozeItem) tryRecipe.getResultItem(blockEntity.getLevel().registryAccess()).getItem();
                         Fluid recipeFluid = boozeItem.getFluidType();
                         if(recipeFluid == barrelFluid) {
                             blockEntity.recipe = tryRecipe;
@@ -401,7 +405,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
                     }
                 }
                 int slotCount = blockEntity.getItem(3).getCount();
-                ItemStack resultItem = new ItemStack(blockEntity.recipe.getResultItem().getItem(), slotCount + 1);
+                ItemStack resultItem = new ItemStack(blockEntity.recipe.getResultItem(blockEntity.getLevel().registryAccess()).getItem(), slotCount + 1);
                 CompoundTag qualityTag = new CompoundTag();
                 qualityTag.putFloat("rusticated.fluid_quality", (float) blockEntity.primerQuality / 100);
                 resultItem.setTag(qualityTag);
@@ -417,17 +421,22 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
             else if(blockEntity.primerFluidStorage.variant.isBlank() && blockEntity.getItem(0).getItem() instanceof BoozeItem) {
                 BoozeItem cupItem = (BoozeItem) blockEntity.getItem(0).getItem();
                 Fluid fluid = cupItem.getFluidType();
-                int cupQuality = (int) (blockEntity.getItem(0).getOrCreateTag().getFloat("rusticated.fluid_quality") * 100);
 
-                blockEntity.primerFluidStorage.insert(FluidVariant.of(fluid),
+                if (blockEntity.inputFluidStorage.variant.getFluid() == fluid || blockEntity.inputFluidStorage.variant.isBlank()) {
+                    int cupQuality = (int) (blockEntity.getItem(0).getOrCreateTag().getFloat("rusticated.fluid_quality") * 100);
+
+                    blockEntity.primerFluidStorage.insert(FluidVariant.of(fluid),
                         FluidStack.convertDropletsToMb(FluidConstants.BUCKET), transaction);
-                transaction.commit();
-                blockEntity.primerQuality = cupQuality;
-                blockEntity.removeItem(0, 1);
-                int count = blockEntity.getItem(3).getCount();
-                blockEntity.setItem(3, new ItemStack(Items.GLASS_BOTTLE, count + 1));
-                resetProgress(blockEntity);
-                blockEntity.update();
+                    transaction.commit();
+                    blockEntity.primerQuality = cupQuality;
+                    blockEntity.removeItem(0, 1);
+                    int count = blockEntity.getItem(3).getCount();
+                    blockEntity.setItem(3, new ItemStack(Items.GLASS_BOTTLE, count + 1));
+                    resetProgress(blockEntity);
+                    blockEntity.update();
+                }
+
+
             }
         }
     }
@@ -465,7 +474,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
                     }
                 }
                 else {
-                    for(Item fluidBottle : Registry.ITEM.stream().toList()) {
+                    for(Item fluidBottle : BuiltInRegistries.ITEM.stream().toList()) {
                         if(fluidBottle.getDefaultInstance().is(ModItemTags.FLUID_BOTTLES)) {
                             }if (fluidBottle instanceof FluidBottleItem) {
                                 FluidBottleItem fluidBottleItem = (FluidBottleItem) fluidBottle;
@@ -519,7 +528,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
 
             else if(blockEntity.inputFluidStorage.getCapacity() > blockEntity.inputFluidStorage.amount &&
                     (blockEntity.inputFluidStorage.getCapacity() - blockEntity.inputFluidStorage.amount) > 1000 &&
-                    !fluidItem.getDefaultInstance().is(ModItemTags.FLUID_BOTTLES)) {
+                    !fluidItem.getDefaultInstance().is(ModItemTags.FLUID_BOTTLES) && !fluidItem.getDefaultInstance().is(Items.GLASS_BOTTLE)) {
                 BucketItem bucketItem = (BucketItem) fluidItem;
                 Fluid fluid = ((BucketItemAccessor) bucketItem).fabric_getFluid();
                 blockEntity.inputFluidStorage.insert(FluidVariant.of(fluid),
@@ -547,7 +556,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
             if (!matchAll.isEmpty()) {
                 for (int i = 0; i < matchAll.size(); i++) {
                     BrewingBarrelRecipe tryRecipe = matchAll.get(i);
-                    BoozeItem boozeItem = (BoozeItem) tryRecipe.getResultItem().getItem();
+                    BoozeItem boozeItem = (BoozeItem) tryRecipe.getResultItem(blockEntity.getLevel().registryAccess()).getItem();
                     Fluid recipeFluid = boozeItem.getFluidType();
                     if(recipeFluid == barrelFluid) {
                         blockEntity.recipe = tryRecipe;
@@ -556,7 +565,7 @@ public class BrewingBarrelBlockEntity extends BlockEntity implements ExtendedScr
             }
 
             int slotCount = blockEntity.getItem(5).getCount();
-            ItemStack resultItem = new ItemStack(blockEntity.recipe.getResultItem().getItem(), slotCount + 1);
+            ItemStack resultItem = new ItemStack(blockEntity.recipe.getResultItem(blockEntity.getLevel().registryAccess()).getItem(), slotCount + 1);
             CompoundTag qualityTag = new CompoundTag();
             qualityTag.putFloat("rusticated.fluid_quality", (float) blockEntity.resultQuality / 100);
             resultItem.setTag(qualityTag);

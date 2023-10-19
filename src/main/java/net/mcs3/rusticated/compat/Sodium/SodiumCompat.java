@@ -3,8 +3,8 @@ package net.mcs3.rusticated.compat.Sodium;
 import net.fabricmc.loader.api.FabricLoader;
 import net.mcs3.rusticated.Rusticated;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.lang.invoke.MethodHandle;
 import java.lang.invoke.MethodHandles;
 import java.lang.invoke.MethodType;

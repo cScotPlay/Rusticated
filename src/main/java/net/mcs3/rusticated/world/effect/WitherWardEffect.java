@@ -13,7 +13,7 @@ public class WitherWardEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity livingEntity, int amplifier) {
-        if(livingEntity != null && !livingEntity.level.isClientSide) {
+        if(livingEntity != null && !livingEntity.level().isClientSide) {
             MobEffectInstance wither = livingEntity.getEffect(MobEffects.WITHER);
             if(wither != null) {
                 livingEntity.removeEffect(MobEffects.WITHER);

@@ -2,6 +2,7 @@ package net.mcs3.rusticated.world.item.crafting;
 
 import com.google.gson.JsonObject;
 import net.fabricmc.fabric.mixin.transfer.BucketItemAccessor;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -48,17 +49,17 @@ public class EvaporatingBasinRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container container) {
-        return outputItem;
+    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
+        throw  new UnsupportedOperationException();
     }
 
     @Override
     public boolean canCraftInDimensions(int width, int height) {
-        return true;
+        throw new UnsupportedOperationException();
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return outputItem;
     }
 

@@ -18,13 +18,15 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -43,7 +45,7 @@ public class ModMushroomBlock extends CropBlock
             Block.box(0.0, 0.0, 0.0, 16.0, 15.0, 16.0)};
 
     public ModMushroomBlock(TagKey<Block> plantOnBlock) {
-        super(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().lightLevel((blockStatex) -> {
+        super(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().lightLevel((blockStatex) -> {
             return 8;
         }).instabreak().sound(SoundType.CROP));
         this.MUSHROOMTYPE = getMushroomdBase();
@@ -93,7 +95,7 @@ public class ModMushroomBlock extends CropBlock
 
     @Override
     public ItemStack getCloneItemStack(BlockGetter level, BlockPos pos, BlockState state) {
-        return new ItemStack(MUSHROOMTYPE);
+        return new ItemStack(getMushroomdBase());
     }
 
     @Override
@@ -138,6 +140,6 @@ public class ModMushroomBlock extends CropBlock
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return MUSHROOMTYPE;
+        return getMushroomdBase();
     }
 }

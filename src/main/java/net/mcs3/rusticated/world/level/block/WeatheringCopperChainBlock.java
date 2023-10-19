@@ -44,32 +44,74 @@ public class WeatheringCopperChainBlock extends ChainBlock implements Weathering
         return this.weatherState;
     }
 
+//    @Override
+//    @SuppressWarnings("deprecation")
+//    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
+//    {
+//        ItemStack heldItemStack = player.getMainHandItem();
+//        Item heldItem = heldItemStack.getItem();
+//        Item chain = this.asItem();
+//
+//        if(heldItem == chain){
+//            Boolean isChain = true;
+//            Block currentBlock = this;
+//            BlockPos currentPos = pos;
+//            while (isChain)
+//            {
+//                currentPos = currentPos.below();
+//                currentBlock = level.getBlockState(currentPos).getBlock();
+//
+//                if(currentBlock != this)
+//                {
+//                    isChain = false;
+//                }
+//            }
+//            if (currentBlock != Blocks.AIR)
+//                return InteractionResult.FAIL;
+//            else
+//            {
+//                int heldItemStackCount = heldItemStack.getCount() - 1;
+//                ItemStack newHeldItemStack = new ItemStack(heldItem, heldItemStackCount);
+//                level.setBlockAndUpdate(currentPos, this.defaultBlockState());
+//                level.playSound(player, pos, SoundType.CHAIN.getPlaceSound(), SoundSource.BLOCKS, soundType.getVolume() + 1.0F, soundType.getPitch() * 0.8F);
+//                player.setItemInHand(hand, newHeldItemStack);
+//                return InteractionResult.CONSUME;
+//            }
+//        }
+//        else
+//            return InteractionResult.FAIL;
+//    }
+
     @Override
     @SuppressWarnings("deprecation")
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit)
-    {
+    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult hit) {
         ItemStack heldItemStack = player.getMainHandItem();
         Item heldItem = heldItemStack.getItem();
         Item chain = this.asItem();
 
+//        if(heldItem instanceof AxeItem) {
+//            if(state.getBlock() instanceof ModChainBlock) {
+//                var waxBlock = CopperStateUtil.getUnwaxed(state.getBlock());
+//                level.setBlock(pos, waxBlock.map(b -> b.withPropertiesOf(state)).get(), 11);
+//                level.levelEvent(player, 3003, pos, 0);
+//                return InteractionResult.PASS;
+//            }
+//        }
         if(heldItem == chain){
             Boolean isChain = true;
             Block currentBlock = this;
             BlockPos currentPos = pos;
-            while (isChain)
-            {
+            while (isChain) {
                 currentPos = currentPos.below();
                 currentBlock = level.getBlockState(currentPos).getBlock();
 
-                if(currentBlock != this)
-                {
+                if(currentBlock != this) {
                     isChain = false;
                 }
             }
             if (currentBlock != Blocks.AIR)
                 return InteractionResult.FAIL;
-            else
-            {
+            else {
                 int heldItemStackCount = heldItemStack.getCount() - 1;
                 ItemStack newHeldItemStack = new ItemStack(heldItem, heldItemStackCount);
                 level.setBlockAndUpdate(currentPos, this.defaultBlockState());
@@ -79,7 +121,7 @@ public class WeatheringCopperChainBlock extends ChainBlock implements Weathering
             }
         }
         else
-            return InteractionResult.FAIL;
+            return InteractionResult.PASS;
     }
 
 

@@ -22,7 +22,7 @@ import vazkii.patchouli.api.PatchouliAPI;
 public class ModBookItem extends Item
 {
     public ModBookItem() {
-        super(new Item.Properties().stacksTo(1).tab(Rusticated.ITEMGROUPDECO));
+        super(new Item.Properties().stacksTo(1));
         new ResourceLocation(Rusticated.MOD_ID, "catalog");
 
     }

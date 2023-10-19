@@ -11,17 +11,18 @@ import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.ItemLike;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.CropBlock;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import java.util.Random;
 
 public class GrapeStemBlock extends CropBlock
 {
@@ -35,7 +36,7 @@ public class GrapeStemBlock extends CropBlock
 
 
     public GrapeStemBlock() {
-        super(BlockBehaviour.Properties.of(Material.PLANT).strength(0.5F).randomTicks().sound(SoundType.CROP));
+        super(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).strength(0.5F).randomTicks().sound(SoundType.CROP));
         this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(getAgeProperty(), 0));
     }
     @Override

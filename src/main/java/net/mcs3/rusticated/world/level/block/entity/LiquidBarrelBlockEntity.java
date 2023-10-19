@@ -5,12 +5,10 @@ import net.fabricmc.fabric.api.networking.v1.PlayerLookup;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
-import net.fabricmc.fabric.api.transfer.v1.storage.base.ResourceAmount;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleSlotStorage;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.fabricmc.fabric.api.transfer.v1.transaction.Transaction;
 import net.fabricmc.fabric.api.transfer.v1.transaction.TransactionContext;
-import net.fabricmc.fabric.api.transfer.v1.transaction.base.SnapshotParticipant;
 import net.mcs3.rusticated.data.tags.ModItemTags;
 import net.mcs3.rusticated.fluid.FluidStack;
 import net.mcs3.rusticated.init.ModFluids;
@@ -18,9 +16,8 @@ import net.mcs3.rusticated.network.ModNetworkSync;
 import net.mcs3.rusticated.util.FastBlockEntity;
 import net.mcs3.rusticated.world.item.BoozeItem;
 import net.mcs3.rusticated.world.item.FluidBottleItem;
-import net.mcs3.rusticated.world.item.crafting.CrushingTubRecipe;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
@@ -28,25 +25,19 @@ import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundBlockEntityDataPacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.tags.ItemTags;
-import net.minecraft.world.Container;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.SimpleContainer;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.ItemUtils;
+import net.minecraft.world.item.Items;
 import net.minecraft.world.item.alchemy.PotionUtils;
 import net.minecraft.world.item.alchemy.Potions;
-import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.Fluid;
 import net.minecraft.world.level.material.Fluids;
 import org.jetbrains.annotations.Nullable;
-
-import java.util.Optional;
 
 public class LiquidBarrelBlockEntity extends FastBlockEntity implements SingleSlotStorage<FluidVariant> {
 
@@ -71,7 +62,7 @@ public class LiquidBarrelBlockEntity extends FastBlockEntity implements SingleSl
             return;
         }
 
-        for(Item fluidItem : Registry.ITEM.stream().toList()) {
+        for(Item fluidItem : BuiltInRegistries.ITEM.stream().toList()) {
             if(fluidItem.getDefaultInstance().is(ModItemTags.FLUID_BOTTLES)) {
                 if(fluidItem instanceof BoozeItem) {
                     BoozeItem boozeItem = (BoozeItem) fluidItem;

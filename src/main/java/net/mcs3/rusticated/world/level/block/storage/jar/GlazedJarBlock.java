@@ -23,8 +23,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -41,7 +41,7 @@ import java.util.stream.Stream;
 public class GlazedJarBlock extends BaseEntityBlock implements EntityBlock {
 
     public GlazedJarBlock() {
-        super(Properties.of(Material.CLAY)
+        super(Properties.of().mapColor(MapColor.CLAY)
                 .noOcclusion()
                 .strength(2.0f, 3.0f));
     }
@@ -137,10 +137,11 @@ public class GlazedJarBlock extends BaseEntityBlock implements EntityBlock {
 
     @SuppressWarnings("deprecation")
     @Override
-    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        LootContext lootContext = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        LootParams lootContext = params.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
         return Arrays.asList(getStack(lootContext.getParamOrNull(LootContextParams.BLOCK_ENTITY)));
     }
+
 
     @Override
     public ItemStack getCloneItemStack(BlockGetter world, BlockPos pos, BlockState state) {

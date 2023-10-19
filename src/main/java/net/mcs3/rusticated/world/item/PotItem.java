@@ -1,6 +1,5 @@
 package net.mcs3.rusticated.world.item;
 
-import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.util.TextUtility;
 import net.mcs3.rusticated.world.level.block.storage.pot.PotToolTipData;
 import net.minecraft.network.chat.Component;
@@ -26,7 +25,7 @@ public class PotItem extends BlockItem implements ItemContainingItemHandler
     public final long stackCapacity;
 
     public PotItem(Block block, long stackCapacity) {
-        super(block, new Item.Properties().stacksTo(1).tab(Rusticated.ITEMGROUPDECO));
+        super(block, new Item.Properties().stacksTo(1));
         this.stackCapacity = stackCapacity;
     }
 

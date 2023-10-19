@@ -1,7 +1,7 @@
 package net.mcs3.rusticated.client.screens.renderer;
 
 import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.math.Vector3f;
+import com.mojang.math.Axis;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.api.transfer.v1.storage.base.SingleVariantStorage;
 import net.mcs3.rusticated.util.RenderUtility;
@@ -9,12 +9,12 @@ import net.mcs3.rusticated.world.level.block.entity.EvaporatingBasinBlockEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.LightTexture;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderer;
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
 import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.item.ItemDisplayContext;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LightLayer;
@@ -37,9 +37,9 @@ public class EvaporationBasinRenderer implements BlockEntityRenderer<Evaporating
         } else poseStack.translate(0.5f, 0.11f, 0.5f);
 
         poseStack.scale(0.6f, 0.6f, 0.6f);
-        poseStack.mulPose(Vector3f.XP.rotationDegrees(-90));
+        poseStack.mulPose(Axis.XP.rotationDegrees(-90));
 
-        itemRenderer.renderStatic(resultItem, ItemTransforms.TransformType.GUI, getLightLevel(blockEntity.getLevel(), blockEntity.getBlockPos()), OverlayTexture.NO_WHITE_U, poseStack, bufferSource, 1);
+        itemRenderer.renderStatic(resultItem, ItemDisplayContext.GUI, getLightLevel(blockEntity.getLevel(), blockEntity.getBlockPos()), OverlayTexture.NO_WHITE_U, poseStack, bufferSource, blockEntity.getLevel(), 1);
         poseStack.popPose();
 
         if (!fluidStorage.variant.isBlank() && fluidStorage.amount > 0) {

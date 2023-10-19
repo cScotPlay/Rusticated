@@ -1,10 +1,12 @@
 package net.mcs3.rusticated.world.item.crafting;
 
 import com.google.gson.JsonObject;
-import net.mcs3.rusticated.Rusticated;
-import net.mcs3.rusticated.RusticatedClient;
+import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import net.mcs3.rusticated.world.item.BoozeItem;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.Registry;
+import net.minecraft.core.RegistryAccess;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -16,8 +18,8 @@ import net.minecraft.world.item.crafting.RecipeType;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.material.Fluid;
+import org.jetbrains.annotations.Nullable;
 
-import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -47,7 +49,7 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container container) {
+    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
         return outputItem;
     }
 
@@ -57,7 +59,7 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return outputItem.copy();
     }
 
@@ -75,7 +77,11 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
         return primerFluid;
     }
 
-    public Fluid getResultFluid() {return ((BoozeItem) (this.getResultItem().getItem())).getFluidType();}
+    public Fluid getResultFluid() {
+        Minecraft minecraft = Minecraft.getInstance();
+        Level level = minecraft.level;
+        return ((BoozeItem) (this.getResultItem(level.registryAccess()).getItem())).getFluidType(); //TODO Check to see how messed up this is
+    }
 
     @Override
     public ResourceLocation getId() {
@@ -84,12 +90,12 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return BrewingBarrelRecipe.Serializer.INSTANCE;
+        return Serializer.INSTANCE;
     }
 
     @Override
     public RecipeType<?> getType() {
-        return BrewingBarrelRecipe.Type.INSTANCE;
+        return Type.INSTANCE;
     }
 
     public static class Type implements RecipeType<BrewingBarrelRecipe> {
@@ -98,7 +104,7 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
         public static final String ID = "brewing_barrel";
     }
 
-    public static class Serializer<T extends BrewingBarrelRecipe> implements RecipeSerializer<BrewingBarrelRecipe>
+    public static class Serializer implements RecipeSerializer<BrewingBarrelRecipe>
     {
         public static final Serializer INSTANCE = new Serializer();
         public static final String ID = "brewing_barrel";
@@ -108,13 +114,13 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
         {
             ItemStack output = new ItemStack(ShapedRecipe.itemStackFromJson(GsonHelper.getAsJsonObject(jsonObject, "result")).getItem());
             boolean primerUsed = GsonHelper.getAsBoolean(jsonObject, "primer_used");
-            Fluid inputFluid = Registry.FLUID.get(new ResourceLocation(GsonHelper.getAsString(jsonObject, "input_fluid")));
+            Fluid inputFluid = BuiltInRegistries.FLUID.get(new ResourceLocation(GsonHelper.getAsString(jsonObject, "input_fluid")));
             Fluid primerFluid = null;
 
             if(primerUsed) {
                 String primer = GsonHelper.getAsString(jsonObject, "primer_fluid");
                 ResourceLocation resourceLocation = new ResourceLocation(primer);
-                primerFluid = Registry.FLUID.get(resourceLocation);
+                primerFluid = BuiltInRegistries.FLUID.get(resourceLocation);
             }
 
             return new BrewingBarrelRecipe(recipeId, output, primerUsed, inputFluid, primerFluid);
@@ -125,12 +131,12 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
         {
             ItemStack output = buffer.readItem();
             boolean primerUsed = buffer.readBoolean();
-            Fluid inputFluid = Registry.FLUID.byId(buffer.readVarInt());
+            Fluid inputFluid = BuiltInRegistries.FLUID.byId(buffer.readVarInt());
             Fluid primerFluid = null;
 //            Fluid primerFluid = Registry.FLUID.byId(buffer.readVarInt());
 
             if(primerUsed) {
-                primerFluid = Registry.FLUID.byId(buffer.readVarInt());
+                primerFluid = BuiltInRegistries.FLUID.byId(buffer.readVarInt());
             }
 
             return new BrewingBarrelRecipe(recipeId, output, primerUsed, inputFluid, primerFluid);
@@ -141,9 +147,9 @@ public class BrewingBarrelRecipe implements Recipe<Container> {
         {
             buffer.writeItem(recipe.outputItem);
             buffer.writeBoolean(recipe.primerUsed);
-            buffer.writeVarInt(Registry.FLUID.getId(recipe.inputFluid));
+            buffer.writeVarInt(BuiltInRegistries.FLUID.getId(recipe.inputFluid));
             if(recipe.primerUsed){
-                buffer.writeVarInt(Registry.FLUID.getId(recipe.primerFluid));
+                buffer.writeVarInt(BuiltInRegistries.FLUID.getId(recipe.primerFluid));
             }
 
         }

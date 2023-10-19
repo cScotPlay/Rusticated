@@ -3,6 +3,7 @@ package net.mcs3.rusticated.data.models;
 import com.google.common.collect.Maps;
 import it.unimi.dsi.fastutil.ints.Int2ObjectOpenHashMap;
 import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricModelProvider;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
@@ -76,7 +77,7 @@ public class BlockStateGenerator extends FabricModelProvider
 
 
 
-    public BlockStateGenerator(FabricDataGenerator dataGenerator) {
+    public BlockStateGenerator(FabricDataOutput dataGenerator) {
         super(dataGenerator);
     }
 
@@ -475,12 +476,12 @@ public class BlockStateGenerator extends FabricModelProvider
         itemModelGenerator.generateFlatItem(ModItems.ALE_WORT_BOTTLE, ModelTemplates.FLAT_ITEM);
         itemModelGenerator.generateFlatItem(ModFluids.HONEY_BUCKET, ModelTemplates.FLAT_ITEM);
 
-        itemModelGenerator.generateFlatItem(ModItems.ALE_CUP, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.CIDER_CUP, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.IRON_WINE_CUP, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.MEAD_CUP, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.SWEET_BERRY_WINE_CUP, ModelTemplates.FLAT_ITEM);
-        itemModelGenerator.generateFlatItem(ModItems.WINE_CUP, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModFluids.ALE_CUP, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModFluids.CIDER_CUP, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModFluids.IRON_WINE_CUP, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModFluids.MEAD_CUP, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModFluids.SWEET_BERRY_WINE_CUP, ModelTemplates.FLAT_ITEM);
+        itemModelGenerator.generateFlatItem(ModFluids.WINE_CUP, ModelTemplates.FLAT_ITEM);
 
         itemModelGenerator.generateFlatItem(ModItems.TINY_IRON_DUST, ModelTemplates.FLAT_ITEM);
 
@@ -617,7 +618,7 @@ public class BlockStateGenerator extends FabricModelProvider
         ResourceLocation resourceLocation3 = ModelTemplates.FENCE_GATE_WALL_OPEN.create(fenceGateBlock, textureMapping, modelGenerator.modelOutput);
         ResourceLocation resourceLocation4 = ModelTemplates.FENCE_GATE_WALL_CLOSED.create(fenceGateBlock, textureMapping, modelGenerator.modelOutput);
 
-        modelGenerator.blockStateOutput.accept(BlockModelGenerators.createFenceGate(fenceGateBlock, resourceLocation, resourceLocation2, resourceLocation3, resourceLocation4));
+        modelGenerator.blockStateOutput.accept(BlockModelGenerators.createFenceGate(fenceGateBlock, resourceLocation, resourceLocation2, resourceLocation3, resourceLocation4, true));
     }
 
     public static void createColoredStoneWallModels(BlockModelGenerators modelGenerator, Block wallBlock, Block parentBlock)

@@ -1,12 +1,13 @@
 package net.mcs3.rusticated.data.loottables;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricBlockLootTableProvider;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.init.ModItems;
+import net.mcs3.rusticated.world.level.block.entity.ModBlockEntityTypes;
+import net.mcs3.rusticated.world.level.block.storage.barrel.BarrelBlock;
 import net.minecraft.advancements.critereon.EnchantmentPredicate;
 import net.minecraft.advancements.critereon.MinMaxBounds;
-import net.minecraft.data.loot.BlockLoot;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.enchantment.Enchantments;
@@ -15,13 +16,18 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.LootTable;
+import net.minecraft.world.level.storage.loot.entries.DynamicLoot;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.entries.LootPoolEntryContainer;
 import net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer;
-import net.minecraft.world.level.storage.loot.functions.*;
+import net.minecraft.world.level.storage.loot.functions.ApplyBonusCount;
+import net.minecraft.world.level.storage.loot.functions.CopyNameFunction;
+import net.minecraft.world.level.storage.loot.functions.CopyNbtFunction;
+import net.minecraft.world.level.storage.loot.functions.SetContainerContents;
 import net.minecraft.world.level.storage.loot.predicates.BonusLevelTableCondition;
 import net.minecraft.world.level.storage.loot.predicates.LootItemRandomChanceCondition;
 import net.minecraft.world.level.storage.loot.predicates.MatchTool;
+import net.minecraft.world.level.storage.loot.providers.nbt.ContextNbtProvider;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 
 import java.util.stream.Stream;
@@ -35,13 +41,12 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
     private static final float[] NORMAL_LEAVES_SAPLING_CHANCES;
 
 
-    public LootTableGenerator(FabricDataGenerator dataGenerator) {
+    public LootTableGenerator(FabricDataOutput dataGenerator) {
         super(dataGenerator);
     }
 
     @Override
-    protected void generateBlockLootTables()
-    {
+    public void generate() {
         Stream.of(
                 ModBlocks.STONE_STAIRS_WHITE,
                 ModBlocks.STONE_STAIRS_ORANGE,
@@ -275,59 +280,59 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
 
                 .forEach(this::dropSelf);
 
-        add(ModBlocks.PAINTED_SLAB_WHITE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_ORANGE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_MAGENTA, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_LIGHT_BLUE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_YELLOW, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_LIME, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_PINK, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_GRAY, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_LIGHT_GRAY, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_CYAN, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_PURPLE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_BLUE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_BROWN, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_GREEN, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_RED, BlockLoot::createSlabItemTable);
-        add(ModBlocks.PAINTED_SLAB_BLACK, BlockLoot::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_WHITE, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_ORANGE, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_MAGENTA, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_LIGHT_BLUE, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_YELLOW, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_LIME, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_PINK, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_GRAY, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_LIGHT_GRAY, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_CYAN, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_PURPLE, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_BLUE, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_BROWN, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_GREEN, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_RED, this::createSlabItemTable);
+        add(ModBlocks.PAINTED_SLAB_BLACK, this::createSlabItemTable);
 
-        add(ModBlocks.IRONWOOD_SLAB, BlockLoot::createSlabItemTable);
-        add(ModBlocks.OLIVE_SLAB, BlockLoot::createSlabItemTable);
+        add(ModBlocks.IRONWOOD_SLAB, this::createSlabItemTable);
+        add(ModBlocks.OLIVE_SLAB, this::createSlabItemTable);
 
-        add(ModBlocks.COBBLESTONE_SLAB_WHITE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_ORANGE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_MAGENTA, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_LIGHT_BLUE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_YELLOW, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_LIME, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_PINK, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_GRAY, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_LIGHT_GRAY, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_CYAN, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_PURPLE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_BLUE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_BROWN, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_GREEN, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_RED, BlockLoot::createSlabItemTable);
-        add(ModBlocks.COBBLESTONE_SLAB_BLACK, BlockLoot::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_WHITE, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_ORANGE, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_MAGENTA, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_LIGHT_BLUE, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_YELLOW, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_LIME, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_PINK, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_GRAY, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_LIGHT_GRAY, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_CYAN, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_PURPLE, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_BLUE, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_BROWN, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_GREEN, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_RED, this::createSlabItemTable);
+        add(ModBlocks.COBBLESTONE_SLAB_BLACK, this::createSlabItemTable);
 
-        add(ModBlocks.STONE_SLAB_WHITE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_ORANGE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_MAGENTA, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_LIGHT_BLUE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_YELLOW, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_LIME, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_PINK, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_GRAY, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_LIGHT_GRAY, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_CYAN, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_PURPLE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_BLUE, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_BROWN, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_GREEN, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_RED, BlockLoot::createSlabItemTable);
-        add(ModBlocks.STONE_SLAB_BLACK, BlockLoot::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_WHITE, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_ORANGE, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_MAGENTA, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_LIGHT_BLUE, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_YELLOW, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_LIME, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_PINK, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_GRAY, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_LIGHT_GRAY, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_CYAN, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_PURPLE, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_BLUE, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_BROWN, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_GREEN, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_RED, this::createSlabItemTable);
+        add(ModBlocks.STONE_SLAB_BLACK, this::createSlabItemTable);
 
 
         add(ModBlocks.IRONWOOD_LEAVES, (block -> {
@@ -436,33 +441,37 @@ public class LootTableGenerator extends FabricBlockLootTableProvider
             return createSingleItemTable(ModItems.MARSHMALLOW);
         }));
 
-        add(ModBlocks.STORAGE_BARREL, BlockLoot::createNameableBlockEntityTable);
+        add(ModBlocks.STORAGE_BARREL, this::createStorageBarrelDrop);
 
-        add(ModBlocks.CONDENSER, BlockLoot::createNameableBlockEntityTable);
-        add(ModBlocks.ADV_CONDENSER, BlockLoot::createNameableBlockEntityTable);
-        add(ModBlocks.EVAPORATING_BASIN, BlockLoot::createNameableBlockEntityTable);
-        add(ModBlocks.CRUSHING_TUB, BlockLoot::createNameableBlockEntityTable);
-        add(ModBlocks.OAK_BREWING_BARREL, BlockLoot::createNameableBlockEntityTable);
+        add(ModBlocks.CONDENSER, this::createNameableBlockEntityTable);
+        add(ModBlocks.ADV_CONDENSER, this::createNameableBlockEntityTable);
+        add(ModBlocks.EVAPORATING_BASIN, this::createNameableBlockEntityTable);
+        add(ModBlocks.CRUSHING_TUB, this::createNameableBlockEntityTable);
+        add(ModBlocks.OAK_BREWING_BARREL, this::createNameableBlockEntityTable);
 
-        add(ModBlocks.TIED_STAKE, LootTableGenerator::createTiedStakeDrop);
-        add(Blocks.VINE, LootTableGenerator::createGrapeSeedDrop);
+        add(ModBlocks.TIED_STAKE, this::createTiedStakeDrop);
+        add(Blocks.VINE, this::createGrapeSeedDrop);
 
     }
 
-    public static LootTable.Builder createLeavesDropswithItem(Block leavesBlock, Block saplingBlock, Item droppedItem, float... chances) {
-        return createLeavesDrops(leavesBlock, saplingBlock, chances).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(((net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer.Builder)applyExplosionCondition(leavesBlock, LootItem.lootTableItem(droppedItem))).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, new float[]{0.1F, 0.025F, 0.06F, 0.025F, 0.3F}))));
+    public LootTable.Builder createStorageBarrelDrop(Block storageBarrel) {
+        return LootTable.lootTable().withPool((LootPool.Builder)applyExplosionCondition(storageBarrel, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).add(LootItem.lootTableItem(storageBarrel).apply(CopyNameFunction.copyName(CopyNameFunction.NameSource.BLOCK_ENTITY)).apply(CopyNbtFunction.copyData(ContextNbtProvider.BLOCK_ENTITY).copy("Lock", "BlockEntityTag.Lock").copy("LootTable", "BlockEntityTag.LootTable").copy("LootTableSeed", "BlockEntityTag.LootTableSeed")).apply(SetContainerContents.setContents(ModBlockEntityTypes.BARREL_CONTAINER).withEntry(DynamicLoot.dynamicEntry(BarrelBlock.CONTENTS))))));
     }
 
-    public static LootTable.Builder createTiedStakeDrop(Block block){
-        return LootTable.lootTable().withPool(BlockLoot.applyExplosionCondition(ModBlocks.TIED_STAKE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.CROP_STAKE)))).withPool(BlockLoot.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
+    public LootTable.Builder createLeavesDropswithItem(Block leavesBlock, Block saplingBlock, Item droppedItem, float... chances) {
+        return this.createLeavesDrops(leavesBlock, saplingBlock, chances).withPool(LootPool.lootPool().setRolls(ConstantValue.exactly(1.0F)).when(HAS_NO_SHEARS_OR_SILK_TOUCH).add(((net.minecraft.world.level.storage.loot.entries.LootPoolSingletonContainer.Builder)applyExplosionCondition(leavesBlock, LootItem.lootTableItem(droppedItem))).when(BonusLevelTableCondition.bonusLevelFlatChance(Enchantments.BLOCK_FORTUNE, new float[]{0.1F, 0.025F, 0.06F, 0.025F, 0.3F}))));
     }
 
-    public static LootTable.Builder createGrapeLeafDrop(Block block){
-        return LootTable.lootTable().withPool(BlockLoot.applyExplosionCondition(ModItems.GRAPE_SEEDS, LootPool.lootPool().setRolls(ConstantValue.exactly(0.125f)).add(LootItem.lootTableItem(ModItems.GRAPE_SEEDS)))).withPool(BlockLoot.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
+    public  LootTable.Builder createTiedStakeDrop(Block block){
+        return LootTable.lootTable().withPool(applyExplosionCondition(ModBlocks.TIED_STAKE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.CROP_STAKE)))).withPool(this.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
     }
 
-    public static LootTable.Builder createGrapeSeedDrop(Block block) {
-        return BlockLoot.createShearsDispatchTable(block, (LootPoolEntryContainer.Builder)BlockLoot.applyExplosionDecay(block, ((LootPoolSingletonContainer.Builder)LootItem.lootTableItem(ModItems.GRAPE_SEEDS.asItem()).when(LootItemRandomChanceCondition.randomChance(0.0625f))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2))));
+    public LootTable.Builder createGrapeLeafDrop(Block block){
+        return LootTable.lootTable().withPool(applyExplosionCondition(ModItems.GRAPE_SEEDS, LootPool.lootPool().setRolls(ConstantValue.exactly(0.125f)).add(LootItem.lootTableItem(ModItems.GRAPE_SEEDS)))).withPool(this.applyExplosionCondition(ModBlocks.ROPE, LootPool.lootPool().setRolls(ConstantValue.exactly(1.0f)).add(LootItem.lootTableItem(ModBlocks.ROPE))));
+    }
+
+    public LootTable.Builder createGrapeSeedDrop(Block block) {
+        return createShearsDispatchTable(block, (LootPoolEntryContainer.Builder)this.applyExplosionDecay(block, ((LootPoolSingletonContainer.Builder)LootItem.lootTableItem(ModItems.GRAPE_SEEDS.asItem()).when(LootItemRandomChanceCondition.randomChance(0.0625f))).apply(ApplyBonusCount.addUniformBonusCount(Enchantments.BLOCK_FORTUNE, 2))));
     }
 
 

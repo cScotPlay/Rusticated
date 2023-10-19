@@ -2,8 +2,12 @@ package net.mcs3.rusticated.world.item.crafting;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
+import com.mojang.serialization.Codec;
+import com.mojang.serialization.DataResult;
+import com.mojang.serialization.codecs.RecordCodecBuilder;
 import net.mcs3.rusticated.init.ModItems;
 import net.minecraft.core.NonNullList;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
@@ -17,6 +21,8 @@ import net.minecraft.world.item.crafting.*;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 
+import java.util.List;
+
 public class AdvCondenserRecipe implements Recipe<Container> {
     private final ResourceLocation id;
     private final ItemStack outputItem;
@@ -29,16 +35,16 @@ public class AdvCondenserRecipe implements Recipe<Container> {
         this.id = id;
         this.potion = inputPotion;
         this.recipeItems = recipeItems;
-        this.outputItem = getOutputItem();
+        this.outputItem = PotionUtils.setPotion(new ItemStack(ModItems.ELIXIR), inputPotion);
         this.arraySize = arraySize;
     }
 
     public Potion getPotion() {
-        return this.potion;
+        return potion;
     }
 
     public ItemStack getOutputItem() {
-        return PotionUtils.setPotion(new ItemStack(ModItems.ELIXIR), potion);
+        return outputItem;
     }
 
     public CompoundTag getTag() {
@@ -86,13 +92,13 @@ public class AdvCondenserRecipe implements Recipe<Container> {
     }
 
     @Override
-    public NonNullList<Ingredient> getIngredients() {
-        return recipeItems;
+    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
+        return outputItem;
     }
 
     @Override
-    public ItemStack assemble(Container container) {
-        return outputItem;
+    public NonNullList<Ingredient> getIngredients() {
+        return recipeItems;
     }
 
     @Override
@@ -101,8 +107,8 @@ public class AdvCondenserRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem() {
-        return outputItem;
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
+        return outputItem.copy();
     }
 
     @Override
@@ -112,26 +118,27 @@ public class AdvCondenserRecipe implements Recipe<Container> {
 
     @Override
     public RecipeSerializer<?> getSerializer() {
-        return AdvCondenserRecipe.Serializer.INSTANCE;
+        return ModRecipes.ADV_CONDENSER_RECIPE_SERIALIZER;
     }
 
     @Override
     public RecipeType<?> getType() {
-        return AdvCondenserRecipe.Type.INSTANCE;
+        return ModRecipes.ADV_CONDENSER_RECIPE_TYPE;
     }
 
     public static class Type implements RecipeType<AdvCondenserRecipe>
     {
-        private Type(){}
-        public static final AdvCondenserRecipe.Type INSTANCE = new AdvCondenserRecipe.Type();
+        public static final AdvCondenserRecipe.Type INSTANCE = new Type();
         public static final String ID = "adv_condenser";
 
     }
 
-    public static class Serializer<T extends AdvCondenserRecipe> implements RecipeSerializer<AdvCondenserRecipe>
+    public static class Serializer implements RecipeSerializer<AdvCondenserRecipe>
     {
-        public static final AdvCondenserRecipe.Serializer INSTANCE = new AdvCondenserRecipe.Serializer();
+        public static final AdvCondenserRecipe.Serializer INSTANCE = new Serializer();
         public static final String ID = "adv_condenser";
+
+        public Serializer() {}
 
         @Override
         public AdvCondenserRecipe fromJson(ResourceLocation recipeId, JsonObject jsonObject)
@@ -209,8 +216,8 @@ public class AdvCondenserRecipe implements Recipe<Container> {
                     ingredient.toNetwork(buffer);
                 }
             }
-            buffer.writeNbt(recipe.outputItem.getTag());
-            buffer.writeItem(recipe.outputItem);
+            buffer.writeNbt(recipe.getOutputItem().getTag());
+            buffer.writeItem(recipe.getOutputItem());
         }
     }
 }

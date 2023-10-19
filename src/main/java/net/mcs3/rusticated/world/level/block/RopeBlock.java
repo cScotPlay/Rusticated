@@ -2,7 +2,6 @@ package net.mcs3.rusticated.world.level.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
@@ -25,7 +24,6 @@ import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
-import net.minecraft.world.level.material.Material;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -40,7 +38,7 @@ public class RopeBlock extends ChainBlock
 
     public RopeBlock()
     {
-        super(BlockBehaviour.Properties.of(Material.CLOTH_DECORATION).strength(0.1F).sound(SoundType.WOOL));
+        super(BlockBehaviour.Properties.of().strength(0.1F).sound(SoundType.WOOL));
         this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(WATERLOGGED, false)).setValue(AXIS, Direction.Axis.Y).setValue(DANGLE, false));
     }
 

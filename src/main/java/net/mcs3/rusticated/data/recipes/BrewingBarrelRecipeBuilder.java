@@ -9,6 +9,7 @@ import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -29,7 +30,7 @@ public class BrewingBarrelRecipeBuilder implements RecipeBuilder {
     private String group;
     private final RecipeSerializer<? extends BrewingBarrelRecipe.Serializer> serializer;
 
-    public BrewingBarrelRecipeBuilder(ItemStack resultItem, Fluid inputFluid, Fluid primerFluid, RecipeSerializer<? extends BrewingBarrelRecipe.Serializer> serializer) {
+    public BrewingBarrelRecipeBuilder(ItemStack resultItem, Fluid inputFluid, Fluid primerFluid, RecipeSerializer serializer) {
         this.resultItem = resultItem;
         this.inputFluid = inputFluid;
         this.primerFluid = primerFluid;
@@ -61,12 +62,15 @@ public class BrewingBarrelRecipeBuilder implements RecipeBuilder {
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
         this.ensureValid(recipeId);
         this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
-        finishedRecipeConsumer.accept(new BrewingBarrelRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.resultItem, this.inputFluid, this.primerFluid, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + this.resultItem.getItem().getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()), this.serializer));
+        finishedRecipeConsumer.accept(new BrewingBarrelRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.resultItem, this.inputFluid, this.primerFluid, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + recipeId.getPath()), this.serializer));
+//        finishedRecipeConsumer.accept(new BrewingBarrelRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.resultItem, this.inputFluid, this.primerFluid, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + this.resultItem.getItem().getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()), this.serializer));
 
         ResourceLocation primedRecipeID = new ResourceLocation(recipeId.toString() + "_primed");
         this.ensureValid(primedRecipeID);
         //this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(primedRecipeID)).rewards(AdvancementRewards.Builder.recipe(primedRecipeID)).requirements(RequirementsStrategy.OR);
-        finishedRecipeConsumer.accept(new BrewingBarrelRecipeBuilder.ResultNoPrimer(primedRecipeID, this.group == null ? "" : this.group, this.resultItem, this.inputFluid, this.primerFluid, this.advancement, new ResourceLocation(primedRecipeID.getNamespace(), "recipes/" + this.resultItem.getItem().getItemCategory().getRecipeFolderName() + "/" + primedRecipeID.getPath()), this.serializer));
+        finishedRecipeConsumer.accept(new BrewingBarrelRecipeBuilder.ResultNoPrimer(primedRecipeID, this.group == null ? "" : this.group, this.resultItem, this.inputFluid, this.primerFluid, this.advancement, new ResourceLocation(primedRecipeID.getNamespace(), "recipes/" + primedRecipeID.getPath()), this.serializer));
+//        finishedRecipeConsumer.accept(new BrewingBarrelRecipeBuilder.ResultNoPrimer(primedRecipeID, this.group == null ? "" : this.group, this.resultItem, this.inputFluid, this.primerFluid, this.advancement, new ResourceLocation(primedRecipeID.getNamespace(), "recipes/" + this.resultItem.getItem().getItemCategory().getRecipeFolderName() + "/" + primedRecipeID.getPath()), this.serializer));
+
     }
 
     /**
@@ -109,11 +113,11 @@ public class BrewingBarrelRecipeBuilder implements RecipeBuilder {
 
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("item", Registry.ITEM.getKey(resultItem.getItem()).toString());
+            jsonObject.addProperty("item", BuiltInRegistries.ITEM.getKey(resultItem.getItem()).toString());
             json.add("result", jsonObject);
 
             json.addProperty("primer_used", false);
-            json.addProperty("input_fluid", String.valueOf(Registry.FLUID.getKey(this.inputFluid)));
+            json.addProperty("input_fluid", String.valueOf(BuiltInRegistries.FLUID.getKey(this.inputFluid)));
 //            json.addProperty("primerfluid", String.valueOf(Registry.FLUID.getKey(this.primerFluid)));
         }
 
@@ -171,12 +175,12 @@ public class BrewingBarrelRecipeBuilder implements RecipeBuilder {
 
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("item", Registry.ITEM.getKey(resultItem.getItem()).toString());
+            jsonObject.addProperty("item", BuiltInRegistries.ITEM.getKey(resultItem.getItem()).toString());
             json.add("result", jsonObject);
 
             json.addProperty("primer_used", true);
-            json.addProperty("input_fluid", String.valueOf(Registry.FLUID.getKey(this.inputFluid)));
-            json.addProperty("primer_fluid", String.valueOf(Registry.FLUID.getKey(this.primerFluid)));
+            json.addProperty("input_fluid", String.valueOf(BuiltInRegistries.FLUID.getKey(this.inputFluid)));
+            json.addProperty("primer_fluid", String.valueOf(BuiltInRegistries.FLUID.getKey(this.primerFluid)));
         }
 
         @Override

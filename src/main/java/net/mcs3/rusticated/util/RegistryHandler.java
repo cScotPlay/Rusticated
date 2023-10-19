@@ -35,9 +35,6 @@ public class RegistryHandler
         ModFluids.init();
     }
 
-    public static void onTreeFeatureRegistry() {
-        ModTreeFeatures.init();
-    }
 
     public static void onGenerateWorldRegistry() {
         WorldGeneration.generateWorld();

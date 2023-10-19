@@ -19,7 +19,7 @@ public class BrewingBarrelMenu extends AbstractContainerMenu {
 
 
     protected BrewingBarrelMenu(int i, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-        this(i, (BrewingBarrelBlockEntity) inventory.player.level.getBlockEntity(friendlyByteBuf.readBlockPos()), inventory, new SimpleContainer(6), new SimpleContainerData(4));
+        this(i, (BrewingBarrelBlockEntity) inventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()), inventory, new SimpleContainer(6), new SimpleContainerData(4));
     }
 
     public BrewingBarrelMenu(int i, BrewingBarrelBlockEntity blockEntity, Inventory inventory, Container container, ContainerData containerData) {

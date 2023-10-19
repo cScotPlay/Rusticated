@@ -1,7 +1,6 @@
 package net.mcs3.rusticated.world.level.block;
 
 import com.google.common.collect.ImmutableMap;
-import net.mcs3.rusticated.Rusticated;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.world.InteractionHand;
@@ -19,8 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.BooleanProperty;
 import net.minecraft.world.level.block.state.properties.Property;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.pathfinder.PathComputationType;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -58,7 +56,7 @@ public class LatticeBlock extends Block
 
 
     public LatticeBlock() {
-        super(Properties.of(Material.METAL, MaterialColor.NONE).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion());
+        super(Properties.of().mapColor(MapColor.METAL).mapColor(MapColor.NONE).requiresCorrectToolForDrops().strength(5.0F, 6.0F).sound(SoundType.METAL).noOcclusion());
         this.registerDefaultState((this.stateDefinition.any()).setValue(LEAVES, false).setValue(DOWN, true).setValue(UP, false));
         this.shapeByIndex = this.makeShapes();
         this.collisionShapeByIndex = this.makeShapes();
@@ -81,7 +79,7 @@ public class LatticeBlock extends Block
             level.setBlockAndUpdate(pos, state.setValue(LEAVES, false));
             return InteractionResult.CONSUME;
         }
-        return InteractionResult.SUCCESS;
+        return InteractionResult.PASS;
     }
 
     @Override

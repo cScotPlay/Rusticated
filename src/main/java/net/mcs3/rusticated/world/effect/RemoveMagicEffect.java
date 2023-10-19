@@ -12,7 +12,7 @@ public class RemoveMagicEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity livingEntity, int amplifier) {
-        if(livingEntity != null && !livingEntity.level.isClientSide) {
+        if(livingEntity != null && !livingEntity.level().isClientSide) {
             for(MobEffectInstance mobEffect : livingEntity.getActiveEffects()) {
                 if(!mobEffect.getEffect().equals(ModEffects.MAGIC_RESISTANCE) && !mobEffect.getEffect().isBeneficial()) {
                     livingEntity.removeEffect(mobEffect.getEffect());

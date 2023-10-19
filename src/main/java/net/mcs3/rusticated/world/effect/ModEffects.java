@@ -2,6 +2,7 @@ package net.mcs3.rusticated.world.effect;
 
 import net.mcs3.rusticated.Rusticated;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -18,7 +19,7 @@ public class ModEffects {
     public static MobEffect WITHER_WARD;
 
     public static MobEffect register(String name, MobEffect effect){
-        return Registry.register(Registry.MOB_EFFECT, new ResourceLocation(MODID, name), effect);
+        return Registry.register(BuiltInRegistries.MOB_EFFECT, new ResourceLocation(MODID, name), effect);
     }
 
     public static void registerEffects() {

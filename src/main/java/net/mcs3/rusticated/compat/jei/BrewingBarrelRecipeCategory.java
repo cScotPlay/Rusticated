@@ -14,15 +14,13 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
-import net.mcs3.rusticated.world.item.crafting.AdvCondenserRecipe;
 import net.mcs3.rusticated.world.item.crafting.BrewingBarrelRecipe;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
-
-import javax.annotation.Nonnull;
 
 public class BrewingBarrelRecipeCategory implements IRecipeCategory<BrewingBarrelRecipe> {
 
@@ -72,23 +70,23 @@ public class BrewingBarrelRecipeCategory implements IRecipeCategory<BrewingBarre
     }
 
     @Override
-    public void draw(BrewingBarrelRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
-        this.plusSign.draw(stack);
-        this.progress.draw(stack);
-        this.brewing.draw(stack);
+    public void draw(BrewingBarrelRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        this.plusSign.draw(guiGraphics);
+        this.progress.draw(guiGraphics);
+        this.brewing.draw(guiGraphics);
     }
 
     @Override
-    public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull BrewingBarrelRecipe recipe, @Nonnull IFocusGroup focusGroup) {
+    public void setRecipe(IRecipeLayoutBuilder builder, BrewingBarrelRecipe recipe, IFocusGroup focusGroup) {
         builder.addSlot(RecipeIngredientRole.INPUT, 134, 7).addIngredients(Ingredient.of((Items.GLASS_BOTTLE).getDefaultInstance()));
         builder.addSlot(RecipeIngredientRole.INPUT, 134, 55).addFluidStack(recipe.getResultFluid(), 20250L).setFluidRenderer(250L, false, 16, 4);
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 134, 63).addItemStack(recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 134, 63).addItemStack(recipe.getResultItem(null));
 
         builder.addSlot(RecipeIngredientRole.INPUT, 62, 7).addIngredients(Ingredient.of(recipe.getInputFluid().getBucket()));
         builder.addSlot(RecipeIngredientRole.INPUT, 62, 43).addFluidStack(recipe.getInputFluid(), 81000L).setFluidRenderer(8100L, false, 16, 16);
 
         if(recipe.isPrimerUsed()){
-           builder.addSlot(RecipeIngredientRole.INPUT, 26, 14).addIngredients(Ingredient.of(recipe.getResultItem()));
+           builder.addSlot(RecipeIngredientRole.INPUT, 26, 14).addIngredients(Ingredient.of(recipe.getResultItem(null)));
            builder.addSlot(RecipeIngredientRole.INPUT, 26, 35).addFluidStack(recipe.getResultFluid(), 81000L).setFluidRenderer(8100L, false, 16, 16);
         }
     }

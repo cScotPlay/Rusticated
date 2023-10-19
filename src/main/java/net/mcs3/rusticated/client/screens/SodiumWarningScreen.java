@@ -38,11 +38,14 @@ public class SodiumWarningScreen extends WarningScreen {
 
     @Override
     protected void initButtons(int yOffset) {
-        this.addRenderableWidget(new Button(this.width / 2 - 155, 100 + yOffset, 150, 20, CURSEFORGE, button -> Util.getPlatform().openUri("https://www.curseforge.com/minecraft/mc-mods/indium")));
-        this.addRenderableWidget(new Button(this.width / 2 - 155 + 160, 100 + yOffset, 150, 20, MODRINTH, button -> Util.getPlatform().openUri("https://modrinth.com/mod/indium")));
-
-        this.addRenderableWidget(new Button(this.width / 2 - 155 + 160, 130 + yOffset, 150, 20, Component.literal("Quit"), button -> this.minecraft.stop()));
-        this.addRenderableWidget(new Button(this.width / 2 - 155, 130 + yOffset, 150, 20, PROCEED, button -> this.minecraft.setScreen(new TitleScreen())));
+        this.addRenderableWidget(Button.builder(CURSEFORGE, button -> {Util.getPlatform().openUri("https://www.curseforge.com/minecraft/mc-mods/indium");})
+                .bounds(this.width / 2 - 155, 100 + yOffset, 150, 20).build());
+        this.addRenderableWidget(Button.builder(MODRINTH, button -> {Util.getPlatform().openUri("https://modrinth.com/mod/indium");})
+                .bounds(this.width / 2 - 155 + 160, 100 + yOffset, 150, 20).build());
+        this.addRenderableWidget(Button.builder(Component.literal("Quit"), button -> {this.minecraft.stop();})
+                .bounds(this.width / 2 - 155 + 160, 130 + yOffset, 150, 20).build());
+        this.addRenderableWidget(Button.builder(PROCEED, button -> {this.minecraft.setScreen(new TitleScreen());})
+                .bounds(this.width / 2 - 155, 130 + yOffset, 150, 20).build());
 
 
 //        this.addRenderableWidget(new Button(this.width / 2 - 155, this.height / 6 + 96, 150, 20, Component.translatable("datapackFailure.safeMode"), button -> this.minecraft.setScreen(new ConfirmLinkScreen(bl -> {

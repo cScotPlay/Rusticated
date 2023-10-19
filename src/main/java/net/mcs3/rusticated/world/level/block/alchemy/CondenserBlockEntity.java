@@ -208,7 +208,7 @@ public class CondenserBlockEntity extends BlockEntity implements ExtendedScreenH
         Optional<CondenserRecipe> match = level.getRecipeManager().getRecipeFor(CondenserRecipe.Type.INSTANCE, container, level);
 
         return match.isPresent() && canInsertAmountIntoOutputSlot(container)
-                    && canInsertItemIntoOutputSlot(container, match.get().getResultItem());
+                    && canInsertItemIntoOutputSlot(container, match.get().getResultItem(level.registryAccess()));
 
     }
 

@@ -14,7 +14,7 @@ public class TipsyEffect extends MobEffect {
 
     @Override
     public void applyEffectTick(LivingEntity livingEntity, int amplifier) {
-        if(livingEntity != null && !livingEntity.level.isClientSide && amplifier > 1) {
+        if(livingEntity != null && !livingEntity.level().isClientSide && amplifier > 1) {
             MobEffectInstance confusion = livingEntity.getEffect(MobEffects.CONFUSION);
             MobEffectInstance blindness = livingEntity.getEffect(MobEffects.BLINDNESS);
             MobEffectInstance slowdown = livingEntity.getEffect(MobEffects.MOVEMENT_SLOWDOWN);

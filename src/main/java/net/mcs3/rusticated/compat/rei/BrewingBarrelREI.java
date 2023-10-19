@@ -8,6 +8,7 @@ import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
+import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
@@ -92,7 +93,7 @@ public class BrewingBarrelREI {
 
 
         public BrewingBarrelDisplay(BrewingBarrelRecipe recipe) {
-            this(EntryIngredients.of(recipe.getInputFluidBucket()), EntryIngredients.of(recipe.getResultItem()), recipe.isPrimerUsed(), Optional.ofNullable(recipe.getId()));
+            this(EntryIngredients.of(recipe.getInputFluidBucket()), EntryIngredients.of(recipe.getResultItem(BasicDisplay.registryAccess())), recipe.isPrimerUsed(), Optional.ofNullable(recipe.getId()));
         }
 
         public BrewingBarrelDisplay(EntryIngredient inputs, EntryIngredient output, boolean primerUsed, Optional<ResourceLocation> location) {

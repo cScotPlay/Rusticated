@@ -8,6 +8,7 @@ import me.shedaniel.rei.api.client.gui.widgets.Widgets;
 import me.shedaniel.rei.api.client.registry.display.DisplayCategory;
 import me.shedaniel.rei.api.common.category.CategoryIdentifier;
 import me.shedaniel.rei.api.common.display.Display;
+import me.shedaniel.rei.api.common.display.basic.BasicDisplay;
 import me.shedaniel.rei.api.common.entry.EntryIngredient;
 import me.shedaniel.rei.api.common.util.EntryIngredients;
 import me.shedaniel.rei.api.common.util.EntryStacks;
@@ -76,7 +77,7 @@ public class EvaporatingBasinREI {
         private final Optional<ResourceLocation> location;
 
         public EvaporatingBasinDisplay(EvaporatingBasinRecipe recipe) {
-            this(EntryIngredients.of(recipe.getBucketItem()), EntryIngredients.of(recipe.getResultItem()), Optional.ofNullable(recipe.getId()));
+            this(EntryIngredients.of(recipe.getBucketItem()), EntryIngredients.of(recipe.getResultItem(BasicDisplay.registryAccess())), Optional.ofNullable(recipe.getId()));
         }
 
         public EvaporatingBasinDisplay(EntryIngredient inputs, EntryIngredient outputs, Optional<ResourceLocation> location) {

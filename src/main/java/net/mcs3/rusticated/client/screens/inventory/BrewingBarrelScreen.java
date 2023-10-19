@@ -1,13 +1,15 @@
 package net.mcs3.rusticated.client.screens.inventory;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.PoseStack;
+import mezz.jei.fabric.platform.FluidHelper;
 import net.fabricmc.fabric.api.transfer.v1.fluid.FluidConstants;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.client.screens.renderer.FluidStackRenderer;
 import net.mcs3.rusticated.fluid.FluidStack;
+import net.mcs3.rusticated.util.FluidUtility;
 import net.mcs3.rusticated.util.MouseUtil;
 import net.mcs3.rusticated.world.inventory.BrewingBarrelMenu;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.client.gui.screens.inventory.AbstractContainerScreen;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.Component;
@@ -44,60 +46,61 @@ public class BrewingBarrelScreen extends AbstractContainerScreen<BrewingBarrelMe
     }
 
     @Override
-    protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY) {
+    protected void renderLabels(GuiGraphics guiGraphics, int mouseX, int mouseY) {
         int x = (width - imageWidth) / 2;
         int y = (height - imageHeight) / 2;
 
-        renderFluidAreaTooltips(poseStack, mouseX, mouseY, x, y, menu.primerFluidStack, 26, 35, primerFluidStackRenderer, menu.getPrimerQuality());
-        renderFluidAreaTooltips(poseStack, mouseX, mouseY, x, y, menu.inputFluidStack, 62, 27, inputFluidStackRenderer, 0);
-        renderFluidAreaTooltips(poseStack, mouseX, mouseY, x, y, menu.resultFluidStack, 134, 27, resultFluidStackRenderer, menu.getResultQuality());
+        renderFluidAreaTooltips(guiGraphics, mouseX, mouseY, x, y, menu.primerFluidStack, 26, 35, primerFluidStackRenderer, menu.getPrimerQuality());
+        renderFluidAreaTooltips(guiGraphics, mouseX, mouseY, x, y, menu.inputFluidStack, 62, 27, inputFluidStackRenderer, 0);
+        renderFluidAreaTooltips(guiGraphics, mouseX, mouseY, x, y, menu.resultFluidStack, 134, 27, resultFluidStackRenderer, menu.getResultQuality());
     }
 
     @Override
-    protected void renderBg(PoseStack poseStack, float partialTick, int mouseX, int mouseY) {
+    protected void renderBg(GuiGraphics guiGraphics, float partialTick, int mouseX, int mouseY) {
         int m;
         RenderSystem.setShader(GameRenderer::getPositionTexShader);
         RenderSystem.setShaderColor(1.0f, 1.0f, 1.0f, 1.0f);
         RenderSystem.setShaderTexture(0, BREWING_GUI_TEXTURE);
         int i = (this.width - this.imageWidth) / 2;
         int j = (this.height - this.imageHeight) / 2;
-        this.blit(poseStack, i, j, 0, 0, this.imageWidth, this.imageHeight);
+        guiGraphics.blit(BREWING_GUI_TEXTURE, i, j, 0, 0, this.imageWidth, this.imageHeight);
 
         if(menu.isBrewing())
         {
             //Draws Progress Arrow in GUI
-            blit(poseStack, i + 85, j + 39, 176, 28, menu.getScaledProgress(), 15);
+            guiGraphics.blit(BREWING_GUI_TEXTURE, i + 85, j + 39, 176, 28, menu.getScaledProgress(), 15);
             //Draw + sign
-            blit(poseStack, i + 47, j + 38, 176, 43, menu.getScaledProgress() / 4, 10);
+            guiGraphics.blit(BREWING_GUI_TEXTURE, i + 47, j + 38, 176, 43, menu.getScaledProgress() / 4, 10);
             //Draws Bubbles in GUI
             m = menu.getScaledProgress();
 //            int n = (int)(28.0f * (1.0f - (float)m / 72.0f));
             int n;
             if ((n = BUBBLELENGTHS[m / 2 % 7]) > 0) {
-                this.blit(poseStack, i + 100, j + 14 + 28 - n, 176, 0 - n, 11, n);
+                guiGraphics.blit(BREWING_GUI_TEXTURE, i + 100, j + 14 + 28 - n, 176, 0 - n, 11, n);
             }
         }
 
-        primerFluidStackRenderer.drawFluid(poseStack, menu.primerFluidStack, i + 26, j + 35, 16, 16,
+        primerFluidStackRenderer.drawFluid(guiGraphics, menu.primerFluidStack, i + 26, j + 35, 16, 16,
                 FluidStack.convertDropletsToMb(FluidConstants.BUCKET) * 1);
 
-        inputFluidStackRenderer.drawFluid(poseStack, menu.inputFluidStack, i + 62, j + 27, 16, 32,
+        inputFluidStackRenderer.drawFluid(guiGraphics, menu.inputFluidStack, i + 62, j + 27, 16, 32,
                 FluidStack.convertDropletsToMb(FluidConstants.BUCKET) * 8);
 
-        resultFluidStackRenderer.drawFluid(poseStack, menu.resultFluidStack, i + 134, j + 27, 16, 32,
+        resultFluidStackRenderer.drawFluid(guiGraphics, menu.resultFluidStack, i + 134, j + 27, 16, 32,
                 FluidStack.convertDropletsToMb(FluidConstants.BUCKET) * 8);
     }
 
     @Override
-    public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick) {
-        this.renderBackground(poseStack);
-        super.render(poseStack, mouseX, mouseY, partialTick);
-        this.renderTooltip(poseStack, mouseX, mouseY);
+    public void render(GuiGraphics guiGraphics, int mouseX, int mouseY, float partialTick) {
+        this.renderBackground(guiGraphics);
+        super.render(guiGraphics, mouseX, mouseY, partialTick);
+        this.renderTooltip(guiGraphics, mouseX, mouseY);
     }
 
-    private void renderFluidAreaTooltips(PoseStack pPoseStack, int pMouseX, int pMouseY, int x, int y, FluidStack fluidStack, int offsetX, int offsetY, FluidStackRenderer renderer, int fluidQuality) {
+
+    private void renderFluidAreaTooltips(GuiGraphics guiGraphics, int pMouseX, int pMouseY, int x, int y, FluidStack fluidStack, int offsetX, int offsetY, FluidStackRenderer renderer, int fluidQuality) {
         if(isMouseAboveArea(pMouseX, pMouseY, x, y, offsetX, offsetY, renderer)) {
-            renderTooltip(pPoseStack, renderer.getFluidTooltip(fluidStack, fluidQuality), Optional.empty(),pMouseX - x, pMouseY - y);
+            guiGraphics.renderTooltip(font, renderer.getFluidTooltip(fluidStack, fluidQuality), Optional.empty(), pMouseX - x, pMouseY - y);
         }
     }
 

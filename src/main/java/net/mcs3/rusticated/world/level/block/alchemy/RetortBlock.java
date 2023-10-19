@@ -9,7 +9,7 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.DirectionProperty;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -24,7 +24,7 @@ public class RetortBlock extends Block {
     public static final DirectionProperty FACING = HorizontalDirectionalBlock.FACING;
 
     public RetortBlock() {
-        super(Properties.of(Material.STONE).requiresCorrectToolForDrops().strength(2.0f).sound(SoundType.STONE).noOcclusion());
+        super(Properties.of().mapColor(MapColor.STONE).requiresCorrectToolForDrops().pushReaction(PushReaction.BLOCK).strength(2.0f).sound(SoundType.STONE).noOcclusion());
         this.registerDefaultState((BlockState)((BlockState)((BlockState)this.stateDefinition.any()).setValue(FACING, Direction.NORTH)));
     }
 
@@ -44,11 +44,6 @@ public class RetortBlock extends Block {
                 default:
                     return MODEL_SHAPE_N;
             }
-    }
-
-    @Override
-    public PushReaction getPistonPushReaction(BlockState state) {
-        return PushReaction.BLOCK;
     }
 
     @Nullable

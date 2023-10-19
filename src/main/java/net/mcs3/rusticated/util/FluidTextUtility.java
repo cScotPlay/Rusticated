@@ -2,12 +2,14 @@ package net.mcs3.rusticated.util;
 
 import com.google.common.math.LongMath;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
+import net.minecraft.core.registries.Registries;
 import net.minecraft.world.level.material.Fluid;
 
 public class FluidTextUtility
 {
     public static String toString(Fluid fluid) {
-        return Registry.FLUID.getKey(fluid).toString();
+        return BuiltInRegistries.FLUID.getKey(fluid).toString();
     }
 
     /**

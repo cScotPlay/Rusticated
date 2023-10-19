@@ -25,7 +25,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
@@ -45,7 +45,7 @@ public class RootBlock extends CropBlock
 
     public RootBlock(TagKey<Block> plantOnBlock)
     {
-        super(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.ROOTS));
+        super(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.ROOTS));
         this.ROOT = getRootBase();
         this.ROOTBASE = plantOnBlock;
         this.registerDefaultState((BlockState)((BlockState)this.stateDefinition.any()).setValue(this.getAgeProperty(), 0));
@@ -112,7 +112,7 @@ public class RootBlock extends CropBlock
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return ROOT;
+        return getRootBase();
     }
 
     private ItemLike getRootBase()

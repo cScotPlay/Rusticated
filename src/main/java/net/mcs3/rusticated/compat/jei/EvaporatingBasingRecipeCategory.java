@@ -14,13 +14,11 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
-import net.mcs3.rusticated.world.item.crafting.AdvCondenserRecipe;
 import net.mcs3.rusticated.world.item.crafting.EvaporatingBasinRecipe;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
-
-import javax.annotation.Nonnull;
 
 public class EvaporatingBasingRecipeCategory implements IRecipeCategory<EvaporatingBasinRecipe> {
 
@@ -63,13 +61,13 @@ public class EvaporatingBasingRecipeCategory implements IRecipeCategory<Evaporat
     }
 
     @Override
-    public void draw(EvaporatingBasinRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
-        this.progress.draw(stack);
+    public void draw(EvaporatingBasinRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        this.progress.draw(guiGraphics);
     }
 
     @Override
-    public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull EvaporatingBasinRecipe recipe, @Nonnull IFocusGroup focusGroup) {
+    public void setRecipe(IRecipeLayoutBuilder builder, EvaporatingBasinRecipe recipe, IFocusGroup focusGroup) {
         builder.addSlot(RecipeIngredientRole.INPUT, 54, 36).addItemStack(recipe.getBucketItem());
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 109, 36).addItemStack(recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 109, 36).addItemStack(recipe.getResultItem(null));
     }
 }

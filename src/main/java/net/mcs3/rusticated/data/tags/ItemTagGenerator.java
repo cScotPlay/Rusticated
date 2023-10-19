@@ -1,27 +1,33 @@
 package net.mcs3.rusticated.data.tags;
 
-import net.fabricmc.fabric.api.datagen.v1.FabricDataGenerator;
+import net.fabricmc.fabric.api.datagen.v1.FabricDataOutput;
 import net.fabricmc.fabric.api.datagen.v1.provider.FabricTagProvider;
 import net.mcs3.rusticated.init.ModBlockItems;
 import net.mcs3.rusticated.init.ModBlocks;
-import net.mcs3.rusticated.init.ModItems;
 import net.mcs3.rusticated.init.ModFluids;
+import net.mcs3.rusticated.init.ModItems;
+import net.minecraft.core.HolderLookup;
 import net.minecraft.tags.ItemTags;
 import net.minecraft.world.level.block.Blocks;
 
-public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
-{
-    public ItemTagGenerator(FabricDataGenerator dataGenerator) {
-        super(dataGenerator);
+import java.util.concurrent.CompletableFuture;
+
+public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider {
+
+
+    public ItemTagGenerator(FabricDataOutput packOutput, CompletableFuture<HolderLookup.Provider> registriesFuture) {
+        super(packOutput, registriesFuture);
+
     }
 
+
     @Override
-    protected void generateTags()
-    {
+    protected void addTags(HolderLookup.Provider arg) {
+
         // ***************************************************************************** //
         //  Vanilla Tags
         // ***************************************************************************** //
-        this.tag(ItemTags.PLANKS).add(
+        getOrCreateTagBuilder(ItemTags.PLANKS).add(
                 ModBlocks.PAINTED_PLANKS_WHITE.asItem(),
                 ModBlocks.PAINTED_PLANKS_ORANGE.asItem(),
                 ModBlocks.PAINTED_PLANKS_MAGENTA.asItem(),
@@ -41,7 +47,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.IRONWOOD_PLANKS.asItem(),
                 ModBlocks.OLIVE_PLANKS.asItem());
 
-        this.tag(ItemTags.WOODEN_STAIRS).add(
+        getOrCreateTagBuilder(ItemTags.WOODEN_STAIRS).add(
                 ModBlocks.PAINTED_STAIRS_WHITE.asItem(),
                 ModBlocks.PAINTED_STAIRS_ORANGE.asItem(),
                 ModBlocks.PAINTED_STAIRS_MAGENTA.asItem(),
@@ -61,7 +67,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.IRONWOOD_STAIRS.asItem(),
                 ModBlocks.OLIVE_STAIRS.asItem());
 
-        this.tag(ItemTags.WOODEN_SLABS).add(
+        getOrCreateTagBuilder(ItemTags.WOODEN_SLABS).add(
                 ModBlocks.PAINTED_SLAB_WHITE.asItem(),
                 ModBlocks.PAINTED_SLAB_ORANGE.asItem(),
                 ModBlocks.PAINTED_SLAB_MAGENTA.asItem(),
@@ -81,7 +87,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.IRONWOOD_SLAB.asItem(),
                 ModBlocks.OLIVE_SLAB.asItem());
 
-        this.tag(ItemTags.STAIRS).add(
+        getOrCreateTagBuilder(ItemTags.STAIRS).add(
                 ModBlocks.PAINTED_STAIRS_WHITE.asItem(),
                 ModBlocks.PAINTED_STAIRS_ORANGE.asItem(),
                 ModBlocks.PAINTED_STAIRS_MAGENTA.asItem(),
@@ -133,7 +139,7 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.IRONWOOD_STAIRS.asItem(),
                 ModBlocks.OLIVE_STAIRS.asItem());
 
-        this.tag(ItemTags.SLABS).add(
+        getOrCreateTagBuilder(ItemTags.SLABS).add(
                 ModBlocks.PAINTED_SLAB_WHITE.asItem(),
                 ModBlocks.PAINTED_SLAB_ORANGE.asItem(),
                 ModBlocks.PAINTED_SLAB_MAGENTA.asItem(),
@@ -185,15 +191,15 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.IRONWOOD_SLAB.asItem(),
                 ModBlocks.OLIVE_SLAB.asItem());
 
-        this.tag(ItemTags.SAPLINGS).add(
+        getOrCreateTagBuilder(ItemTags.SAPLINGS).add(
                 ModBlocks.IRONWOOD_SAPLING.asItem(),
                 ModBlocks.OLIVE_SAPLING.asItem());
 
-        this.tag(ItemTags.LEAVES).add(
+        getOrCreateTagBuilder(ItemTags.LEAVES).add(
                 ModBlocks.IRONWOOD_LEAVES.asItem(),
                 ModBlocks.OLIVE_LEAVES.asItem());
 
-        tag(ItemTags.LOGS).add(
+        getOrCreateTagBuilder(ItemTags.LOGS).add(
                 ModBlocks.IRONWOOD_LOG.asItem(),
                 ModBlocks.IRONWOOD_WOOD.asItem(),
                 ModBlocks.STRIPPED_IRONWOOD_LOG.asItem(),
@@ -204,12 +210,12 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.STRIPPED_IRONWOOD_WOOD.asItem()
                 );
 
-        this.tag(ItemTags.FENCES).add(
+        getOrCreateTagBuilder(ItemTags.FENCES).add(
                 ModBlocks.IRONWOOD_FENCE.asItem(),
                 ModBlocks.OLIVE_FENCE.asItem()
                 );
 
-        this.tag(ItemTags.WOODEN_FENCES).add(
+        getOrCreateTagBuilder(ItemTags.WOODEN_FENCES).add(
                 ModBlocks.IRONWOOD_FENCE.asItem(),
                 ModBlocks.OLIVE_FENCE.asItem()
         );
@@ -232,11 +238,11 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlockItems.GLAZED_JAR_4_ITEM);
 
         getOrCreateTagBuilder(ModItemTags.POTS).add(
-                ModBlockItems.GLAZED_POT_0_ITEM,
-                ModBlockItems.GLAZED_POT_1_ITEM,
-                ModBlockItems.GLAZED_POT_2_ITEM,
-                ModBlockItems.GLAZED_POT_3_ITEM,
-                ModBlockItems.GLAZED_POT_4_ITEM);
+                ModBlocks.GLAZED_POT_0.asItem(),
+                ModBlocks.GLAZED_POT_1.asItem(),
+                ModBlocks.GLAZED_POT_2.asItem(),
+                ModBlocks.GLAZED_POT_3.asItem(),
+                ModBlocks.GLAZED_POT_4.asItem());
 
         getOrCreateTagBuilder(ModItemTags.COLORED_STONE).add(
                 Blocks.STONE.asItem(),
@@ -371,21 +377,21 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModBlocks.COBBLESTONE_WALL_RED.asItem(),
                 ModBlocks.COBBLESTONE_WALL_BLACK.asItem());
 
-        tag(ModItemTags.IRONWOOD_LOGS).add(
+        getOrCreateTagBuilder(ModItemTags.IRONWOOD_LOGS).add(
                 ModBlocks.IRONWOOD_LOG.asItem(),
                 ModBlocks.IRONWOOD_WOOD.asItem(),
                 ModBlocks.STRIPPED_IRONWOOD_LOG.asItem(),
                 ModBlocks.STRIPPED_IRONWOOD_WOOD.asItem()
         );
 
-        tag(ModItemTags.OLIVE_LOGS).add(
+        getOrCreateTagBuilder(ModItemTags.OLIVE_LOGS).add(
                 ModBlocks.OLIVE_LOG.asItem(),
                 ModBlocks.OLIVE_LOG.asItem(),
                 ModBlocks.STRIPPED_OLIVE_LOG.asItem(),
                 ModBlocks.STRIPPED_OLIVE_WOOD.asItem()
         );
 
-        tag(ModItemTags.HERBS).add(
+        getOrCreateTagBuilder(ModItemTags.HERBS).add(
                 ModItems.ALOE_VERA,
                 ModItems.BLOOD_ORCHID,
                 ModItems.CHAMOMILE,
@@ -400,11 +406,11 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModItems.MARSHMALLOW
         );
 
-        tag(ModItemTags.ELIXIR).add(
+        getOrCreateTagBuilder(ModItemTags.ELIXIR).add(
                 ModItems.ELIXIR
         );
 
-        tag(ModItemTags.BREWING_FLUID).add(
+        getOrCreateTagBuilder(ModItemTags.BREWING_FLUID).add(
                 ModFluids.ALE_WORT_BUCKET,
                 ModFluids.APPLE_JUICE_BUCKET,
                 ModFluids.GRAPE_JUICE_BUCKET,
@@ -412,36 +418,37 @@ public class ItemTagGenerator extends FabricTagProvider.ItemTagProvider
                 ModFluids.SWEET_BERRY_JUICE_BUCKET,
                 ModFluids.IRONBERRY_JUICE_BUCKET,
 
-                ModItems.ALE_CUP,
-                ModItems.CIDER_CUP,
-                ModItems.IRON_WINE_CUP,
-                ModItems.MEAD_CUP,
-                ModItems.SWEET_BERRY_WINE_CUP,
-                ModItems.WINE_CUP
+                ModFluids.ALE_CUP,
+                ModFluids.CIDER_CUP,
+                ModFluids.IRON_WINE_CUP,
+                ModFluids.MEAD_CUP,
+                ModFluids.SWEET_BERRY_WINE_CUP,
+                ModFluids.WINE_CUP
         );
 
-        tag(ModItemTags.BOOZE_ITEMS).add(
-                ModItems.ALE_CUP,
-                ModItems.CIDER_CUP,
-                ModItems.IRON_WINE_CUP,
-                ModItems.MEAD_CUP,
-                ModItems.SWEET_BERRY_WINE_CUP,
-                ModItems.WINE_CUP
+        getOrCreateTagBuilder(ModItemTags.BOOZE_ITEMS).add(
+                ModFluids.ALE_CUP,
+                ModFluids.CIDER_CUP,
+                ModFluids.IRON_WINE_CUP,
+                ModFluids.MEAD_CUP,
+                ModFluids.SWEET_BERRY_WINE_CUP,
+                ModFluids.WINE_CUP
         );
 
-        tag(ModItemTags.FLUID_BOTTLES).add(
+        getOrCreateTagBuilder(ModItemTags.FLUID_BOTTLES).add(
                 ModItems.ALE_WORT_BOTTLE,
                 ModItems.APPLE_JUICE_BOTTLE,
                 ModItems.GRAPE_JUICE_BOTTLE,
                 ModItems.SWEET_BERRY_JUICE_BOTTLE,
                 ModItems.IRONBERRY_JUICE_BOTTLE,
                 ModItems.OLIVE_OIL_BOTTLE,
-                ModItems.ALE_CUP,
-                ModItems.CIDER_CUP,
-                ModItems.IRON_WINE_CUP,
-                ModItems.MEAD_CUP,
-                ModItems.SWEET_BERRY_WINE_CUP,
-                ModItems.WINE_CUP
+                ModFluids.ALE_CUP,
+                ModFluids.CIDER_CUP,
+                ModFluids.IRON_WINE_CUP,
+                ModFluids.MEAD_CUP,
+                ModFluids.SWEET_BERRY_WINE_CUP,
+                ModFluids.WINE_CUP
         );
     }
+
 }

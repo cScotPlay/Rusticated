@@ -2,9 +2,6 @@ package net.mcs3.rusticated.util;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
-import com.mojang.math.Matrix4f;
-import com.mojang.math.Vector3f;
-import com.mojang.math.Vector4f;
 import net.fabricmc.fabric.api.renderer.v1.Renderer;
 import net.fabricmc.fabric.api.renderer.v1.RendererAccess;
 import net.fabricmc.fabric.api.renderer.v1.material.BlendMode;
@@ -23,14 +20,10 @@ import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.renderer.texture.TextureAtlasSprite;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.Vec3i;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.entity.BlockEntity;
-import org.lwjgl.system.MemoryStack;
-
-import java.nio.ByteBuffer;
-import java.nio.IntBuffer;
+import org.joml.Matrix4f;
 
 public class RenderUtility
 {
@@ -192,75 +185,6 @@ public class RenderUtility
 
     private static final float[] DEFAULT_BRIGHTNESSES = new float[] { 1, 1, 1, 1 };
 
-    /**
-     * {@link VertexConsumer#putBulkData} copy pasted from vanilla and adapted with support
-     * for alpha and less useless allocations.
-     */
-    public static void quadWithAlpha(VertexConsumer consumer, PoseStack.Pose matrixEntry, BakedQuad quad, float red, float green, float blue,
-                                     float alpha, int light, int overlay) {
-        boolean useQuadColorData = false;
-        float[] fs = DEFAULT_BRIGHTNESSES;
-        int[] js = quad.getVertices();
-        Vec3i vec3i = quad.getDirection().getNormal();
-        Vector3f vec3f = new Vector3f((float) vec3i.getX(), (float) vec3i.getY(), (float) vec3i.getZ());
-        Matrix4f matrix4f = matrixEntry.pose();
-        vec3f.transform(matrixEntry.normal());
-        int j = js.length / 8;
-        MemoryStack memoryStack = MemoryStack.stackPush();
-
-        try {
-            ByteBuffer byteBuffer = memoryStack.malloc(DefaultVertexFormat.BLOCK.getVertexSize());
-            IntBuffer intBuffer = byteBuffer.asIntBuffer();
-
-            for (int k = 0; k < j; ++k) {
-                intBuffer.clear();
-                intBuffer.put(js, k * 8, 8);
-                float f = byteBuffer.getFloat(0);
-                float g = byteBuffer.getFloat(4);
-                float h = byteBuffer.getFloat(8);
-                float r;
-                float s;
-                float t;
-                float v;
-                float w;
-                if (useQuadColorData) {
-                    float l = (float) (byteBuffer.get(12) & 255) / 255.0F;
-                    v = (float) (byteBuffer.get(13) & 255) / 255.0F;
-                    w = (float) (byteBuffer.get(14) & 255) / 255.0F;
-                    r = l * fs[k] * red;
-                    s = v * fs[k] * green;
-                    t = w * fs[k] * blue;
-                } else {
-                    r = fs[k] * red;
-                    s = fs[k] * green;
-                    t = fs[k] * blue;
-                }
-
-                v = byteBuffer.getFloat(16);
-                w = byteBuffer.getFloat(20);
-                Vector4f vector4f = new Vector4f(f, g, h, 1.0F);
-                vector4f.transform(matrix4f);
-                consumer.vertex(vector4f.x(), vector4f.y(), vector4f.z(), r, s, t, alpha, v, w, overlay, light, vec3f.x(), vec3f.y(),
-                        vec3f.z());
-            }
-        } catch (Throwable var33) {
-            if (memoryStack != null) {
-                try {
-                    memoryStack.close();
-                } catch (Throwable var32) {
-                    var33.addSuppressed(var32);
-                }
-            }
-
-            throw var33;
-        }
-
-        if (memoryStack != null) {
-            memoryStack.close();
-        }
-
-    }
-
     public static void fill(PoseStack matrices, int x1, int y1, int x2, int y2, int color) {
         fill(matrices.last().pose(), x1, y1, x2, y2, color);
     }
@@ -286,7 +210,7 @@ public class RenderUtility
         BufferBuilder bufferBuilder = Tesselator.getInstance().getBuilder();
 
         RenderSystem.enableBlend();
-        RenderSystem.disableTexture();
+        RenderSystem.defaultBlendFunc();
         RenderSystem.defaultBlendFunc();
         RenderSystem.setShader(GameRenderer::getPositionColorShader);
         bufferBuilder.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_COLOR);
@@ -296,7 +220,6 @@ public class RenderUtility
         bufferBuilder.vertex(matrix, (float) x1, (float) y1, 0.0F).color(g, h, k, f).endVertex();
         bufferBuilder.end();
         BufferUploader.draw(bufferBuilder.end());  //TODO Check that this worked
-        RenderSystem.enableTexture();
         RenderSystem.disableBlend();
     }
 

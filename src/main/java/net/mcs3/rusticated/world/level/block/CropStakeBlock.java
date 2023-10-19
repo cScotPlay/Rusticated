@@ -1,6 +1,5 @@
 package net.mcs3.rusticated.world.level.block;
 
-import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
 import net.mcs3.rusticated.world.item.ModItem;
 import net.minecraft.core.BlockPos;
@@ -14,8 +13,7 @@ import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.material.MaterialColor;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
@@ -25,12 +23,9 @@ public class CropStakeBlock extends Block
 {
     protected static final VoxelShape CROP_SHAPE = Block.box(6.0, 0.0, 6.0, 10.0, 16.0, 10.0);
 
-    public static final Material CROP_STAKE_MATERIAL = new Material(MaterialColor.WOOD, false, false,true, false, true, false, PushReaction.NORMAL);
-
-
     public CropStakeBlock()
     {
-        super(BlockBehaviour.Properties.of(CROP_STAKE_MATERIAL).requiresCorrectToolForDrops().strength(2.0F, 5.0F).sound(SoundType.WOOD));
+        super(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).requiresCorrectToolForDrops().pushReaction(PushReaction.NORMAL).strength(2.0F, 5.0F).sound(SoundType.WOOD));
     }
 
     @Override

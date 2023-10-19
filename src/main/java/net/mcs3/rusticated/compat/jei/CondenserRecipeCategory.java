@@ -14,8 +14,8 @@ import mezz.jei.api.recipe.RecipeType;
 import mezz.jei.api.recipe.category.IRecipeCategory;
 import net.mcs3.rusticated.Rusticated;
 import net.mcs3.rusticated.init.ModBlocks;
-import net.mcs3.rusticated.world.item.crafting.AdvCondenserRecipe;
 import net.mcs3.rusticated.world.item.crafting.CondenserRecipe;
+import net.minecraft.client.gui.GuiGraphics;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.ItemTags;
@@ -23,8 +23,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.material.Fluids;
-
-import javax.annotation.Nonnull;
 
 public class CondenserRecipeCategory implements IRecipeCategory<CondenserRecipe> {
 
@@ -74,20 +72,20 @@ public class CondenserRecipeCategory implements IRecipeCategory<CondenserRecipe>
     }
 
     @Override
-    public void draw(CondenserRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack stack, double mouseX, double mouseY) {
-        this.fuel.draw(stack);
-        this.progress.draw(stack);
-        this.brewing.draw(stack);
+    public void draw(CondenserRecipe recipe, IRecipeSlotsView recipeSlotsView, GuiGraphics guiGraphics, double mouseX, double mouseY) {
+        this.fuel.draw(guiGraphics);
+        this.progress.draw(guiGraphics);
+        this.brewing.draw(guiGraphics);
     }
 
     @Override
-    public void setRecipe(@Nonnull IRecipeLayoutBuilder builder, @Nonnull CondenserRecipe recipe, @Nonnull IFocusGroup focusGroup) {
+    public void setRecipe(IRecipeLayoutBuilder builder, CondenserRecipe recipe, IFocusGroup focusGroup) {
         builder.addSlot(RecipeIngredientRole.INPUT, 107, 63).addIngredients(Ingredient.of((Items.GLASS_BOTTLE).getDefaultInstance()));
         builder.addSlot(RecipeIngredientRole.INPUT, 26, 18).addIngredients(recipe.getIngredients().get(0));
         builder.addSlot(RecipeIngredientRole.INPUT, 26, 53).addIngredients(recipe.getIngredients().get(1));
         builder.addSlot(RecipeIngredientRole.INPUT, 71, 63).addIngredients(Ingredient.of((ItemTags.COALS)));
         builder.addSlot(RecipeIngredientRole.INPUT, 134, 55).addFluidStack(Fluids.WATER, 40500L).setFluidRenderer(500L, false, 16, 4);
 
-        builder.addSlot(RecipeIngredientRole.OUTPUT, 107, 35).addItemStack(recipe.getResultItem());
+        builder.addSlot(RecipeIngredientRole.OUTPUT, 107, 35).addItemStack(recipe.getResultItem(null));
     }
 }

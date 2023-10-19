@@ -15,6 +15,7 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.*;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.material.FlowingFluid;
 import net.minecraft.world.level.material.Fluid;
 import org.jetbrains.annotations.Nullable;
 
@@ -24,7 +25,7 @@ public class BoozeItem extends Item {
     public float fluidQuality;
     private float inebriationChance = 0.5F;
     private Fluid fluidType;
-    public BoozeItem(Properties properties, Fluid inputFluid) {
+    public BoozeItem(Properties properties, FlowingFluid inputFluid) {
         super(properties);
         this.fluidType = inputFluid;
     }
@@ -94,7 +95,9 @@ public class BoozeItem extends Item {
         addCompoundTag(stack, fluidQuality);
     }
 
-    public Fluid getFluidType() {return this.fluidType;}
+    public Fluid getFluidType() {
+        return this.fluidType;
+    }
 
     @Override
     public InteractionResultHolder<ItemStack> use(Level level, Player player, InteractionHand usedHand) {

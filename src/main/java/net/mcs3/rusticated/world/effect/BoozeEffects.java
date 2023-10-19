@@ -1,6 +1,6 @@
 package net.mcs3.rusticated.world.effect;
 
-import net.mcs3.rusticated.init.ModItems;
+import net.mcs3.rusticated.init.ModFluids;
 import net.mcs3.rusticated.world.item.BoozeItem;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -17,7 +17,7 @@ public class BoozeEffects {
         Item boozeItem = itemStack.getItem();
 
         if (boozeItem instanceof BoozeItem) {
-            if(boozeItem == ModItems.ALE_CUP) {
+            if(boozeItem == ModFluids.ALE_CUP) {
                 if (fluidQuality >= 0.5F) {
                     float saturation = 4F * fluidQuality;
                     ((Player)playerEntity).getFoodData().eat(2, saturation);
@@ -29,7 +29,7 @@ public class BoozeEffects {
                     playerEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, duration));
                 }
             }
-            else if (boozeItem == ModItems.CIDER_CUP) {
+            else if (boozeItem == ModFluids.CIDER_CUP) {
                 if (fluidQuality >= 0.5F) {
                     float saturation = 2F * fluidQuality;
                     ((Player)playerEntity).getFoodData().eat(1, saturation);
@@ -42,7 +42,7 @@ public class BoozeEffects {
                     playerEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, duration));
                 }
             }
-            else if (boozeItem == ModItems.IRON_WINE_CUP) {
+            else if (boozeItem == ModFluids.IRON_WINE_CUP) {
                 if (fluidQuality >= 0.5F) {
                     float saturation = 2F * fluidQuality;
                     float absorption = 10F * (Math.max((fluidQuality - 0.5F) * 2F, 0F));
@@ -52,11 +52,12 @@ public class BoozeEffects {
                 else {
                     int duration = (int) (6000 * Math.max(1 - fluidQuality, 0));
                     float damage = 10F * (Math.max(Math.abs(fluidQuality - 0.5F) + 0.1F, 0F));
-                    playerEntity.hurt(DamageSource.MAGIC, damage);
+                    Level level = playerEntity.level();
+                    playerEntity.hurt(level.damageSources().magic(),damage);
                     playerEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, duration));
                 }
             }
-            else if (boozeItem == ModItems.MEAD_CUP) {
+            else if (boozeItem == ModFluids.MEAD_CUP) {
                 if (fluidQuality >= 0.5F) {
                     float saturation = 2F * fluidQuality;
                     ((Player)playerEntity).getFoodData().eat(1, saturation);
@@ -70,7 +71,7 @@ public class BoozeEffects {
                     playerEntity.addEffect(new MobEffectInstance(MobEffects.CONFUSION, duration));
                 }
             }
-            else if (boozeItem == ModItems.SWEET_BERRY_WINE_CUP) {
+            else if (boozeItem == ModFluids.SWEET_BERRY_WINE_CUP) {
                 if (fluidQuality >= 0.5F) {
                     float saturation = 2F * fluidQuality;
                     ((Player) playerEntity).getFoodData().eat(1, saturation);
@@ -93,7 +94,7 @@ public class BoozeEffects {
                     }
                 }
             }
-            else if (boozeItem == ModItems.WINE_CUP) {
+            else if (boozeItem == ModFluids.WINE_CUP) {
                 if (fluidQuality >= 0.5F) {
                     float saturation = 2F * fluidQuality;
                     ((Player) playerEntity).getFoodData().eat(1, saturation);

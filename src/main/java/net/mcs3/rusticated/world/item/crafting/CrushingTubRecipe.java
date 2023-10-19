@@ -2,6 +2,7 @@ package net.mcs3.rusticated.world.item.crafting;
 
 import com.google.gson.JsonObject;
 import net.fabricmc.fabric.mixin.transfer.BucketItemAccessor;
+import net.minecraft.core.RegistryAccess;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.GsonHelper;
@@ -57,7 +58,7 @@ public class CrushingTubRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack assemble(Container container) {
+    public ItemStack assemble(Container container, RegistryAccess registryAccess) {
         return inputItem;
     }
 
@@ -67,7 +68,7 @@ public class CrushingTubRecipe implements Recipe<Container> {
     }
 
     @Override
-    public ItemStack getResultItem() {
+    public ItemStack getResultItem(RegistryAccess registryAccess) {
         return inputItem;
     }
 

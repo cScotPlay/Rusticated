@@ -8,7 +8,6 @@ import net.minecraft.tags.TagKey;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResult;
-import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -24,13 +23,11 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.block.state.StateDefinition;
 import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.block.state.properties.IntegerProperty;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.Vec3;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import java.util.Random;
 
 public class HerbPerennialBlock extends CropBlock
 {
@@ -44,7 +41,7 @@ public class HerbPerennialBlock extends CropBlock
             Block.box(0.0, 0.0, 0.0, 16.0, 14.0, 16.0)};
 
     public HerbPerennialBlock(/*ItemLike seedItem, */TagKey<Block> plantOnBlock) {
-        super(BlockBehaviour.Properties.of(Material.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
+        super(BlockBehaviour.Properties.of().mapColor(MapColor.PLANT).noCollission().randomTicks().instabreak().sound(SoundType.CROP));
         //this.SEED = seedItem;
         this.SEED = getSeedBase();
         this.PLANTBASE = plantOnBlock;
@@ -75,7 +72,7 @@ public class HerbPerennialBlock extends CropBlock
                 double d = Math.abs(entity.getX() - entity.xOld);
                 double e = Math.abs(entity.getZ() - entity.zOld);
                 if (d >= (double)0.003f || e >= (double)0.003f) {
-                    entity.hurt(DamageSource.SWEET_BERRY_BUSH, 1.0f);
+                    entity.hurt(level.damageSources().sweetBerryBush(), 1.0f);
                 }
             }
         }
@@ -136,7 +133,8 @@ public class HerbPerennialBlock extends CropBlock
 
     @Override
     protected ItemLike getBaseSeedId() {
-        return SEED;
+        return getSeedBase();
+//        return SEED;
     }
 
     @Override

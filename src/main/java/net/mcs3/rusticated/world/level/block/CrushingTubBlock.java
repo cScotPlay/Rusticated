@@ -18,7 +18,8 @@ import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.material.Material;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.BooleanOp;
@@ -35,7 +36,7 @@ public class CrushingTubBlock extends BaseEntityBlock implements EntityBlock {
     public static final ResourceLocation CONTENTS;
 
     public CrushingTubBlock() {
-        super(BlockBehaviour.Properties.of(Material.WOOD)
+        super(BlockBehaviour.Properties.of().mapColor(MapColor.WOOD)
                 .requiresCorrectToolForDrops()
                 .strength(1.5f, 4.2f)
                 .sound(SoundType.WOOD));
@@ -116,19 +117,18 @@ public class CrushingTubBlock extends BaseEntityBlock implements EntityBlock {
     }
 
     @Override
-    @SuppressWarnings("deprecation")
-    public List<ItemStack> getDrops(BlockState state, net.minecraft.world.level.storage.loot.LootContext.Builder builder) {
-        BlockEntity blockEntity = (BlockEntity)builder.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        BlockEntity blockEntity = (BlockEntity)params.getOptionalParameter(LootContextParams.BLOCK_ENTITY);
         if (blockEntity instanceof CrushingTubBlockEntity) {
             CrushingTubBlockEntity crushingBlockEntity = (CrushingTubBlockEntity)blockEntity;
-            builder = builder.withDynamicDrop(CONTENTS, (lootContext, consumer) -> {
+            params = params.withDynamicDrop(CONTENTS, (consumer) -> {
                 for(int i = 0; i < crushingBlockEntity.getContainerSize(); ++i) {
                     consumer.accept(crushingBlockEntity.getItem(i));
                 }
 
             });
         }
-        return super.getDrops(state, builder);
+        return super.getDrops(state, params);
     }
 
     @Nullable

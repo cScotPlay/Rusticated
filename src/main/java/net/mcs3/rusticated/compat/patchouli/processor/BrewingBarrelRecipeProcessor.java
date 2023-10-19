@@ -4,6 +4,7 @@ import net.mcs3.rusticated.world.item.crafting.BrewingBarrelRecipe;
 import net.mcs3.rusticated.world.item.crafting.ModRecipes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.level.Level;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariable;
 import vazkii.patchouli.api.IVariableProvider;
@@ -13,9 +14,8 @@ import java.util.List;
 public class BrewingBarrelRecipeProcessor implements IComponentProcessor {
     private BrewingBarrelRecipe recipe;
 
-
     @Override
-    public void setup(IVariableProvider variables) {
+    public void setup(Level level, IVariableProvider variables) {
         ResourceLocation id = new ResourceLocation(variables.get("recipes").asString());
         List<BrewingBarrelRecipe> recipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipes.BREWING_RECIPE_TYPE);
         for(BrewingBarrelRecipe r : recipes) {
@@ -29,10 +29,9 @@ public class BrewingBarrelRecipeProcessor implements IComponentProcessor {
     }
 
     @Override
-    public IVariable process(String key) {
-
+    public IVariable process(Level level, String key) {
         if (key.equals("output")) {
-            return IVariable.from(recipe.getResultItem());
+            return IVariable.from(recipe.getResultItem(null));
         }
         if(key.equals("input")) {
             return IVariable.from(recipe.getInputFluidBucket());

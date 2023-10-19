@@ -1,7 +1,7 @@
 package net.mcs3.rusticated.data.tags;
 
 import net.mcs3.rusticated.Rusticated;
-import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.TagKey;
 import net.minecraft.world.item.Item;
@@ -32,6 +32,6 @@ public class ModItemTags
 
 
     public static TagKey<Item> modItem(String path) {
-        return TagKey.create(Registry.ITEM.key(), new ResourceLocation(Rusticated.MOD_ID, path));
+        return TagKey.create(BuiltInRegistries.ITEM.key(), new ResourceLocation(Rusticated.MOD_ID, path));
     }
 }

@@ -10,6 +10,7 @@ import net.minecraft.advancements.CriterionTriggerInstance;
 import net.minecraft.advancements.RequirementsStrategy;
 import net.minecraft.advancements.critereon.RecipeUnlockedTrigger;
 import net.minecraft.core.Registry;
+import net.minecraft.core.registries.BuiltInRegistries;
 import net.minecraft.data.recipes.FinishedRecipe;
 import net.minecraft.data.recipes.RecipeBuilder;
 import net.minecraft.resources.ResourceLocation;
@@ -67,7 +68,8 @@ public class CrushingTubRecipeBuilder implements RecipeBuilder {
     public void save(Consumer<FinishedRecipe> finishedRecipeConsumer, ResourceLocation recipeId) {
         this.ensureValid(recipeId);
         this.advancement.parent(new ResourceLocation("recipes/root")).addCriterion("has_the_recipe", RecipeUnlockedTrigger.unlocked(recipeId)).rewards(AdvancementRewards.Builder.recipe(recipeId)).requirements(RequirementsStrategy.OR);
-        finishedRecipeConsumer.accept(new CrushingTubRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.ingredient, this.bucketItem, this.bottleItem, this.extraItems, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + this.ingredient.getItem().getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()), this.serializer));
+        finishedRecipeConsumer.accept(new CrushingTubRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.ingredient, this.bucketItem, this.bottleItem, this.extraItems, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + recipeId.getPath()), this.serializer));
+//        finishedRecipeConsumer.accept(new CrushingTubRecipeBuilder.Result(recipeId, this.group == null ? "" : this.group, this.ingredient, this.bucketItem, this.bottleItem, this.extraItems, this.advancement, new ResourceLocation(recipeId.getNamespace(), "recipes/" + this.ingredient.getItem().getItemCategory().getRecipeFolderName() + "/" + recipeId.getPath()), this.serializer));
     }
 
     /**
@@ -114,19 +116,19 @@ public class CrushingTubRecipeBuilder implements RecipeBuilder {
             ItemStack extraItems = this.extraItems;
 
             JsonObject jsonObject = new JsonObject();
-            jsonObject.addProperty("item", Registry.ITEM.getKey(itemIngredient.getItem()).toString());
+            jsonObject.addProperty("item", BuiltInRegistries.ITEM.getKey(itemIngredient.getItem()).toString());
             json.add("ingredient", jsonObject);
 
             JsonObject jsonObjectBucket = new JsonObject();
-            jsonObjectBucket.addProperty("item", Registry.ITEM.getKey(bucketItem.getItem()).toString());
+            jsonObjectBucket.addProperty("item", BuiltInRegistries.ITEM.getKey(bucketItem.getItem()).toString());
             json.add("fluidbucket", jsonObjectBucket);
 
             JsonObject jsonObjectBottle = new JsonObject();
-            jsonObjectBottle.addProperty("item", Registry.ITEM.getKey(bottleItem.getItem()).toString());
+            jsonObjectBottle.addProperty("item", BuiltInRegistries.ITEM.getKey(bottleItem.getItem()).toString());
             json.add("fluidbottle", jsonObjectBottle);
 
             JsonObject jsonObjectExtra = new JsonObject();
-            jsonObjectExtra.addProperty("item", Registry.ITEM.getKey(extraItems.getItem()).toString());
+            jsonObjectExtra.addProperty("item", BuiltInRegistries.ITEM.getKey(extraItems.getItem()).toString());
             json.add("output", jsonObjectExtra);
 
 

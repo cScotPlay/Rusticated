@@ -24,7 +24,7 @@ public class CondenserMenu extends AbstractContainerMenu
     public CondenserBlockEntity blockEntity;
 
     public CondenserMenu(int i, Inventory inventory, FriendlyByteBuf friendlyByteBuf) {
-        this(i, (CondenserBlockEntity) inventory.player.level.getBlockEntity(friendlyByteBuf.readBlockPos()), inventory, new SimpleContainer(5), new SimpleContainerData(5));
+        this(i, (CondenserBlockEntity) inventory.player.level().getBlockEntity(friendlyByteBuf.readBlockPos()), inventory, new SimpleContainer(5), new SimpleContainerData(5));
     }
 
     public CondenserMenu(int i, CondenserBlockEntity blockEntity, Inventory inventory, Container container, ContainerData containerData) {

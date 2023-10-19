@@ -4,3 +4,4 @@ accessible field net/minecraft/client/multiplayer/MultiPlayerGameMode destroyDel
 accessible class net/minecraft/data/models/BlockModelGenerators$TintState
 accessible field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
 mutable field net/minecraft/world/item/AxeItem STRIPPABLES Ljava/util/Map;
+accessible method net/minecraft/client/renderer/Sheets createSignMaterial (Lnet/minecraft/world/level/block/state/properties/WoodType;)Lnet/minecraft/client/resources/model/Material;

@@ -5,6 +5,7 @@ import net.mcs3.rusticated.world.item.crafting.ModRecipes;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.Level;
 import vazkii.patchouli.api.IComponentProcessor;
 import vazkii.patchouli.api.IVariable;
 import vazkii.patchouli.api.IVariableProvider;
@@ -14,9 +15,8 @@ import java.util.List;
 public class CondenserRecipeProcessor implements IComponentProcessor {
     private CondenserRecipe recipe;
 
-
     @Override
-    public void setup(IVariableProvider variables) {
+    public void setup(Level level, IVariableProvider variables) {
         ResourceLocation id = new ResourceLocation(variables.get("recipes").asString());
         List<CondenserRecipe> recipes = Minecraft.getInstance().level.getRecipeManager().getAllRecipesFor(ModRecipes.CONDENSER_RECIPE_TYPE);
         for(CondenserRecipe r : recipes) {
@@ -30,7 +30,7 @@ public class CondenserRecipeProcessor implements IComponentProcessor {
     }
 
     @Override
-    public IVariable process(String key) {
+    public IVariable process(Level level, String key) {
         Ingredient itemInput0 = recipe.getIngredients().get(0);
         Ingredient itemInput1 = recipe.getIngredients().get(1);
 

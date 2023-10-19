@@ -4,13 +4,7 @@ import net.fabricmc.fabric.api.transfer.v1.fluid.FluidVariant;
 import net.fabricmc.fabric.mixin.transfer.BucketItemAccessor;
 import net.mcs3.rusticated.world.item.BoozeItem;
 import net.mcs3.rusticated.world.item.FluidBottleItem;
-import net.mcs3.rusticated.world.level.block.entity.GlazedJarBlockEntity;
 import net.mcs3.rusticated.world.level.block.entity.JarBlockEntity;
-import net.mcs3.rusticated.world.level.block.entity.LiquidBarrelBlockEntity;
-import net.mcs3.rusticated.world.level.block.entity.ModBlockEntityTypes;
-import net.mcs3.rusticated.world.level.block.storage.AbstractStorageBlock;
-import net.mcs3.rusticated.world.level.block.storage.AbstractStorageBlockEntity;
-import net.mcs3.rusticated.world.level.block.storage.LiquidBarrelBlock;
 import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundEvents;
@@ -29,8 +23,8 @@ import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.level.material.Fluid;
-import net.minecraft.world.level.material.Material;
-import net.minecraft.world.level.storage.loot.LootContext;
+import net.minecraft.world.level.material.MapColor;
+import net.minecraft.world.level.storage.loot.LootParams;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParamSets;
 import net.minecraft.world.level.storage.loot.parameters.LootContextParams;
 import net.minecraft.world.phys.BlockHitResult;
@@ -47,7 +41,7 @@ import java.util.stream.Stream;
 public class FiredJarBlock extends BaseEntityBlock implements EntityBlock {
 
     public FiredJarBlock() {
-        super(Properties.of(Material.CLAY)
+        super(Properties.of().mapColor(MapColor.CLAY)
                 .noOcclusion()
                 .strength(2.0f, 3.0f));
     }
@@ -142,10 +136,9 @@ public class FiredJarBlock extends BaseEntityBlock implements EntityBlock {
         return stack;
     }
 
-    @SuppressWarnings("deprecation")
     @Override
-    public List<ItemStack> getDrops(BlockState state, LootContext.Builder builder) {
-        LootContext lootContext = builder.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
+    public List<ItemStack> getDrops(BlockState state, LootParams.Builder params) {
+        LootParams lootContext = params.withParameter(LootContextParams.BLOCK_STATE, state).create(LootContextParamSets.BLOCK);
         return Arrays.asList(getStack(lootContext.getParamOrNull(LootContextParams.BLOCK_ENTITY)));
     }
 
